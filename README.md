@@ -1,3 +1,26 @@
+# Recruiter Showcase – TSmithCode.ai
+
+This is the official portfolio site for Thomas Smith, a .NET & Automation Engineer, built to streamline the hiring process by giving recruiters everything they need on one high-performance page.
+
+⚙️ Built with:
+- **Next.js 15 (App Router)**
+- **Tailwind CSS**
+- **Framer Motion**
+- **Vercel for hosting**
+- **Live YouTube Demo Integration**
+
+💼 What you'll find:
+- ⚡ Real-world CAD & ERP automation projects
+- 🎯 Problem–Solution breakdowns by domain
+- 🧠 Agile + SDLC approach with a developer mindset
+- ✨ Elegant UI with animations and responsive layout
+
+🔗 Live site: [https://tsmithcode.ai](https://tsmithcode.ai)
+
+📫 Contact: [job@tsmithcode.ai](mailto:job@tsmithcode.ai)
+
+
+
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
 ## Getting Started
