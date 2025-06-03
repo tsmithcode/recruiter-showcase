@@ -1,3 +1,10 @@
+@tailwind utilities;
+
+@import "swiper/css";
+@import "swiper/css/navigation";
+@import "swiper/css/pagination";
+
+
 @import "tailwindcss";
 
 :root {
@@ -23,4 +30,45 @@ body {
   background: var(--background);
   color: var(--foreground);
   font-family: Arial, Helvetica, sans-serif;
+}
+
+
+/* === Print‐friendly tweaks ===================================== */
+@media print {
+  /* 1. Use the full page width — 4 cards per row on US-Letter portrait */
+  .project-grid {                         /* the div that wraps <motion.div> cards */
+    display: grid !important;
+    grid-template-columns: repeat(4, 1fr) !important;
+    gap: 0.5rem !important;              /* tighter gutters for paper */
+  }
+
+  /* 2. Keep each card intact when the page breaks */
+  .project-card { page-break-inside: avoid; break-inside: avoid; }
+
+  /* 3. Shrink type & remove color blocks that waste toner */
+  :root {
+    --tw-prose-body: #000000;
+    --tw-prose-headings: #000000;
+  }
+  body { font-size: 11pt; }               /* global font down-size */
+
+  /* 4. Hide on-screen–only elements */
+  .no-print,  
+  nav,                                     /* any nav bars */
+  .swiper,                                /* the Swiper dots / arrows */
+  .sdhc,                                  /* animated SDLC pill row */
+  video, iframe, embed,                   /* players */
+  button,
+  [data-radix-portal] { display: none !important; }
+
+  /* 5. Make links show the URL inline for context */
+  a[href]::after {
+    content: " (" attr(href) ")";
+    font-size: 9pt;
+    color: #555;
+    word-break: break-all;
+  }
+
+  /* 6. Remove the dark background so it doesn’t print gray */
+  body, main, section, footer { background: #ffffff !important; }
 }
