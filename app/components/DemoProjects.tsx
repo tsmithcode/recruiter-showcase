@@ -1,10 +1,9 @@
-// components/DemoProjects.tsx – YouTube thumbnails clickable, finished component
+// components/DemoProjects.tsx – Refactored without any animation or motion
 "use client";
 
-import { useState, useMemo, useEffect, useRef } from "react";
+import { useState, useMemo, useEffect } from "react";
 import Image from "next/image";
 import Link from "next/link";
-import { motion } from "framer-motion";
 
 const demoProjects = [
   {
@@ -109,14 +108,16 @@ const demoProjects = [
   },
 ];
 
-const cardVariants = {
-  hidden: { opacity: 0, y: 30 },
-  visible: (i: number) => ({
-    opacity: 1,
-    y: 0,
-    transition: { delay: (i % 9) * 0.05, duration: 0.4 },
-  }),
-};
+// Helper: return a new array of 4 random items from 'arr'
+function sampleFour<T>(arr: T[]): T[] {
+  if (arr.length <= 4) return [...arr];
+  const copy = [...arr];
+  for (let i = copy.length - 1; i > 0; i--) {
+    const j = Math.floor(Math.random() * (i + 1));
+    [copy[i], copy[j]] = [copy[j], copy[i]];
+  }
+  return copy.slice(0, 4);
+}
 
 const getThumb = (url: string) => {
   try {
@@ -130,12 +131,21 @@ const getThumb = (url: string) => {
 export default function DemoProjects() {
   const [titleQuery, setTitleQuery] = useState("");
   const [tagQuery, setTagQuery] = useState("");
-  const [itemsToShow, setItemsToShow] = useState(12);
-  const sentinelRef = useRef<HTMLDivElement | null>(null);
+  const [showAll, setShowAll] = useState(false);
+  // Initialize as empty to avoid hydration mismatch
+  const [visibleProjects, setVisibleProjects] = useState<typeof demoProjects>([]);
 
+  // On first client render, pick 4 at random from full list
+  useEffect(() => {
+    setVisibleProjects(sampleFour(demoProjects));
+  }, []);
+
+  // Filter projects by title and tag
   const filtered = useMemo(() => {
     return demoProjects.filter((p) => {
-      const matchTitle = p.title.toLowerCase().includes(titleQuery.toLowerCase());
+      const matchTitle = p.title
+        .toLowerCase()
+        .includes(titleQuery.toLowerCase());
       const matchTag = tagQuery
         ? p.tags.some((t) => t.toLowerCase().includes(tagQuery.toLowerCase()))
         : true;
@@ -143,92 +153,103 @@ export default function DemoProjects() {
     });
   }, [titleQuery, tagQuery]);
 
-  const visible = useMemo(() => filtered.slice(0, itemsToShow), [filtered, itemsToShow]);
-
+  // When filtered or showAll changes, update visibleProjects
   useEffect(() => {
-    if (!sentinelRef.current) return;
-    const observer = new IntersectionObserver((entries) => {
-      if (entries[0].isIntersecting) {
-        setItemsToShow((prev) => Math.min(prev + 6, filtered.length));
-      }
-    });
-    observer.observe(sentinelRef.current);
-    return () => observer.disconnect();
-  }, [filtered.length]);
+    if (showAll) {
+      setVisibleProjects(filtered);
+    } else {
+      setVisibleProjects(sampleFour(filtered));
+    }
+  }, [filtered, showAll]);
+
+  // Auto-slideshow: reshuffle every 7 seconds when not showing all
+  useEffect(() => {
+    if (showAll) return;
+    const interval = setInterval(() => {
+      setVisibleProjects(sampleFour(filtered));
+    }, 7000);
+    return () => clearInterval(interval);
+  }, [filtered, showAll]);
 
   return (
-    <section className="py-10 px-4 max-w-7xl mx-auto">
-      <header className="mb-6 flex items-end justify-between flex-wrap gap-4">
-        <h2 className="text-2xl font-bold text-white">
+    <section className="py-12 px-6 max-w-7xl mx-auto">
+      <header className="mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+        <h2 className="text-3xl sm:text-4xl font-bold text-white">
           APP <span className="text-[#05c8fb]">VIDEOS</span>
         </h2>
-        <span className="text-sm text-gray-400">{filtered.length} VIDEOS</span>
+        <span className="text-base text-gray-400">
+          {filtered.length} VIDEOS
+        </span>
       </header>
 
-      {/* Search */}
+      {/* Search Inputs */}
       <div className="grid sm:grid-cols-2 gap-4 mb-8">
         <input
           type="text"
           placeholder="Search by title…"
           value={titleQuery}
           onChange={(e) => setTitleQuery(e.target.value)}
-          className="bg-white/10 text-white placeholder-gray-400 px-3 py-2 rounded"
+          className="bg-white/10 text-white placeholder-gray-400 text-base px-4 py-2 rounded focus:outline-none"
         />
         <input
           type="text"
           placeholder="Search by tag…"
           value={tagQuery}
           onChange={(e) => setTagQuery(e.target.value)}
-          className="bg-white/10 text-white placeholder-gray-400 px-3 py-2 rounded"
+          className="bg-white/10 text-white placeholder-gray-400 text-base px-4 py-2 rounded focus:outline-none"
         />
       </div>
 
-      {/* Grid */}
-      <div className="project-grid grid grid-cols-2 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-  {visible.map((proj, i) => (
-    <motion.div
-      key={proj.title}
-      variants={cardVariants}
-      initial="hidden"
-      whileInView="visible"
-      viewport={{ once: true, amount: 0.1 }}
-      custom={i}
-      className="project-card bg-white/5 rounded-xl p-4 flex flex-col transition transform hover:scale-[1.015] hover:shadow-[0_6px_16px_rgba(5,200,251,0.15)]"
-    >
-      <Link href={proj.videoUrl} target="_blank" className="block group">
-        <div className="relative aspect-video rounded-lg mb-3 overflow-hidden">
-          <Image
-            src={getThumb(proj.videoUrl)}
-            alt={proj.title}
-            fill
-            sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-            className="object-cover group-hover:scale-[1.05] transition-transform duration-300 ease-in-out"
-          />
-        </div>
-      </Link>
-
-      <h3 className="font-semibold text-white text-[14px] sm:text-sm leading-snug mb-1 line-clamp-2">
-        {proj.title}
-      </h3>
-
-      <div className="flex flex-wrap gap-1">
-        {proj.tags.map((tag) => (
-          <span
-            key={tag}
-            className="bg-[#05c8fb]/10 text-[#05c8fb] text-[11px] px-2 py-0.5 rounded-full font-medium tracking-wide"
+      {/* Project Grid */}
+      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
+        {visibleProjects.map((proj) => (
+          <div
+            key={proj.title}
+            className="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl overflow-hidden flex flex-col transition transform hover:scale-[1.02] hover:shadow-[0_8px_20px_rgba(5,200,251,0.15)]"
           >
-            {tag}
-          </span>
+            <Link href={proj.videoUrl} target="_blank" className="block">
+              <div className="relative aspect-video w-full overflow-hidden">
+                <Image
+                  src={getThumb(proj.videoUrl)}
+                  alt={proj.title}
+                  fill
+                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
+                  className="object-cover transition-transform duration-300 ease-in-out"
+                />
+              </div>
+            </Link>
+            <div className="p-4 flex flex-col flex-1">
+              <h3 className="font-semibold text-white text-lg leading-snug mb-2">
+                {proj.title}
+              </h3>
+              <div className="mt-auto flex flex-wrap gap-1">
+                {proj.tags.map((tag) => (
+                  <span
+                    key={tag}
+                    className="bg-white/5 border border-white/10 backdrop-blur-md bg-[#05c8fb]/10 text-[#05c8fb] text-xs px-2 py-0.5 rounded-full font-medium"
+                  >
+                    {tag}
+                  </span>
+                ))}
+              </div>
+            </div>
+          </div>
         ))}
       </div>
-    </motion.div>
-  ))}
-</div>
 
-
-      {/* Sentinel for infinite scroll */}
-      <div ref={sentinelRef} className="h-8" />
+      {/* Show More / Show Less button */}
+      {filtered.length > 4 && (
+        <div className="flex justify-center mt-8">
+          <button
+            onClick={() => setShowAll((prev) => !prev)}
+            className="bg-[#05c8fb] text-[#0b253f] text-base font-semibold rounded-full px-8 py-2 shadow transition hover:bg-[#05c8fb]/90"
+          >
+            {showAll
+              ? "Show Less"
+              : `Show More (${filtered.length - visibleProjects.length} more)`}
+          </button>
+        </div>
+      )}
     </section>
   );
 }
-

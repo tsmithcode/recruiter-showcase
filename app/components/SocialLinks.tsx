@@ -1,5 +1,4 @@
-// components/SocialLinks.tsx
-import { FaYoutube, FaGithub, FaEnvelope } from "react-icons/fa";
+import { FaYoutube, FaGithub, FaEnvelope, FaBriefcase } from "react-icons/fa";
 import Link from "next/link";
 
 export default function SocialLinks() {
@@ -17,7 +16,7 @@ export default function SocialLinks() {
 
       <span title="GitHub Profile">
         <Link
-          href="https://github.com/tsmithcode"
+          href="https://github.com/tsmithcode/recruiter-showcase"
           target="_blank"
           className="hover:opacity-80 transition"
         >
@@ -31,6 +30,16 @@ export default function SocialLinks() {
           className="hover:opacity-80 transition"
         >
           <FaEnvelope />
+        </Link>
+      </span>
+
+      <span title="Indeed Resume">
+        <Link
+          href="https://profile.indeed.com/p/thomass-ji8rkyy"
+          target="_blank"
+          className="hover:opacity-80 transition"
+        >
+          <FaBriefcase />
         </Link>
       </span>
     </div>

@@ -1,5 +1,6 @@
 import { FaEnvelope, FaPhone } from "react-icons/fa";
 
+
 export default function Hero() {
   return (
         <footer className="w-full py-3 text-center text-xs text-gray-400 border-t border-white/10 flex items-center justify-center gap-4 flex-wrap">
@@ -12,6 +13,8 @@ export default function Hero() {
             <FaPhone className="text-[#05c8fb]" />
             <a href="tel:4702281918" className="hover:underline text-gray-300">(470) 228-1918</a>
         </span>
+
+       
         </footer>
   );
 }

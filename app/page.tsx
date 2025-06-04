@@ -7,6 +7,7 @@ import SkillsMatrix from "@/components/SkillsMatrix";
 import Metrics from "@/components/Metrics";
 import Hero from "@/components/Hero";
 import Footer from "@/components/Footer";
+import Image from "next/image";
 
 export default function Home() {
   return (
@@ -17,6 +18,16 @@ export default function Home() {
       <ProjectProcess/>
       <TeamHighlights/>
       <SkillsMatrix/>
+      <div className="flex flex-col items-center gap-4 pt-2 pb-6 max-w-2xl px-4 text-center">
+                <Image
+                  src="/tsmithcode-logo.png"
+                  alt="TSmithCode.ai logo"
+                  width={256}
+                  height={256}
+                  priority
+                  className="select-none drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]"
+                />
+                </div>
       <Footer/>
     </main>
   );
