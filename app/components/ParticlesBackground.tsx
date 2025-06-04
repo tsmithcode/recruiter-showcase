@@ -3,15 +3,17 @@
 import { useCallback } from "react";
 import Particles from "react-tsparticles";
 import { loadLinksPreset } from "tsparticles-preset-links";
+import type { Engine } from "tsparticles-engine";
 
 // Your brand colors
 const BRAND_COLORS = ["#0b253f", "#05c8fb", "#d9d9d9"]; // navy, blue, light gray
 
 export default function ParticlesBackground() {
   // Use callback to initialize with the links preset
-  const particlesInit = useCallback(async (engine) => {
-    await loadLinksPreset(engine);
-  }, []);
+const particlesInit = useCallback(async (engine: Engine) => {
+  await loadLinksPreset(engine);
+}, []);
+
 
   return (
     <Particles
