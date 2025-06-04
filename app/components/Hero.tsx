@@ -1,26 +1,15 @@
 import { motion } from "framer-motion";
-import Image from "next/image";
+import Logo from "./Logo";
 import Link from "next/link";
 
 import SocialLinks from "@/components/SocialLinks";
 
+
+
 export default function Hero() {
   return (
       <section className="flex flex-col items-center gap-4 pt-2 pb-6 max-w-2xl px-4 text-center">
-        <motion.div
-          initial={{ opacity: 0, y: -20 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 0.5 }}
-        >
-          <Image
-            src="/tsmithcode.png"
-            alt="TSmithCode.ai logo"
-            width={256}
-            height={256}
-            priority
-            className="select-none drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]"
-          />
-        </motion.div>
+        <Logo/>
 
         <SocialLinks />
 
