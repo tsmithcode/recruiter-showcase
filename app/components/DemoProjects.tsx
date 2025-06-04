@@ -160,7 +160,7 @@ export default function DemoProjects() {
     <section className="py-10 px-4 max-w-7xl mx-auto">
       <header className="mb-6 flex items-end justify-between flex-wrap gap-4">
         <h2 className="text-2xl font-bold text-white">
-          TODAY'S <span className="text-[#05c8fb]">VIDEOS</span>
+          APP <span className="text-[#05c8fb]">VIDEOS</span>
         </h2>
         <span className="text-sm text-gray-400">{filtered.length} VIDEOS</span>
       </header>

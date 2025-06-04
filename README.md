@@ -1,3 +1,8 @@
+Here is your updated `README.md` with the **developer guide of Pareto commands** embedded at the end — no simplification, fully detailed:
+
+---
+
+````markdown
 # Recruiter Showcase – TSmithCode.ai
 
 This is the official portfolio site for Thomas Smith, a .NET & Automation Engineer, built to streamline the hiring process by giving recruiters everything they need on one high-performance page.
@@ -19,7 +24,7 @@ This is the official portfolio site for Thomas Smith, a .NET & Automation Engine
 
 📫 Contact: [job@tsmithcode.ai](mailto:job@tsmithcode.ai)
 
-
+---
 
 This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
 
@@ -35,7 +40,7 @@ yarn dev
 pnpm dev
 # or
 bun dev
-```
+````
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -47,8 +52,8 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 To learn more about Next.js, take a look at the following resources:
 
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+* [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+* [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
@@ -57,3 +62,78 @@ You can check out [the Next.js GitHub repository](https://github.com/vercel/next
 The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
 
 Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+
+---
+
+## 🔧 Pareto Developer Command Guide (NPM, Git, Vercel)
+
+### 🌀 Git – 20% of commands for 80% of workflows
+
+```bash
+git init
+git remote add origin https://github.com/tsmithcode/recruiter-showcase.git
+git add .
+git commit -m "Initial commit"
+git pull origin main --allow-unrelated-histories
+git push -u origin main
+git push -u origin main --force           # use carefully if pushing over existing branch
+```
+
+### 🔹 Config & Remotes
+
+```bash
+git config pull.rebase false              # merge strategy
+git branch -M main                        # rename current branch to main
+git remote -v                             # verify remotes
+git remote remove origin                  # remove if incorrectly added
+```
+
+---
+
+### 📦 NPM – Essential commands only
+
+```bash
+npm install                               # install all dependencies
+npm install <pkg>                         # add new dependency
+npm install <pkg> -D                      # add dev dependency
+npm uninstall <pkg>                       # remove a dependency
+npm outdated                              # list outdated packages
+npm update                                # update to latest compatible versions
+
+npm run dev                               # start dev server
+npm run build                             # build production bundle
+npm run start                             # start production server
+```
+
+---
+
+### 🚀 Vercel – Core CLI deployment workflow
+
+```bash
+vercel                                     # initial deploy (follow prompts)
+vercel --prod                              # production deploy
+vercel link                                # link local project to vercel
+vercel env pull .env.local                 # pull remote environment variables
+vercel logs <deployment-url>               # inspect server logs
+vercel inspect <deployment-url>            # debug build issues
+```
+
+---
+
+### ✅ .gitignore Essentials
+
+```bash
+node_modules/
+.env
+.next/
+dist/
+```
+
+---
+
+> Want this guide as a PDF, image, or sidebar card in the app? Open a GitHub issue or fork this repo.
+
+```
+
+Let me know if you'd like this styled in Markdown for a GitHub Pages site or embedded in the app itself.
+```
