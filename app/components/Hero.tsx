@@ -8,7 +8,7 @@ import SocialLinks from "@/components/SocialLinks";
 
 export default function Hero() {
   return (
-      <section className="flex flex-col items-center gap-4 pt-2 pb-6 max-w-2xl px-4 text-center">
+      <section className="flex flex-col items-center gap-4 pt-8 pb-6 max-w-2xl px-4 text-center">
         <Logo/>
 
         <SocialLinks />

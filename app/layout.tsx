@@ -1,6 +1,8 @@
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 
+import ParticlesBackground from "@/components/ParticlesBackground";
+
 <script type="application/ld+json" suppressHydrationWarning>
   {JSON.stringify({
     "@context": "https://schema.org",
@@ -71,16 +73,11 @@ export const metadata = {
 };
 
 
-export default function RootLayout({
-  children,
-}: Readonly<{
-  children: React.ReactNode;
-}>) {
+export default function RootLayout({ children }: { children: React.ReactNode }) {
   return (
     <html lang="en">
-      <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased`}
-      >
+      <body className={`${geistSans.variable} ${geistMono.variable} antialiased`}>
+        <ParticlesBackground />
         {children}
       </body>
     </html>
