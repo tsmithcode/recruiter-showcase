@@ -165,14 +165,3 @@ Your overall goal with this project is to:
 
 ---
 
-### 🔓 You’re close to unlocking this:
-
-✅ Branded site w/ modern aesthetic
-✅ Clear services + pricing philosophy
-✅ Dozens of past demos positioned as reusable assets
-✅ Recruiter-ready storytelling and social proof
-✅ Integrated CPQ logic for paid engagements
-✅ Configured Vercel deploys and mobile UX
-
----
-
