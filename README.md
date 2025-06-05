@@ -1,4 +1,4 @@
-````markdown
+
 # Recruiter Showcase – TSmithCode.ai
 
 This is the official portfolio site for Thomas Smith, a .NET & Automation Engineer, built to streamline the hiring process by giving recruiters everything they need on one high-performance page.
