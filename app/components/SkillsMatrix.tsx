@@ -9,12 +9,13 @@ const skills = [
   {
     category: "Backend",
     tools: [
-      { name: ".NET, VB.NET, C#, VBA", startYear: 2017 },
-      { name: "Blazor", startYear: 2019 },
+      { name: ".NET, VB.NET, C#", startYear: 2017 },
+      { name: "Blazor Server", startYear: 2019 },
       { name: "Entity Framework, EFCore", startYear: 2018 },
       { name: "Dapper ORM", startYear: 2019 },
       { name: "ASP.NET Core APIs", startYear: 2018 },
       { name: "Node.js", startYear: 2013 },
+      { name: "Express", startYear: 2013 },
       { name: "Python (CLI/ETL)", startYear: 2013 },
     ],
   },
@@ -22,19 +23,23 @@ const skills = [
     category: "Frontend",
     tools: [
       { name: "React.js", startYear: 2016 },
+      { name: "Blazor WASM", startYear: 2020 },
       { name: "Next.js", startYear: 2022 },
+      { name: "Django", startYear: 2018 },
+      { name: "Flask", startYear: 2019 },
       { name: "Tailwind CSS", startYear: 2022 },
       { name: "Bootstrap", startYear: 2019 },
-      { name: "Framer Motion", startYear: 2022 },
+      { name: "Three.js", startYear: 2020 },
       { name: "TypeScript", startYear: 2021 },
     ],
   },
   {
     category: "CAD & Automation",
     tools: [
-      { name: "Inventor API / iLogic", startYear: 2012 },
-      { name: "SolidWorks API (C#)", startYear: 2012 },
-      { name: "AutoCAD (Mechanical, Architecture)", startYear: 2006 },
+      { name: "Revit", startYear: 2006 },
+      { name: "Inventor, API, iLogic, Vault", startYear: 2006 },
+      { name: "SolidWorks API, PDM (C#)", startYear: 2012 },
+      { name: "AutoCAD, AutoLISP (Mechanical, Architecture)", startYear: 2006 },
       { name: "Excel VBA / Macros", startYear: 2006 },
       { name: "WinForms Automation", startYear: 2017 },
     ],
@@ -64,7 +69,7 @@ const skills = [
     tools: [
       { name: "Excel API / Interop", startYear: 2019 },
       { name: "Office 365 Automation", startYear: 2019 },
-      { name: "ERP Integration (Epicor, Dynamics NAV)", startYear: 2023 },
+      { name: "ERP Integration (Epicor, Dynamics NAV)", startYear: 2015 },
       { name: "CRM Integration (SugarCRM)", startYear: 2023 },
       { name: "Power BI (KPI Dashboards)", startYear: 2022 },
     ],
@@ -151,7 +156,7 @@ export default function SkillsMatrix() {
                   className="flex justify-between border-b border-white/10 pb-1"
                 >
                   <span>{tool.name}</span>
-                  <span className="text-[#05c8fb] font-mono">
+                  <span className="text-[#05c8fb] ">
                     {getYears(tool.startYear)}
                   </span>
                 </li>

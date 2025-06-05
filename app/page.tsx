@@ -6,6 +6,7 @@ import TeamHighlights from "@/components/TeamHighlights";
 import SkillsMatrix from "@/components/SkillsMatrix";
 import Metrics from "@/components/Metrics";
 import Hero from "@/components/Hero";
+import CPQConfigurator from "@/components/CPQConfigurator";
 import Footer from "@/components/Footer";
 import Image from "next/image";
 
@@ -18,6 +19,7 @@ export default function Home() {
       <ProjectProcess/>
       <TeamHighlights/>
       <SkillsMatrix/>
+      <CPQConfigurator/>
       <div className="flex flex-col items-center gap-4 pt-2 pb-6 max-w-2xl px-4 text-center">
                 <Image
                   src="/tsmithcode-logo.png"
