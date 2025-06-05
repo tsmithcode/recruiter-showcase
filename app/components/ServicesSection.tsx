@@ -1,5 +1,5 @@
 "use client";
-
+import { motion } from "framer-motion";
 import { FC } from "react";
 import {
   FaLaptopCode,
@@ -43,16 +43,29 @@ const services: Service[] = [
 
 export default function ServicesSection() {
   return (
-    <section className="py-12 px-4 max-w-7xl mx-auto">
+    <section className="py-6 px-4 max-w-7xl mx-auto">
       {/* Header */}
-      <header className="mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+      <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
         <h2 className="text-3xl sm:text-4xl font-bold text-white">
           Services <span className="text-[#05c8fb]">Available</span>
         </h2>
-        <span className="text-base text-gray-400">
-          {services.length} SERVICES
-        </span>
+         <motion.div
+          className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#05c8fb] text-[#05c8fb] text-sm"
+          initial={{ opacity: 0, y: -10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.3, duration: 0.4 }}
+        >
+          <motion.span
+            className="h-3 w-3 rounded-full bg-[#05c8fb]"
+            animate={{ scale: [1, 1.4, 1], opacity: [1, 0.4, 1] }}
+            transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
+          />
+          From $60-$160/hr
+        </motion.div>
+       
       </header>
+
+     
 
       {/* Grid of Service Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">

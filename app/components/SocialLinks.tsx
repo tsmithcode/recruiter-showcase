@@ -3,7 +3,7 @@ import Link from "next/link";
 
 export default function SocialLinks() {
   return (
-    <div className="flex gap-6 text-[#05c8fb] text-2xl">
+    <div className="flex gap-6 text-[#afc2c8] text-2xl">
       <span title="YouTube Channel">
         <Link
           href="https://www.youtube.com/@tsmithcad"

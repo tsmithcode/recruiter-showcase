@@ -18,13 +18,13 @@ const BRAND_COLORS = ["#0b253f", "#05c8fb", "#d9d9d9", "#98cedd"];
   return (
     <motion.div
       // fade in on mount, then continuously bob up/down
-      initial={{ opacity: 0, y: -20 }}
+      initial={{ opacity: 0, y: 30 }}
       animate={{
         opacity: 1,
-        y: [0, -10, 0], // bob from 0 → -10px → 0
+        y: [0, -40, 0], // bob from 0 → -10px → 0
       }}
       transition={{
-        duration: 2,            // 2 seconds for a full up/down cycle
+        duration: 4,            // 2 seconds for a full up/down cycle
         ease: "easeInOut",      // smooth ease
         repeat: Infinity,       // repeat forever
       }}

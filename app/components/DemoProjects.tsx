@@ -1,123 +1,34 @@
-// components/DemoProjects.tsx – Refactored without any animation or motion
+// components/DemoProjects.tsx – Refactored using keen-slider carousel
 "use client";
 
-import { useState, useMemo, useEffect } from "react";
+import { useState, useMemo } from "react";
 import Image from "next/image";
 import Link from "next/link";
+import { useKeenSlider } from "keen-slider/react";
+
 
 const demoProjects = [
-  {
-    title: "SLC Airport Automation",
-    tags: ["#WinForms", "#InventorAPI", "#ExcelAPI"],
-    videoUrl: "https://www.youtube.com/watch?v=9YA3J85JKRI",
-  },
-  {
-    title: "Door Frame Configurator",
-    tags: ["#CAD", "#ExcelAPI", "#Automation"],
-    videoUrl: "https://www.youtube.com/watch?v=EVuWhw88N20",
-  },
-  {
-    title: "LED Reveal Accelerator",
-    tags: ["#InventorMacro", "#NoCode"],
-    videoUrl: "https://www.youtube.com/watch?v=wJehm7rSqC4",
-  },
-  {
-    title: "LED Automation Tool",
-    tags: ["#Macros", "#PDF", "#InventorAPI"],
-    videoUrl: "https://www.youtube.com/watch?v=2ce70aH0PmY",
-  },
-  {
-    title: "ERP & CRM Web App",
-    tags: ["#Blazor", "#API", "#NoSQL"],
-    videoUrl: "https://www.youtube.com/watch?v=gWDy964I97Y",
-  },
-  {
-    title: "Fry Tools Automation",
-    tags: ["#CSharp", "#InventorAPI", "#WinForms"],
-    videoUrl: "https://www.youtube.com/watch?v=TsECnuxQhKw",
-  },
-  {
-    title: "LED QT BOM ATO Tool",
-    tags: ["#Excel", "#VBA", "#Sales"],
-    videoUrl: "https://www.youtube.com/watch?v=RKEe9TrNgyE",
-  },
-  {
-    title: "BOM Project Info Fill",
-    tags: ["#VB.NET", "#ExcelAPI"],
-    videoUrl: "https://www.youtube.com/watch?v=aHmYna-aanw",
-  },
-  {
-    title: "Label Generator",
-    tags: ["#ExcelVBA", "#PDF", "#Validation"],
-    videoUrl: "https://www.youtube.com/watch?v=ka0wfOce8ps",
-  },
-  {
-    title: "Ceiling Trim Tool",
-    tags: ["#ERP", "#Inventor", "#ExcelAPI"],
-    videoUrl: "https://www.youtube.com/watch?v=gGhLi_qxDZY",
-  },
-  {
-    title: "Hourly Allocation Tool",
-    tags: ["#Excel", "#Macro"],
-    videoUrl: "https://www.youtube.com/watch?v=MQNGRKhiU6s",
-  },
-  {
-    title: "Ceiling System Automation",
-    tags: ["#Inventor", "#Excel", "#VBA"],
-    videoUrl: "https://www.youtube.com/watch?v=3i9q_dJqPGk",
-  },
-  {
-    title: "Quote Request Web Form",
-    tags: ["#Form", "#Request", "#Blazor"],
-    videoUrl: "https://www.youtube.com/watch?v=Ye8ihfO-FmE",
-  },
-  {
-    title: "Door Frame Automation",
-    tags: ["#VisualStudio", "#Inventor", "#SQL"],
-    videoUrl: "https://www.youtube.com/watch?v=jXnunvPM9Ec",
-  },
-  {
-    title: "3D Quote Tool",
-    tags: ["#ERP", "#VB.NET", "#Inventor"],
-    videoUrl: "https://www.youtube.com/watch?v=NtwpK8-7Ef0",
-  },
-  {
-    title: "Employee Allocation Tool",
-    tags: ["#Excel", "#Validation", "#Finance"],
-    videoUrl: "https://www.youtube.com/watch?v=jaab3b_ttIo",
-  },
-  {
-    title: "LED Quote Tool",
-    tags: ["#ERP", "#VBA", "#Pricing"],
-    videoUrl: "https://www.youtube.com/watch?v=xmLHainqgVU",
-  },
-  {
-    title: "SLC Column Configurator",
-    tags: ["#iLogic", "#Inventor", "#VB.NET"],
-    videoUrl: "https://www.youtube.com/watch?v=Kl84rkNXGwc",
-  },
-  {
-    title: "Frame Generator Form",
-    tags: ["#iLogic", "#GenerativeDesign"],
-    videoUrl: "https://www.youtube.com/watch?v=hvMBMv1JEgg",
-  },
-  {
-    title: "Part Number Generator",
-    tags: ["#Python", "#CLI", "#Automation"],
-    videoUrl: "https://www.youtube.com/watch?v=NWHDp9UDY_0",
-  },
+  { title: "SLC Airport Automation", tags: ["#WinForms", "#InventorAPI", "#ExcelAPI"], videoUrl: "https://www.youtube.com/watch?v=9YA3J85JKRI" },
+  { title: "Door Frame Configurator", tags: ["#CAD", "#ExcelAPI", "#Automation"], videoUrl: "https://www.youtube.com/watch?v=EVuWhw88N20" },
+  { title: "LED Reveal Accelerator", tags: ["#InventorMacro", "#NoCode"], videoUrl: "https://www.youtube.com/watch?v=wJehm7rSqC4" },
+  { title: "LED Automation Tool", tags: ["#Macros", "#PDF", "#InventorAPI"], videoUrl: "https://www.youtube.com/watch?v=2ce70aH0PmY" },
+  { title: "ERP & CRM Web App", tags: ["#Blazor", "#API", "#NoSQL"], videoUrl: "https://www.youtube.com/watch?v=gWDy964I97Y" },
+  { title: "Fry Tools Automation", tags: ["#CSharp", "#InventorAPI", "#WinForms"], videoUrl: "https://www.youtube.com/watch?v=TsECnuxQhKw" },
+  { title: "LED QT BOM ATO Tool", tags: ["#Excel", "#VBA", "#Sales"], videoUrl: "https://www.youtube.com/watch?v=RKEe9TrNgyE" },
+  { title: "BOM Project Info Fill", tags: ["#VB.NET", "#ExcelAPI"], videoUrl: "https://www.youtube.com/watch?v=aHmYna-aanw" },
+  { title: "Label Generator", tags: ["#ExcelVBA", "#PDF", "#Validation"], videoUrl: "https://www.youtube.com/watch?v=ka0wfOce8ps" },
+  { title: "Ceiling Trim Tool", tags: ["#ERP", "#Inventor", "#ExcelAPI"], videoUrl: "https://www.youtube.com/watch?v=gGhLi_qxDZY" },
+  { title: "Hourly Allocation Tool", tags: ["#Excel", "#Macro"], videoUrl: "https://www.youtube.com/watch?v=MQNGRKhiU6s" },
+  { title: "Ceiling System Automation", tags: ["#Inventor", "#Excel", "#VBA"], videoUrl: "https://www.youtube.com/watch?v=3i9q_dJqPGk" },
+  { title: "Quote Request Web Form", tags: ["#Form", "#Request", "#Blazor"], videoUrl: "https://www.youtube.com/watch?v=Ye8ihfO-FmE" },
+  { title: "Door Frame Automation", tags: ["#VisualStudio", "#Inventor", "#SQL"], videoUrl: "https://www.youtube.com/watch?v=jXnunvPM9Ec" },
+  { title: "3D Quote Tool", tags: ["#ERP", "#VB.NET", "#Inventor"], videoUrl: "https://www.youtube.com/watch?v=NtwpK8-7Ef0" },
+  { title: "Employee Allocation Tool", tags: ["#Excel", "#Validation", "#Finance"], videoUrl: "https://www.youtube.com/watch?v=jaab3b_ttIo" },
+  { title: "LED Quote Tool", tags: ["#ERP", "#VBA", "#Pricing"], videoUrl: "https://www.youtube.com/watch?v=xmLHainqgVU" },
+  { title: "SLC Column Configurator", tags: ["#iLogic", "#Inventor", "#VB.NET"], videoUrl: "https://www.youtube.com/watch?v=Kl84rkNXGwc" },
+  { title: "Frame Generator Form", tags: ["#iLogic", "#GenerativeDesign"], videoUrl: "https://www.youtube.com/watch?v=hvMBMv1JEgg" },
+  { title: "Part Number Generator", tags: ["#Python", "#CLI", "#Automation"], videoUrl: "https://www.youtube.com/watch?v=NWHDp9UDY_0" },
 ];
-
-// Helper: return a new array of 4 random items from 'arr'
-function sampleFour<T>(arr: T[]): T[] {
-  if (arr.length <= 4) return [...arr];
-  const copy = [...arr];
-  for (let i = copy.length - 1; i > 0; i--) {
-    const j = Math.floor(Math.random() * (i + 1));
-    [copy[i], copy[j]] = [copy[j], copy[i]];
-  }
-  return copy.slice(0, 4);
-}
 
 const getThumb = (url: string) => {
   try {
@@ -129,61 +40,55 @@ const getThumb = (url: string) => {
 };
 
 export default function DemoProjects() {
-  const [titleQuery, setTitleQuery] = useState("");
-  const [tagQuery, setTagQuery] = useState("");
-  const [showAll, setShowAll] = useState(false);
-  // Initialize as empty to avoid hydration mismatch
-  const [visibleProjects, setVisibleProjects] = useState<typeof demoProjects>([]);
+  const [titleQuery] = useState("");
+  const [tagQuery] = useState("");
 
-  // On first client render, pick 4 at random from full list
-  useEffect(() => {
-    setVisibleProjects(sampleFour(demoProjects));
-  }, []);
-
-  // Filter projects by title and tag
   const filtered = useMemo(() => {
     return demoProjects.filter((p) => {
-      const matchTitle = p.title
-        .toLowerCase()
-        .includes(titleQuery.toLowerCase());
-      const matchTag = tagQuery
-        ? p.tags.some((t) => t.toLowerCase().includes(tagQuery.toLowerCase()))
-        : true;
+      const matchTitle = p.title.toLowerCase().includes(titleQuery.toLowerCase());
+      const matchTag = tagQuery ? p.tags.some((t) => t.toLowerCase().includes(tagQuery.toLowerCase())) : true;
       return matchTitle && matchTag;
     });
   }, [titleQuery, tagQuery]);
 
-  // When filtered or showAll changes, update visibleProjects
-  useEffect(() => {
-    if (showAll) {
-      setVisibleProjects(filtered);
-    } else {
-      setVisibleProjects(sampleFour(filtered));
-    }
-  }, [filtered, showAll]);
-
-  // Auto-slideshow: reshuffle every 7 seconds when not showing all
-  useEffect(() => {
-    if (showAll) return;
-    const interval = setInterval(() => {
-      setVisibleProjects(sampleFour(filtered));
-    }, 7000);
-    return () => clearInterval(interval);
-  }, [filtered, showAll]);
+  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+    loop: false,
+    mode: "snap",
+    slides: {
+      perView: 1.25,
+      spacing: 16,
+    },
+    breakpoints: {
+      "(min-width: 640px)": {
+        slides: { perView: 2.25, spacing: 20 },
+      },
+      "(min-width: 1024px)": {
+        slides: { perView: 3.25, spacing: 24 },
+      },
+    },
+  });
 
   return (
-    <section className="py-10 px-4 max-w-7xl mx-auto container">
-      <header className="mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-        <h2 className="text-3xl sm:text-4xl font-bold text-white">
-          App <span className="text-[#05c8fb]">Videos</span>
-        </h2>
-        <span className="text-base text-gray-400">
-          {filtered.length} VIDEOS
-        </span>
-      </header>
+    <section className="px-4 max-w-7xl mx-auto container">
+      <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+  <div>
+    <h2 className="text-3xl sm:text-4xl font-bold text-white">
+      Completed <span className="text-[#05c8fb]">Projects</span>
+    </h2>
+
+    <p className="text-gray-400 text-sm mt-1 flex items-center gap-2">
+      <span>Swipe on mobile or hold mouse click </span>
+      <span className="inline-block px-2 py-0.5 bg-white/10 rounded text-white text-xs">←</span>
+      <span className="inline-block px-2 py-0.5 bg-white/10 rounded text-white text-xs">→</span>
+    </p>
+  </div>
+  <span className="text-base text-gray-400">{filtered.length} VIDEOS</span>
+  
+</header>
+
 
       {/* Search Inputs */}
-      <div className="grid sm:grid-cols-2 gap-4 mb-8">
+      {/* <div className="grid sm:grid-cols-2 gap-4 mb-6">
         <input
           type="text"
           placeholder="Search by title…"
@@ -198,23 +103,31 @@ export default function DemoProjects() {
           onChange={(e) => setTagQuery(e.target.value)}
           className="bg-white/10 text-white placeholder-gray-400 text-base px-4 py-2 rounded focus:outline-none"
         />
-      </div>
+      </div> */}
 
-      {/* Project Grid */}
-      <div className="grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6">
-        {visibleProjects.map((proj) => (
+
+
+      {/* Carousel */}
+      <div ref={sliderRef} className="keen-slider">
+        {filtered.map((proj) => (
           <div
             key={proj.title}
-            className="bg-white/5 border border-white/10 backdrop-blur-md rounded-xl overflow-hidden flex flex-col transition transform hover:scale-[1.02] hover:shadow-[0_8px_20px_rgba(5,200,251,0.15)]"
+            className="keen-slider__slide bg-white/5 
+      border border-white/10 
+      rounded-xl 
+      text-white 
+      shadow-lg 
+      hover:shadow-xl 
+      transition"
           >
-            <Link href={proj.videoUrl} target="_blank" className="block">
+            <Link href={proj.videoUrl} target="_blank" className="block group">
               <div className="relative aspect-video w-full overflow-hidden">
                 <Image
                   src={getThumb(proj.videoUrl)}
                   alt={proj.title}
                   fill
                   sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover transition-transform duration-300 ease-in-out"
+                  className="object-cover p-4 transition-transform duration-300 ease-in-out group-hover:scale-105"
                 />
               </div>
             </Link>
@@ -236,20 +149,6 @@ export default function DemoProjects() {
           </div>
         ))}
       </div>
-
-      {/* Show More / Show Less button */}
-      {filtered.length > 4 && (
-        <div className="flex justify-center mt-8">
-          <button
-            onClick={() => setShowAll((prev) => !prev)}
-            className="bg-[#05c8fb] text-[#0b253f] text-base font-semibold rounded-full px-8 py-2 shadow transition hover:bg-[#05c8fb]/90"
-          >
-            {showAll
-              ? "Show Less"
-              : `Show More (${filtered.length - visibleProjects.length} more)`}
-          </button>
-        </div>
-      )}
     </section>
   );
 }

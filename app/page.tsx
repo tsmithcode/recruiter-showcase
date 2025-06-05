@@ -9,6 +9,7 @@ import Hero from "@/components/Hero";
 import CPQConfigurator from "@/components/CPQConfigurator";
 // import TargetMarkets from '@/components/TargetMarkets';
 import ServicesSection from "@/components/ServicesSection";
+import CompensationSection from "@/components/CompensationSection";
 
 import Footer from "@/components/Footer";
 import Image from "next/image";
@@ -19,13 +20,15 @@ export default function Home() {
       <Metrics/>
 
       <Hero />
-      <ServicesSection />
       <DemoProjects />
+      <ServicesSection />
+      <CPQConfigurator/>
+       <CompensationSection />
+
       {/* <ProjectProcess/> */}
       <TeamHighlights/>
       <SkillsMatrix/>
       {/* <TargetMarkets /> */}
-      <CPQConfigurator/>
       
       <div className="flex flex-col items-center gap-4 pt-2 pb-6 max-w-2xl px-4 text-center">
                 <Image

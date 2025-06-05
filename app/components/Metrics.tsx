@@ -3,7 +3,7 @@ import { motion } from "framer-motion";
 const metrics = [
   { label: "Years Full-Stack", value: "7+" },
   { label: "Projects Delivered", value: "100+" },
-  { label: "% Faster Deploys", value: "60%" },
+  { label: "Ai Projects", value: "12+" },
 ];
 
 export default function Metrics() {

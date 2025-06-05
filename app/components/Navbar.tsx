@@ -3,40 +3,33 @@
 
 import Link from "next/link";
 import Image from "next/image";
-import { FaBars } from "react-icons/fa";
 
 export default function Navbar() {
   return (
     <nav className="bg-[#0b253ffb] py-3 px-6 shadow-md">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
-        {/* Left: Avatar + Name + Subtitle */}
         <Link href="/" className="flex items-center gap-3">
-          <Image
-            src="/avatar.jpeg"         /* Replace with your own avatar path */
-            alt="Thomas Smith"
-            width={80}
-            height={80}
-            className="rounded-full border-2 border-[#05c8fb]"
-            priority
-          />
+         <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#0b253f] via-[#38484c] to-[#Ob253ffb] flex items-center justify-center">
+  <Image
+    src="/avatar.png"         /* Replace with your own avatar path */
+    alt="Thomas Smith"
+    width={80}
+    height={80}
+    className="rounded-full"
+    priority
+  />
+</div>
+
           <div className="flex flex-col">
             <span className="text-white text-lg font-semibold">
               Thomas Smith
             </span>
             <span className="text-gray-300 text-sm">
-              .NET & Automation Engineer
+              Software Engineer
             </span>
           </div>
         </Link>
 
-        {/* Right: Hamburger Menu */}
-        <button
-          type="button"
-          aria-label="Open Menu"
-          className="text-[#05c8fb] hover:text-[#0bbfff] focus:outline-none"
-        >
-          <FaBars size={24} />
-        </button>
       </div>
     </nav>
   );

@@ -205,21 +205,49 @@ export default function CPQConfigurator() {
 
   return (
     <>
-      <div className="bg-white/5 border border-white/10 p-4 sm:p-6 rounded-xl mx-auto container">
-       {/* Header */}
-<header className="mb-8 flex flex-col items-start justify-between gap-4">
+    <header className="mb-6 flex flex-col items-start justify-between gap-4 container p-4">
   <div>
-    <h2 className="text-3xl sm:text-4xl font-bold text-white">
-      CPQ Tool <span className="text-[#05c8fb]">Demo</span>
-    </h2>
-    <p className="mt-1 text-gray-300 text-xs sm:text-sm">
-      Learn how this configurator turns your legacy code into a revenue stream—by auto‐generating live quotes, enabling dynamic price adjustments, and seamlessly toggling feature components to package and sell historical code.
-    </p>
-  </div>
+  <h2 className="text-3xl sm:text-4xl font-bold text-white">
+    CPQ Tool <span className="text-[#05c8fb]">Demo</span>
+  </h2>
+  <p className="mt-1 text-gray-300 text-xs sm:text-sm">
+    Learn how this configurator turns your legacy code into a revenue stream—by auto‐generating live quotes, enabling dynamic price adjustments, and seamlessly toggling feature components to package and sell historical code.
+  </p>
+
+  <details className="mt-2 text-gray-400 text-xs sm:text-sm [&_summary]:cursor-pointer [&_summary]:text-[#05c8fb]">
+    <summary className="mt-1 inline-block">Read more</summary>
+    <div className="mt-2 space-y-2">
+      <p>
+        CPQ stands for Configure–Price–Quote. Its a system that allows customers or internal teams to build tailored product/service bundles, adjust pricing in real time, and generate quotes instantly.
+      </p>
+      <p>
+        In this developer-focused version, each software asset—like a code snippet, PDF, image, or repo—is a monetizable component. Devs can mix and match what they offer per engagement.
+      </p>
+      <p>
+        You can use CPQ to:
+        </p>
+        <ul className="list-disc list-inside pl-4">
+          <li>Gate access to your intellectual property</li>
+          <li>Create tiered product bundles (e.g. Docs + Demo Video + Support)</li>
+          <li>Build custom paywall workflows using Stripe or Supabase Auth</li>
+          <li>Allow users to configure exactly what they need and pay accordingly</li>
+        </ul>
+     
+      <p>
+        For freelancers and SaaS builders, CPQ unlocks recurring income streams from past projects by packaging reusable work with minimal overhead. It also enforces boundaries, clarity, and automation.
+      </p>
+    </div>
+  </details>
+</div>
+</header>
+     <div className="bg-white/5 border border-white/10 p-4 sm:p-6 rounded-xl mx-auto container max-w-[640px]">
+
+       {/* Header */}
+
 
   <div className="flex items-center gap-2">
-    <span className="text-xs text-gray-400">
-      {isManagerView ? "Manager CPQ View" : "Customer CPQ View"}
+    <span className="text-xl text-gray-400">
+      {isManagerView ? "Manager View" : "Customer View"}
     </span>
     <Switch
       checked={isManagerView}
@@ -237,14 +265,14 @@ export default function CPQConfigurator() {
     </Switch>
   </div>
 
-  <div className="w-full mt-3">
+  <div className="w-full mt-3 pb-6">
     <p className="text-gray-300 text-xs sm:text-sm">
       {isManagerView
         ? "Edit unit prices, toggle component availability, and set default quantities for a curated quote setup."
         : "Select which components you need and specify quantities to see live pricing and generate a personalized quote."}
     </p>
   </div>
-</header>
+
 
 
         {/* Table Header */}

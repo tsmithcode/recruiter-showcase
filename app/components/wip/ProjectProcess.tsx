@@ -97,7 +97,7 @@ export default function ProjectProcess() {
   return (
     <section className="max-w-7xl mx-auto px-4 py-6">
       {/* Header */}
-      <header className="mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+      <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
         <h2 className="text-3xl sm:text-4xl font-bold text-white">
           Projects <span className="text-[#05c8fb]">Completed</span>
         </h2>

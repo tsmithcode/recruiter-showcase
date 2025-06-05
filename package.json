@@ -14,6 +14,7 @@
     "@hookform/resolvers": "^5.0.1",
     "@supabase/supabase-js": "^2.49.9",
     "framer-motion": "^12.16.0",
+    "keen-slider": "^6.8.6",
     "next": "15.3.3",
     "react": "^19.0.0",
     "react-dom": "^19.0.0",
