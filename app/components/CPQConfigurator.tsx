@@ -205,47 +205,47 @@ export default function CPQConfigurator() {
 
   return (
     <>
-      <div className="bg-gray-800/70 p-4 sm:p-6 rounded-xl max-w-full mx-auto">
-        {/* Header */}
-        <header className="mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-          <div>
-            <h2 className="text-3xl sm:text-4xl font-bold text-white">
-              CPQ Tool <span className="text-[#05c8fb]">Demo</span>
-            </h2>
-            <p className="mt-1 text-gray-300 text-xs sm:text-sm">
-              Explore how this configurator generates live quotes, edits prices,
-              and toggles components seamlessly.
-            </p>
-          </div>
+      <div className="bg-white/5 border border-white/10 p-4 sm:p-6 rounded-xl mx-auto container">
+       {/* Header */}
+<header className="mb-8 flex flex-col items-start justify-between gap-4">
+  <div>
+    <h2 className="text-3xl sm:text-4xl font-bold text-white">
+      CPQ Tool <span className="text-[#05c8fb]">Demo</span>
+    </h2>
+    <p className="mt-1 text-gray-300 text-xs sm:text-sm">
+      Learn how this configurator turns your legacy code into a revenue stream—by auto‐generating live quotes, enabling dynamic price adjustments, and seamlessly toggling feature components to package and sell historical code.
+    </p>
+  </div>
 
-          <div className="flex items-center gap-2">
-            <span className="text-xs sm:text-sm text-gray-400">
-              {isManagerView ? "Manager CPQ View" : "Customer CPQ View"}
-            </span>
-            <Switch
-              checked={isManagerView}
-              onChange={setIsManagerView}
-              className={`${
-                isManagerView ? "bg-[#05c8fb]" : "bg-gray-400/40"
-              } relative inline-flex h-5 w-10 items-center rounded-full transition-colors focus:outline-none`}
-            >
-              <span className="sr-only">Toggle View</span>
-              <span
-                className={`${
-                  isManagerView ? "translate-x-5" : "translate-x-0.5"
-                } inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform`}
-              />
-            </Switch>
-          </div>
+  <div className="flex items-center gap-2">
+    <span className="text-xs text-gray-400">
+      {isManagerView ? "Manager CPQ View" : "Customer CPQ View"}
+    </span>
+    <Switch
+      checked={isManagerView}
+      onChange={setIsManagerView}
+      className={`${
+        isManagerView ? "bg-[#05c8fb]" : "bg-gray-400/40"
+      } relative inline-flex h-5 w-10 items-center rounded-full transition-colors focus:outline-none`}
+    >
+      <span className="sr-only">Toggle View</span>
+      <span
+        className={`${
+          isManagerView ? "translate-x-5" : "translate-x-0.5"
+        } inline-block h-3.5 w-3.5 transform rounded-full bg-white transition-transform`}
+      />
+    </Switch>
+  </div>
 
-          <div className="w-full mt-3 sm:mt-0">
-            <p className="text-gray-300 text-xs sm:text-sm">
-              {isManagerView
-                ? "Edit unit prices, toggle component availability, and set default quantities for a curated quote setup."
-                : "Select which components you need and specify quantities to see live pricing and generate a personalized quote."}
-            </p>
-          </div>
-        </header>
+  <div className="w-full mt-3">
+    <p className="text-gray-300 text-xs sm:text-sm">
+      {isManagerView
+        ? "Edit unit prices, toggle component availability, and set default quantities for a curated quote setup."
+        : "Select which components you need and specify quantities to see live pricing and generate a personalized quote."}
+    </p>
+  </div>
+</header>
+
 
         {/* Table Header */}
         <div className="flex text-gray-300 text-[10px] sm:text-xs uppercase tracking-wide mb-2 border-b border-white/20 pb-1">

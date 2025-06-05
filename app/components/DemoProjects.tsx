@@ -172,10 +172,10 @@ export default function DemoProjects() {
   }, [filtered, showAll]);
 
   return (
-    <section className="py-12 px-6 max-w-7xl mx-auto">
+    <section className="py-10 px-4 max-w-7xl mx-auto container">
       <header className="mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
         <h2 className="text-3xl sm:text-4xl font-bold text-white">
-          APP <span className="text-[#05c8fb]">VIDEOS</span>
+          App <span className="text-[#05c8fb]">Videos</span>
         </h2>
         <span className="text-base text-gray-400">
           {filtered.length} VIDEOS

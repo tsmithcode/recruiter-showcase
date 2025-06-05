@@ -87,7 +87,7 @@ export default function TeamHighlights() {
     <section className="py-14 px-6 max-w-7xl mx-auto">
       <header className="mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
         <h2 className="text-3xl sm:text-4xl font-bold text-white">
-          TEAM & <span className="text-[#05c8fb]">LEADERSHIP</span>
+          Team & <span className="text-[#05c8fb]">Leadership</span>
         </h2>
         <span className="text-base text-gray-400">
           {highlights.length} HIGHLIGHTS

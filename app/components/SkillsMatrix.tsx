@@ -130,10 +130,10 @@ export default function SkillsMatrix() {
   }, [showAll]);
 
   return (
-    <section className="py-10 px-4 max-w-7xl mx-auto">
+    <section className="py-10 px-4 max-w-7xl mx-auto container">
       <header className="mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
         <h2 className="text-3xl sm:text-4xl font-bold text-white">
-          TOOLS & <span className="text-[#05c8fb]">EXPERIENCE</span>
+          Tools & <span className="text-[#05c8fb]">Experience</span>
         </h2>
         <span className="text-base text-gray-400">
           {skills.length} SKILLS
@@ -144,7 +144,7 @@ export default function SkillsMatrix() {
         {visibleCategories.map((group) => (
           <div
             key={group.category}
-            className="bg-white/5 p-6 rounded-xl shadow-md hover:shadow-lg transition"
+            className="bg-white/5 border border-white/10 p-6 rounded-xl shadow-md hover:shadow-lg transition"
           >
             <h3 className="text-white font-semibold text-lg mb-3">
               {group.category}
