@@ -66,7 +66,7 @@ const iconMap = {
   FaStar,
 } as const;
 
-const LS_CART = "tsc_cart_v2";
+// const LS_CART = "tsc_cart_v2";
 const LS_METRICS = "tsc_metrics_v2";
 const LS_CATALOG = "tsc_catalog_v2";
 
@@ -113,8 +113,11 @@ const readJSON = <T,>(key: string, fallback: T): T => {
     return fallback;
   }
 };
-const writeJSON = (key: string, data: unknown) =>
-  typeof window !== "undefined" && localStorage.setItem(key, JSON.stringify(data));
+const writeJSON = (key: string, data: unknown): void => {
+  if (typeof window !== "undefined") {
+    localStorage.setItem(key, JSON.stringify(data));
+  }
+};
 
 /* ——————————————————————————————————————————
  * 2️⃣  Cart Reducer
@@ -161,8 +164,14 @@ export default function Marketplace() {
     const cat = readJSON<Item[]>(LS_CATALOG, defaultCatalog);
     dispatch({ type: "replaceCatalog", items: cat });
   }, []);
-  useEffect(() => writeJSON(LS_CATALOG, items), [items]);
-  useEffect(() => writeJSON(LS_METRICS, metrics), [metrics]);
+useEffect(() => {
+  writeJSON(LS_CATALOG, items);
+}, [items]);
+
+useEffect(() => {
+  writeJSON(LS_METRICS, metrics);
+}, [metrics]);
+
 
   /* ─── derived ──────────────────────────────────────────────*/
   const total = useMemo(() => items.reduce((s, i) => s + i.price * i.qty, 0), [items]);
