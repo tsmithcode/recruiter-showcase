@@ -59,7 +59,7 @@ export default function TeamHighlights() {
         slides: { perView: 2.25, spacing: 20 },
       },
       "(min-width: 900px)": {
-        slides: { perView:4, spacing: 24 },
+        slides: { perView:4.25, spacing: 24 },
       },
     },
   });

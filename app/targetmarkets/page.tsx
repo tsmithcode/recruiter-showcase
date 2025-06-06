@@ -2,7 +2,7 @@
 "use client";
 
 import React from 'react';
-import { targetMarkets, IndustrySection, DemoItem } from '../../lib/targetMarkets';
+import { targetMarkets, IndustrySection, DemoItem } from '../lib/targetMarkets';
 
 export default function TargetMarkets() {
   return (

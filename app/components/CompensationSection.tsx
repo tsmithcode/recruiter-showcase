@@ -4,10 +4,10 @@ import { motion } from "framer-motion";
 
 export default function CompensationSection() {
   return (
-    <section className="py-6 px-4 max-w-5xl mx-auto">
+    <section className="py-6 px-4 max-w-7xl mx-auto container">
            <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-  <div>
-     <motion.h2
+
+             <motion.h2
           initial={{ opacity: 0, y: 10 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ delay: 0.2, duration: 0.4 }}
@@ -16,6 +16,8 @@ export default function CompensationSection() {
           Compensation Philosophy <span className="text-[#05c8fb]">& Lifestyle Fit</span>
         </motion.h2>
 
+  <div>
+    
   </div>
   
 </header>
@@ -28,6 +30,7 @@ export default function CompensationSection() {
           shadow-lg 
           hover:shadow-xl 
           transition
+          max-w-2xl
         "
       >
         <motion.div

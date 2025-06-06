@@ -11,19 +11,19 @@ import Hero from "@/components/Hero";
 import ServicesSection from "@/components/ServicesSection";
 import CompensationSection from "@/components/CompensationSection";
 
+
 import Footer from "@/components/Footer";
 import Image from "next/image";
 
 export default function Home() {
   return (
-    <main className="flex flex-col items-center min-h-screen bg-[#0b253f] text-white">
+    <main className="flex flex-col items-center min-h-screen">
       {/* <Metrics/> */}
       <Hero />
       <DemoProjects />
       <ServicesSection />
       {/* <CPQConfigurator/> */}
        <CompensationSection />
-
       {/* <ProjectProcess/> */}
       <TeamHighlights/>
       <SkillsMatrix/>

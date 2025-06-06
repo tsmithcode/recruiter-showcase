@@ -47,7 +47,7 @@ export default function ServicesSection() {
       {/* Header */}
       <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
         <h2 className="text-3xl sm:text-4xl font-bold text-white">
-          Services <span className="text-[#05c8fb]">Available</span>
+          <span className="text-[#05c8fb]">Products</span><span className="text-[#e1de8f]"> Coming Soon!</span>
         </h2>
          <motion.div
           className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#05c8fb] text-[#05c8fb] text-sm"

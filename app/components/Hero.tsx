@@ -33,6 +33,12 @@ export default function Hero() {
           transition={{ delay: 0.4, duration: 0.4 }}
           className="flex flex-row justify-center md:justify-start gap-3"
         >
+
+<Link href="/about">
+    {/* <button className="bg-[#0b253f] text-[#0b253f] font-semibold rounded-full px-6 py-2 shadow hover:bg-[#05c8fb]/90 transition focus:outline-none focus:ring-2 focus:ring-[#05c8fb]">
+    About
+    </button> */}
+</Link>
           <Link
             href="https://calendly.com/tsmithcode"
             target="_blank"
