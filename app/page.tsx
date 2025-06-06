@@ -4,9 +4,9 @@ import DemoProjects from "@/components/DemoProjects";
 // import ProjectProcess from "./components/ProjectProcess";
 import TeamHighlights from "@/components/TeamHighlights";
 import SkillsMatrix from "@/components/SkillsMatrix";
-import Metrics from "@/components/Metrics";
+// import Metrics from "@/components/Metrics";
 import Hero from "@/components/Hero";
-import CPQConfigurator from "@/components/CPQConfigurator";
+// import CPQConfigurator from "@/components/CPQConfigurator";
 // import TargetMarkets from '@/components/TargetMarkets';
 import ServicesSection from "@/components/ServicesSection";
 import CompensationSection from "@/components/CompensationSection";
@@ -17,12 +17,11 @@ import Image from "next/image";
 export default function Home() {
   return (
     <main className="flex flex-col items-center min-h-screen bg-[#0b253f] text-white">
-      <Metrics/>
-
+      {/* <Metrics/> */}
       <Hero />
       <DemoProjects />
       <ServicesSection />
-      <CPQConfigurator/>
+      {/* <CPQConfigurator/> */}
        <CompensationSection />
 
       {/* <ProjectProcess/> */}

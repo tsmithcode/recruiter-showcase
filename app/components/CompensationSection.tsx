@@ -30,8 +30,6 @@ export default function CompensationSection() {
           transition
         "
       >
-       
-
         <motion.div
           initial={{ opacity: 0 }}
           animate={{ opacity: 1 }}
@@ -39,22 +37,43 @@ export default function CompensationSection() {
           className="text-gray-300 text-sm sm:text-base leading-relaxed space-y-4"
         >
           <p className="mb-4">
-            As a seasoned .NET & Automation Engineer based in Atlanta, I bring over a decade of experience delivering high-ROI solutions across CAD, ERP, and cloud-native platforms. I operate within a flexible rate range—$120–$160/hr for advanced automation, $90–$140/hr for cloud-native services, and $60–$100/hr for operations support—depending on scope and commitment.
-          </p>
+  As a <span className="text-[#e2e8ea] font-semibold">seasoned .NET & Automation Engineer</span> based in Atlanta, I operate within a 
+  <span className="text-[#e2e8ea] font-semibold"> flexible rate range</span>—
+  <span className="text-[#e2e8ea] font-semibold">$120–$160/hr</span> for 
+  <span className="text-[#e2e8ea] font-semibold"> advanced automation</span>, 
+  <span className="text-[#e2e8ea] font-semibold"> $90–$140/hr</span> for 
+  <span className="text-[#e2e8ea] font-semibold"> cloud-native services</span>, and 
+  <span className="text-[#e2e8ea] font-semibold"> $60–$100/hr</span> for 
+  <span className="text-[#e2e8ea] font-semibold"> operations support</span>—depending on scope and commitment.
+</p>
+
 
           <p className="mb-2">
             For ongoing or strategic partnerships, I prioritize compensation models that reflect impact and promote well-being. These include:
           </p>
 
-          <ul className="list-disc list-inside mt-2 text-[#05c8fb]">
-            <li>Performance-based bonuses (10–20%)</li>
-            <li>Equity or profit-sharing in product-driven environments</li>
-            <li>Comprehensive health coverage (medical, dental, vision, mental health)</li>
-            <li>Remote-first schedules, 4-day weeks, or async flexibility</li>
-            <li>Dependent coverage for two children and elder care benefits</li>
-            <li>Professional development stipends for AI, CAD, or cloud certifications</li>
-            <li>Sabbaticals or recharge leave after long-term tenure</li>
-          </ul>
+          <ul className="space-y-4 mt-4">
+  {[
+    "Performance-based bonuses (10–20%)",
+    "Equity or profit-sharing in product-driven environments",
+    "Comprehensive health coverage (medical, dental, vision, mental health)",
+    "Remote-first schedules, 4-day weeks, or async flexibility",
+    "Dependent coverage for two children and elder care benefits",
+    "Professional development stipends for AI, CAD, or cloud certifications",
+    "Sabbaticals or recharge leave after long-term tenure",
+  ].map((item, idx) => (
+    <li
+      key={idx}
+      className="relative p-3 border border-white/10 rounded-xl bg-white/5 text-white/90 backdrop-blur-md shadow-inner group overflow-hidden"
+    >
+      <div className="absolute left-0 top-0 h-full w-1 bg-[#05c8fb] animate-pulse rounded-r" />
+      <span className="text-sm sm:text-base leading-relaxed text-[#cbefff] group-hover:text-white transition">
+        {item}
+      </span>
+    </li>
+  ))}
+</ul>
+
 
           <p>
             I believe in a <strong className="text-white">work hard, play smart</strong> rhythm—executing with precision during focused sprints while preserving time for family, creative pursuits, and restoration. I’m not just seeking a job—I’m aligning with organizations that value deep work, respect personal boundaries, and champion inclusive leadership in automation and enterprise innovation.

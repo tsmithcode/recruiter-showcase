@@ -3,10 +3,12 @@
 
 import Link from "next/link";
 import Image from "next/image";
+// import SocialLinks from "@/components/SocialLinks";
+
 
 export default function Navbar() {
   return (
-    <nav className="bg-[#0b253ffb] py-3 px-6 shadow-md">
+    <nav className="bg-[#0b253ffb] py-3 px-6">
       <div className="max-w-7xl mx-auto flex items-center justify-between">
         <Link href="/" className="flex items-center gap-3">
          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#0b253f] via-[#38484c] to-[#Ob253ffb] flex items-center justify-center">
@@ -27,7 +29,10 @@ export default function Navbar() {
             <span className="text-gray-300 text-sm">
               Software Engineer
             </span>
+        {/* <SocialLinks /> */}
+
           </div>
+
         </Link>
 
       </div>

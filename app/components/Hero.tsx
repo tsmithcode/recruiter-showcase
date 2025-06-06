@@ -6,24 +6,25 @@ import SocialLinks from "@/components/SocialLinks";
 
 export default function Hero() {
   return (
-    <section className="py-18 flex flex-col md:flex-row items-center md:items-start gap-6 pb-6 max-w-4xl mx-auto px-4 md:px-0">
+    <section className="flex flex-col md:flex-row items-center md:items-start gap-6 pb-6 max-w-4xl mx-auto px-4 md:px-0">
       {/* Left column: Logo + SocialLinks */}
       <div className="flex flex-col items-center md:items-start md:w-1/2 gap-4">
         <Logo />
       </div>
-
-
+      
       {/* Right column: Heading, tagline, CTAs */}
-      <div className="flex flex-col items-center md:items-start md:w-1/2 gap-4 md:text-left">
-        
-        
+      <div className="bg-white/5 border border-white/10
+              mt-6
+              p-6 
+              rounded-xl 
+              text-white 
+              shadow-lg 
+              hover:shadow-xl 
+              transition flex flex-col items-center md:items-start md:w-1/2 gap-4 md:text-left">
         <SocialLinks />
-
-
         <p className="text-[#05c8fb] text-base sm:text-lg leading-relaxed">
           I’m <span className="font-semibold text-[#c8d6d9]">Thomas Smith</span>, a results-driven software architect who designs user-focused systems that streamline operations and generate ROI in weeks — not months.
         </p>
-
 
         {/* CTA row */}
         <motion.div
