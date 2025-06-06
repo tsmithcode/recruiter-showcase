@@ -39,10 +39,7 @@ const docLinks = [
 
 export default function DevDocLinks() {
   return (
-    <div className="flex flex-wrap gap-2 text-xl text-[#afc2c8] container">
-      <h2 className="text-3xs mx-4 font-bold text-white">
-            Dev <span className="text-[#05c8fb]">Docs</span>
-          </h2>
+    <div className="m-6 flex flex-wrap gap-6 text-xl text-[#afc2c8] container">
       {docLinks.map(({ icon, label, href }) => (
         <span title={label} key={label}>
           <Link

@@ -76,8 +76,17 @@ export default function CompensationSection() {
 
 
           <p>
-            I believe in a <strong className="text-white">work hard, play smart</strong> rhythm—executing with precision during focused sprints while preserving time for family, creative pursuits, and restoration. I’m not just seeking a job—I’m aligning with organizations that value deep work, respect personal boundaries, and champion inclusive leadership in automation and enterprise innovation.
-          </p>
+  I believe in a <strong className="text-white">work hard, play smart</strong> rhythm—
+  <span className="text-[#bbebf7] font-semibold">executing with precision</span> during focused sprints 
+  while preserving time for <span className="text-[#bbebf7] font-semibold">family, creative pursuits</span>, and restoration. 
+  I’m not just seeking a job—I’m 
+  <span className="text-[#bbebf7] font-semibold"> aligning with organizations</span> that value 
+  <span className="text-[#bbebf7] font-semibold"> deep work</span>, 
+  <span className="text-[#bbebf7] font-semibold"> respect personal boundaries</span>, and 
+  <span className="text-[#bbebf7] font-semibold"> champion inclusive leadership</span> in 
+  <span className="text-[#bbebf7] font-semibold"> automation and enterprise innovation</span>.
+</p>
+
         </motion.div>
       </div>
     </section>
