@@ -16,7 +16,7 @@ const docLinks = [
   { icon: <SiTypescript />, label: "TypeScript", href: "https://www.typescriptlang.org/docs/" },
   { icon: <FaCss3Alt />, label: "Tailwind CSS", href: "https://tailwindcss.com/docs" },
   { icon: <FaBootstrap />, label: "Bootstrap", href: "https://getbootstrap.com/docs/" },
-  { icon: <SiAutodesk />, label: "Inventor API", href: "https://help.autodesk.com/cloudhelp/2023/ENU/Inventor-API/" },
+  { icon: <SiAutodesk />, label: "Inventor API", href: "https://help.autodesk.com/view/INVNTOR/2024/ENU/?guid=UserManualIndex" },
   { icon: <SiAutocad />, label: "AutoCAD", href: "https://help.autodesk.com/view/ACD/2023/ENU/" },
   { icon: <FaRegLightbulb />, label: "VB.NET", href: "https://learn.microsoft.com/en-us/dotnet/visual-basic/" },
   { icon: <FaWindows />, label: "WinForms", href: "https://learn.microsoft.com/en-us/dotnet/desktop/winforms/" },
