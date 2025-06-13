@@ -245,7 +245,7 @@ export default function CPQAdvanced() {
       | "unitMaterialCost"
       | "quantity"
       | "Icon",
-    value: any
+    value: string | number | React.ComponentType<{ className?: string }>
   ) => {
     setComponents((prev) =>
       prev.map((comp) =>
