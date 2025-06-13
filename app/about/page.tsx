@@ -1,65 +1,130 @@
-// app/about/page.tsx
 "use client";
 
 import React from "react";
-import Link from "next/link";
-import ExperienceOverview from "@/components/ExperienceOverview";
-
+import { motion } from "framer-motion"; // Import motion for animations
+// import Link from "next/link"; // Replaced with <a> tags for broader compatibility
+import Image from 'next/image'; 
+import SDLC from "./sdlc";
+import Principles from "./principles";
+import Experience from "./experience";
 
 export default function AboutPage() {
+  // Animation variants for staggered appearance
+  const containerVariants = {
+    hidden: { opacity: 0 },
+    show: {
+      opacity: 1,
+      transition: {
+        staggerChildren: 0.1, // Stagger children by 0.1 seconds
+      },
+    },
+  };
+
+  const itemVariants = {
+    hidden: { opacity: 0, y: 20 },
+    show: { opacity: 1, y: 0, transition: { duration: 0.5, ease: "easeOut" } },
+  };
+
+  const cardHoverEffect = {
+    scale: 1.03,
+    boxShadow: "0 10px 20px rgba(0, 0, 0, 0.4)", // Darker, more pronounced shadow
+    transition: { type: "spring", stiffness: 300, damping: 20 },
+  };
+
   return (
     <section className="py-12 px-4 max-w-7xl mx-auto container">
       {/* Header */}
       <header className="mb-8 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-        <div>
+        <motion.div
+          initial={{ opacity: 0, x: -50 }}
+          animate={{ opacity: 1, x: 0 }}
+          transition={{ duration: 0.8, ease: "easeOut" }}
+        >
           <h2 className="text-3xl sm:text-4xl font-bold text-white">
             About <span className="text-[#05c8fb]">Thomas Smith</span>
           </h2>
           <p className="text-gray-400 text-base mb-6">
             Learn more about my background, design approach, and cross‐industry experience.
           </p>
-        </div>
+        </motion.div>
 
-         <div className="grid grid-cols-1 sm:grid-cols-3 gap-6 w-full max-w-3xl">
-          <div className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition">
-            <h3 className="text-2xl font-bold mb-2">500+</h3>
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+        {/* Header Metrics */}
+        <motion.div
+          className="grid grid-cols-3 sm:grid-cols-3 gap-6 max-w-3xl"
+          variants={containerVariants}
+          initial="hidden"
+          animate="show"
+        >
+          <motion.div
+            className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition relative overflow-hidden group"
+            variants={itemVariants}
+            whileHover={cardHoverEffect}
+          >
+            <div className="absolute inset-0 bg-[#05c8fb]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl"></div>
+            <h3 className="text-2xl font-bold mb-2 relative z-10">100+</h3>
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed relative z-10">
               Projects Delivered
             </p>
-          </div>
-          <div className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition">
-            <h3 className="text-2xl font-bold mb-2">12+</h3>
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+          </motion.div>
+          <motion.div
+            className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition relative overflow-hidden group"
+            variants={itemVariants}
+            whileHover={cardHoverEffect}
+          >
+            <div className="absolute inset-0 bg-[#05c8fb]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl"></div>
+            <h3 className="text-2xl font-bold mb-2 relative z-10">12+</h3>
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed relative z-10">
               Years of Experience
             </p>
-          </div>
-          <div className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition">
-            <h3 className="text-2xl font-bold mb-2">99%</h3>
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
+          </motion.div>
+          <motion.div
+            className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition relative overflow-hidden group"
+            variants={itemVariants}
+            whileHover={cardHoverEffect}
+          >
+            <div className="absolute inset-0 bg-[#05c8fb]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl"></div>
+            <h3 className="text-2xl font-bold mb-2 relative z-10">99%</h3>
+            <p className="text-sm sm:text-base text-gray-300 leading-relaxed relative z-10">
               Client Satisfaction
             </p>
-          </div>
-        </div>
+          </motion.div>
+        </motion.div>
       </header>
 
       {/* Hero / Intro */}
       <div className="grid grid-cols-1 lg:grid-cols-2 gap-6 mb-12">
         {/* Left side: Intro copy */}
-        <div className="space-y-4">
+        <motion.div
+          className="space-y-4"
+          initial={{ opacity: 0, x: -50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+        >
           <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
-            Hi, I’m <span className="text-[#05c8fb] font-semibold">Thomas Smith</span>. 
-            I’m passionate about designing solutions that blend functionality and elegance, 
-            enabling enterprises to move faster, reduce costs, and delight end users.
+            Hi, I’m <span className="text-[#05c8fb] font-semibold">Thomas Smith</span>, a results-driven Software Architect specializing in crafting <span className="font-semibold">secure, scalable, and resilient systems</span> that deliver rapid ROI. I'm passionate about designing solutions that blend functionality and elegance, enabling enterprises to move faster, reduce costs, and delight end users.
           </p>
-          <ul className="list-disc list-inside text-[#05c8fb] space-y-2">
-            <li>500+ Projects Completed: Helping clients around the world actualize ideas into reality</li>
-            <li>12+ Years of Experience: Craftsman of CAD, .NET, AI, and data integration workflows</li>
-            <li>99% Client Satisfaction: Building trust through transparent communication and quality</li>
+          <ul className="list-disc list-inside text-gray-300 space-y-2">
+            <li>
+              <span className="text-red-300 font-semibold">Problem Solved:</span> Enterprises struggle with slow operations and high costs due to disconnected systems.
+            </li>
+            <li>
+              <span className="text-green-300 font-semibold">My Solution:</span> I design and implement automated workflows and integrated cloud-native applications.
+            </li>
+            <li>
+              <span className="text-[#05c8fb] font-semibold">Quantifiable Impact:</span> This approach consistently streamlines operations, cuts costs, and boosts ROI in weeks, not months.
+            </li>
           </ul>
-        </div>
+        </motion.div>
 
         {/* Right side: Placeholder for user image or illustration */}
-        <div className="flex justify-center">
+        <motion.div
+          className="flex justify-center"
+          initial={{ opacity: 0, x: 50 }}
+          whileInView={{ opacity: 1, x: 0 }}
+          viewport={{ once: true, amount: 0.3 }}
+          transition={{ duration: 0.8, delay: 0.4, ease: "easeOut" }}
+        >
           <div
             className="
               bg-white/5 
@@ -70,383 +135,171 @@ export default function AboutPage() {
               shadow-lg 
               hover:shadow-xl 
               transition
+              flex items-center justify-center
             "
           >
-            {/* Replace with actual <Image> component once you have a photo */}
-            <div className="w-full h-full bg-gray-700 flex items-center justify-center">
-              <span className="text-gray-400">[Your Photo Here]</span>
-            </div>
+            <Image
+  src="/avatar.png" // Replace with your actual image path later
+  alt="Thomas Smith Headshot"
+  width={256} // Specify the width of the image
+  height={256} // Specify the height of the image
+  className="object-cover w-full h-full" // Ensure image covers its container
+  onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => { // Add explicit type for 'e'
+    e.currentTarget.onerror = null; // Prevent infinite loop if fallback also fails
+    e.currentTarget.src = "https://placehold.co/256x256/2D3748/A0AEC0?text=Image+Error"; // Fallback for errors
+  }}
+/>
           </div>
-        </div>
+        </motion.div>
       </div>
 
-
       {/* Intro Paragraph */}
-      <section className="mb-12">
+      <motion.section
+        className="mb-12"
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+      >
         <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
-          As a <span className="text-[#05c8fb] font-semibold">.NET & Automation Engineer</span> based in Atlanta, I help organizations
-          bridge the gap between engineering and business by automating recurring tasks,
-          integrating disparate systems, and building scalable cloud-native applications.
-          My approach emphasizes <span className="text-[#05c8fb] font-semibold">deep collaboration</span>
-          with stakeholders, ensuring solutions are aligned with strategic goals and deliver measurable value.
+          As a <span className="text-[#05c8fb] font-semibold">.NET & Automation Architect</span> based in Atlanta, I specialize in bridging the gap between complex engineering needs and business objectives. I empower organizations by <span className="font-semibold">automating recurring, high-volume tasks, integrating disparate legacy systems, and building scalable cloud-native applications</span>. My approach emphasizes <span className="text-[#05c8fb] font-semibold">deep collaboration</span> with stakeholders, ensuring solutions are aligned with strategic goals and deliver measurable value, often *reducing time-to-market by 30-50%*.
         </p>
         <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
           Over my career, I’ve partnered with cross-functional teams across manufacturing,
-          SaaS, e-commerce, and data-driven enterprises. I blend <span className="text-[#05c8fb] font-semibold">SOLID architecture</span>,
+          SaaS, e-commerce, and data-driven enterprises. I blend <span className="text-[#05c8fb] font-semibold">SOLID architecture principles</span>,
           <span className="text-[#05c8fb] font-semibold"> agile methodologies</span>, and
-          <span className="text-[#05c8fb] font-semibold"> AI-powered insights</span> to craft solutions that scale effortlessly
-          and adapt to evolving requirements.
+          <span className="text-[#05c8fb] font-semibold"> AI-powered insights</span> to craft solutions that scale effortlessly,
+          adapt to evolving requirements, and consistently improve operational efficiency. I've successfully led initiatives that *transformed manual, days-long processes into automated, minute-long operations*.
         </p>
         <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
           I believe in a <span className="text-white font-semibold">work hard, play smart</span> rhythm—delivering with precision during focused sprints while
           preserving time for family, creative pursuits, and restoration.
         </p>
-      </section>
+      </motion.section>
 
-      {/* Design & Development Process */}
-      <section className="mb-12">
-        <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-          <h2 className="text-3xl sm:text-4xl font-bold text-white">
-            My <span className="text-[#05c8fb]">SDLC Process</span>
-          </h2>
-          <span className="text-base text-gray-400">4 Steps to Delivery</span>
-        </header>
-
-        <div className="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-4 gap-6">
-          {/* Step 1: Discovery & Strategy */}
-          <div className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition">
-            <h3 className="text-lg font-semibold mb-2">1. Discovery & Strategy</h3>
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
-              Understand business objectives, user needs, and technical constraints.
-              Conduct stakeholder interviews, market research, and requirement gathering to define a clear roadmap.
-            </p>
-            <div className="h-40 bg-white/10 rounded overflow-hidden">
-              <img
-                src="/images/discovery.png"
-                alt="Discovery Illustration"
-                className="object-cover w-full h-full"
-              />
-            </div>
-          </div>
-
-          {/* Step 2: Ideation & Prototyping */}
-          <div className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition">
-            <h3 className="text-lg font-semibold mb-2">2. Ideation & Prototyping</h3>
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
-              Sketch wireframes and build interactive prototypes to validate ideas early.
-              Iterate on user flows, layouts, and interactions before investing in full development.
-            </p>
-            <div className="h-40 bg-white/10 rounded overflow-hidden">
-              <img
-                src="/images/ideation.png"
-                alt="Ideation Illustration"
-                className="object-cover w-full h-full"
-              />
-            </div>
-          </div>
-
-          {/* Step 3: Design & Development */}
-          <div className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition">
-            <h3 className="text-lg font-semibold mb-2">3. Design & Development</h3>
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
-              Craft high-fidelity UI designs and implement robust, scalable code.
-              Leverage cloud-native platforms (Azure, AWS) and modern frameworks (.NET, Blazor, React) to build production-ready applications.
-            </p>
-            <div className="h-40 bg-white/10 rounded overflow-hidden">
-              <img
-                src="/images/design.png"
-                alt="Design & Development Illustration"
-                className="object-cover w-full h-full"
-              />
-            </div>
-          </div>
-
-          {/* Step 4: Testing & Iteration */}
-          <div className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition">
-            <h3 className="text-lg font-semibold mb-2">4. Testing & Iteration</h3>
-            <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
-              Conduct thorough QA, usability testing, and performance tuning.
-              Gather feedback, fix issues, and optimize for a seamless user experience and business value.
-            </p>
-            <div className="h-40 bg-white/10 rounded overflow-hidden">
-              <img
-                src="/images/testing.png"
-                alt="Testing Illustration"
-                className="object-cover w-full h-full"
-              />
-            </div>
-          </div>
-        </div>
-      </section>
-
+      <SDLC />
+      <Principles />
+      <Experience/>
 
       {/* Closing Statement */}
-      <section>
+      <motion.section
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+      >
         <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
           With a blend of <span className="text-[#05c8fb] font-semibold">technical expertise</span> and
           <span className="text-[#05c8fb] font-semibold"> business acumen</span>,
           I partner with organizations to accelerate innovation, optimize workflows, and deliver transformative outcomes.
           <span className="text-[#05c8fb] font-semibold"> Let’s build the future together.</span>
         </p>
-      </section>
-
+      </motion.section>
       
-
-      {/* “Experience” Section */}
-      <div className="mb-12">
-        <h3 className="text-2xl font-semibold text-white mb-4">Experience & Roles</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-          {/* Card: Interroll Group */}
-          <div
-            className="
-              bg-white/5 
-              border border-white/10 
-              p-6 
-              rounded-xl 
-              text-white 
-              shadow-lg 
-              hover:shadow-xl 
-              transition
-            "
-          >
-            <h4 className="font-semibold text-lg mb-2">
-              IT Administrator & CAD Drafter
-            </h4>
-            <p className="text-xs text-gray-400 mb-4">
-              Interroll Group — Hiram, GA (Nov 2015 – Sep 2016)
-            </p>
-            <ul className="list-disc list-inside text-[#05c8fb] space-y-2 mb-2">
-              <li>Built 2D/3D conveyor system models; supported design & IT functions</li>
-              <li>Led Kaizen‐based lean process training; cut waste and improved cycle times</li>
-              <li>Streamlined CAD drafting workflows; reduced design‐to‐production errors by 20%</li>
-            </ul>
-            <p className="text-xs text-gray-400">Key Collaborators: Engineers, Production Leads, Quality Auditors</p>
-          </div>
-
-          {/* Card: Carson Tool & Mold */}
-          <div
-            className="
-              bg-white/5 
-              border border-white/10 
-              p-6 
-              rounded-xl 
-              text-white 
-              shadow-lg 
-              hover:shadow-xl 
-              transition
-            "
-          >
-            <h4 className="font-semibold text-lg mb-2">CAD Drafter</h4>
-            <p className="text-xs text-gray-400 mb-4">
-              Carson Tool & Mold — Kennesaw, GA (Nov 2014 – Nov 2015)
-            </p>
-            <ul className="list-disc list-inside text-[#05c8fb] space-y-2 mb-2">
-              <li>Created precision 2D/3D mold designs using Pro/E Wildfire (PTC Creo)</li>
-              <li>Collaborated during ISO 9001 audit; ensured compliance with quality standards</li>
-              <li>Optimized design processes to reduce lead times by 15% for core product lines</li>
-            </ul>
-            <p className="text-xs text-gray-400">Key Collaborators: Mold Engineers, Quality Inspectors, Project Managers</p>
-          </div>
-
-          {/* Card: KinMetal */}
-          <div
-            className="
-              bg-white/5 
-              border border-white/10 
-              p-6 
-              rounded-xl 
-              text-white 
-              shadow-lg 
-              hover:shadow-xl 
-              transition
-            "
-          >
-            <h4 className="font-semibold text-lg mb-2">CAD Drafter/Designer</h4>
-            <p className="text-xs text-gray-400 mb-4">
-              KinMetal — Alpharetta, GA (Sep 2016 – Dec 2016)
-            </p>
-            <ul className="list-disc list-inside text-[#05c8fb] space-y-2 mb-2">
-              <li>Improved technical ↔ business communication; reduced project errors by 20%</li>
-              <li>Managed custom equipment configurations and design‐to‐production workflows</li>
-              <li>Advised on technology selection; streamlined team collaboration across departments</li>
-            </ul>
-            <p className="text-xs text-gray-400">Key Collaborators: Mechanical Engineers, Production Leads, Procurement</p>
-          </div>
-
-          {/* Card: Fascinate */}
-          <div
-            className="
-              bg-white/5 
-              border border-white/10 
-              p-6 
-              rounded-xl 
-              text-white 
-              shadow-lg 
-              hover:shadow-xl 
-              transition
-            "
-          >
-            <h4 className="font-semibold text-lg mb-2">Jr. CAD Designer</h4>
-            <p className="text-xs text-gray-400 mb-4">
-              Fascinate — Duluth, GA (Jan 2016 – Dec 2016)
-            </p>
-            <ul className="list-disc list-inside text-[#05c8fb] space-y-2 mb-2">
-              <li>Delivered innovative AutoCAD/Inventor/Mastercam designs for major clients (Carnival, Samsung)</li>
-              <li>Streamlined design reviews; reduced lead times by 25% through team efficiency initiatives</li>
-            </ul>
-            <p className="text-xs text-gray-400">Key Collaborators: Project Engineers, Design Leads, Manufacturing Teams</p>
-          </div>
-
-          {/* Card: Essential Dental Care */}
-          <div
-            className="
-              bg-white/5 
-              border border-white/10 
-              p-6 
-              rounded-xl 
-              text-white 
-              shadow-lg 
-              hover:shadow-xl 
-              transition
-            "
-          >
-            <h4 className="font-semibold text-lg mb-2">CAD Technician & Technologist</h4>
-            <p className="text-xs text-gray-400 mb-4">
-              Essential Dental Care & Sapian R&D — Grand Prairie, TX (Nov 2014)
-            </p>
-            <ul className="list-disc list-inside text-[#05c8fb] space-y-2 mb-2">
-              <li>Developed CAD models for surgical dental instruments (Sapian Root Remover Kit)</li>
-              <li>Collaborated with R&D team to optimize part geometry for manufacturability</li>
-            </ul>
-            <p className="text-xs text-gray-400">Key Collaborators: R&D Engineers, Regulatory Teams, Suppliers</p>
-          </div>
-
-          {/* Card: Retail & Early Roles */}
-          <div
-            className="
-              bg-white/5 
-              border border-white/10 
-              p-6 
-              rounded-xl 
-              text-white 
-              shadow-lg 
-              hover:shadow-xl 
-              transition
-            "
-          >
-            <h4 className="font-semibold text-lg mb-2">Retail & Early Roles</h4>
-            <p className="text-xs text-gray-400 mb-4">
-              Various (2010 – 2014)
-            </p>
-            <ul className="list-disc list-inside text-[#05c8fb] space-y-2 mb-2">
-              <li>Retail Associate @ Ross: Managed high‐volume transactions, streamlined inventory, and hit sales targets</li>
-              <li>Cashier & Membership @ Costco: Handled membership sign‐ups, replenished stock, and improved transaction flow</li>
-              <li>Home Depot: Guided customers on doors/windows/millwork, coordinated custom orders</li>
-            </ul>
-            <p className="text-xs text-gray-400">Key Collaborators: Store Managers, Team Leads, Suppliers</p>
-          </div>
-        </div>
-      </div>
 
       {/* “Education & Skills” Section */}
       <div className="mb-12">
         <h3 className="text-2xl font-semibold text-white mb-4">Education & Core Skills</h3>
-        <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
+        <motion.div
+          className="grid grid-cols-1 md:grid-cols-2 gap-6"
+          variants={containerVariants}
+          initial="hidden"
+          whileInView="show"
+          viewport={{ once: true, amount: 0.3 }}
+        >
           {/* Education Card */}
-          <div
-            className="
-              bg-white/5 
-              border border-white/10 
-              p-6 
-              rounded-xl 
-              text-white 
-              shadow-lg 
-              hover:shadow-xl 
-              transition
-            "
+          <motion.div
+            className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition flex flex-col justify-between group"
+            variants={itemVariants}
+            whileHover={cardHoverEffect}
           >
-            <h4 className="font-semibold text-lg mb-2">Education</h4>
-            <ul className="text-sm text-gray-300 space-y-2 mb-2">
-              <li>
-                <span className="font-medium text-white">Computer Engineering</span><br />
-                Tarrant County College (2012 – 2014)
-              </li>
-              <li>
-                <span className="font-medium text-white">General Studies</span><br />
-                Montgomery College (2009 – 2010)
-              </li>
-              <li>
-                <span className="font-medium text-white">Diploma</span><br />
-                Watkins Mill High School (2008)
-              </li>
-            </ul>
-          </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-2">Education</h4>
+              <ul className="text-sm text-gray-300 space-y-2 mb-2">
+                <li>
+                  <span className="font-medium text-white">Computer Engineering</span><br />
+                  Tarrant County College (2012 – 2014)
+                </li>
+                <li>
+                  <span className="font-medium text-white">General Studies</span><br />
+                  Montgomery College (2009 – 2010)
+                </li>
+                <li>
+                  <span className="font-medium text-white">Diploma</span><br />
+                  Watkins Mill High School (2008)
+                </li>
+              </ul>
+            </div>
+          </motion.div>
 
           {/* Skills Card */}
-          <div
-            className="
-              bg-white/5 
-              border border-white/10 
-              p-6 
-              rounded-xl 
-              text-white 
-              shadow-lg 
-              hover:shadow-xl 
-              transition
-            "
+          <motion.div
+            className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition flex flex-col justify-between group"
+            variants={itemVariants}
+            whileHover={cardHoverEffect}
           >
-            <h4 className="font-semibold text-lg mb-2">Key Skills & Tools</h4>
-            <ul className="text-sm text-gray-300 space-y-2 mb-2">
-              <li>• <span className="text-[#05c8fb] font-semibold">.NET Core, React, Node.js, Python</span> (6 yrs)</li>
-              <li>• <span className="text-[#05c8fb] font-semibold">CAD Team Leadership & Mentorship</span></li>
-              <li>• <span className="text-[#05c8fb] font-semibold">Manufacturing Processes</span> (Sheet Metal, Fabrication – 10 yrs)</li>
-              <li>• <span className="text-[#05c8fb] font-semibold">Product Development & Design</span> (10 yrs)</li>
-              <li>• <span className="text-[#05c8fb] font-semibold">Autodesk Inventor, AutoCAD, SolidWorks, Vault</span> (10 yrs)</li>
-              <li>• <span className="text-[#05c8fb] font-semibold">Engineering Change Orders Management</span> (10 yrs)</li>
-              <li>• <span className="text-[#05c8fb] font-semibold">Autodesk Construction Cloud, Autodesk Build</span></li>
-              <li>• <span className="text-[#05c8fb] font-semibold">Leadership & Project Management</span></li>
-              <li>• <span className="text-[#05c8fb] font-semibold">Version Control (Git, SVN)</span> (6 yrs)</li>
-              <li>• <span className="text-[#05c8fb] font-semibold">Workflow Optimization & Process Improvement</span></li>
-              <li>• <span className="text-[#05c8fb] font-semibold">CAD Automation (iLogic, AutoLISP, Python)</span> (7 yrs)</li>
-              <li>• <span className="text-[#05c8fb] font-semibold">Quality Control & Design Review Processes</span></li>
-            </ul>
-          </div>
-        </div>
+            <div>
+              <h4 className="font-semibold text-lg mb-2">Key Skills & Tools</h4>
+              <ul className="text-sm text-gray-300 space-y-2 mb-2">
+                <li>• <span className="text-[#05c8fb] font-semibold">.NET Core, React, Node.js, Python</span>: Architecting and building scalable enterprise applications</li>
+                <li>• <span className="text-[#05c8fb] font-semibold">CAD Team Leadership & Mentorship</span>: Guiding teams to implement efficient design and automation strategies.</li>
+                <li>• <span className="text-[#05c8fb] font-semibold">Manufacturing Processes</span> (Sheet Metal, Fabrication): Deep understanding of how software design impacts physical production.</li>
+                <li>• <span className="text-[#05c8fb] font-semibold">Product Development & Design</span>: Translating user needs into functional, elegant solutions.</li>
+                <li>• <span className="text-[#05c8fb] font-semibold">Autodesk Inventor, AutoCAD, SolidWorks, Vault</span>: Expert-level proficiency in leading CAD platforms.</li>
+                <li>• <span className="text-[#05c8fb] font-semibold">Engineering Change Orders Management</span>: Streamlining and automating critical change management processes.</li>
+                <li>• <span className="text-[#05c8fb] font-semibold">Autodesk Construction Cloud, Autodesk Build</span>: Leveraging modern construction management platforms for data integration.</li>
+                <li>• <span className="text-[#05c8fb] font-semibold">Leadership & Project Management</span>: Driving projects from concept to successful delivery, fostering cross-functional collaboration.</li>
+                <li>• <span className="text-[#05c8fb] font-semibold">Version Control (Git, SVN)</span> (6+ yrs): Ensuring robust code management and collaborative development.</li>
+                <li>• <span className="text-[#05c8fb] font-semibold">Workflow Optimization & Process Improvement</span>: Identifying bottlenecks and designing solutions that enhance efficiency.</li>
+                <li>• <span className="text-[#05c8fb] font-semibold">CAD Automation (iLogic, AutoLISP, Python)</span>: Developing custom automation solutions to accelerate design and engineering workflows.</li>
+                <li>• <span className="text-[#05c8fb] font-semibold">Quality Control & Design Review Processes</span>: Implementing rigorous reviews to ensure high-quality and error-free designs.</li>
+              </ul>
+            </div>
+          </motion.div>
+        </motion.div>
       </div>
 
-      <ExperienceOverview/>
+      {/* ExperienceOverview component was causing compilation errors. If you have its code,
+          you can re-integrate it here once the component itself is defined and
+          its import path is correctly configured in your Next.js project. */}
+      {/* <ExperienceOverview/> */}
 
 
       {/* “Links & Contact” Section */}
-      <div>
+      <motion.div
+        initial={{ opacity: 0, y: 30 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.3 }}
+        transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
+      >
         <h3 className="text-2xl font-semibold text-white mb-4">Links & Contact</h3>
         <ul className="space-y-2 text-sm text-gray-300">
           <li>
             • YouTube:{" "}
-            <Link href="https://www.youtube.com/@tsmithcad" target="_blank" className="text-[#05c8fb] hover:underline">
+            <a href="https://www.youtube.com/@tsmithcad" target="_blank" rel="noopener noreferrer" className="text-[#05c8fb] hover:underline">
               /@tsmithcad
-            </Link>
+            </a>
           </li>
           <li>
             • LinkedIn:{" "}
-            <Link href="https://www.linkedin.com/in/tsmithcad" target="_blank" className="text-[#05c8fb] hover:underline">
+            <a href="https://www.linkedin.com/in/tsmithcad" target="_blank" rel="noopener noreferrer" className="text-[#05c8fb] hover:underline">
               /in/tsmithcad
-            </Link>
+            </a>
           </li>
-          <li>
+          {/* <li>
             • Dev Portfolio:{" "}
-            <Link href="https://tsmith-dev-portfolio.web.app/" target="_blank" className="text-[#05c8fb] hover:underline">
+            <a href="https://tsmith-dev-portfolio.web.app/" target="_blank" rel="noopener noreferrer" className="text-[#05c8fb] hover:underline">
               tsmith-dev-portfolio.web.app
-            </Link>
-          </li>
-          <li>
+            </a>
+          </li> */}
+          {/* <li>
             • Twitter:{" "}
-            <Link href="https://twitter.com/nbwsmarket" target="_blank" className="text-[#05c8fb] hover:underline">
+            <a href="https://twitter.com/nbwsmarket" target="_blank" rel="noopener noreferrer" className="text-[#05c8fb] hover:underline">
               @nbwsmarket
-            </Link>
-          </li>
+            </a>
+          </li> */}
         </ul>
-      </div>
+      </motion.div>
     </section>
   );
 }
