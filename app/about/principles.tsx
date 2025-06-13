@@ -93,7 +93,7 @@ export default function Principles() {
                 <h4 className="font-semibold text-lg mb-2">User Story: User Needs</h4>
                 <div className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4 space-y-1">
                   <p><span className="text-red-300 font-semibold">Problem:</span> Development detached from real user needs.</p>
-                  <p><span className="text-green-300 font-semibold">Solution:</span> Smallest unit of work, describing value from an end-user perspective ("As a [user role], I want to [action], so that [benefit]").</p>
+                  <p><span className="text-green-300 font-semibold">Solution:</span> Smallest unit of work, describing value from an end-user perspective (&ldquo;As a [user role], I want to [action], so that [benefit]&rdquo;).</p>
                   <p><span className="text-[#05c8fb] font-semibold">Impact:</span> Ensures solutions are user-centric, directly address a specific problem, and lead to higher adoption rates.</p>
                 </div>
               </div>
