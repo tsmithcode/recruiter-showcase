@@ -224,7 +224,7 @@ function computePricing(
   };
 }
 
-export default function CPQConfigurator() {
+export default function CPQAdvanced() {
   const [components, setComponents] = useState<CPQComponent[]>(initialCPQComponents);
   const [isManagerView, setIsManagerView] = useState<boolean>(false);
   const [isModalOpen, setIsModalOpen] = useState<boolean>(false);
@@ -449,9 +449,9 @@ export default function CPQConfigurator() {
         {/* TABLE HEADER */}
         <div className="flex text-gray-300 text-[10px] sm:text-xs uppercase tracking-wide mb-2 border-b border-white/20 pb-1">
           <div className="flex-[2] px-1 sm:px-2">Component</div>
-          <div className="flex-[1] text-center px-1 sm:px-2">Labor $/hr</div>
+          <div className="flex-[1] text-center px-1 sm:px-2">Labor Cost $/hr</div>
           <div className="flex-[1] text-center px-1 sm:px-2">Hours</div>
-          <div className="flex-[1] text-center px-1 sm:px-2">Material $/unit</div>
+          <div className="flex-[1] text-center px-1 sm:px-2">Material Cost $/unit</div>
           {isManagerView && (
             <>
               <div className="flex-[1] text-center px-1 sm:px-2">Unit Price</div>
@@ -511,7 +511,7 @@ export default function CPQConfigurator() {
                               className="cursor-pointer px-2 py-1 hover:bg-gray-700"
                             >
                               <opt.Icon className="inline-block text-[#05c8fb] w-4 h-4 mr-1" />
-                              {opt.label}
+                              {/* {opt.label} */}
                             </Listbox.Option>
                           ))}
                         </Listbox.Options>
