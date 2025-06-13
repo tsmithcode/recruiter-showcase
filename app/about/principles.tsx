@@ -31,7 +31,7 @@ export default function Principles() {
       <section className="mb-12">
         <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
           <h2 className="text-3xl sm:text-4xl font-bold text-white">
-            My <span className="text-[#05c8fb]">Architect's Toolkit</span>
+            My <span className="text-[#05c8fb]">Architect&apos;s Toolkit</span>
           </h2>
           <span className="text-base text-gray-400">Core Principles for Impactful Solutions</span>
         </header>
@@ -156,7 +156,7 @@ export default function Principles() {
             >
               <div>
                 <span className="text-4xl mb-3 block text-[#05c8fb] group-hover:scale-110 transition-transform duration-300">💧</span>
-                <h4 className="font-semibold text-lg mb-2">DRY: Don't Repeat Yourself</h4>
+                <h4 className="font-semibold text-lg mb-2">DRY: Don&apos;t Repeat Yourself</h4>
                 <div className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4 space-y-1">
                   <p><span className="text-red-300 font-semibold">Problem:</span> Redundant code leads to inconsistencies, increased bugs, and hard maintenance.</p>
                   <p><span className="text-green-300 font-semibold">Solution:</span> Centralizing logic and creating single sources of truth through reusable components, functions, or services.</p>
@@ -240,7 +240,7 @@ export default function Principles() {
             >
               <div>
                 <span className="text-4xl mb-3 block text-[#05c8fb] group-hover:scale-110 transition-transform duration-300">✂️</span>
-                <h4 className="font-semibold text-lg mb-2">Occam's Razor (Simplicity)</h4>
+                <h4 className="font-semibold text-lg mb-2">Occam&apos;s Razor (Simplicity)</h4>
                 <div className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4 space-y-1">
                   <p><span className="text-red-300 font-semibold">Problem:</span> Solutions often become unnecessarily complex, increasing risk and cost.</p>
                   <p><span className="text-green-300 font-semibold">Solution:</span> The simplest explanation is usually the best; prioritize straightforward designs and minimal assumptions.</p>

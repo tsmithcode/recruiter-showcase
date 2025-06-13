@@ -98,7 +98,7 @@ export default function SDLC() {
             <div className="absolute inset-0 bg-[#05c8fb]/10 opacity-0 group-hover:opacity-100 transition-opacity duration-300 pointer-events-none rounded-xl"></div>
             <h3 className="text-lg font-semibold mb-2 relative z-10">3. Design & Development</h3>
             <div className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4 relative z-10 space-y-1">
-              <p><span className="text-red-300 font-semibold">Problem:</span> Systems that can't handle growth or security threats.</p>
+              <p><span className="text-red-300 font-semibold">Problem:</span> Systems that can&apos;t handle growth or security threats.</p>
               <p><span className="text-green-300 font-semibold">Solution:</span> I craft high-fidelity UI designs and implement robust, scalable, and secure code.</p>
               <p><span className="text-[#05c8fb] font-semibold">Impact:</span> Leveraging cloud-native platforms (Azure, AWS) and modern frameworks (.NET, Blazor, React), I build production-ready applications engineered for long-term performance and maintainability.</p>
             </div>

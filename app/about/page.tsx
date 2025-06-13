@@ -102,7 +102,7 @@ export default function AboutPage() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
         >
           <p className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
-            Hi, I’m <span className="text-[#05c8fb] font-semibold">Thomas Smith</span>, a results-driven Software Architect specializing in crafting <span className="font-semibold">secure, scalable, and resilient systems</span> that deliver rapid ROI. I'm passionate about designing solutions that blend functionality and elegance, enabling enterprises to move faster, reduce costs, and delight end users.
+            Hi, I’m <span className="text-[#05c8fb] font-semibold">Thomas Smith</span>, a results-driven Software Architect specializing in crafting <span className="font-semibold">secure, scalable, and resilient systems</span> that deliver rapid ROI. I&apos;m passionate about designing solutions that blend functionality and elegance, enabling enterprises to move faster, reduce costs, and delight end users.
           </p>
           <ul className="list-disc list-inside text-gray-300 space-y-2">
             <li>
@@ -169,7 +169,7 @@ export default function AboutPage() {
           SaaS, e-commerce, and data-driven enterprises. I blend <span className="text-[#05c8fb] font-semibold">SOLID architecture principles</span>,
           <span className="text-[#05c8fb] font-semibold"> agile methodologies</span>, and
           <span className="text-[#05c8fb] font-semibold"> AI-powered insights</span> to craft solutions that scale effortlessly,
-          adapt to evolving requirements, and consistently improve operational efficiency. I've successfully led initiatives that *transformed manual, days-long processes into automated, minute-long operations*.
+          adapt to evolving requirements, and consistently improve operational efficiency. I&apos;ve successfully led initiatives that *transformed manual, days-long processes into automated, minute-long operations*.
         </p>
         <p className="text-sm sm:text-base text-gray-300 leading-relaxed">
           I believe in a <span className="text-white font-semibold">work hard, play smart</span> rhythm—delivering with precision during focused sprints while
