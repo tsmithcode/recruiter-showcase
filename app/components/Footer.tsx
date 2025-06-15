@@ -4,7 +4,7 @@ import DevDocLinks from "./DevDocLinks";
 export default function Hero() {
   return (
         <footer className="w-full py-3 text-center text-xs text-gray-400 border-t border-white/10 flex items-center justify-center gap-4 flex-wrap">
-          <p className="text-gray-300 text-base leading-relaxed">
+          <p className="text-gray-300 text-base leading-relaxed container mx-auto">
   This recruiter showcase was crafted using 
   <span className="text-[#05c8fb] font-semibold"> Next.js 15</span>, 
   <span className="text-[#05c8fb] font-semibold"> React 19</span>, and 
@@ -15,7 +15,8 @@ export default function Hero() {
 </p>
           
           <DevDocLinks/>
-          <span>© {new Date().getFullYear()} TSmithCode.ai</span>
+          <div className="flex items-center gap-4 text-gray-300">
+<span>© {new Date().getFullYear()} TSmithCode.ai</span>
           <span className="flex items-center gap-1">
               <FaEnvelope className="text-[#05c8fb]" />
               <a href="mailto:job@tsmithcode.ai" className="hover:underline text-gray-300">job@tsmithcode.ai</a>
@@ -24,6 +25,8 @@ export default function Hero() {
               <FaPhone className="text-[#05c8fb]" />
               <a href="tel:4702281918" className="hover:underline text-gray-300">(470) 228-1918</a>
           </span>
+          </div>
+          
         </footer>
   );
 }
