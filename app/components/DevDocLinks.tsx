@@ -1,5 +1,8 @@
+"use client"; // Keep this at the top for client-side functionality
+
 import Link from "next/link";
-import { 
+import { motion } from "framer-motion"; // Import motion
+import {
   FaReact, FaNodeJs, FaPython, FaGitAlt, FaGithub, FaTerminal, FaDatabase, FaRegLightbulb, FaRobot, FaVial, FaFlask, FaCss3Alt, FaBootstrap, FaWindows, FaCogs,
 } from "react-icons/fa";
 import { SiDotnet, SiBlazor, SiTypescript, SiNextdotjs, SiDjango, SiMongodb, SiVercel, SiOpenai, SiAutodesk, SiAutocad, } from "react-icons/si";
@@ -39,18 +42,46 @@ const docLinks = [
 
 export default function DevDocLinks() {
   return (
-    <div className="m-6 flex flex-wrap gap-6 text-xl text-[#afc2c8] container">
-      {docLinks.map(({ icon, label, href }) => (
-        <span title={label} key={label}>
-          <Link
-            href={href}
-            target="_blank"
-            className="hover:text-white transition"
+    <section className="py-6 px-4 max-w-7xl mx-auto container">
+      {/* Header for the section */}
+      <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+        <motion.h2
+          initial={{ opacity: 0, y: 10 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ delay: 0.2, duration: 0.4 }}
+          className="text-3xl sm:text-4xl font-bold text-white mb-4"
+        >
+          Tech Stack <span className="text-[#05c8fb]">Docs</span>
+        </motion.h2>
+      </header>
+
+      {/* Main container for the links with Framer Motion */}
+      <motion.div
+        className="flex flex-wrap gap-6 text-xl text-[#afc2c8] p-6 rounded-xl bg-white/5 border border-white/10 shadow-lg"
+        initial={{ opacity: 0, y: 50 }}
+        whileInView={{ opacity: 1, y: 0 }}
+        viewport={{ once: true, amount: 0.2 }}
+        transition={{ delay: 0.2, duration: 0.6 }}
+      >
+        {docLinks.map(({ icon, label, href }, idx) => ( // Added idx for staggered item animation
+          <motion.span // Changed span to motion.span for individual item animation
+            title={label}
+            key={label}
+            initial={{ opacity: 0, scale: 0.8 }} // Initial state: invisible, slightly smaller
+            whileInView={{ opacity: 1, scale: 1 }} // Animate to visible, normal size
+            viewport={{ once: true, amount: 0.5 }} // Animate once when 50% of item is in view
+            transition={{ delay: (0.1 * idx) + 0.4, duration: 0.3 }} // Staggered delay for each item
           >
-            {icon}
-          </Link>
-        </span>
-      ))}
-    </div>
+            <Link
+              href={href}
+              target="_blank"
+              className="hover:text-white transition"
+            >
+              {icon}
+            </Link>
+          </motion.span>
+        ))}
+      </motion.div>
+    </section>
   );
 }

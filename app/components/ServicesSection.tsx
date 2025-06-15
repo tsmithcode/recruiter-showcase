@@ -62,23 +62,26 @@ export default function ServicesSection() {
           />
           From $60-$160/hr
         </motion.div>
-       
       </header>
 
       {/* Grid of Service Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {services.map((svc) => (
-          <div
+        {services.map((svc, idx) => ( // Added idx to map for staggered animation
+          <motion.div // Changed div to motion.div
             key={svc.title}
             className="
              bg-white/5 border border-white/10
-              p-6 
-              rounded-xl 
-              text-white 
-              shadow-lg 
-              hover:shadow-xl 
+              p-6
+              rounded-xl
+              text-white
+              shadow-lg
+              hover:shadow-xl
               transition
             "
+            initial={{ opacity: 0, y: 50 }} // Initial state: invisible, slightly below
+            whileInView={{ opacity: 1, y: 0 }} // Animate to visible, original position
+            viewport={{ once: true, amount: 0.3 }} // Animate once when 30% of card is in view
+            transition={{ delay: 0.1 * idx, duration: 0.5 }} // Staggered delay for each card
           >
             <div className="flex-shrink-0 mb-3">
               <svc.Icon className="text-[#05c8fb] text-3xl" />
@@ -89,7 +92,7 @@ export default function ServicesSection() {
                 {svc.description}
               </p>
             </div>
-          </div>
+          </motion.div>
         ))}
       </div>
     </section>

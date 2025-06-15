@@ -4,6 +4,7 @@
 import { useEffect } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import { motion } from "framer-motion"; // Import motion
 import {
   FaCheckCircle,
   FaUsers,
@@ -94,17 +95,21 @@ export default function TeamHighlights() {
 
       {/* Slider Wrapper (overflow-hidden ensures no card bleeds out) */}
        <div ref={sliderRef} className="keen-slider">
-  {highlights.map((item) => (
-    <div
+  {highlights.map((item, idx) => ( // Added idx for staggered animation
+    <motion.div // Changed div to motion.div
       key={item.title}
       className="keen-slider__slide bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition"
+      initial={{ opacity: 0, y: 50 }} // Initial state: invisible, slightly below
+      whileInView={{ opacity: 1, y: 0 }} // Animate to visible, original position
+      viewport={{ once: true, amount: 0.3 }} // Animate once when 30% of card is in view
+      transition={{ delay: 0.1 * idx, duration: 0.5 }} // Staggered delay for each card
     >
       <div className="text-[#05c8fb] text-3xl mb-3">{item.icon}</div>
       <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
       <p className="text-sm text-gray-300 leading-relaxed">
         {item.description}
       </p>
-    </div>
+    </motion.div>
   ))}
 </div>
 
