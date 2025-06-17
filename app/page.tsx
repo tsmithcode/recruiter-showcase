@@ -10,6 +10,7 @@ import Hero from "@/components/Hero";
 // import TargetMarkets from '@/components/TargetMarkets';
 import ServicesSection from "@/components/ServicesSection";
 import CompensationSection from "@/components/CompensationSection";
+// import NavigationCards from "@/components/NavigationCards";
 
 import { motion } from "framer-motion"; // Import motion
 
@@ -29,6 +30,8 @@ export default function Home() {
       <TeamHighlights/>
       <SkillsMatrix/>
       {/* <TargetMarkets /> */}
+      {/* <NavigationCards/> */}
+      
       
       <motion.div // Changed div to motion.div
       className="flex flex-col items-center gap-4 pt-2 pb-6 max-w-2xl px-4 text-center mx-auto" // Added mx-auto to center it

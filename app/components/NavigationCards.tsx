@@ -3,7 +3,7 @@
 
 import Link from "next/link";
 import { motion } from "framer-motion";
-import { FaInfoCircle, FaNewspaper } from "react-icons/fa"; // Chosen icons
+import { FaInfoCircle, FaNewspaper,FaIndustry } from "react-icons/fa"; // Chosen icons
 
 // Variants for the container and individual cards
 const containerVariants = {
@@ -35,7 +35,7 @@ export default function NavigationCards() {
   return (
     <section className="py-6 px-4 max-w-7xl mx-auto container">
       {/* Optional Header - if you want a title for this section */}
-      <header className="mb-6">
+      <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
         <motion.h2
           className="text-3xl sm:text-4xl font-bold text-white text-center"
           initial={{ opacity: 0, y: -10 }}
@@ -60,7 +60,7 @@ export default function NavigationCards() {
             bg-white/5 border border-white/10
             p-6 rounded-xl text-white shadow-lg
             hover:shadow-xl transition
-            md:w-1/2 lg:w-1/3 flex-shrink-0
+            md:w-1/3 lg:w-1/3 flex-shrink-0
             group
           "
           variants={cardItemVariants} // Apply item animation
@@ -88,7 +88,7 @@ export default function NavigationCards() {
             bg-white/5 border border-white/10
             p-6 rounded-xl text-white shadow-lg
             hover:shadow-xl transition
-            md:w-1/2 lg:w-1/3 flex-shrink-0
+            md:w-1/3 lg:w-1/3 flex-shrink-0
             group
           "
           variants={cardItemVariants} // Apply item animation
@@ -97,7 +97,7 @@ export default function NavigationCards() {
             <FaNewspaper className="text-[#05c8fb] text-4xl mb-2 group-hover:scale-110 transition-transform" />
             <h3 className="font-semibold text-xl mb-1">Read Blog</h3>
             <p className="text-sm text-gray-300 leading-relaxed flex-grow">
-              Insights, tutorials, and thoughts on software and engineering.
+              Insights & tutorials on software and engineering.
             </p>
             {/* Optional "button" style within the card - replicating hero's filled button */}
             <span
@@ -107,8 +107,34 @@ export default function NavigationCards() {
               Go to Blog
             </span>
           </Link>
-          {/* "Coming soon" notice below the button */}
-          <p className="text-xs text-gray-500 mt-2">Blog content coming soon!</p>
+        </motion.div>
+
+        {/* Target Market Card */}
+        <motion.div
+          className="
+            flex flex-col items-center justify-center text-center
+            bg-white/5 border border-white/10
+            p-6 rounded-xl text-white shadow-lg
+            hover:shadow-xl transition
+            md:w-1/3 lg:w-1/3 flex-shrink-0
+            group
+          "
+          variants={cardItemVariants} // Apply item animation
+        >
+          <Link href="/targetmarket" className="flex flex-col items-center gap-3 w-full h-full">
+            <FaIndustry className="text-[#05c8fb] text-4xl mb-2 group-hover:scale-110 transition-transform" />
+            <h3 className="font-semibold text-xl mb-1">Target Market</h3>
+            <p className="text-sm text-gray-300 leading-relaxed flex-grow">
+              Target Markets & 1 file demo workflows.
+            </p>
+            {/* Optional "button" style within the card - replicating hero's filled button */}
+            <span
+              className="mt-4 border border-[#05c8fb] rounded-full px-5 py-2.5 text-sm
+                         hover:bg-[#05c8fb]/10 transition block w-fit"
+            >
+              See Markets
+            </span>
+          </Link>
         </motion.div>
       </motion.div>
     </section>

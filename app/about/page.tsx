@@ -138,7 +138,7 @@ export default function AboutPage() {
               flex items-center justify-center
             "
           >
-            <Image
+            {/* <Image
   src="/avatar.png" // Replace with your actual image path later
   alt="Thomas Smith Headshot"
   width={256} // Specify the width of the image
@@ -148,7 +148,7 @@ export default function AboutPage() {
     e.currentTarget.onerror = null; // Prevent infinite loop if fallback also fails
     e.currentTarget.src = "https://placehold.co/256x256/2D3748/A0AEC0?text=Image+Error"; // Fallback for errors
   }}
-/>
+/> */}
           </div>
         </motion.div>
       </div>

@@ -15,10 +15,7 @@ export default function AboutPage() {
           I’m passionate about <span className="text-[#05c8fb] font-semibold">delivering automated software solutions</span> that streamline workflows,
           boost productivity, and drive measurable ROI for enterprises.
         </p>
-       
       </header>
-
-      
     </section>
   );
 }
