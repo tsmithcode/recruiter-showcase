@@ -3,7 +3,7 @@
 import React from "react";
 import { motion } from "framer-motion"; // Import motion for animations
 // import Link from "next/link"; // Replaced with <a> tags for broader compatibility
-import Image from 'next/image'; 
+// import Image from 'next/image'; 
 import SDLC from "./sdlc";
 import Principles from "./principles";
 import Experience from "./experience";
