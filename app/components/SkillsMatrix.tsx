@@ -2,7 +2,6 @@
 
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import { motion } from "framer-motion"; // Import motion
 
 const CURRENT_YEAR = new Date().getFullYear();
 
@@ -90,7 +89,7 @@ function getYears(startYear: number) {
 }
 
 export default function SkillsMatrix() {
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
+   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     loop: false,
     mode: "snap",
     slides: {
@@ -115,48 +114,35 @@ export default function SkillsMatrix() {
             Tools & <span className="text-[#05c8fb]">Experience</span>
           </h2>
           <p className="text-gray-400 text-sm mt-1 flex items-center gap-2">
-            <span>Swipe on mobile or hold mouse click </span>
-            <span className="inline-block px-2 py-0.5 bg-white/10 rounded text-white text-xs">
-              ←
-            </span>
-            <span className="inline-block px-2 py-0.5 bg-white/10 rounded text-white text-xs">
-              →
-            </span>
-          </p>
+      <span>Swipe on mobile or hold mouse click </span>
+      <span className="inline-block px-2 py-0.5 bg-white/10 rounded text-white text-xs">←</span>
+      <span className="inline-block px-2 py-0.5 bg-white/10 rounded text-white text-xs">→</span>
+    </p>
         </div>
         <span className="text-base text-gray-400">{skills.length} SKILLS</span>
       </header>
 
       <div ref={sliderRef} className="keen-slider">
-        {skills.map((group, idx) => ( // Added idx for card animation stagger
-          <motion.div // Changed div to motion.div
+        {skills.map((group) => (
+          <div
             key={group.category}
             className="keen-slider__slide bg-white/5 border border-white/10 p-6 rounded-xl shadow-md hover:shadow-lg transition"
-            initial={{ opacity: 0, y: 50 }} // Initial state for card
-            whileInView={{ opacity: 1, y: 0 }} // Animate card to visible
-            viewport={{ once: true, amount: 0.2 }} // Animate once when 20% of card is in view
-            transition={{ delay: 0.1 * idx, duration: 0.5 }} // Staggered delay for each card
           >
             <h3 className="text-white font-semibold text-lg mb-3">
               {group.category}
             </h3>
             <ul className="text-sm text-gray-300 space-y-2">
-              {group.tools.map((tool, toolIdx) => ( // Added toolIdx for item animation stagger
-                <motion.li // Changed li to motion.li
+              {group.tools.map((tool) => (
+                <li
                   key={tool.name}
                   className="flex justify-between border-b border-white/10 pb-1"
-                  initial={{ opacity: 0, x: -20 }} // Initial state for item
-                  whileInView={{ opacity: 1, x: 0 }} // Animate item to visible
-                  viewport={{ once: true, amount: 0.5 }} // Animate once when 50% of item is in view
-                  // Delay calculated relative to card delay + its own index for a smooth cascading effect
-                  transition={{ delay: (0.1 * idx) + (0.05 * toolIdx) + 0.3, duration: 0.4 }}
                 >
                   <span>{tool.name}</span>
                   <span className="text-[#05c8fb]">{getYears(tool.startYear)}</span>
-                </motion.li>
+                </li>
               ))}
             </ul>
-          </motion.div>
+          </div>
         ))}
       </div>
     </section>
