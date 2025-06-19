@@ -59,7 +59,7 @@ const skills = [
     tools: [
       { name: "SQL", startYear: 2018 },
       { name: "SSMS", startYear: 2018 },
-      { name: "MongoDB", startYear: 2022 },
+      { name: "MongoDB", startYear: 2019 },
       { name: "REST API", startYear: 2019 },
       { name: "ETL Pipelines", startYear: 2021 },
     ],
