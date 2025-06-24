@@ -3,9 +3,12 @@
 import Link from "next/link";
 import { motion } from "framer-motion"; // Import motion
 import {
-  FaReact, FaNodeJs, FaPython, FaGitAlt, FaGithub, FaTerminal, FaDatabase, FaRegLightbulb, FaRobot, FaVial, FaFlask, FaCss3Alt, FaBootstrap, FaWindows, FaCogs,
+  FaReact, FaNodeJs, FaPython, FaGitAlt, FaGithub, FaTerminal, FaDatabase, FaRobot, FaVial, FaFlask, FaCss3Alt, FaBootstrap, FaWindows, FaCogs, FaCloud,
+  FaFileCode, FaTable, FaBuilding, FaCommentDots, FaChartBar// New icons imported
 } from "react-icons/fa";
-import { SiDotnet, SiBlazor, SiTypescript, SiNextdotjs, SiDjango, SiMongodb, SiVercel, SiOpenai, SiAutodesk, SiAutocad, } from "react-icons/si";
+import { SiDotnet, SiBlazor, SiTypescript, SiNextdotjs, SiDjango, SiMongodb, SiVercel, SiOpenai, SiAutodesk, SiAutocad,
+    // New icons imported from Si
+} from "react-icons/si";
 
 const docLinks = [
   { icon: <SiDotnet />, label: ".NET", href: "https://learn.microsoft.com/en-us/dotnet/" },
@@ -21,9 +24,9 @@ const docLinks = [
   { icon: <FaBootstrap />, label: "Bootstrap", href: "https://getbootstrap.com/docs/" },
   { icon: <SiAutodesk />, label: "Inventor API", href: "https://help.autodesk.com/view/INVNTOR/2024/ENU/?guid=UserManualIndex" },
   { icon: <SiAutocad />, label: "AutoCAD", href: "https://help.autodesk.com/view/ACD/2023/ENU/" },
-  { icon: <FaRegLightbulb />, label: "VB.NET", href: "https://learn.microsoft.com/en-us/dotnet/visual-basic/" },
+  { icon: <FaFileCode />, label: "VB.NET", href: "https://learn.microsoft.com/en-us/dotnet/visual-basic/" }, // Replaced FaRegLightbulb
   { icon: <FaWindows />, label: "WinForms", href: "https://learn.microsoft.com/en-us/dotnet/desktop/winforms/" },
-  { icon: <FaRegLightbulb />, label: "SQL", href: "https://learn.microsoft.com/en-us/sql/" },
+  { icon: <FaTable />, label: "SQL", href: "https://learn.microsoft.com/en-us/sql/" }, // Replaced FaRegLightbulb
   { icon: <SiMongodb />, label: "MongoDB", href: "https://www.mongodb.com/docs/" },
   { icon: <FaDatabase />, label: "EF Core", href: "https://learn.microsoft.com/en-us/ef/core/" },
   { icon: <FaCogs />, label: "Dapper", href: "https://github.com/DapperLib/Dapper" },
@@ -31,13 +34,13 @@ const docLinks = [
   { icon: <FaGitAlt />, label: "Git", href: "https://git-scm.com/doc" },
   { icon: <FaTerminal />, label: "CLI", href: "https://learn.microsoft.com/en-us/windows/terminal/" },
   { icon: <SiVercel />, label: "Vercel", href: "https://vercel.com/docs" },
-  { icon: <FaRegLightbulb />, label: "Azure DevOps", href: "https://learn.microsoft.com/en-us/azure/devops/" },
-  { icon: <FaRegLightbulb />, label: "Power BI", href: "https://learn.microsoft.com/en-us/power-bi/" },
-  { icon: <FaRegLightbulb />, label: "ERP Concepts", href: "https://learn.microsoft.com/en-us/dynamics365/" },
+  { icon: <FaCloud />, label: "Azure DevOps", href: "https://learn.microsoft.com/en-us/azure/devops/" }, // Replaced FaRegLightbulb
+  { icon: <FaChartBar />, label: "Power BI", href: "https://learn.microsoft.com/en-us/power-bi/" }, // Replaced FaRegLightbulb
+  { icon: <FaBuilding />, label: "ERP Concepts", href: "https://learn.microsoft.com/en-us/dynamics365/" }, // Replaced FaRegLightbulb
   { icon: <FaVial />, label: "ETL", href: "https://www.ibm.com/cloud/learn/etl" },
   { icon: <FaRobot />, label: "Automation", href: "https://learn.microsoft.com/en-us/power-automate/" },
   { icon: <SiOpenai />, label: "OpenAI", href: "https://platform.openai.com/docs" },
-  { icon: <FaRegLightbulb />, label: "ChatGPT", href: "https://openai.com/chatgpt" },
+  { icon: <FaCommentDots />, label: "ChatGPT", href: "https://openai.com/chatgpt" }, // Replaced FaRegLightbulb
 ];
 
 export default function DevDocLinks() {
