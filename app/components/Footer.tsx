@@ -1,5 +1,4 @@
 import { FaEnvelope, FaPhone } from "react-icons/fa";
-import DevDocLinks from "./DevDocLinks";
 
 export default function Hero() {
   return (
@@ -14,7 +13,6 @@ export default function Hero() {
   <span className="text-[#05c8fb] font-semibold"> developer-first storytelling</span> and recruiter engagement.
 </p>
           
-          <DevDocLinks/>
           <div className="flex items-center gap-4 text-gray-300">
 <span>© {new Date().getFullYear()} TSmithCode.ai</span>
           <span className="flex items-center gap-1">
