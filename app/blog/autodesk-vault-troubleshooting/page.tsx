@@ -1,7 +1,7 @@
 "use client"; // This component will run on the client-side for animations and interactive elements
 
 import React, { useState } from "react";
-import { motion } from "framer-motion";
+import { motion , Variants} from "framer-motion";
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid'; // For expand/collapse icons
 
 export default function AutodeskVaultTroubleshooting() {
@@ -29,10 +29,17 @@ export default function AutodeskVaultTroubleshooting() {
     },
   };
 
-  const textItemVariants = {
-    hidden: { opacity: 0, y: 10 },
-    show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
-  };
+const textItemVariants: Variants = { // Explicitly type as Variants for better type checking
+  hidden: { opacity: 0, y: 20 },
+  show: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: "easeOut", // <--- THIS IS THE CRITICAL CHANGE
+    },
+  },
+};
 
   // Function to copy link to clipboard
   const copyLink = async () => {
