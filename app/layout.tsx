@@ -2,6 +2,7 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import Navbar from "@/components/Navbar";
 import { Analytics } from "@vercel/analytics/next"
+import { SpeedInsights } from "@vercel/speed-insights/next"
 
 import ParticlesBackground from "@/components/ParticlesBackground";
 
@@ -80,6 +81,7 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
     <html lang="en">
       <body className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-[#0b253f] text-white`}>
         <Analytics/>
+        <SpeedInsights/>
         <ParticlesBackground />
         <Navbar />
         {children}
