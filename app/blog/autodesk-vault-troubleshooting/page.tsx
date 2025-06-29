@@ -16,18 +16,19 @@ export default function AutodeskVaultTroubleshooting() {
   };
 
   // Framer Motion variants for staggered content entry
-  const contentVariants = {
-    hidden: { opacity: 0, y: 20 },
-    show: {
-      opacity: 1,
-      y: 0,
-      transition: {
-        duration: 0.6,
-        ease: "easeOut",
-        staggerChildren: 0.1, // Stagger children elements within this container
+  // Framer Motion variants for staggered content entry
+    const contentVariants: Variants = { // Explicitly type as Variants
+      hidden: { opacity: 0, y: 20 },
+      show: {
+        opacity: 1,
+        y: 0,
+        transition: {
+          duration: 0.6,
+          ease: "easeOut", // Make sure this is a valid easing string or array!
+          staggerChildren: 0.1,
+        },
       },
-    },
-  };
+    };
 
 const textItemVariants: Variants = { // Explicitly type as Variants for better type checking
   hidden: { opacity: 0, y: 20 },
