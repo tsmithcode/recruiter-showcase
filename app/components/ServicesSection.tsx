@@ -1,5 +1,5 @@
 "use client";
-import { motion } from "framer-motion";
+import { motion, Variant } from "framer-motion";
 import { FC } from "react";
 import {
   FaLaptopCode,
@@ -41,47 +41,72 @@ const services: Service[] = [
   },
 ];
 
+// --- Animation Variants ---
+
+// Parent container variant to orchestrate children animations
+const containerVariants: Variant  = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.1, // Stagger animation of children by 0.1s
+    },
+  },
+};
+
+// Child item variant for a fade-in-up effect
+const itemVariants: Variant  = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
 export default function ServicesSection() {
   return (
-    <section className="py-6 px-4 max-w-7xl mx-auto">
+    <motion.section
+      className="py-6 px-4 max-w-7xl mx-auto"
+      // ✅ Use variants to control animation flow
+      variants={containerVariants}
+      initial="hidden"
+      // ✅ Trigger animation when section is in view
+      whileInView="visible"
+      // ✅ Ensure animation repeats every time
+      viewport={{ once: false, amount: 0.2 }}
+    >
       {/* Header */}
-      <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+      <motion.header
+        className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4"
+        // ✅ Animate header as a child item
+        variants={itemVariants}
+      >
         <h2 className="text-3xl sm:text-4xl font-bold text-white">
           <span className="text-[#05c8fb]">Services</span>
         </h2>
-         <motion.div
-          className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#05c8fb] text-[#05c8fb] text-sm"
-          initial={{ opacity: 0, y: -10 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ delay: 0.3, duration: 0.4 }}
-        >
+        <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#05c8fb] text-[#05c8fb] text-sm">
+          {/* Pulsing dot animation is independent and can remain */}
           <motion.span
             className="h-3 w-3 rounded-full bg-[#05c8fb]"
             animate={{ scale: [1, 1.4, 1], opacity: [1, 0.4, 1] }}
             transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
           />
           From $60-$160/hr
-        </motion.div>
-      </header>
+        </div>
+      </motion.header>
 
       {/* Grid of Service Cards */}
       <div className="grid grid-cols-1 md:grid-cols-2 gap-6">
-        {services.map((svc, idx) => ( // Added idx to map for staggered animation
-          <motion.div // Changed div to motion.div
+        {services.map((svc) => (
+          <motion.div
             key={svc.title}
-            className="
-             bg-white/5 border border-white/10
-              p-6
-              rounded-xl
-              text-white
-              shadow-lg
-              hover:shadow-xl
-              transition
-            "
-            initial={{ opacity: 0, y: 50 }} // Initial state: invisible, slightly below
-            whileInView={{ opacity: 1, y: 0 }} // Animate to visible, original position
-            viewport={{ once: true, amount: 0.3 }} // Animate once when 30% of card is in view
-            transition={{ delay: 0.1 * idx, duration: 0.5 }} // Staggered delay for each card
+            className="bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition"
+            // ✅ Animate each card as a child item
+            variants={itemVariants}
           >
             <div className="flex-shrink-0 mb-3">
               <svc.Icon className="text-[#05c8fb] text-3xl" />
@@ -95,6 +120,6 @@ export default function ServicesSection() {
           </motion.div>
         ))}
       </div>
-    </section>
+    </motion.section>
   );
 }

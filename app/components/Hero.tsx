@@ -1,11 +1,11 @@
 "use client";
 
 import { motion, Variant } from "framer-motion";
-import Logo from "./Logo"; // Assuming Logo is a component that either has its own animations or we'll wrap it
+import Logo from "./Logo";
 import Link from "next/link";
-import SocialLinks from "@/components/SocialLinks"; // Assuming SocialLinks is a component that either has its own animations or we'll wrap it
+import SocialLinks from "@/components/SocialLinks";
 
-// Variants for sequential animation
+// --- Animation Variants (no changes needed here) ---
 const sectionVariants: Variant = {
   hidden: { opacity: 0, y: 50 },
   visible: {
@@ -15,8 +15,8 @@ const sectionVariants: Variant = {
       type: "spring",
       stiffness: 70,
       damping: 10,
-      staggerChildren: 0.15, // Delay for children to animate
-      delayChildren: 0.3, // Delay before children start animating
+      staggerChildren: 0.15,
+      delayChildren: 0.3,
     },
   },
 };
@@ -51,8 +51,8 @@ const ctaContainerVariants: Variant = {
   visible: {
     opacity: 1,
     transition: {
-      staggerChildren: 0.1, // Stagger delay for each CTA button
-      delayChildren: 0.1, // Delay before the first CTA button animates
+      staggerChildren: 0.1,
+      delayChildren: 0.1,
     },
   },
 };
@@ -76,14 +76,17 @@ export default function Hero() {
       className="flex flex-col md:flex-row items-center md:items-start gap-6 pb-6 max-w-4xl mx-auto px-4 md:px-0"
       variants={sectionVariants}
       initial="hidden"
-      animate="visible"
+      // ✅ **CHANGE:** Use whileInView to trigger animation on scroll
+      whileInView="visible"
+      // ✅ **CHANGE:** Add viewport settings to re-trigger animation
+      viewport={{ once: false, amount: 0.25 }}
     >
       {/* Left column: Logo */}
       <motion.div
         className="flex flex-col items-center md:items-start md:w-1/2 gap-4"
-        variants={columnVariants} // Apply column animation
+        variants={columnVariants}
       >
-        <Logo /> {/* Assuming Logo component handles its own animation or is static */}
+        <Logo />
       </motion.div>
 
       {/* Right column: Heading, tagline, CTAs */}
@@ -96,12 +99,12 @@ export default function Hero() {
               shadow-lg
               hover:shadow-xl
               transition flex flex-col items-center md:items-start md:w-1/2 gap-4 md:text-left"
-        variants={columnVariants} // Apply column animation
+        variants={columnVariants}
       >
-        <SocialLinks /> {/* Assuming SocialLinks component handles its own animation or is static */}
+        <SocialLinks />
         <motion.p
           className="text-[#05c8fb] text-base sm:text-lg leading-relaxed"
-          variants={textVariants} // Apply text animation
+          variants={textVariants}
         >
           I’m <span className="font-semibold text-[#c8d6d9]">Thomas Smith</span>, a results-driven software architect who designs user-focused systems that streamline operations and generate ROI in weeks — not months.
         </motion.p>
@@ -109,10 +112,9 @@ export default function Hero() {
         {/* CTA row */}
         <motion.div
           className="flex flex-row justify-center md:justify-start gap-3"
-          variants={ctaContainerVariants} // Apply CTA container animation for staggering children
+          variants={ctaContainerVariants}
         >
-          {/* Schedule Call Button */}
-          <motion.div variants={ctaItemVariants}> {/* Wrap Link content in motion.div */}
+          <motion.div variants={ctaItemVariants}>
             <Link
               href="https://calendly.com/tsmithcode"
               target="_blank"
@@ -121,9 +123,7 @@ export default function Hero() {
               Schedule Call
             </Link>
           </motion.div>
-
-          {/* Resume Button */}
-          <motion.div variants={ctaItemVariants}> {/* Wrap Link content in motion.div */}
+          <motion.div variants={ctaItemVariants}>
             <Link
               href="https://github.com/tsmithcode/jobs/blob/main/THOMAS%20SMITH%202026%20Resume.pdf"
               target="_blank"

@@ -1,9 +1,9 @@
 // components/TeamHighlights.tsx
 "use client";
 
-import { useEffect } from "react";
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
+import { motion, Variant } from "framer-motion"; // ✅ Import motion
 import {
   FaCheckCircle,
   FaUsers,
@@ -45,8 +45,30 @@ const highlights = [
   },
 ];
 
+// --- Animation Variants ---
+const containerVariants: Variant = {
+  hidden: { opacity: 0 },
+  visible: {
+    opacity: 1,
+    transition: {
+      staggerChildren: 0.2, // Stagger the header and slider
+    },
+  },
+};
+
+const itemVariants: Variant = {
+  hidden: { opacity: 0, y: 20 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.5,
+      ease: "easeOut",
+    },
+  },
+};
+
 export default function TeamHighlights() {
-  // Initialize Keen Slider with desired breakpoints
   const [sliderRef] = useKeenSlider<HTMLDivElement>({
     loop: false,
     mode: "snap",
@@ -59,20 +81,27 @@ export default function TeamHighlights() {
         slides: { perView: 2.25, spacing: 20 },
       },
       "(min-width: 900px)": {
-        slides: { perView:4.25, spacing: 24 },
+        slides: { perView: 4.25, spacing: 24 },
       },
     },
   });
 
-  // No extra logic required on mount; Keen Slider attaches automatically
-  useEffect(() => {
-    // sliderRef is already hooked up
-  }, []);
-
   return (
-    <section className="py-6 px-4 max-w-7xl mx-auto container">
+    <motion.section
+      className="py-6 px-4 max-w-7xl mx-auto container"
+      // ✅ Set up the main animation controller
+      variants={containerVariants}
+      initial="hidden"
+      whileInView="visible"
+      // ✅ Make animation replayable
+      viewport={{ once: false, amount: 0.1 }}
+    >
       {/* Header */}
-      <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+      <motion.header
+        className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4"
+        // ✅ Animate the header as a child
+        variants={itemVariants}
+      >
         <div>
           <h2 className="text-3xl sm:text-4xl font-bold text-white">
             Team & <span className="text-[#05c8fb]">Leadership</span>
@@ -90,24 +119,29 @@ export default function TeamHighlights() {
         <span className="text-base text-gray-400">
           {highlights.length} HIGHLIGHTS
         </span>
-      </header>
+      </motion.header>
 
-      {/* Slider Wrapper (overflow-hidden ensures no card bleeds out) */}
-       <div ref={sliderRef} className="keen-slider">
-  {highlights.map((item) => (
-    <div
-      key={item.title}
-      className="keen-slider__slide bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition"
-    >
-      <div className="text-[#05c8fb] text-3xl mb-3">{item.icon}</div>
-      <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
-      <p className="text-sm text-gray-300 leading-relaxed">
-        {item.description}
-      </p>
-    </div>
-  ))}
-</div>
-
-    </section>
+      {/* Slider Wrapper */}
+      <motion.div
+        ref={sliderRef}
+        className="keen-slider"
+        // ✅ Animate the entire slider as a child
+        variants={itemVariants}
+      >
+        {highlights.map((item) => (
+          // NOTE: Individual slides are NOT motion components to avoid conflicts with Keen Slider
+          <div
+            key={item.title}
+            className="keen-slider__slide bg-white/5 border border-white/10 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition"
+          >
+            <div className="text-[#05c8fb] text-3xl mb-3">{item.icon}</div>
+            <h3 className="font-semibold text-lg mb-2">{item.title}</h3>
+            <p className="text-sm text-gray-300 leading-relaxed">
+              {item.description}
+            </p>
+          </div>
+        ))}
+      </motion.div>
+    </motion.section>
   );
 }
