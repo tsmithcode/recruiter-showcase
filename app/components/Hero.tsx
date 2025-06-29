@@ -1,12 +1,12 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Variant } from "framer-motion";
 import Logo from "./Logo"; // Assuming Logo is a component that either has its own animations or we'll wrap it
 import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks"; // Assuming SocialLinks is a component that either has its own animations or we'll wrap it
 
 // Variants for sequential animation
-const sectionVariants = {
+const sectionVariants: Variant = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
@@ -21,7 +21,7 @@ const sectionVariants = {
   },
 };
 
-const columnVariants = {
+const columnVariants: Variant = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
@@ -34,7 +34,7 @@ const columnVariants = {
   },
 };
 
-const textVariants = {
+const textVariants: Variant = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -46,7 +46,7 @@ const textVariants = {
   },
 };
 
-const ctaContainerVariants = {
+const ctaContainerVariants: Variant = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -57,7 +57,7 @@ const ctaContainerVariants = {
   },
 };
 
-const ctaItemVariants = {
+const ctaItemVariants: Variant = {
   hidden: { opacity: 0, x: -30 },
   visible: {
     opacity: 1,
