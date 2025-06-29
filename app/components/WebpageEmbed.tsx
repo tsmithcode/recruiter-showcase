@@ -1,14 +1,14 @@
 "use client"; // This component needs to run on the client-side
 
 import React from 'react';
-import { motion } from 'framer-motion';
+import { motion, Variant } from 'framer-motion';
 
 // Component to embed Web Page Embed in an iframe
 export default function WebPageEmbed() {
   const githubRepoUrl = "https://github.com/tsmithcode/recruiter-showcase/commits/main/";
 
   // Framer Motion variants for section entry
-  const sectionVariants = {
+  const sectionVariants: Variant = {
     hidden: { opacity: 0, y: 20 },
     show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: "easeOut" } },
   };
