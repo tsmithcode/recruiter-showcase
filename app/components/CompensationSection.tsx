@@ -1,11 +1,11 @@
 "use client";
 
-import { motion, Variant } from "framer-motion";
+import { motion } from "framer-motion";
 
 // --- Animation Variants ---
 
 // Parent container to orchestrate and stagger children animations
-const containerVariants: Variant = {
+const containerVariants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -16,7 +16,7 @@ const containerVariants: Variant = {
 };
 
 // Child variant for the header and the main card
-const itemVariants: Variant = {
+const itemVariants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
