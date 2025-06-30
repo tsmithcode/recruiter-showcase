@@ -1,6 +1,6 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { motion, Easing } from "framer-motion"; // Import Easing type
 
 // --- Animation Variants ---
 
@@ -17,13 +17,14 @@ const containerVariants = {
 
 // Child variant for the header and the main card
 const itemVariants = {
-  hidden: { opacity: 0, y: 20 },
+  // hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      // Assert the string as Easing type
+      ease: "easeOut" as Easing, // <-- Change here
     },
   },
 };
@@ -45,8 +46,8 @@ export default function CompensationSection() {
           variants={itemVariants}
           className="text-3xl sm:text-4xl font-bold text-white mb-4"
         >
-          Compensation Philosophy{" "}
-          <span className="text-[#05c8fb]">& Lifestyle Fit</span>
+          Compensation Philosophy
+          <span className="text-[#05c8fb]"> & Lifestyle Fit</span>
         </motion.h2>
       </header>
 

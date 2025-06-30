@@ -2,11 +2,11 @@
 "use client";
 
 import Link from "next/link";
-import { motion, Variant } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // <-- Changed 'Variant' to 'Variants'
 import { FaInfoCircle, FaNewspaper,FaIndustry } from "react-icons/fa"; // Chosen icons
 
 // Variants for the container and individual cards
-const containerVariants: Variant = {
+const containerVariants: Variants = { // <-- Changed type to Variants
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
@@ -18,7 +18,7 @@ const containerVariants: Variant = {
   },
 };
 
-const cardItemVariants: Variant = {
+const cardItemVariants: Variants = { // <-- Changed type to Variants
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,

@@ -1,12 +1,12 @@
 "use client";
 
-import { motion, Variant } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // Changed Variant to Variants
 import Logo from "./Logo";
 import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks";
 
-// --- Animation Variants (no changes needed here) ---
-const sectionVariants: Variant = {
+// --- Animation Variants ---
+const sectionVariants: Variants = { // Changed to Variants
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
@@ -21,7 +21,7 @@ const sectionVariants: Variant = {
   },
 };
 
-const columnVariants: Variant = {
+const columnVariants: Variants = { // Changed to Variants
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
@@ -34,19 +34,19 @@ const columnVariants: Variant = {
   },
 };
 
-const textVariants: Variant = {
+const textVariants: Variants = { // Changed to Variants
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      ease: "easeOut", // Assuming "easeOut" is correctly handled, otherwise use CubicBezier as discussed previously
     },
   },
 };
 
-const ctaContainerVariants: Variant = {
+const ctaContainerVariants: Variants = { // Changed to Variants
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -57,7 +57,7 @@ const ctaContainerVariants: Variant = {
   },
 };
 
-const ctaItemVariants: Variant = {
+const ctaItemVariants: Variants = { // Changed to Variants
   hidden: { opacity: 0, x: -30 },
   visible: {
     opacity: 1,

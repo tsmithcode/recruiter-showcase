@@ -3,7 +3,7 @@
 
 import { useKeenSlider } from "keen-slider/react";
 import "keen-slider/keen-slider.min.css";
-import { motion, Variant } from "framer-motion"; // ✅ Import motion
+import { motion, Variants } from "framer-motion"; // <-- Changed 'Variant' to 'Variants'
 import {
   FaCheckCircle,
   FaUsers,
@@ -46,7 +46,7 @@ const highlights = [
 ];
 
 // --- Animation Variants ---
-const containerVariants: Variant = {
+const containerVariants: Variants = { // <-- Changed type to Variants
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -56,14 +56,14 @@ const containerVariants: Variant = {
   },
 };
 
-const itemVariants: Variant = {
+const itemVariants: Variants = { // <-- Changed type to Variants
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      ease: "easeOut", // Assuming "easeOut" is correctly handled, if not, consider the cubic bezier array from previous fixes.
     },
   },
 };

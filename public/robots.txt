@@ -1,4 +1,9 @@
+# *
 User-agent: *
 Allow: /
 
-Sitemap: https://tsmithcode.ai/sitemap.xml
+# Host
+Host: https://www.tsmithcode.ai
+
+# Sitemaps
+Sitemap: https://www.tsmithcode.ai/sitemap.xml

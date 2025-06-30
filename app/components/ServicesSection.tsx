@@ -1,5 +1,5 @@
 "use client";
-import { motion, Variant } from "framer-motion";
+import { motion, Variants } from "framer-motion"; // Removed CubicBezier from import
 import { FC } from "react";
 import {
   FaLaptopCode,
@@ -44,7 +44,7 @@ const services: Service[] = [
 // --- Animation Variants ---
 
 // Parent container variant to orchestrate children animations
-const containerVariants: Variant  = {
+const containerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -55,14 +55,16 @@ const containerVariants: Variant  = {
 };
 
 // Child item variant for a fade-in-up effect
-const itemVariants: Variant  = {
+const itemVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      // Using cubic-bezier array for 'easeOut'.
+      // TypeScript will now correctly infer this as compatible with Easing.
+      ease: [0, 0, 0.2, 1], // Removed 'as CubicBezier'
     },
   },
 };

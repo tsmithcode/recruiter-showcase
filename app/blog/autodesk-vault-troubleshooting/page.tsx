@@ -3,6 +3,8 @@
 import React, { useState } from "react";
 import { motion , Variants} from "framer-motion";
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid'; // For expand/collapse icons
+import Image from 'next/image';
+
 
 export default function AutodeskVaultTroubleshooting() {
   // Define blog post metadata
@@ -158,15 +160,17 @@ const textItemVariants: Variants = { // Explicitly type as Variants for better t
         {/* Featured Image */}
         {post.image && (
           <motion.div variants={textItemVariants} className="w-full mb-8 rounded-lg overflow-hidden">
-            <img
-              src={post.image}
-              alt={post.title}
-              className="w-full h-full object-cover group-hover:scale-105 transition-transform duration-300" // Tailwind classes for object-fit and size
-              onError={(e: React.SyntheticEvent<HTMLImageElement, Event>) => {
-                e.currentTarget.onerror = null; // Prevent infinite loop
-                e.currentTarget.src = `https://placehold.co/800x400/2D3748/A0AEC0?text=Featured+Image`; // Fallback placeholder
-              }}
-            />
+            <Image
+  src={post.image}
+  alt={post.title}
+  layout="fill" // Or "responsive", "intrinsic", "fixed" depending on your needs
+  objectFit="cover"
+  className="group-hover:scale-105 transition-transform duration-300" // Tailwind classes for hover effect
+  onError={(e) => { // Removed React.SyntheticEvent type for brevity, but you can keep it
+    e.currentTarget.onerror = null;
+    e.currentTarget.src = `https://placehold.co/800x400/2D3748/A0AEC0?text=Featured+Image`;
+  }}
+/>
           </motion.div>
         )}
 
@@ -202,13 +206,36 @@ const textItemVariants: Variants = { // Explicitly type as Variants for better t
 
           <motion.h3 variants={textItemVariants} className="text-xl font-semibold text-white mb-3">Visualizing the Solution</motion.h3>
           <motion.div variants={textItemVariants} className="mb-6 rounded-lg overflow-hidden border border-white/10 shadow-md">
-            <img src="/images/blog/column-configurator-solution.png" alt="Fry Reglet Column Cover Configurator UI" className="w-full h-auto object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "https://placehold.co/800x450/2D3748/A0AEC0?text=Configurator+UI" }} />
-            <p className="text-xs text-gray-500 text-center p-2">_Screenshot: Custom Web-based Column Cover Configurator User Interface_</p>
-          </motion.div>
-          <motion.div variants={textItemVariants} className="mb-6 rounded-lg overflow-hidden border border-white/10 shadow-md">
-            <img src="/images/blog/source-code-structure.png" alt="D3ColumnCoverConfigurator Source Code Structure" className="w-full h-auto object-cover" onError={(e) => { e.currentTarget.onerror = null; e.currentTarget.src = "https://placehold.co/800x450/2D3748/A0AEC0?text=Source+Code+Structure" }} />
-            <p className="text-xs text-gray-500 text-center p-2">_Screenshot: Project Structure of the D3 Column Cover Configurator Solution_</p>
-          </motion.div>
+  <Image
+    src="/images/blog/column-configurator-solution.png"
+    alt="Fry Reglet Column Cover Configurator UI"
+    width={800} // Provide the intrinsic width of the image
+    height={450} // Provide the intrinsic height of the image
+    layout="responsive" // Or "intrinsic" if you prefer
+    objectFit="cover" // Equivalent to your Tailwind class
+    onError={(e) => {
+      e.currentTarget.onerror = null;
+      e.currentTarget.src = "https://placehold.co/800x450/2D3748/A0AEC0?text=Configurator+UI";
+    }}
+  />
+  <p className="text-xs text-gray-500 text-center p-2">_Screenshot: Custom Web-based Column Cover Configurator User Interface_</p>
+</motion.div>
+
+<motion.div variants={textItemVariants} className="mb-6 rounded-lg overflow-hidden border border-white/10 shadow-md">
+  <Image
+    src="/images/blog/source-code-structure.png"
+    alt="D3ColumnCoverConfigurator Source Code Structure"
+    width={800} // Provide the intrinsic width of the image
+    height={450} // Provide the intrinsic height of the image
+    layout="responsive" // Or "intrinsic"
+    objectFit="cover" // Equivalent to your Tailwind class
+    onError={(e) => {
+      e.currentTarget.onerror = null;
+      e.currentTarget.src = "https://placehold.co/800x450/2D3748/A0AEC0?text=Source+Code+Structure";
+    }}
+  />
+  <p className="text-xs text-gray-500 text-center p-2">_Screenshot: Project Structure of the D3 Column Cover Configurator Solution_</p>
+</motion.div>
 
           <motion.h3 variants={textItemVariants} className="text-xl font-semibold text-white mb-3">Job Processor Code Snippet</motion.h3>
           <motion.p variants={textItemVariants} className="text-sm sm:text-base text-gray-300 leading-relaxed mb-4">
