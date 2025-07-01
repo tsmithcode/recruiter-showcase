@@ -1,12 +1,12 @@
 "use client";
 
-import { motion, Variants } from "framer-motion"; // Changed Variant to Variants
+import { motion, Variants } from "framer-motion";
 import Logo from "./Logo";
 import Link from "next/link";
 import SocialLinks from "@/components/SocialLinks";
 
-// --- Animation Variants ---
-const sectionVariants: Variants = { // Changed to Variants
+// --- Animation Variants (no changes here) ---
+const sectionVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
@@ -21,7 +21,7 @@ const sectionVariants: Variants = { // Changed to Variants
   },
 };
 
-const columnVariants: Variants = { // Changed to Variants
+const columnVariants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
@@ -34,19 +34,19 @@ const columnVariants: Variants = { // Changed to Variants
   },
 };
 
-const textVariants: Variants = { // Changed to Variants
+const textVariants: Variants = {
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut", // Assuming "easeOut" is correctly handled, otherwise use CubicBezier as discussed previously
+      ease: "easeOut",
     },
   },
 };
 
-const ctaContainerVariants: Variants = { // Changed to Variants
+const ctaContainerVariants: Variants = {
   hidden: { opacity: 0 },
   visible: {
     opacity: 1,
@@ -57,7 +57,7 @@ const ctaContainerVariants: Variants = { // Changed to Variants
   },
 };
 
-const ctaItemVariants: Variants = { // Changed to Variants
+const ctaItemVariants: Variants = {
   hidden: { opacity: 0, x: -30 },
   visible: {
     opacity: 1,
@@ -76,35 +76,34 @@ export default function Hero() {
       className="flex flex-col md:flex-row items-center md:items-start gap-6 pb-6 max-w-4xl mx-auto px-4 md:px-0"
       variants={sectionVariants}
       initial="hidden"
-      // ✅ **CHANGE:** Use whileInView to trigger animation on scroll
       whileInView="visible"
-      // ✅ **CHANGE:** Add viewport settings to re-trigger animation
       viewport={{ once: false, amount: 0.25 }}
+      // ✅ FIX: Prevents animation flash on completion
+      style={{ willChange: "transform,opacity" }}
     >
       {/* Left column: Logo */}
       <motion.div
         className="flex flex-col items-center md:items-start md:w-1/2 gap-4"
         variants={columnVariants}
+        // ✅ FIX: Prevents animation flash on completion
+        style={{ willChange: "transform,opacity" }}
       >
         <Logo />
       </motion.div>
 
       {/* Right column: Heading, tagline, CTAs */}
       <motion.div
-        className="bg-white/5 border border-white/10
-              mt-6
-              p-6
-              rounded-xl
-              text-white
-              shadow-lg
-              hover:shadow-xl
-              transition flex flex-col items-center md:items-start md:w-1/2 gap-4 md:text-left"
+        className="bg-white/5 border border-white/10 mt-6 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition flex flex-col items-center md:items-start md:w-1/2 gap-4 md:text-left"
         variants={columnVariants}
+        // ✅ FIX: Prevents animation flash on completion
+        style={{ willChange: "transform,opacity" }}
       >
         <SocialLinks />
         <motion.p
           className="text-[#05c8fb] text-base sm:text-lg leading-relaxed"
           variants={textVariants}
+          // ✅ FIX: Prevents animation flash on completion
+          style={{ willChange: "transform,opacity" }}
         >
           I’m <span className="font-semibold text-[#c8d6d9]">Thomas Smith</span>, a results-driven software architect who designs user-focused systems that streamline operations and generate ROI in weeks — not months.
         </motion.p>
@@ -114,7 +113,12 @@ export default function Hero() {
           className="flex flex-row justify-center md:justify-start gap-3"
           variants={ctaContainerVariants}
         >
-          <motion.div variants={ctaItemVariants}>
+          {/* Schedule Call Button */}
+          <motion.div 
+            variants={ctaItemVariants} 
+            // ✅ FIX: Prevents animation flash on completion
+            style={{ willChange: "transform,opacity" }}
+          >
             <Link
               href="https://calendly.com/tsmithcode"
               target="_blank"
@@ -123,7 +127,13 @@ export default function Hero() {
               Schedule Call
             </Link>
           </motion.div>
-          <motion.div variants={ctaItemVariants}>
+
+          {/* Resume Button */}
+          <motion.div 
+            variants={ctaItemVariants} 
+            // ✅ FIX: Prevents animation flash on completion
+            style={{ willChange: "transform,opacity" }}
+          >
             <Link
               href="https://github.com/tsmithcode/jobs/blob/main/THOMAS%20SMITH%202026%20Resume.pdf"
               target="_blank"
