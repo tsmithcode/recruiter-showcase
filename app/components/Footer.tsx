@@ -19,10 +19,6 @@ export default function Hero() {
               <FaEnvelope className="text-[#05c8fb]" />
               <a href="mailto:job@tsmithcode.ai" className="hover:underline text-gray-300">job@tsmithcode.ai</a>
           </span>
-          <span className="flex items-center gap-1">
-              <FaPhone className="text-[#05c8fb]" />
-              <a href="tel:4702281918" className="hover:underline text-gray-300">(470) 228-1918</a>
-          </span>
           </div>
           
         </footer>
