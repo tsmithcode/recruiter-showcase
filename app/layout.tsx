@@ -55,7 +55,7 @@ export const metadata = {
     siteName: "TSmithCode.ai",
     images: [
       {
-        url: "/tsmithcode-dark.png", // Ensure it's publicly accessible
+        url: "/images/tsmithcode-dark.png", // Ensure it's publicly accessible
         width: 1200,
         height: 630,
         alt: "TSmithCode.ai",

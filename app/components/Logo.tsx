@@ -40,7 +40,7 @@ const BRAND_COLORS = ["#0b253f", "#05c8fb", "#d9d9d9", "#98cedd"];
       className="inline-block rounded-full"
     >
       <Image
-        src="/tsmithcode.png"
+        src="/images/tsmithcode.png"
         alt="TSmithCode.ai logo"
         width={256}
         height={256}

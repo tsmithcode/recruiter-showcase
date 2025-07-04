@@ -13,7 +13,7 @@ export default function Navbar() {
         <Link href="/" className="flex items-center gap-3">
          <div className="w-20 h-20 rounded-full bg-gradient-to-br from-[#0b253f] via-[#38484c] to-[#Ob253ffb] flex items-center justify-center">
   <Image
-    src="/avatar.png"         /* Replace with your own avatar path */
+    src="/images/avatar.png"         /* Replace with your own avatar path */
     alt="Thomas Smith"
     width={80}
     height={80}
