@@ -18,7 +18,6 @@ export default function AutodeskVaultTroubleshooting() {
   };
 
   // Framer Motion variants for staggered content entry
-  // Framer Motion variants for staggered content entry
     const contentVariants: Variants = { // Explicitly type as Variants
       hidden: { opacity: 0, y: 20 },
       show: {
@@ -160,17 +159,20 @@ const textItemVariants: Variants = { // Explicitly type as Variants for better t
         {/* Featured Image */}
         {post.image && (
           <motion.div variants={textItemVariants} className="w-full mb-8 rounded-lg overflow-hidden">
-            <Image
-  src={post.image}
-  alt={post.title}
-  layout="fill" // Or "responsive", "intrinsic", "fixed" depending on your needs
-  objectFit="cover"
-  className="group-hover:scale-105 transition-transform duration-300" // Tailwind classes for hover effect
-  onError={(e) => { // Removed React.SyntheticEvent type for brevity, but you can keep it
-    e.currentTarget.onerror = null;
-    e.currentTarget.src = `https://placehold.co/800x400/2D3748/A0AEC0?text=Featured+Image`;
-  }}
-/>
+            <div className="relative w-full aspect-[16/9] overflow-hidden group">
+      <Image
+        src={post.image}
+        alt={post.title}
+        fill
+        sizes="(max-width: 640px) 100vw, 800px"
+        className="object-cover group-hover:scale-105 transition-transform duration-300"
+        onError={(e) => {
+          e.currentTarget.onerror = null
+          e.currentTarget.src =
+            'https://placehold.co/800x400/2D3748/A0AEC0?text=Featured+Image'
+        }}
+      />
+    </div>
           </motion.div>
         )}
 
