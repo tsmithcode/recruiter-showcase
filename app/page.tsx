@@ -21,14 +21,14 @@ export default function Home() {
       <DemoProjects />
       <ServicesSection />
 
-      
+
       <CompensationSection />
       <TeamHighlights/>
       <LogoPair/>
       <SkillsMatrix/>
       <DevDocLinks/>
 
-<div class="responsive-video">
+<div className="responsive-video">
   <iframe 
     src="https://www.youtube.com/embed/jXnunvPM9Ec?si=O0b_NKiJuPQCXpaF" 
     title="YouTube video player"
