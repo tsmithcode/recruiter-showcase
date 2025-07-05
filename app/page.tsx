@@ -20,11 +20,23 @@ export default function Home() {
       <Hero />
       <DemoProjects />
       <ServicesSection />
+
+      
       <CompensationSection />
       <TeamHighlights/>
+      <LogoPair/>
       <SkillsMatrix/>
       <DevDocLinks/>
-      <LogoPair/>
+
+<div class="responsive-video">
+  <iframe 
+    src="https://www.youtube.com/embed/jXnunvPM9Ec?si=O0b_NKiJuPQCXpaF" 
+    title="YouTube video player"
+    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+    referrerpolicy="strict-origin-when-cross-origin"
+    allowfullscreen>
+  </iframe>
+</div>
 
       <Footer/>
     </main>

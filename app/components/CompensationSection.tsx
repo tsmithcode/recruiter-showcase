@@ -1,6 +1,8 @@
 "use client";
 
 import { motion, Easing } from "framer-motion"; // Import Easing type
+import Atlanta from "./Atlanta";
+
 
 // --- Animation Variants ---
 
@@ -32,7 +34,7 @@ const itemVariants = {
 export default function CompensationSection() {
   return (
     <motion.section
-      className="py-6 px-4 max-w-7xl mx-auto container"
+      className="flex flex-col items-center md:items-start gap-6 pb-6 mx-auto px-4"
       // ✅ Set up the main animation controller
       variants={containerVariants}
       initial="hidden"
@@ -40,6 +42,8 @@ export default function CompensationSection() {
       // ✅ Make animation replayable. Trigger when 10% is visible.
       viewport={{ once: false, amount: 0.1 }}
     >
+<Atlanta/>
+    {/* flex flex-col items-center md:items-start md:w-1/2 gap-4 */}
       <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
         <motion.h2
           // ✅ Animate the header as a child of the section

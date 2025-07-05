@@ -1,7 +1,7 @@
 import { motion } from "framer-motion";
 import Image from "next/image";
 
-export default function LogoWithHoverGlow() {
+export default function Atlanta() {
 // const BRAND_COLORS = ["#0b253f", "#05c8fb", "#d9d9d9", "#98cedd"];
 
   return (
@@ -19,13 +19,13 @@ export default function LogoWithHoverGlow() {
       className="rounded-full"
     >
       <Image
-        src="/images/tsmithcode-tech-vision-atlanta.png"
+        src="/images/tsmithcode-atlanta.png"
         alt="TSmithCode.ai tech-vision-atlanta poster"
         sizes="(max-width: 640px) 800px"
         className="object-cover group-hover:scale-105 transition-transform duration-300"
         priority
-        width={256}
-        height={256}
+        width={400}
+        height={400}
       />
     </motion.div>
     

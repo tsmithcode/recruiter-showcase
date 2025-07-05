@@ -6,7 +6,7 @@ export default function SocialLinks() {
     <div className="flex py-1 gap-6 text-[#afc2c8] text-2xl">
       <span title="YouTube Channel">
         <Link
-          href="https://www.youtube.com/@tsmithcad"
+          href="https://www.youtube.com/watch?v=aHmYna-aanw&list=PLTgX4AbuosUVuiciOU-sHEua6VC_Gtq8h&index=23"
           target="_blank"
           className="hover:opacity-80 transition"
         >
@@ -16,7 +16,7 @@ export default function SocialLinks() {
 
       <span title="GitHub Profile">
         <Link
-          href="https://github.com/tsmithcode/recruiter-showcase"
+          href="https://github.com/tsmithcode/recruiter-showcase/commits/main/"
           target="_blank"
           className="hover:opacity-80 transition"
         >

@@ -11,7 +11,7 @@ export default function LogoPair() {
       transition={{ delay: 0.1, duration: 0.5 }}
     >
       <div className="flex flex-row items-center justify-center gap-4">
-        <div className="relative w-32 h-32 sm:w-64 sm:h-64 overflow-hidden">
+        <div className="relative w-64 h-64 sm:w-64 sm:h-64 overflow-hidden">
           <Image
             src="/images/tsmithcode-logo.png"
             alt="TSmithCode.ai logo"
@@ -20,20 +20,13 @@ export default function LogoPair() {
             priority
           />
         </div>
-        <div className="relative w-32 h-32 sm:w-64 sm:h-64 overflow-hidden">
-          <Image
-            src="/images/tsmithcode-atlanta.png"
-            alt="TSmithCode.ai Atlanta logo"
-            fill
-            className="object-contain select-none drop-shadow-[0_4px_6px_rgba(0,0,0,0.4)]"
-            priority
-          />
-        </div>
       </div>
 
       <p className="mt-2 text-center text-sm text-gray-600">
-        TSmithCode.ai primary and Atlanta support logos
+        tsmithcode.ai support logo
       </p>
+
+      
     </motion.div>
   )
 }

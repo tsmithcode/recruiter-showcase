@@ -73,7 +73,7 @@ export default function DemoProjects() {
       <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
   <div>
     <h2 className="text-3xl sm:text-4xl font-bold text-white">
-      Completed <span className="text-[#05c8fb]">Projects</span>
+     Projects
     </h2>
 
     <p className="text-gray-400 text-sm mt-1 flex items-center gap-2">
