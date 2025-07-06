@@ -42,7 +42,7 @@ export default function CompensationSection() {
       viewport={{ once: false, amount: 0.1 }}
     >
     {/* flex flex-col items-center md:items-start md:w-1/2 gap-4 */}
-      <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
+      <header className="flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
         <motion.h2
           // ✅ Animate the header as a child of the section
           variants={itemVariants}
