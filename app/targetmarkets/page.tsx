@@ -6,7 +6,7 @@ import { targetMarkets, IndustrySection, DemoItem } from '../lib/targetMarkets';
 
 export default function TargetMarkets() {
   return (
-    <section className="py-6 px-64max-w-7xl mx-auto">
+    <section className="py-6 px-6 max-w-7xl mx-auto">
       <h2 className="text-3xl sm:text-4xl font-bold text-white text-center mb-10">
         Target Markets
       </h2>
