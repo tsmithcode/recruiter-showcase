@@ -8,6 +8,7 @@ import ServicesSection from "@/components/ServicesSection";
 import CompensationSection from "@/components/CompensationSection";
 import DevDocLinks from "@/components/DevDocLinks";
 import LogoPair from "@/components/LogoPair";
+import Atlanta from "@/components/Atlanta";
 
 // import WebPageEmbed from "@/components/WebpageEmbed"; // Import the GitHub webpage component
 
@@ -19,12 +20,11 @@ export default function Home() {
     <main className="flex flex-col items-center min-h-screen">
       <Hero />
       <DemoProjects />
+      <LogoPair/>
       <ServicesSection />
-
-
+      <Atlanta/>
       <CompensationSection />
       <TeamHighlights/>
-      <LogoPair/>
       <SkillsMatrix/>
       <DevDocLinks/>
 

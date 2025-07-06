@@ -1,7 +1,6 @@
 "use client";
 
 import { motion, Easing } from "framer-motion"; // Import Easing type
-import Atlanta from "./Atlanta";
 
 
 // --- Animation Variants ---
@@ -42,7 +41,6 @@ export default function CompensationSection() {
       // ✅ Make animation replayable. Trigger when 10% is visible.
       viewport={{ once: false, amount: 0.1 }}
     >
-<Atlanta/>
     {/* flex flex-col items-center md:items-start md:w-1/2 gap-4 */}
       <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
         <motion.h2

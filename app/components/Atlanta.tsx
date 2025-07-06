@@ -16,7 +16,7 @@ export default function Atlanta() {
         ease: "easeInOut",      
         repeat: Infinity
       }}
-      className="rounded-full"
+      className="rounded-full mt-6 mb-6"
     >
       <Image
         src="/images/tsmithcode-atlanta.png"
