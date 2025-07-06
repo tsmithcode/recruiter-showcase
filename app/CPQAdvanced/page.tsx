@@ -448,11 +448,13 @@ export default function CPQAdvanced() {
         {/* TABLE HEADER */}
         <div className="flex text-gray-300 text-[10px] sm:text-xs uppercase tracking-wide mb-2 border-b border-white/20 pb-1">
           <div className="flex-[2] px-1 sm:px-2">Component</div>
-          <div className="flex-[1] text-center px-1 sm:px-2">Labor Cost $/hr</div>
-          <div className="flex-[1] text-center px-1 sm:px-2">Hours</div>
-          <div className="flex-[1] text-center px-1 sm:px-2">Material Cost $/unit</div>
+          <div className="flex-[1] text-center px-1 sm:px-2">
+            {isManagerView ? "Labor Cost $/hr" : "Price"}
+          </div>
           {isManagerView && (
             <>
+              <div className="flex-[1] text-center px-1 sm:px-2">Hours</div>
+              <div className="flex-[1] text-center px-1 sm:px-2">Material Cost $/unit</div>
               <div className="flex-[1] text-center px-1 sm:px-2">Unit Price</div>
               <div className="flex-[1] text-center px-1 sm:px-2">Profit $</div>
               <div className="flex-[1] text-center px-1 sm:px-2">Profit %</div>
@@ -549,8 +551,8 @@ export default function CPQAdvanced() {
                 </div>
 
                 {/* HOURS */}
-                <div className="flex-[1] flex justify-center px-1 sm:px-2">
-                  {isManagerView ? (
+                {isManagerView && (
+                  <div className="flex-[1] flex justify-center px-1 sm:px-2">
                     <input
                       type="number"
                       min={0}
@@ -565,14 +567,12 @@ export default function CPQAdvanced() {
                       }
                       className="w-12 sm:w-16 bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-[2px] text-[10px] sm:text-xs focus:outline-none"
                     />
-                  ) : (
-                    <span className="opacity-50">—</span>
-                  )}
-                </div>
+                  </div>
+                )}
 
                 {/* MATERIAL $/UNIT */}
-                <div className="flex-[1] flex justify-center px-1 sm:px-2">
-                  {isManagerView ? (
+                {isManagerView && (
+                  <div className="flex-[1] flex justify-center px-1 sm:px-2">
                     <input
                       type="number"
                       min={0}
@@ -587,10 +587,8 @@ export default function CPQAdvanced() {
                       }
                       className="w-12 sm:w-16 bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-[2px] text-[10px] sm:text-xs focus:outline-none"
                     />
-                  ) : (
-                    <span className="opacity-50">—</span>
-                  )}
-                </div>
+                  </div>
+                )}
 
                 {/* UNIT PRICE (manager sees, customer sees in labor column) */}
                 {isManagerView && (
