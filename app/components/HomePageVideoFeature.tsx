@@ -3,8 +3,6 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/20/solid';
-import Link from 'next/link';
-import SocialLinks from '@/components/SocialLinks';
 
 // ────────────────────────────────────────────────────────
 // 1 — MOTION VARIANTS
