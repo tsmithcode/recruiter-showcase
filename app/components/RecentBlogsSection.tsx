@@ -6,8 +6,6 @@ import { motion, Variants } from 'framer-motion';
 import {
   FaTools,
   FaCubes,
-  FaBookOpen,
-  FaClipboardList,
 } from 'react-icons/fa';
 
 type BlogItem = {
