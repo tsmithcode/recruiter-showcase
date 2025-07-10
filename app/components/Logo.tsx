@@ -2,32 +2,30 @@ import { motion } from "framer-motion";
 import Image from "next/image";
 
 export default function LogoWithHoverGlow() {
-// const BRAND_COLORS = ["#0b253f", "#05c8fb", "#d9d9d9", "#98cedd"];
-
   return (
     <motion.div
-      initial={{opacity: 70, y: 10 }}
+      initial={{ opacity: 0.7, y: 10 }}
       animate={{
         opacity: 1,
-        y: [0, -10, 0], // bob from 0 → -10px → 0
+        y: [0, -10, 0],
       }}
       transition={{
-        duration: 4,            
-        ease: "easeInOut",      
-        repeat: Infinity
+        duration: 4,
+        ease: "easeInOut",
+        repeat: Infinity,
       }}
-      className="rounded-full"
+      // Flexbox layout: center on desktop only
+      className="flex justify-center items-center mt-12 sm:mt-0 sm:h-[400px]"
     >
       <Image
         src="/images/tsmithcode-tech-vision-atlanta.png"
         alt="TSmithCode.ai tech-vision-atlanta poster"
         sizes="(max-width: 640px) 800px"
-        className="object-cover group-hover:scale-105 transition-transform duration-300"
+        className="object-contain group-hover:scale-105 transition-transform duration-300"
         priority
-        width={256}
-        height={256}
+        width={320}
+        height={320}
       />
     </motion.div>
-    
   );
 }

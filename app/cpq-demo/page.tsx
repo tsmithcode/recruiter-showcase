@@ -445,236 +445,237 @@ export default function CPQAdvanced() {
           </div>
         )}
 
-        {/* TABLE HEADER */}
-        <div className="flex text-gray-300 text-[10px] sm:text-xs uppercase tracking-wide mb-2 border-b border-white/20 pb-1">
-          <div className="flex-[2] px-1 sm:px-2">Component</div>
-          <div className="flex-[1] text-center px-1 sm:px-2">Labor Cost $/hr</div>
-          <div className="flex-[1] text-center px-1 sm:px-2">Hours</div>
-          <div className="flex-[1] text-center px-1 sm:px-2">Material Cost $/unit</div>
-          {isManagerView && (
+     
+{/* TABLE HEADER */}
+<div className="flex text-gray-300 text-[10px] sm:text-xs uppercase tracking-wide mb-2 border-b border-white/20 pb-1">
+  <div className="flex-[2] px-1 sm:px-2">Component</div>
+  <div className="flex-[1] text-center px-1 sm:px-2">Labor Cost $/hr</div>
+  {isManagerView && (
+    <div className="flex-[1] text-center px-1 sm:px-2">Hours</div>
+  )}
+  {isManagerView && (
+    <div className="flex-[1] text-center px-1 sm:px-2">Material Cost $/unit</div>
+  )}
+  {isManagerView && (
+    <>
+      <div className="flex-[1] text-center px-1 sm:px-2">Unit Price</div>
+      <div className="flex-[1] text-center px-1 sm:px-2">Profit $</div>
+      <div className="flex-[1] text-center px-1 sm:px-2">Profit %</div>
+      <div className="flex-[0.5] text-center px-1 sm:px-2">Remove</div>
+    </>
+  )}
+  <div className="flex-[1] text-center px-1 sm:px-2">Include</div>
+  <div className="flex-[1] text-center px-1 sm:px-2">Quantity</div>
+</div>
+
+{/* COMPONENT ROWS */}
+<div className="divide-y divide-white/20">
+  {components.map((comp) => {
+    const { unitPrice, profit, profitPercent } = computePricing(comp, {
+      marginPercent,
+      markupPercent,
+      discountPercent,
+    });
+
+    return (
+      <div
+        key={comp.id}
+        className="flex items-center py-2 text-white text-[11px] sm:text-sm"
+      >
+        {/* NAME + ICON + OPTIONAL ICON PICKER (manager) */}
+        <div className="flex-[2] flex items-center gap-1 sm:gap-2 px-1 sm:px-2">
+          {isManagerView ? (
             <>
-              <div className="flex-[1] text-center px-1 sm:px-2">Unit Price</div>
-              <div className="flex-[1] text-center px-1 sm:px-2">Profit $</div>
-              <div className="flex-[1] text-center px-1 sm:px-2">Profit %</div>
-              <div className="flex-[0.5] text-center px-1 sm:px-2">Remove</div>
+              <input
+                type="text"
+                value={comp.name}
+                onChange={(e) =>
+                  updateComponent(comp.id, "name", e.target.value)
+                }
+                className="bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-1 text-[10px] sm:text-xs focus:outline-none w-full"
+              />
+              <Listbox
+                value={iconOptions.find((opt) =>
+                  opt.Icon === comp.Icon ? opt : null
+                )}
+                onChange={(selected) =>
+                  updateComponent(comp.id, "Icon", selected.Icon)
+                }
+              >
+                <Listbox.Button className="bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-1 text-[10px] sm:text-xs focus:outline-none">
+                  <comp.Icon className="inline-block text-[#05c8fb] w-4 h-4 mr-1" />
+                  {iconOptions.find((opt) => opt.Icon === comp.Icon)
+                    ?.label || "Icon"}
+                </Listbox.Button>
+                <Listbox.Options className="absolute mt-1 bg-gray-800 border border-gray-600 rounded z-10">
+                  {iconOptions.map((opt) => (
+                    <Listbox.Option
+                      key={opt.id}
+                      value={opt}
+                      className="cursor-pointer px-2 py-1 hover:bg-gray-700"
+                    >
+                      <opt.Icon className="inline-block text-[#05c8fb] w-4 h-4 mr-1" />
+                    </Listbox.Option>
+                  ))}
+                </Listbox.Options>
+              </Listbox>
+            </>
+          ) : (
+            <>
+              <comp.Icon className="text-[#05c8fb] w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
+              <span className="font-medium">{comp.name}</span>
             </>
           )}
-          <div className="flex-[1] text-center px-1 sm:px-2">Include</div>
-          <div className="flex-[1] text-center px-1 sm:px-2">Quantity</div>
         </div>
 
-        {/* COMPONENT ROWS */}
-        <div className="divide-y divide-white/20">
-          {components.map((comp) => {
-            const { unitPrice, profit, profitPercent } = computePricing(comp, {
-              marginPercent,
-              markupPercent,
-              discountPercent,
-            });
-
-            return (
-              <div
-                key={comp.id}
-                className="flex items-center py-2 text-white text-[11px] sm:text-sm"
-              >
-                {/* NAME + ICON + OPTIONAL ICON PICKER (manager) */}
-                <div className="flex-[2] flex items-center gap-1 sm:gap-2 px-1 sm:px-2">
-                  {isManagerView ? (
-                    <>
-                      <input
-                        type="text"
-                        value={comp.name}
-                        onChange={(e) =>
-                          updateComponent(comp.id, "name", e.target.value)
-                        }
-                        className="bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-1 text-[10px] sm:text-xs focus:outline-none w-full"
-                      />
-                      <Listbox
-                        value={iconOptions.find((opt) =>
-                          opt.Icon === comp.Icon ? opt : null
-                        )}
-                        onChange={(selected) =>
-                          updateComponent(comp.id, "Icon", selected.Icon)
-                        }
-                      >
-                        <Listbox.Button className="bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-1 text-[10px] sm:text-xs focus:outline-none">
-                          <comp.Icon className="inline-block text-[#05c8fb] w-4 h-4 mr-1" />
-                          {iconOptions.find((opt) => opt.Icon === comp.Icon)
-                            ?.label || "Icon"}
-                        </Listbox.Button>
-                        <Listbox.Options className="absolute mt-1 bg-gray-800 border border-gray-600 rounded z-10">
-                          {iconOptions.map((opt) => (
-                            <Listbox.Option
-                              key={opt.id}
-                              value={opt}
-                              className="cursor-pointer px-2 py-1 hover:bg-gray-700"
-                            >
-                              <opt.Icon className="inline-block text-[#05c8fb] w-4 h-4 mr-1" />
-                              {/* {opt.label} */}
-                            </Listbox.Option>
-                          ))}
-                        </Listbox.Options>
-                      </Listbox>
-                    </>
-                  ) : (
-                    <>
-                      <comp.Icon className="text-[#05c8fb] w-3.5 h-3.5 sm:w-4 sm:h-4 flex-shrink-0" />
-                      <span className="font-medium">{comp.name}</span>
-                    </>
-                  )}
-                </div>
-
-                {/* LABOR $/HR */}
-                <div className="flex-[1] flex justify-center px-1 sm:px-2">
-                  {isManagerView ? (
-                    <input
-                      type="number"
-                      min={0}
-                      step={1}
-                      value={comp.unitLaborCost}
-                      onChange={(e) =>
-                        updateComponent(
-                          comp.id,
-                          "unitLaborCost",
-                          parseFloat(e.target.value) || 0
-                        )
-                      }
-                      className="w-12 sm:w-16 bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-[2px] text-[10px] sm:text-xs focus:outline-none"
-                    />
-                  ) : (
-                    <span className="text-[#05c8fb]">
-                      ${unitPrice.toFixed(2)}
-                    </span>
-                  )}
-                </div>
-
-                {/* HOURS */}
-                <div className="flex-[1] flex justify-center px-1 sm:px-2">
-                  {isManagerView ? (
-                    <input
-                      type="number"
-                      min={0}
-                      step={0.5}
-                      value={comp.laborHours}
-                      onChange={(e) =>
-                        updateComponent(
-                          comp.id,
-                          "laborHours",
-                          parseFloat(e.target.value) || 0
-                        )
-                      }
-                      className="w-12 sm:w-16 bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-[2px] text-[10px] sm:text-xs focus:outline-none"
-                    />
-                  ) : (
-                    <span className="opacity-50">—</span>
-                  )}
-                </div>
-
-                {/* MATERIAL $/UNIT */}
-                <div className="flex-[1] flex justify-center px-1 sm:px-2">
-                  {isManagerView ? (
-                    <input
-                      type="number"
-                      min={0}
-                      step={1}
-                      value={comp.unitMaterialCost}
-                      onChange={(e) =>
-                        updateComponent(
-                          comp.id,
-                          "unitMaterialCost",
-                          parseFloat(e.target.value) || 0
-                        )
-                      }
-                      className="w-12 sm:w-16 bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-[2px] text-[10px] sm:text-xs focus:outline-none"
-                    />
-                  ) : (
-                    <span className="opacity-50">—</span>
-                  )}
-                </div>
-
-                {/* UNIT PRICE (manager sees, customer sees in labor column) */}
-                {isManagerView && (
-                  <div className="flex-[1] flex justify-center px-1 sm:px-2">
-                    <span className="text-[#05c8fb]">
-                      ${unitPrice.toFixed(2)}
-                    </span>
-                  </div>
-                )}
-
-                {/* PROFIT $ (manager only) */}
-                {isManagerView && (
-                  <div className="flex-[1] flex justify-center px-1 sm:px-2">
-                    <span
-                      className={`${
-                        profit >= 0 ? "text-green-400" : "text-red-400"
-                      }`}
-                    >
-                      ${profit.toFixed(2)}
-                    </span>
-                  </div>
-                )}
-
-                {/* PROFIT % (manager only) */}
-                {isManagerView && (
-                  <div className="flex-[1] flex justify-center px-1 sm:px-2">
-                    <span
-                      className={`${
-                        profitPercent >= 0 ? "text-green-400" : "text-red-400"
-                      }`}
-                    >
-                      {profitPercent.toFixed(1)}%
-                    </span>
-                  </div>
-                )}
-
-                {/* REMOVE BUTTON (manager only) */}
-                {isManagerView && (
-                  <div className="flex-[0.5] flex justify-center px-1 sm:px-2">
-                    <button
-                      onClick={() => removeComponent(comp.id)}
-                      className="text-red-500 hover:text-red-400 text-xs"
-                    >
-                      ✕
-                    </button>
-                  </div>
-                )}
-
-                {/* INCLUDE CHECKBOX */}
-                <div className="flex-[1] flex justify-center px-1 sm:px-2">
-                  <label className="flex items-center">
-                    <input
-                      type="checkbox"
-                      checked={comp.quantity > 0}
-                      onChange={() => toggleComponent(comp.id)}
-                      className="h-4 w-4 sm:h-5 sm:w-5 text-[#05c8fb] bg-gray-700/50 border border-gray-600 rounded focus:ring-[#05c8fb]"
-                    />
-                  </label>
-                </div>
-
-                {/* QUANTITY */}
-                <div className="flex-[1] flex justify-center px-1 sm:px-2">
-                  {comp.quantity > 0 ? (
-                    <input
-                      type="number"
-                      min={1}
-                      value={comp.quantity}
-                      onChange={(e) =>
-                        updateComponent(
-                          comp.id,
-                          "quantity",
-                          parseInt(e.target.value) || 1
-                        )
-                      }
-                      className="w-12 sm:w-16 bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-[2px] text-[10px] sm:text-xs focus:outline-none"
-                    />
-                  ) : (
-                    <span className="opacity-50">—</span>
-                  )}
-                </div>
-              </div>
-            );
-          })}
+        {/* LABOR $/HR or PRICE */}
+        <div className="flex-[1] flex justify-center px-1 sm:px-2">
+          {isManagerView ? (
+            <input
+              type="number"
+              min={0}
+              step={1}
+              value={comp.unitLaborCost}
+              onChange={(e) =>
+                updateComponent(
+                  comp.id,
+                  "unitLaborCost",
+                  parseFloat(e.target.value) || 0
+                )
+              }
+              className="w-12 sm:w-16 bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-[2px] text-[10px] sm:text-xs focus:outline-none"
+            />
+          ) : (
+            <span className="text-[#05c8fb]">
+              ${unitPrice.toFixed(2)}
+            </span>
+          )}
         </div>
+
+        {/* HOURS (manager only) */}
+        {isManagerView && (
+          <div className="flex-[1] flex justify-center px-1 sm:px-2">
+            <input
+              type="number"
+              min={0}
+              step={0.5}
+              value={comp.laborHours}
+              onChange={(e) =>
+                updateComponent(
+                  comp.id,
+                  "laborHours",
+                  parseFloat(e.target.value) || 0
+                )
+              }
+              className="w-12 sm:w-16 bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-[2px] text-[10px] sm:text-xs focus:outline-none"
+            />
+          </div>
+        )}
+
+        {/* MATERIAL COST (manager only) */}
+        {isManagerView && (
+          <div className="flex-[1] flex justify-center px-1 sm:px-2">
+            <input
+              type="number"
+              min={0}
+              step={1}
+              value={comp.unitMaterialCost}
+              onChange={(e) =>
+                updateComponent(
+                  comp.id,
+                  "unitMaterialCost",
+                  parseFloat(e.target.value) || 0
+                )
+              }
+              className="w-12 sm:w-16 bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-[2px] text-[10px] sm:text-xs focus:outline-none"
+            />
+          </div>
+        )}
+
+        {/* UNIT PRICE (manager only) */}
+        {isManagerView && (
+          <div className="flex-[1] flex justify-center px-1 sm:px-2">
+            <span className="text-[#05c8fb]">
+              ${unitPrice.toFixed(2)}
+            </span>
+          </div>
+        )}
+
+        {/* PROFIT $ (manager only) */}
+        {isManagerView && (
+          <div className="flex-[1] flex justify-center px-1 sm:px-2">
+            <span
+              className={`${
+                profit >= 0 ? "text-green-400" : "text-red-400"
+              }`}
+            >
+              ${profit.toFixed(2)}
+            </span>
+          </div>
+        )}
+
+        {/* PROFIT % (manager only) */}
+        {isManagerView && (
+          <div className="flex-[1] flex justify-center px-1 sm:px-2">
+            <span
+              className={`${
+                profitPercent >= 0 ? "text-green-400" : "text-red-400"
+              }`}
+            >
+              {profitPercent.toFixed(1)}%
+            </span>
+          </div>
+        )}
+
+        {/* REMOVE BUTTON (manager only) */}
+        {isManagerView && (
+          <div className="flex-[0.5] flex justify-center px-1 sm:px-2">
+            <button
+              onClick={() => removeComponent(comp.id)}
+              className="text-red-500 hover:text-red-400 text-xs"
+            >
+              ✕
+            </button>
+          </div>
+        )}
+
+        {/* INCLUDE CHECKBOX */}
+        <div className="flex-[1] flex justify-center px-1 sm:px-2">
+          <label className="flex items-center">
+            <input
+              type="checkbox"
+              checked={comp.quantity > 0}
+              onChange={() => toggleComponent(comp.id)}
+              className="h-4 w-4 sm:h-5 sm:w-5 text-[#05c8fb] bg-gray-700/50 border border-gray-600 rounded focus:ring-[#05c8fb]"
+            />
+          </label>
+        </div>
+
+        {/* QUANTITY */}
+        <div className="flex-[1] flex justify-center px-1 sm:px-2">
+          {comp.quantity > 0 ? (
+            <input
+              type="number"
+              min={1}
+              value={comp.quantity}
+              onChange={(e) =>
+                updateComponent(
+                  comp.id,
+                  "quantity",
+                  parseInt(e.target.value) || 1
+                )
+              }
+              className="w-12 sm:w-16 bg-gray-700/50 border border-gray-600 text-white rounded px-1 py-[2px] text-[10px] sm:text-xs focus:outline-none"
+            />
+          ) : (
+            <span className="opacity-50">—</span>
+          )}
+        </div>
+      </div>
+    );
+  })}
+</div>
+
 
         {/* GRAND TOTAL & QUOTE BUTTON */}
         <div className="mt-4 flex flex-col sm:flex-row items-center sm:justify-between gap-2 pt-2 border-t border-white/20">

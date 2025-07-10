@@ -9,6 +9,8 @@ import CompensationSection from "@/components/CompensationSection";
 import DevDocLinks from "@/components/DevDocLinks";
 import LogoPair from "@/components/LogoPair";
 import Atlanta from "@/components/Atlanta";
+import HomePageVideoFeature from '@/components/HomePageVideoFeature';
+
 
 // import WebPageEmbed from "@/components/WebpageEmbed"; // Import the GitHub webpage component
 
@@ -19,6 +21,9 @@ export default function Home() {
   return (
     <main className="flex flex-col items-center min-h-screen">
       <Hero />
+
+    <HomePageVideoFeature/>
+
       <DemoProjects />
       <LogoPair/>
       <ServicesSection />
@@ -27,16 +32,6 @@ export default function Home() {
       <TeamHighlights/>
       <SkillsMatrix/>
       <DevDocLinks/>
-
-<div className="responsive-video">
-  <iframe 
-    src="https://www.youtube.com/embed/jXnunvPM9Ec?si=O0b_NKiJuPQCXpaF" 
-    title="YouTube video player"
-    allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
-    >
-  </iframe>
-</div>
-
       <Footer/>
     </main>
   );
