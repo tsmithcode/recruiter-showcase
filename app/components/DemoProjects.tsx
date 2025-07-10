@@ -1,154 +1,181 @@
-// components/DemoProjects.tsx – Refactored using keen-slider carousel
-"use client";
+'use client';
 
-import { useState, useMemo } from "react";
+import { useState, useMemo, useEffect, useCallback } from "react";
 import Image from "next/image";
-import Link from "next/link";
-import { useKeenSlider } from "keen-slider/react";
+import { motion, AnimatePresence, Variants } from "framer-motion";
+import { ChevronDownIcon, ChevronUpIcon } from "@heroicons/react/20/solid";
 
+interface Project {
+  title: string;
+  tags: string[];
+  videoUrl: string;
+}
 
-const demoProjects = [
-  { title: "SLC Airport Automation", tags: ["#WinForms", "#InventorAPI", "#ExcelAPI"], videoUrl: "https://www.youtube.com/watch?v=9YA3J85JKRI" },
-  { title: "Door Frame Configurator", tags: ["#CAD", "#ExcelAPI", "#Automation"], videoUrl: "https://www.youtube.com/watch?v=EVuWhw88N20" },
-  { title: "LED Reveal Accelerator", tags: ["#InventorMacro", "#NoCode"], videoUrl: "https://www.youtube.com/watch?v=wJehm7rSqC4" },
-  { title: "LED Automation Tool", tags: ["#Macros", "#PDF", "#InventorAPI"], videoUrl: "https://www.youtube.com/watch?v=2ce70aH0PmY" },
-  { title: "ERP & CRM Web App", tags: ["#Blazor", "#API", "#NoSQL"], videoUrl: "https://www.youtube.com/watch?v=gWDy964I97Y" },
-  { title: "Fry Tools Automation", tags: ["#CSharp", "#InventorAPI", "#WinForms"], videoUrl: "https://www.youtube.com/watch?v=TsECnuxQhKw" },
-  { title: "LED QT BOM ATO Tool", tags: ["#Excel", "#VBA", "#Sales"], videoUrl: "https://www.youtube.com/watch?v=RKEe9TrNgyE" },
-  { title: "BOM Project Info Fill", tags: ["#VB.NET", "#ExcelAPI"], videoUrl: "https://www.youtube.com/watch?v=aHmYna-aanw" },
-  { title: "Label Generator", tags: ["#ExcelVBA", "#PDF", "#Validation"], videoUrl: "https://www.youtube.com/watch?v=ka0wfOce8ps" },
-  { title: "Ceiling Trim Tool", tags: ["#ERP", "#Inventor", "#ExcelAPI"], videoUrl: "https://www.youtube.com/watch?v=gGhLi_qxDZY" },
-  { title: "Hourly Allocation Tool", tags: ["#Excel", "#Macro"], videoUrl: "https://www.youtube.com/watch?v=MQNGRKhiU6s" },
-  { title: "Ceiling System Automation", tags: ["#Inventor", "#Excel", "#VBA"], videoUrl: "https://www.youtube.com/watch?v=3i9q_dJqPGk" },
-  { title: "Quote Request Web Form", tags: ["#Form", "#Request", "#Blazor"], videoUrl: "https://www.youtube.com/watch?v=Ye8ihfO-FmE" },
-  { title: "Door Frame Automation", tags: ["#VisualStudio", "#Inventor", "#SQL"], videoUrl: "https://www.youtube.com/watch?v=jXnunvPM9Ec" },
-  { title: "3D Quote Tool", tags: ["#ERP", "#VB.NET", "#Inventor"], videoUrl: "https://www.youtube.com/watch?v=NtwpK8-7Ef0" },
-  { title: "Employee Allocation Tool", tags: ["#Excel", "#Validation", "#Finance"], videoUrl: "https://www.youtube.com/watch?v=jaab3b_ttIo" },
-  { title: "LED Quote Tool", tags: ["#ERP", "#VBA", "#Pricing"], videoUrl: "https://www.youtube.com/watch?v=xmLHainqgVU" },
-  { title: "SLC Column Configurator", tags: ["#iLogic", "#Inventor", "#VB.NET"], videoUrl: "https://www.youtube.com/watch?v=Kl84rkNXGwc" },
-  { title: "Frame Generator Form", tags: ["#iLogic", "#GenerativeDesign"], videoUrl: "https://www.youtube.com/watch?v=hvMBMv1JEgg" },
-  { title: "Part Number Generator", tags: ["#Python", "#CLI", "#Automation"], videoUrl: "https://www.youtube.com/watch?v=NWHDp9UDY_0" },
+const demoProjects: Project[] = [
+  { title: "SLC Airport Automation", tags: ["WinForms","InventorAPI","ExcelAPI"], videoUrl: "https://www.youtube.com/watch?v=9YA3J85JKRI" },
+  { title: "Door Frame Configurator", tags: ["CAD","ExcelAPI","Automation"], videoUrl: "https://www.youtube.com/watch?v=EVuWhw88N20" },
+  { title: "LED Reveal Accelerator", tags: ["InventorMacro","NoCode"], videoUrl: "https://www.youtube.com/watch?v=wJehm7rSqC4" },
+  { title: "LED Automation Tool", tags: ["Macros","PDF","InventorAPI"], videoUrl: "https://www.youtube.com/watch?v=2ce70aH0PmY" },
+  { title: "ERP & CRM Web App", tags: ["Blazor","API","NoSQL"], videoUrl: "https://www.youtube.com/watch?v=gWDy964I97Y" },
+  { title: "Fry Tools Automation", tags: ["CSharp","InventorAPI","WinForms"], videoUrl: "https://www.youtube.com/watch?v=TsECnuxQhKw" },
+  { title: "LED QT BOM ATO Tool", tags: ["Excel","VBA","Sales"], videoUrl: "https://www.youtube.com/watch?v=RKEe9TrNgyE" },
+  { title: "BOM Project Info Fill", tags: ["VB.NET","ExcelAPI"], videoUrl: "https://www.youtube.com/watch?v=aHmYna-aanw" },
+  { title: "Label Generator", tags: ["ExcelVBA","PDF","Validation"], videoUrl: "https://www.youtube.com/watch?v=ka0wfOce8ps" },
+  { title: "Ceiling Trim Tool", tags: ["ERP","Inventor","ExcelAPI"], videoUrl: "https://www.youtube.com/watch?v=gGhLi_qxDZY" },
+  { title: "Hourly Allocation Tool", tags: ["Excel","Macro"], videoUrl: "https://www.youtube.com/watch?v=MQNGRKhiU6s" },
+  { title: "Ceiling System Automation", tags: ["Inventor","Excel","VBA"], videoUrl: "https://www.youtube.com/watch?v=3i9q_dJqPGk" },
+  { title: "Quote Request Web Form", tags: ["Form","Request","Blazor"], videoUrl: "https://www.youtube.com/watch?v=Ye8ihfO-FmE" },
+  { title: "Door Frame Automation", tags: ["VisualStudio","Inventor","SQL"], videoUrl: "https://www.youtube.com/watch?v=jXnunvPM9Ec" },
+  { title: "3D Quote Tool", tags: ["ERP","VB.NET","Inventor"], videoUrl: "https://www.youtube.com/watch?v=NtwpK8-7Ef0" },
+  { title: "Employee Allocation Tool", tags: ["Excel","Validation","Finance"], videoUrl: "https://www.youtube.com/watch?v=jaab3b_ttIo" },
+  { title: "LED Quote Tool", tags: ["ERP","VBA","Pricing"], videoUrl: "https://www.youtube.com/watch?v=xmLHainqgVU" },
+  { title: "SLC Column Configurator", tags: ["iLogic","Inventor","VB.NET"], videoUrl: "https://www.youtube.com/watch?v=Kl84rkNXGwc" },
+  { title: "Frame Generator Form", tags: ["iLogic","GenerativeDesign"], videoUrl: "https://www.youtube.com/watch?v=hvMBMv1JEgg" },
+  { title: "Part Number Generator", tags: ["Python","CLI","Automation"], videoUrl: "https://www.youtube.com/watch?v=NWHDp9UDY_0" },
 ];
 
 const getThumb = (url: string) => {
-  try {
-    const id = new URL(url).searchParams.get("v");
-    return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : "";
-  } catch {
-    return "";
-  }
+  const id = new URL(url).searchParams.get("v");
+  return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : "";
 };
 
-export default function DemoProjects() {
-  const [titleQuery] = useState("");
-  const [tagQuery] = useState("");
+// ───── Variants ───────────────────────────────────────────────────
+const sectionVar: Variants = {
+  hidden: { opacity: 0, y: 20 },
+  show:   { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } },
+};
+const itemVar:    Variants = {
+  hidden: { opacity: 0, y: 10 },
+  show:   { opacity: 1, y: 0, transition: { duration: 0.4, ease: "easeOut" } },
+};
+const drawerVar:  Variants = {
+  hidden: { height: 0, opacity: 0 },
+  show:   { height: "auto", opacity: 1, transition: { duration: 0.5, ease: "easeInOut" } },
+};
 
-  const filtered = useMemo(() => {
-    return demoProjects.filter((p) => {
-      const matchTitle = p.title.toLowerCase().includes(titleQuery.toLowerCase());
-      const matchTag = tagQuery ? p.tags.some((t) => t.toLowerCase().includes(tagQuery.toLowerCase())) : true;
-      return matchTitle && matchTag;
-    });
-  }, [titleQuery, tagQuery]);
+export default function VideoPlaylist() {
+  // Random start video
+  const [selectedIdx, setSelectedIdx] = useState(() =>
+    Math.floor(Math.random() * demoProjects.length)
+  );
+  const selected = demoProjects[selectedIdx];
 
-  const [sliderRef] = useKeenSlider<HTMLDivElement>({
-    loop: false,
-    mode: "snap",
-    slides: {
-      perView: 1.25,
-      spacing: 16,
-    },
-    breakpoints: {
-      "(min-width: 640px)": {
-        slides: { perView: 2.25, spacing: 20 },
-      },
-      "(min-width: 1024px)": {
-        slides: { perView: 3.25, spacing: 24 },
-      },
-    },
-  });
+  // Search filter
+  const [query, setQuery] = useState("");
+  const filtered = useMemo(
+    () =>
+      demoProjects.filter(p =>
+        p.title.toLowerCase().includes(query.toLowerCase())
+      ),
+    [query]
+  );
+
+  // Playlist drawer
+  const [open, setOpen] = useState(true);
+  const toggle = useCallback(() => setOpen(o => !o), []);
+  useEffect(() => {
+    const onEsc = (e: KeyboardEvent) => e.key === "Escape" && setOpen(false);
+    if (open) document.addEventListener("keydown", onEsc);
+    return () => document.removeEventListener("keydown", onEsc);
+  }, [open]);
 
   return (
-    <section className="px-4 max-w-7xl mx-auto container">
-      <header className="mb-6 flex flex-col sm:flex-row items-start sm:items-end justify-between gap-4">
-  <div>
-    <h2 className="text-3xl sm:text-4xl font-bold text-white">
-     Projects
-    </h2>
+    <motion.section
+      className="py-12 px-4 space-y-8"
+      variants={sectionVar}
+      initial="hidden"
+      whileInView="show"
+      viewport={{ once: false, amount: 0.2 }}
+    >
+      {/* ─── PLAYER (matches CombinedFeature sizing) ───────────────── */}
+      <motion.div variants={itemVar} className="max-w-4xl mx-auto w-full">
+        <div className="relative w-full aspect-video overflow-hidden rounded-lg bg-black">
+          <iframe
+            key={selected.videoUrl}
+            src={`${selected.videoUrl.replace("watch?v=", "embed/")}?autoplay=0&start=0`}
+            title={selected.title}
+            allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+            className="w-full h-full"
+          />
+        </div>
+      </motion.div>
 
-    <p className="text-gray-400 text-sm mt-1 flex items-center gap-2">
-      <span>Swipe on mobile or hold mouse click </span>
-      <span className="inline-block px-2 py-0.5 bg-white/10 rounded text-white text-xs">←</span>
-      <span className="inline-block px-2 py-0.5 bg-white/10 rounded text-white text-xs">→</span>
-    </p>
-  </div>
-  <span className="text-base text-gray-400">{filtered.length} VIDEOS</span>
-  
-</header>
+      {/* ─── TITLE & TAGS ──────────────────────────────────────────── */}
+      <motion.div variants={itemVar} className="max-w-4xl mx-auto w-full space-y-2">
+        <h3 className="text-2xl font-semibold text-white">{selected.title}</h3>
+        <div className="flex flex-wrap gap-2">
+          {selected.tags.map(t => (
+            <span
+              key={t}
+              className="bg-[#05c8fb]/20 text-[#05c8fb] px-2 py-0.5 rounded-full text-xs"
+            >
+              {t}
+            </span>
+          ))}
+        </div>
+      </motion.div>
 
-
-      {/* Search Inputs */}
-      {/* <div className="grid sm:grid-cols-2 gap-4 mb-6">
+      {/* ─── SEARCH & TOGGLE ───────────────────────────────────────── */}
+      <motion.div variants={itemVar} className="max-w-4xl mx-auto w-full flex flex-col sm:flex-row items-center gap-4">
         <input
           type="text"
-          placeholder="Search by title…"
-          value={titleQuery}
-          onChange={(e) => setTitleQuery(e.target.value)}
-          className="bg-white/10 text-white placeholder-gray-400 text-base px-4 py-2 rounded focus:outline-none"
+          placeholder="Search project videos…"
+          value={query}
+          onChange={e => setQuery(e.target.value)}
+          className="flex-1 bg-white/10 text-white placeholder-gray-400 px-4 py-2 rounded focus:outline-none"
         />
-        <input
-          type="text"
-          placeholder="Search by tag…"
-          value={tagQuery}
-          onChange={(e) => setTagQuery(e.target.value)}
-          className="bg-white/10 text-white placeholder-gray-400 text-base px-4 py-2 rounded focus:outline-none"
-        />
-      </div> */}
+        <button
+          onClick={toggle}
+          className="flex items-center gap-2 text-white bg-white/10 px-4 py-2 rounded hover:bg-white/20 transition"
+        >
+          {open ? (
+            <>Hide Playlist <ChevronUpIcon className="h-5 w-5" /></>
+          ) : (
+            <>Show Playlist <ChevronDownIcon className="h-5 w-5" /></>
+          )}
+        </button>
+      </motion.div>
 
-
-
-      {/* Carousel */}
-      <div ref={sliderRef} className="keen-slider">
-        {filtered.map((proj) => (
-          <div
-            key={proj.title}
-            className="keen-slider__slide bg-white/5 
-      border border-white/10 
-      rounded-xl 
-      text-white 
-      shadow-lg 
-      hover:shadow-xl 
-      transition"
+      {/* ─── PLAYLIST (independent sizing) ──────────────────────────── */}
+      <AnimatePresence initial={false}>
+        {open && (
+          <motion.div
+            variants={drawerVar}
+            initial="hidden"
+            animate="show"
+            exit="hidden"
+            className="max-w-7xl mx-auto grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
           >
-            <Link href={proj.videoUrl} target="_blank" className="block group">
-              <div className="relative aspect-video w-full overflow-hidden">
-                <Image
-                  src={getThumb(proj.videoUrl)}
-                  alt={proj.title}
-                  fill
-                  sizes="(max-width: 768px) 100vw, (max-width: 1024px) 50vw, 25vw"
-                  className="object-cover p-4 transition-transform duration-300 ease-in-out group-hover:scale-105"
-                />
-              </div>
-            </Link>
-            <div className="p-4 flex flex-col flex-1">
-              <h3 className="font-semibold text-white text-lg leading-snug mb-2">
-                {proj.title}
-              </h3>
-              <div className="mt-auto flex flex-wrap gap-1">
-                {proj.tags.map((tag) => (
-                  <span
-                    key={tag}
-                    className="bg-white/5 border border-white/10 backdrop-blur-md bg-[#05c8fb]/10 text-[#05c8fb] text-xs px-2 py-0.5 rounded-full font-medium"
-                  >
-                    {tag}
-                  </span>
-                ))}
-              </div>
-            </div>
-          </div>
-        ))}
-      </div>
-    </section>
+            {filtered.map((proj, i) => {
+              const isSel = i === selectedIdx;
+              return (
+                <motion.button
+                  key={proj.videoUrl}
+                  onClick={() => setSelectedIdx(i)}
+                  variants={itemVar}
+                  className={`
+                    flex flex-col bg-white/5 border-2
+                    ${isSel ? "border-[#05c8fb]" : "border-white/10"}
+                    rounded-lg overflow-hidden hover:shadow-lg transition
+                  `}
+                >
+                  <div className="relative aspect-video w-full">
+                    <Image
+                      src={getThumb(proj.videoUrl)}
+                      alt={proj.title}
+                      fill
+                      className="object-cover"
+                    />
+                  </div>
+                  <div className="p-3">
+                    <h4 className="text-sm font-medium text-white">{proj.title}</h4>
+                  </div>
+                </motion.button>
+              );
+            })}
+          </motion.div>
+        )}
+      </AnimatePresence>
+    </motion.section>
   );
 }
