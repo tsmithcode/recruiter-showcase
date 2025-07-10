@@ -4,7 +4,7 @@ import Image from "next/image";
 export default function LogoWithHoverGlow() {
   return (
     <motion.div
-      initial={{ opacity: 0.7, y: 10 }}
+      initial={{ y: 10 }}
       animate={{
         opacity: 1,
         y: [0, -10, 0],
@@ -15,7 +15,7 @@ export default function LogoWithHoverGlow() {
         repeat: Infinity,
       }}
       // Flexbox layout: center on desktop only
-      className="flex justify-center items-center mt-12 sm:mt-0 sm:h-[400px]"
+      className="flex justify-center items-center mt-6 sm:mt-0 sm:h-[400px]"
     >
       <Image
         src="/images/tsmithcode-tech-vision-atlanta.png"

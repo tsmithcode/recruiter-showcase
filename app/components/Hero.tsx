@@ -73,7 +73,7 @@ const ctaItemVariants: Variants = {
 export default function Hero() {
   return (
     <motion.section
-      className="mt-14 mb-12 flex flex-col md:flex-row items-center md:items-start gap-6 pb-6 max-w-4xl mx-auto px-4 md:px-0"
+      className="mt-6 mb-6 flex flex-col md:flex-row items-center md:items-start gap-6 pb-6 max-w-4xl mx-auto px-4 md:px-0"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"

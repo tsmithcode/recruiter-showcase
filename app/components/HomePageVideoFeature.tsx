@@ -72,14 +72,14 @@ export default function CombinedFeature() {
           className="text-3xl md:text-4xl font-bold text-white mb-4 text-center"
         >
           Door Frame Configurator<br/>
-          <span className="text-[#05c8fb]">CAD, BOM & Quote in 1-Click</span>
+          <span className="text-[#05c8fb]">CAD, BOM & Quote</span>
         </motion.h1>
         <motion.p
           variants={textItemVariants}
           className="text-center text-gray-300 mb-8 leading-relaxed"
         >
           Watch a WinForms app turn an Excel quote into a fully-parametric 3D model,
-          complete Bill-of-Materials and customer quote in under 5 minutes for
+          complete Bill-of-Materials, customer quote and fabrication drawings in under 5 minutes for
           an architectural-metals manufacturer.
         </motion.p>
 
