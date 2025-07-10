@@ -88,7 +88,7 @@ export default function ServicesSection() {
         variants={itemVariants}
       >
         <h2 className="text-3xl sm:text-4xl font-bold text-white">
-          <span className="text-[#05c8fb]">Services</span>
+          <span className="text-white">Services</span>
         </h2>
         <div className="flex items-center gap-2 px-4 py-1.5 rounded-full border border-[#05c8fb] text-[#05c8fb] text-sm">
           {/* Pulsing dot animation is independent and can remain */}

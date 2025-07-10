@@ -48,7 +48,7 @@ export default function CompensationSection() {
           variants={itemVariants}
           className="text-3xl sm:text-4xl font-bold text-white mb-4"
         >
-          Compensation Philosophy
+          Compensation
           <span className="text-[#05c8fb]"> & Lifestyle Fit</span>
         </motion.h2>
       </header>

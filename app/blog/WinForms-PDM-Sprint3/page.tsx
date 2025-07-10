@@ -11,7 +11,7 @@ import Image from 'next/image';
    ──────────────────────────────────────────────────────────── */
 const post = {
   title:
-    'Building a WinForms PDM From Scratch — Our Sprint-3 Journey & 50 % Faster Drawing Retrieval',
+    'Building a WinForms PDM',
   date: '2025-07-08',
   description:
     'How Habasit America slashed drawing-search time in half by layering SOLID architecture, dependency-injection, and three rapid WinForms sprints over a massive CAD library.',
@@ -149,7 +149,7 @@ export default function WinFormsPdmSprint3Page() {
         {/* ── Header */}
         <motion.header variants={textItemVariants} className="mb-8">
           <h1 className="text-3xl md:text-4xl font-bold text-white mb-3">
-            {post.title}
+            {post.title} <span className="text-[#05c8fb]">From Scratch</span>
           </h1>
           <p className="text-sm text-gray-400 mb-2">
             By{' '}
