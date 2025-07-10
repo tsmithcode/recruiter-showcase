@@ -13,6 +13,7 @@ interface Project {
   videoUrl: string;
 }
 
+// ─── Your playlist data ─────────────────────────────────────────────
 const demoProjects: Project[] = [
   { title: "SLC Airport Automation",     tags: ["WinForms","InventorAPI","ExcelAPI"],      videoUrl: "https://www.youtube.com/watch?v=9YA3J85JKRI" },
   { title: "Door Frame Configurator",    tags: ["CAD","ExcelAPI","Automation"],           videoUrl: "https://www.youtube.com/watch?v=EVuWhw88N20" },
@@ -36,13 +37,17 @@ const demoProjects: Project[] = [
   { title: "Part Number Generator",      tags: ["Python","CLI","Automation"],             videoUrl: "https://www.youtube.com/watch?v=NWHDp9UDY_0" },
 ];
 
-// Build thumbnail URL from YouTube link
+// ─── Helpers ─────────────────────────────────────────────────────────
 const getThumb = (url: string) => {
-  const id = new URL(url).searchParams.get('v');
-  return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : '';
+  try {
+    const id = new URL(url).searchParams.get('v');
+    return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : '';
+  } catch {
+    return '';
+  }
 };
 
-// Animation variants
+// ─── Animation variants ──────────────────────────────────────────────
 const sectionVar: Variants = {
   hidden: { opacity: 0, y: 20 },
   show:   { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } },
@@ -61,21 +66,25 @@ const ctaVariants: Variants = {
 };
 
 export default function VideoPlaylist() {
-  // Start at index 0 on the server
-  const [selectedIdx, setSelectedIdx] = useState(0);
-  // On client, pick a random video
+  // — track selection by URL so filtering never shifts your selection behind your back
+  const [selectedUrl, setSelectedUrl] = useState<string>(demoProjects[0].videoUrl);
+
+  // — on client mount, pick a random video
   useEffect(() => {
-    setSelectedIdx(Math.floor(Math.random() * demoProjects.length));
+    const rnd = demoProjects[Math.floor(Math.random() * demoProjects.length)];
+    setSelectedUrl(rnd.videoUrl);
   }, []);
 
-  // Filter by title
+  // — search filter
   const [query, setQuery] = useState('');
   const filtered = useMemo(
-    () => demoProjects.filter(p => p.title.toLowerCase().includes(query.toLowerCase())),
+    () => demoProjects.filter(p =>
+      p.title.toLowerCase().includes(query.toLowerCase())
+    ),
     [query]
   );
 
-  // Playlist drawer
+  // — drawer open/close
   const [open, setOpen] = useState(true);
   const toggle = useCallback(() => setOpen(o => !o), []);
   useEffect(() => {
@@ -84,7 +93,15 @@ export default function VideoPlaylist() {
     return () => document.removeEventListener('keydown', onEsc);
   }, [open]);
 
-  const selected = demoProjects[selectedIdx];
+  // — find currently selected project; if missing, show placeholder
+  const selected = demoProjects.find((p) => p.videoUrl === selectedUrl);
+  if (!selected) {
+    return (
+      <div className="p-6 text-center text-white bg-red-900 rounded-lg">
+        ⚠️ Oops, the selected video could not be found.
+      </div>
+    );
+  }
 
   return (
     <motion.section
@@ -93,11 +110,10 @@ export default function VideoPlaylist() {
       initial="hidden"
       animate="show"
     >
-      {/* VIDEO PLAYER */}
+      {/* ─── VIDEO PLAYER ─────────────────────────────────────────── */}
       <motion.div variants={itemVar} className="mx-auto w-full max-w-4xl">
         <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-black">
           <iframe
-            key={selected.videoUrl}
             src={`${selected.videoUrl.replace('watch?v=', 'embed/')}?autoplay=0&start=0`}
             title={selected.title}
             allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
@@ -106,25 +122,31 @@ export default function VideoPlaylist() {
         </div>
       </motion.div>
 
-      {/* TITLE & TAGS */}
+      {/* ─── TITLE & TAGS ────────────────────────────────────────── */}
       <motion.div variants={itemVar} className="mx-auto w-full max-w-4xl space-y-2">
         <h3 className="text-2xl font-semibold text-white">{selected.title}</h3>
         <div className="flex flex-wrap gap-2">
-          {selected.tags.map(t => (
-            <span key={t} className="text-xs bg-[#05c8fb]/20 text-[#05c8fb] px-2 py-0.5 rounded-full">
+          {selected.tags.map((t) => (
+            <span
+              key={t}
+              className="text-xs bg-[#05c8fb]/20 text-[#05c8fb] px-2 py-0.5 rounded-full"
+            >
               {t}
             </span>
           ))}
         </div>
       </motion.div>
 
-      {/* SEARCH & TOGGLE BUTTON */}
-      <motion.div variants={itemVar} className="mx-auto flex w-full max-w-4xl flex-col sm:flex-row items-center gap-4">
+      {/* ─── SEARCH & TOGGLE ───────────────────────────────────── */}
+      <motion.div
+        variants={itemVar}
+        className="mx-auto flex w-full max-w-4xl flex-col sm:flex-row items-center gap-4"
+      >
         <input
           type="text"
           placeholder="Search videos…"
           value={query}
-          onChange={e => setQuery(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
           className="flex-1 bg-white/10 px-4 py-2 text-white placeholder-gray-400 rounded focus:outline-none"
         />
         <button
@@ -132,11 +154,13 @@ export default function VideoPlaylist() {
           className="flex items-center gap-2 rounded bg-white/10 px-4 py-2 text-white hover:bg-white/20 transition"
         >
           {open ? 'Hide Playlist' : 'Show Playlist'}
-          {open ? <ChevronUpIcon className="h-5 w-5" /> : <ChevronDownIcon className="h-5 w-5" />}
+          {open
+            ? <ChevronUpIcon className="h-5 w-5" />
+            : <ChevronDownIcon className="h-5 w-5" />}
         </button>
       </motion.div>
 
-      {/* PLAYLIST GRID */}
+      {/* ─── PLAYLIST GRID ─────────────────────────────────────── */}
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
@@ -147,38 +171,47 @@ export default function VideoPlaylist() {
             exit="hidden"
             className="mx-auto grid w-full max-w-7xl grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
           >
-            {filtered.map((proj, i) => {
-              const isSel = i === selectedIdx;
-              return (
-                <motion.button
-                  key={proj.videoUrl}
-                  onClick={() => setSelectedIdx(i)}
-                  variants={itemVar}
-                  className={`
-                    flex flex-col rounded-lg border-2 bg-white/5
-                    overflow-hidden transition hover:shadow-lg
-                    ${isSel ? 'border-[#05c8fb]' : 'border-white/10'}
-                  `}
-                >
-                  <div className="relative w-full aspect-video">
-                    <Image
-                      src={getThumb(proj.videoUrl)}
-                      alt={proj.title}
-                      fill
-                      className="object-cover"
-                    />
-                  </div>
-                  <div className="p-3">
-                    <h4 className="text-sm font-medium text-white">{proj.title}</h4>
-                  </div>
-                </motion.button>
-              );
-            })}
+            {filtered.length === 0 ? (
+              <div className="col-span-full text-center text-gray-400">
+                No videos found.
+              </div>
+            ) : (
+              filtered.map((proj) => {
+                const isSel = proj.videoUrl === selectedUrl;
+                return (
+                  <motion.button
+                    key={proj.videoUrl}
+                    onClick={() => setSelectedUrl(proj.videoUrl)}
+                    variants={itemVar}
+                    className={`
+                      flex flex-col rounded-lg border-2 bg-white/5
+                      overflow-hidden transition hover:shadow-lg
+                      ${isSel ? 'border-[#05c8fb]' : 'border-white/10'}
+                    `}
+                  >
+                    <div className="relative w-full aspect-video bg-gray-800">
+                      <Image
+                        src={getThumb(proj.videoUrl) || '/placeholder-thumb.png'}
+                        alt={proj.title}
+                        fill
+                        className="object-cover"
+                        onError={(e) => {
+                          ;(e.currentTarget as HTMLImageElement).src = '/placeholder-thumb.png';
+                        }}
+                      />
+                    </div>
+                    <div className="p-3">
+                      <h4 className="text-sm font-medium text-white">{proj.title}</h4>
+                    </div>
+                  </motion.button>
+                );
+              })
+            )}
           </motion.div>
         )}
       </AnimatePresence>
 
-      {/* WATCH FULL PLAYLIST CTA */}
+      {/* ─── WATCH FULL PLAYLIST CTA ───────────────────────────── */}
       <motion.div
         key="cta"
         variants={ctaVariants}
