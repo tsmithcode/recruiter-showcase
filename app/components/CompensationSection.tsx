@@ -33,7 +33,7 @@ const itemVariants = {
 export default function CompensationSection() {
   return (
     <motion.section
-      className="flex flex-col items-center md:items-start gap-6 pb-6 mx-auto px-4"
+      className="flex flex-col items-center md:items-start gap-6 pb-6 mx-auto px-4 max-w-7xl container"
       // ✅ Set up the main animation controller
       variants={containerVariants}
       initial="hidden"
