@@ -1,4 +1,3 @@
-"use client"; // This component will run on the client-side for animations and interactive elements
 
 import React, { useState } from "react";
 import { motion , Variants} from "framer-motion";
@@ -81,7 +80,7 @@ const textItemVariants: Variants = { // Explicitly type as Variants for better t
   const StyledListItem: React.FC<{ children: React.ReactNode }> = ({ children }) => (
     <motion.li
       variants={textItemVariants} // Apply animation to each list item
-      className="relative p-3 border border-white/10 rounded-xl bg-white/5 text-white/90 backdrop-blur-md shadow-inner group overflow-hidden"
+      className="relative p-3 border border-white/10 rounded-xl bg-white/5 text-white/90 shadow-inner group overflow-hidden"
     >
       <div className="absolute left-0 top-0 h-full w-1 bg-[#05c8fb] animate-pulse rounded-r" />
       <span className="text-sm sm:text-base leading-relaxed text-[#cbefff] group-hover:text-white transition">
@@ -161,16 +160,12 @@ const textItemVariants: Variants = { // Explicitly type as Variants for better t
           <motion.div variants={textItemVariants} className="w-full mb-8 rounded-lg overflow-hidden">
             <div className="relative w-full aspect-[16/9] overflow-hidden group">
       <Image
+        priority
         src={post.image}
         alt={post.title}
         fill
         sizes="(max-width: 640px) 100vw, 800px"
         className="object-cover group-hover:scale-105 transition-transform duration-300"
-        onError={(e) => {
-          e.currentTarget.onerror = null
-          e.currentTarget.src =
-            'https://placehold.co/800x400/2D3748/A0AEC0?text=Featured+Image'
-        }}
       />
     </div>
           </motion.div>
