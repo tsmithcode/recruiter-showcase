@@ -36,16 +36,6 @@ const dialogVariants: Variants = {
   },
 };
 
-// ────────────────────────────────────────────────────────
-// 2 — ONE-CLICK ACTIONS DATA
-// ────────────────────────────────────────────────────────
-const ONE_CLICK_ACTIONS = [
-  ['Load Excel quote & parameters instantly'],
-  ['Generate parametric 3D assembly via Inventor API'],
-  ['Auto-create BOM & cost breakdown'],
-  ['Export IDW drawings & DXF cut-lists'],
-  ['Commit to PDM with version logging'],
-];
 
 // ────────────────────────────────────────────────────────
 // 3 — MAIN COMPONENT
