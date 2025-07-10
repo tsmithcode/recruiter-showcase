@@ -1,4 +1,4 @@
-
+"use client";
 import React, { useState } from "react";
 import { motion , Variants} from "framer-motion";
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid'; // For expand/collapse icons
