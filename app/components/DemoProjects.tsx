@@ -182,7 +182,7 @@ export default function VideoPlaylist() {
             exit="hidden"
             className="
               mx-auto grid w-full max-w-7xl
-              grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+              grid-cols-1 sm:grid-cols-3 md:grid-cols-3 lg:grid-cols-4
               gap-6
             "
           >
