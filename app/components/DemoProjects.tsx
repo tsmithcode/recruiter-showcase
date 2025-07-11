@@ -1,6 +1,6 @@
 'use client';
 
-import { useState, useMemo, useEffect, useCallback } from 'react';
+import { useState, useMemo, useEffect, useCallback, useRef } from 'react';
 import Image from 'next/image';
 import Link from 'next/link';
 import { motion, AnimatePresence, Variants } from 'framer-motion';
@@ -36,8 +36,7 @@ const demoProjects: Project[] = [
   { title: "Frame Generator Form",       tags: ["iLogic","GenerativeDesign"],             videoUrl: "https://www.youtube.com/watch?v=hvMBMv1JEgg" },
   { title: "Part Number Generator",      tags: ["Python","CLI","Automation"],             videoUrl: "https://www.youtube.com/watch?v=NWHDp9UDY_0" },
 ];
-
-// ─── Helpers ─────────────────────────────────────────────────────────
+// Thumbnail helper
 const getThumb = (url: string) => {
   try {
     const id = new URL(url).searchParams.get('v');
@@ -47,35 +46,37 @@ const getThumb = (url: string) => {
   }
 };
 
-// ─── Animation variants ──────────────────────────────────────────────
+// Framer-Motion variants
 const sectionVar: Variants = {
   hidden: { opacity: 0, y: 20 },
-  show:   { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } },
+  show: { opacity: 1, y: 0, transition: { staggerChildren: 0.1 } },
 };
 const itemVar: Variants = {
   hidden: { opacity: 0, y: 10 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.4, ease: 'easeOut' } },
 };
 const drawerVar: Variants = {
   hidden: { height: 0, opacity: 0 },
-  show:   { height: 'auto', opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } },
+  show: { height: 'auto', opacity: 1, transition: { duration: 0.5, ease: 'easeInOut' } },
 };
 const ctaVariants: Variants = {
   hidden: { opacity: 0, y: 10 },
-  show:   { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
+  show: { opacity: 1, y: 0, transition: { duration: 0.6, ease: 'easeOut' } },
 };
 
 export default function VideoPlaylist() {
-  // — track selection by URL so filtering never shifts your selection behind your back
-  const [selectedUrl, setSelectedUrl] = useState<string>(demoProjects[0].videoUrl);
+  const playerRef = useRef<HTMLDivElement>(null);
 
-  // — on client mount, pick a random video
+  // track by URL, not index
+  const [selectedUrl, setSelectedUrl] = useState(demoProjects[0].videoUrl);
+
+  // random on mount
   useEffect(() => {
     const rnd = demoProjects[Math.floor(Math.random() * demoProjects.length)];
     setSelectedUrl(rnd.videoUrl);
   }, []);
 
-  // — search filter
+  // search
   const [query, setQuery] = useState('');
   const filtered = useMemo(
     () => demoProjects.filter(p =>
@@ -84,7 +85,7 @@ export default function VideoPlaylist() {
     [query]
   );
 
-  // — drawer open/close
+  // drawer open/close
   const [open, setOpen] = useState(true);
   const toggle = useCallback(() => setOpen(o => !o), []);
   useEffect(() => {
@@ -93,15 +94,23 @@ export default function VideoPlaylist() {
     return () => document.removeEventListener('keydown', onEsc);
   }, [open]);
 
-  // — find currently selected project; if missing, show placeholder
-  const selected = demoProjects.find((p) => p.videoUrl === selectedUrl);
+  // find selected
+  const selected = demoProjects.find(p => p.videoUrl === selectedUrl);
   if (!selected) {
     return (
       <div className="p-6 text-center text-white bg-red-900 rounded-lg">
-        ⚠️ Oops, the selected video could not be found.
+        ⚠️ Oops, selected video not found.
       </div>
     );
   }
+
+  // handle selection + scroll into view
+  const onSelect = (url: string) => {
+    setSelectedUrl(url);
+    setTimeout(() => {
+      playerRef.current?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    }, 50);
+  };
 
   return (
     <motion.section
@@ -110,8 +119,12 @@ export default function VideoPlaylist() {
       initial="hidden"
       animate="show"
     >
-      {/* ─── VIDEO PLAYER ─────────────────────────────────────────── */}
-      <motion.div variants={itemVar} className="mx-auto w-full max-w-4xl">
+      {/* VIDEO PLAYER */}
+      <motion.div
+        ref={playerRef}
+        variants={itemVar}
+        className="mx-auto w-full max-w-4xl"
+      >
         <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-black">
           <iframe
             src={`${selected.videoUrl.replace('watch?v=', 'embed/')}?autoplay=0&start=0`}
@@ -122,11 +135,11 @@ export default function VideoPlaylist() {
         </div>
       </motion.div>
 
-      {/* ─── TITLE & TAGS ────────────────────────────────────────── */}
+      {/* TITLE & TAGS */}
       <motion.div variants={itemVar} className="mx-auto w-full max-w-4xl space-y-2">
         <h3 className="text-2xl font-semibold text-white">{selected.title}</h3>
         <div className="flex flex-wrap gap-2">
-          {selected.tags.map((t) => (
+          {selected.tags.map(t => (
             <span
               key={t}
               className="text-xs bg-[#05c8fb]/20 text-[#05c8fb] px-2 py-0.5 rounded-full"
@@ -137,7 +150,7 @@ export default function VideoPlaylist() {
         </div>
       </motion.div>
 
-      {/* ─── SEARCH & TOGGLE ───────────────────────────────────── */}
+      {/* SEARCH & TOGGLE */}
       <motion.div
         variants={itemVar}
         className="mx-auto flex w-full max-w-4xl flex-col sm:flex-row items-center gap-4"
@@ -146,7 +159,7 @@ export default function VideoPlaylist() {
           type="text"
           placeholder="Search videos…"
           value={query}
-          onChange={(e) => setQuery(e.target.value)}
+          onChange={e => setQuery(e.target.value)}
           className="flex-1 bg-white/10 px-4 py-2 text-white placeholder-gray-400 rounded focus:outline-none"
         />
         <button
@@ -154,13 +167,11 @@ export default function VideoPlaylist() {
           className="flex items-center gap-2 rounded bg-white/10 px-4 py-2 text-white hover:bg-white/20 transition"
         >
           {open ? 'Hide Playlist' : 'Show Playlist'}
-          {open
-            ? <ChevronUpIcon className="h-5 w-5" />
-            : <ChevronDownIcon className="h-5 w-5" />}
+          {open ? <ChevronUpIcon className="h-5 w-5" /> : <ChevronDownIcon className="h-5 w-5" />}
         </button>
       </motion.div>
 
-      {/* ─── PLAYLIST GRID ─────────────────────────────────────── */}
+      {/* PLAYLIST GRID */}
       <AnimatePresence initial={false}>
         {open && (
           <motion.div
@@ -169,19 +180,23 @@ export default function VideoPlaylist() {
             initial="hidden"
             animate="show"
             exit="hidden"
-            className="mx-auto grid w-full max-w-7xl grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-6"
+            className="
+              mx-auto grid w-full max-w-7xl
+              grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4
+              gap-6
+            "
           >
             {filtered.length === 0 ? (
               <div className="col-span-full text-center text-gray-400">
                 No videos found.
               </div>
             ) : (
-              filtered.map((proj) => {
+              filtered.map(proj => {
                 const isSel = proj.videoUrl === selectedUrl;
                 return (
                   <motion.button
                     key={proj.videoUrl}
-                    onClick={() => setSelectedUrl(proj.videoUrl)}
+                    onClick={() => onSelect(proj.videoUrl)}
                     variants={itemVar}
                     className={`
                       flex flex-col rounded-lg border-2 bg-white/5
@@ -195,8 +210,9 @@ export default function VideoPlaylist() {
                         alt={proj.title}
                         fill
                         className="object-cover"
-                        onError={(e) => {
-                          ;(e.currentTarget as HTMLImageElement).src = '/placeholder-thumb.png';
+                        onError={e => {
+                          (e.currentTarget as HTMLImageElement).src =
+                            '/placeholder-thumb.png';
                         }}
                       />
                     </div>
@@ -211,7 +227,7 @@ export default function VideoPlaylist() {
         )}
       </AnimatePresence>
 
-      {/* ─── WATCH FULL PLAYLIST CTA ───────────────────────────── */}
+      {/* WATCH FULL PLAYLIST CTA */}
       <motion.div
         key="cta"
         variants={ctaVariants}
