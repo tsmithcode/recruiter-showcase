@@ -86,8 +86,7 @@ export default function Hero() {
     >
       {/* Left column: Logo */}
       <motion.div
-        className="flex-shrink-0
-    flex justify-center items-center gap-4
+        className="flex justify-center items-center gap-4
     w-full
     sm:w-1/2
     md:w-1/3
