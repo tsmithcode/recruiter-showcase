@@ -6,18 +6,20 @@ export default function LogoWithHoverGlow() {
     <motion.div
       initial={{ y: 10 }}
       animate={{ opacity: 1, y: [0, -10, 0] }}
-      transition={{ duration: 4, ease: "easeInOut", repeat: Infinity }}
-      className="flex justify-center items-center w-full h-full"
+      transition={{ duration: 4, ease: 'easeInOut', repeat: Infinity }}
+      className="flex justify-center items-center w-full h-full min-w-[150px] min-h-[150px]"
     >
-      <div className="relative w-full h-full max-h-[400px]">
-        <Image
-          src="/images/tsmithcode-tech-vision-atlanta.png"
-          alt="TSmithCode tech vision poster"
-          fill
-          className="object-contain"
-          priority
-        />
-      </div>
+      <Image
+        src="/images/tsmithcode-tech-vision-atlanta.png"
+        alt="TSmithCode tech vision poster"
+        sizes="(max-width: 640px) 75vw, (max-width: 1024px) 50vw"
+        className="object-contain w-full h-auto max-h-[400px] transition-transform duration-300"
+        priority
+        fill
+        width={120}
+        height={120}
+      />
     </motion.div>
   );
 }
+
