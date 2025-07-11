@@ -37,9 +37,9 @@ body {
    Toggle ON when you’re inspecting layout; comment-out
    or delete before shipping to production.
 */
-/* *, *::before, *::after {
+*, *::before, *::after {
   outline: 1px solid rgba(255, 0, 0, 0.6) !important;
-} */
+}
 
 
 /* === Print‐friendly tweaks ===================================== */
