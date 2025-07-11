@@ -12,11 +12,7 @@ export default function LogoWithHoverGlow() {
   <Image
     src="/images/tsmithcode-tech-vision-atlanta.png"
     alt="TSmithCode tech vision poster"
-    sizes="(max-width: 640px) 75vw, (max-width: 1024px) 50vw, 320px"
-    className="object-contain w-full h-auto max-h-[400px] group-hover:scale-105 transition-transform duration-300"
-    priority
-    width={320}
-    height={320}
+    className="object-contain max-h-[400px] transition-transform duration-300"
   />
 </motion.div>
   );
