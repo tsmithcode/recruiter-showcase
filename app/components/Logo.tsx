@@ -7,9 +7,7 @@ export default function LogoWithHoverGlow() {
   initial={{ y: 10 }}
   animate={{ opacity: 1, y: [0, -10, 0] }}
   transition={{ duration: 4, ease: 'easeInOut', repeat: Infinity }}
-
-  
-  className="flex justify-center items-center mt-6 md:mt-0 w-full max-w-[320px] sm:max-w-[280px] md:max-w-[320px]"
+  className="flex justify-center items-center w-full h-full"
 >
   <Image
     src="/images/tsmithcode-tech-vision-atlanta.png"
