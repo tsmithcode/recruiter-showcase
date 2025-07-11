@@ -9,13 +9,7 @@ export default function LogoWithHoverGlow() {
   transition={{ duration: 4, ease: 'easeInOut', repeat: Infinity }}
 
   
-  className="flex-shrink-0
-        flex justify-center items-center
-        mt-6 md:mt-0
-        w-3/4 sm:w-1/2 lg:w-full
-        sm:min-w-[180px]
-        md:min-w-[240px]
-        lg:min-w-[320px]"
+  className="flex justify-center items-center mt-6 md:mt-0"
 >
   <Image
     src="/images/tsmithcode-tech-vision-atlanta.png"

@@ -86,12 +86,7 @@ export default function Hero() {
     >
       {/* Left column: Logo */}
       <motion.div
-        className="flex-shrink-0
-    flex justify-center items-center
-    sm:w-1/2
-    sm:min-w-[180px]
-    md:min-w-[240px]
-    gap-4 py-0"
+        className="flex-shrink-0 flex justify-center items-center gap-4 w-full max-w-[240px] sm:max-w-[240px] md:max-w-[320px]"
         variants={columnVariants}
         // ✅ FIX: Prevents animation flash on completion
         style={{ willChange: "transform,opacity" }}
