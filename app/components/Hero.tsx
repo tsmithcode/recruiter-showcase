@@ -121,39 +121,31 @@ export default function Hero() {
 
         {/* CTA row */}
         <motion.div
-          className="flex flex-row flex-wrap justify-center lg:justify-start gap-3"
-          variants={ctaContainerVariants}
-        >
-          {/* Schedule Call Button */}
-          <motion.div 
-            variants={ctaItemVariants} 
-            // ✅ FIX: Prevents animation flash on completion
-            style={{ willChange: "transform,opacity" }}
-          >
-            <Link
-              href="https://calendly.com/tsmithcode"
-              target="_blank"
-              className="bg-[#05c8fb] text-[#0b253f] font-semibold rounded-full px-5 py-2.5 hover:opacity-90 transition"
-            >
-              Schedule Call
-            </Link>
-          </motion.div>
+  className="flex flex-wrap justify-center lg:justify-start gap-4"
+  variants={ctaContainerVariants}
+>
+  <motion.div variants={ctaItemVariants} style={{ willChange: "transform,opacity" }}>
+    <Link
+      href="https://calendly.com/tsmithcode"
+      target="_blank"
+      className="inline-flex justify-center items-center w-full sm:w-auto min-w-[160px] bg-[#05c8fb] text-[#0b253f] font-semibold rounded-full px-6 py-3 hover:opacity-90 transition"
+    >
+      Schedule Call
+    </Link>
+  </motion.div>
 
-          {/* Resume Button */}
-          <motion.div 
-            variants={ctaItemVariants} 
-            // ✅ FIX: Prevents animation flash on completion
-            style={{ willChange: "transform,opacity" }}
-          >
-            <Link
-              href="https://github.com/tsmithcode/jobs/blob/main/THOMAS%20SMITH%202026%20Resume.pdf"
-              target="_blank"
-              className="border border-[#05c8fb] rounded-full px-5 py-2.5 hover:bg-[#05c8fb]/10 transition"
-            >
-              Resume
-            </Link>
-          </motion.div>
-        </motion.div>
+  <motion.div variants={ctaItemVariants} style={{ willChange: "transform,opacity" }}>
+    <Link
+      href="https://github.com/tsmithcode/jobs/blob/main/THOMAS%20SMITH%202026%20Resume.pdf"
+      target="_blank"
+      className="inline-flex justify-center items-center w-full sm:w-auto min-w-[160px] border border-[#05c8fb] rounded-full px-6 py-3 hover:bg-[#05c8fb]/10 transition"
+    >
+      Resume
+    </Link>
+  </motion.div>
+</motion.div>
+
+
       </motion.div>
     </motion.section>
   );
