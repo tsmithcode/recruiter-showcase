@@ -73,7 +73,10 @@ const ctaItemVariants: Variants = {
 export default function Hero() {
   return (
     <motion.section
-      className="mt-6 mb-6 flex flex-col md:flex-row items-center md:items-start gap-6 pb-6 max-w-4xl mx-auto px-4 md:px-0"
+      className="flex flex-col lg:flex-row items-center
+             gap-10 lg:gap-16 pb-6
+             max-w-5xl mx-auto px-4
+             pt-12 lg:pt-18"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
@@ -83,7 +86,7 @@ export default function Hero() {
     >
       {/* Left column: Logo */}
       <motion.div
-        className="flex flex-col items-center md:items-start md:w-1/2 gap-4"
+        className="flex justify-center items-center md:w-1/2 gap-4 py-0"
         variants={columnVariants}
         // ✅ FIX: Prevents animation flash on completion
         style={{ willChange: "transform,opacity" }}
@@ -93,7 +96,10 @@ export default function Hero() {
 
       {/* Right column: Heading, tagline, CTAs */}
       <motion.div
-        className="bg-white/5 border border-white/10 mt-6 p-6 rounded-xl text-white shadow-lg hover:shadow-xl transition flex flex-col items-center md:items-start md:w-1/2 gap-4 md:text-left"
+        className="flex-1 bg-white/5 border border-white/10
+             p-6 mt-6 lg:mt-0 rounded-xl text-white shadow-lg
+             hover:shadow-xl transition
+             flex flex-col items-center lg:items-start gap-4 lg:text-left"
         variants={columnVariants}
         // ✅ FIX: Prevents animation flash on completion
         style={{ willChange: "transform,opacity" }}
@@ -110,7 +116,7 @@ export default function Hero() {
 
         {/* CTA row */}
         <motion.div
-          className="flex flex-row justify-center md:justify-start gap-3"
+          className="flex flex-row flex-wrap justify-center lg:justify-start gap-3"
           variants={ctaContainerVariants}
         >
           {/* Schedule Call Button */}
