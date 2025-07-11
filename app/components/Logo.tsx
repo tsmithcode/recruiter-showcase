@@ -15,6 +15,7 @@ export default function LogoWithHoverGlow() {
     sizes="(max-width: 640px) 75vw, (max-width: 1024px) 50vw, 320px"
     className="object-contain w-full h-auto max-h-[400px] group-hover:scale-105 transition-transform duration-300"
     priority
+    fill
     width={120}
     height={120}
   />
