@@ -73,10 +73,10 @@ const ctaItemVariants: Variants = {
 export default function Hero() {
   return (
     <motion.section
-      className="flex flex-col lg:flex-row items-center
-             gap-10 lg:gap-16 pb-6
+      className="flex flex-col sm:flex-row items-center
+             gap-6 sm:gap-10 lg:gap-16 pb-4
              max-w-5xl mx-auto px-4
-             pt-12 lg:pt-18"
+             pt-6 sm:pt-8 lg:pt-12"
       variants={sectionVariants}
       initial="hidden"
       whileInView="visible"
@@ -86,7 +86,7 @@ export default function Hero() {
     >
       {/* Left column: Logo */}
       <motion.div
-        className="flex justify-center items-center md:w-1/2 gap-4 py-0"
+        className="flex justify-center items-center sm:w-1/2 gap-4 py-0"
         variants={columnVariants}
         // ✅ FIX: Prevents animation flash on completion
         style={{ willChange: "transform,opacity" }}

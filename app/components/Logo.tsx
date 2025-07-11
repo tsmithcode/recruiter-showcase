@@ -11,13 +11,11 @@ export default function LogoWithHoverGlow() {
   
   className="flex justify-center items-center mt-6 md:mt-0 md:h-[400px]"
 >
-
-  {/* ⬇ only className changed */}
   <Image
     src="/images/tsmithcode-tech-vision-atlanta.png"
     alt="TSmithCode tech vision poster"
-    sizes="(max-width: 640px) 240px, 320px"
-    className="object-contain max-w-[240px] lg:max-w-[320px]
+    sizes="(max-width: 640px) 75vw, (max-width: 1024px) 50vw, 320px"
+    className="object-contain w-3/4 sm:w-1/2 lg:w-full
                group-hover:scale-105 transition-transform duration-300"
     priority
     width={320}
