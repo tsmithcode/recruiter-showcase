@@ -85,15 +85,18 @@ export default function Hero() {
       style={{ willChange: "transform,opacity" }}
     >
       {/* Left column: Logo */}
-      <motion.div
-        className="flex justify-center items-center
+<motion.div
+  className="
+    flex justify-center items-center
     w-full sm:w-1/2 md:w-1/3 lg:w-1/4
-    aspect-square"
-        variants={columnVariants}
-        style={{ willChange: "transform,opacity" }}
-      >
-        <Logo />
-      </motion.div>
+    aspect-square
+    min-w-[150px]
+  "
+  variants={columnVariants}
+  style={{ willChange: "transform,opacity" }}
+>
+  <Logo />
+</motion.div>
 
       {/* Right column: Heading, tagline, CTAs */}
       <motion.div
