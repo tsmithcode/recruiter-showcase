@@ -15,26 +15,106 @@ interface Project {
 
 // ─── Your playlist data ─────────────────────────────────────────────
 const demoProjects: Project[] = [
-  { title: "SLC Airport Automation",     tags: ["WinForms","InventorAPI","ExcelAPI"],      videoUrl: "https://www.youtube.com/watch?v=9YA3J85JKRI" },
-  { title: "Door Frame Configurator",    tags: ["CAD","ExcelAPI","Automation"],           videoUrl: "https://www.youtube.com/watch?v=EVuWhw88N20" },
-  { title: "LED Reveal Accelerator",     tags: ["InventorMacro","NoCode"],                videoUrl: "https://www.youtube.com/watch?v=wJehm7rSqC4" },
-  { title: "LED Automation Tool",        tags: ["Macros","PDF","InventorAPI"],            videoUrl: "https://www.youtube.com/watch?v=2ce70aH0PmY" },
-  { title: "ERP & CRM Web App",          tags: ["Blazor","API","NoSQL"],                  videoUrl: "https://www.youtube.com/watch?v=gWDy964I97Y" },
-  { title: "Fry Tools Automation",       tags: ["CSharp","InventorAPI","WinForms"],       videoUrl: "https://www.youtube.com/watch?v=TsECnuxQhKw" },
-  { title: "LED QT BOM ATO Tool",        tags: ["Excel","VBA","Sales"],                   videoUrl: "https://www.youtube.com/watch?v=RKEe9TrNgyE" },
-  { title: "BOM Project Info Fill",      tags: ["VB.NET","ExcelAPI"],                     videoUrl: "https://www.youtube.com/watch?v=aHmYna-aanw" },
-  { title: "Label Generator",            tags: ["ExcelVBA","PDF","Validation"],           videoUrl: "https://www.youtube.com/watch?v=ka0wfOce8ps" },
-  { title: "Ceiling Trim Tool",          tags: ["ERP","Inventor","ExcelAPI"],             videoUrl: "https://www.youtube.com/watch?v=gGhLi_qxDZY" },
-  { title: "Hourly Allocation Tool",     tags: ["Excel","Macro"],                         videoUrl: "https://www.youtube.com/watch?v=MQNGRKhiU6s" },
-  { title: "Ceiling System Automation",  tags: ["Inventor","Excel","VBA"],                videoUrl: "https://www.youtube.com/watch?v=3i9q_dJqPGk" },
-  { title: "Quote Request Web Form",     tags: ["Form","Request","Blazor"],               videoUrl: "https://www.youtube.com/watch?v=Ye8ihfO-FmE" },
-  { title: "Door Frame Automation",      tags: ["VisualStudio","Inventor","SQL"],         videoUrl: "https://www.youtube.com/watch?v=jXnunvPM9Ec" },
-  { title: "3D Quote Tool",              tags: ["ERP","VB.NET","Inventor"],               videoUrl: "https://www.youtube.com/watch?v=NtwpK8-7Ef0" },
-  { title: "Employee Allocation Tool",   tags: ["Excel","Validation","Finance"],          videoUrl: "https://www.youtube.com/watch?v=jaab3b_ttIo" },
-  { title: "LED Quote Tool",             tags: ["ERP","VBA","Pricing"],                   videoUrl: "https://www.youtube.com/watch?v=xmLHainqgVU" },
-  { title: "SLC Column Configurator",    tags: ["iLogic","Inventor","VB.NET"],            videoUrl: "https://www.youtube.com/watch?v=Kl84rkNXGwc" },
-  { title: "Frame Generator Form",       tags: ["iLogic","GenerativeDesign"],             videoUrl: "https://www.youtube.com/watch?v=hvMBMv1JEgg" },
-  { title: "Part Number Generator",      tags: ["Python","CLI","Automation"],             videoUrl: "https://www.youtube.com/watch?v=NWHDp9UDY_0" },
+  {
+    title: 'SLC Airport Automation',
+    tags: ['WinForms', 'InventorAPI', 'ExcelAPI'],
+    videoUrl: 'https://www.youtube.com/watch?v=9YA3J85JKRI',
+  },
+  {
+    title: 'Door Frame Configurator',
+    tags: ['CAD', 'ExcelAPI', 'Automation'],
+    videoUrl: 'https://www.youtube.com/watch?v=EVuWhw88N20',
+  },
+  {
+    title: 'LED Reveal Accelerator',
+    tags: ['InventorMacro', 'NoCode'],
+    videoUrl: 'https://www.youtube.com/watch?v=wJehm7rSqC4',
+  },
+  {
+    title: 'LED Automation Tool',
+    tags: ['Macros', 'PDF', 'InventorAPI'],
+    videoUrl: 'https://www.youtube.com/watch?v=2ce70aH0PmY',
+  },
+  {
+    title: 'ERP & CRM Web App',
+    tags: ['Blazor', 'API', 'NoSQL'],
+    videoUrl: 'https://www.youtube.com/watch?v=gWDy964I97Y',
+  },
+  {
+    title: 'Fry Tools Automation',
+    tags: ['CSharp', 'InventorAPI', 'WinForms'],
+    videoUrl: 'https://www.youtube.com/watch?v=TsECnuxQhKw',
+  },
+  {
+    title: 'LED QT BOM ATO Tool',
+    tags: ['Excel', 'VBA', 'Sales'],
+    videoUrl: 'https://www.youtube.com/watch?v=RKEe9TrNgyE',
+  },
+  {
+    title: 'BOM Project Info Fill',
+    tags: ['VB.NET', 'ExcelAPI'],
+    videoUrl: 'https://www.youtube.com/watch?v=aHmYna-aanw',
+  },
+  {
+    title: 'Label Generator',
+    tags: ['ExcelVBA', 'PDF', 'Validation'],
+    videoUrl: 'https://www.youtube.com/watch?v=ka0wfOce8ps',
+  },
+  {
+    title: 'Ceiling Trim Tool',
+    tags: ['ERP', 'Inventor', 'ExcelAPI'],
+    videoUrl: 'https://www.youtube.com/watch?v=gGhLi_qxDZY',
+  },
+  {
+    title: 'Hourly Allocation Tool',
+    tags: ['Excel', 'Macro'],
+    videoUrl: 'https://www.youtube.com/watch?v=MQNGRKhiU6s',
+  },
+  {
+    title: 'Ceiling System Automation',
+    tags: ['Inventor', 'Excel', 'VBA'],
+    videoUrl: 'https://www.youtube.com/watch?v=3i9q_dJqPGk',
+  },
+  {
+    title: 'Quote Request Web Form',
+    tags: ['Form', 'Request', 'Blazor'],
+    videoUrl: 'https://www.youtube.com/watch?v=Ye8ihfO-FmE',
+  },
+  {
+    title: 'Door Frame Automation',
+    tags: ['VisualStudio', 'Inventor', 'SQL'],
+    videoUrl: 'https://www.youtube.com/watch?v=jXnunvPM9Ec',
+  },
+  {
+    title: '3D Quote Tool',
+    tags: ['ERP', 'VB.NET', 'Inventor'],
+    videoUrl: 'https://www.youtube.com/watch?v=NtwpK8-7Ef0',
+  },
+  {
+    title: 'Employee Allocation Tool',
+    tags: ['Excel', 'Validation', 'Finance'],
+    videoUrl: 'https://www.youtube.com/watch?v=jaab3b_ttIo',
+  },
+  {
+    title: 'LED Quote Tool',
+    tags: ['ERP', 'VBA', 'Pricing'],
+    videoUrl: 'https://www.youtube.com/watch?v=xmLHainqgVU',
+  },
+  {
+    title: 'SLC Column Configurator',
+    tags: ['iLogic', 'Inventor', 'VB.NET'],
+    videoUrl: 'https://www.youtube.com/watch?v=Kl84rkNXGwc',
+  },
+  {
+    title: 'Frame Generator Form',
+    tags: ['iLogic', 'GenerativeDesign'],
+    videoUrl: 'https://www.youtube.com/watch?v=hvMBMv1JEgg',
+  },
+  {
+    title: 'Part Number Generator',
+    tags: ['Python', 'CLI', 'Automation'],
+    videoUrl: 'https://www.youtube.com/watch?v=NWHDp9UDY_0',
+  },
 ];
 // Thumbnail helper
 const getThumb = (url: string) => {
@@ -79,15 +159,13 @@ export default function VideoPlaylist() {
   // search
   const [query, setQuery] = useState('');
   const filtered = useMemo(
-    () => demoProjects.filter(p =>
-      p.title.toLowerCase().includes(query.toLowerCase())
-    ),
+    () => demoProjects.filter((p) => p.title.toLowerCase().includes(query.toLowerCase())),
     [query]
   );
 
   // drawer open/close
   const [open, setOpen] = useState(true);
-  const toggle = useCallback(() => setOpen(o => !o), []);
+  const toggle = useCallback(() => setOpen((o) => !o), []);
   useEffect(() => {
     const onEsc = (e: KeyboardEvent) => e.key === 'Escape' && setOpen(false);
     if (open) document.addEventListener('keydown', onEsc);
@@ -95,7 +173,7 @@ export default function VideoPlaylist() {
   }, [open]);
 
   // find selected
-  const selected = demoProjects.find(p => p.videoUrl === selectedUrl);
+  const selected = demoProjects.find((p) => p.videoUrl === selectedUrl);
   if (!selected) {
     return (
       <div className="p-6 text-center text-white bg-red-900 rounded-lg">
@@ -120,11 +198,7 @@ export default function VideoPlaylist() {
       animate="show"
     >
       {/* VIDEO PLAYER */}
-      <motion.div
-        ref={playerRef}
-        variants={itemVar}
-        className="mx-auto w-full max-w-4xl"
-      >
+      <motion.div ref={playerRef} variants={itemVar} className="mx-auto w-full max-w-4xl">
         <div className="relative w-full aspect-video rounded-lg overflow-hidden bg-black">
           <iframe
             src={`${selected.videoUrl.replace('watch?v=', 'embed/')}?autoplay=0&start=0`}
@@ -139,7 +213,7 @@ export default function VideoPlaylist() {
       <motion.div variants={itemVar} className="mx-auto w-full max-w-4xl space-y-2">
         <h3 className="text-2xl font-semibold text-white">{selected.title}</h3>
         <div className="flex flex-wrap gap-2">
-          {selected.tags.map(t => (
+          {selected.tags.map((t) => (
             <span
               key={t}
               className="text-xs bg-[#05c8fb]/20 text-[#05c8fb] px-2 py-0.5 rounded-full"
@@ -159,7 +233,7 @@ export default function VideoPlaylist() {
           type="text"
           placeholder="Search videos…"
           value={query}
-          onChange={e => setQuery(e.target.value)}
+          onChange={(e) => setQuery(e.target.value)}
           className="flex-1 bg-white/10 px-4 py-2 text-white placeholder-gray-400 rounded focus:outline-none"
         />
         <button
@@ -187,11 +261,9 @@ export default function VideoPlaylist() {
             "
           >
             {filtered.length === 0 ? (
-              <div className="col-span-full text-center text-gray-400">
-                No videos found.
-              </div>
+              <div className="col-span-full text-center text-gray-400">No videos found.</div>
             ) : (
-              filtered.map(proj => {
+              filtered.map((proj) => {
                 const isSel = proj.videoUrl === selectedUrl;
                 return (
                   <motion.button
@@ -210,9 +282,8 @@ export default function VideoPlaylist() {
                         alt={proj.title}
                         fill
                         className="object-cover"
-                        onError={e => {
-                          (e.currentTarget as HTMLImageElement).src =
-                            '/placeholder-thumb.png';
+                        onError={(e) => {
+                          (e.currentTarget as HTMLImageElement).src = '/placeholder-thumb.png';
                         }}
                       />
                     </div>

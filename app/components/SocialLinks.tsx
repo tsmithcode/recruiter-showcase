@@ -1,5 +1,5 @@
-import { FaYoutube, FaGithub, FaEnvelope, FaBriefcase } from "react-icons/fa";
-import Link from "next/link";
+import { FaYoutube, FaGithub, FaEnvelope, FaBriefcase } from 'react-icons/fa';
+import Link from 'next/link';
 
 export default function SocialLinks() {
   return (

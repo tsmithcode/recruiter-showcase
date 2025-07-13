@@ -1,9 +1,9 @@
-
 # Recruiter Showcase – TSmithCode.ai
 
 This is the official portfolio site for Thomas Smith, a .NET & Automation Engineer, built to streamline the hiring process by giving recruiters everything they need on one high-performance page.
 
 ⚙️ Built with:
+
 - **Next.js 15 (App Router)**
 - **Tailwind CSS**
 - **Framer Motion**
@@ -11,6 +11,7 @@ This is the official portfolio site for Thomas Smith, a .NET & Automation Engine
 - **Live YouTube Demo Integration**
 
 💼 What you'll find:
+
 - ⚡ Real-world CAD & ERP automation projects
 - 🎯 Problem–Solution breakdowns by domain
 - 🧠 Agile + SDLC approach with a developer mindset
@@ -36,7 +37,7 @@ yarn dev
 pnpm dev
 # or
 bun dev
-````
+```
 
 Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
 
@@ -48,8 +49,8 @@ This project uses [`next/font`](https://nextjs.org/docs/app/building-your-applic
 
 To learn more about Next.js, take a look at the following resources:
 
-* [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-* [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
+- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
+- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
 
 You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
 
@@ -137,31 +138,30 @@ Your overall goal with this project is to:
 
 #### 🧠 1. **Monetize Your Historical Code and Skillset**
 
-* Convert previous projects into productized, paid demos (CPQ tools, configurators, macros, etc.)
-* Offer scoped deliverables (code, PDFs, images, repos, courses) in modular packages
-* Automate quoting, delivery, and payment using a CPQ front-end and Stripe/Calendly backend
+- Convert previous projects into productized, paid demos (CPQ tools, configurators, macros, etc.)
+- Offer scoped deliverables (code, PDFs, images, repos, courses) in modular packages
+- Automate quoting, delivery, and payment using a CPQ front-end and Stripe/Calendly backend
 
 #### 🏢 2. **Attract Enterprise Clients from High-GDP Industries**
 
-* Showcase reusable demos aligned to pain points in:
+- Showcase reusable demos aligned to pain points in:
+  - Manufacturing (CAD, ERP)
+  - Engineering (automation, product design)
+  - Energy / Construction (configurators, BOM tools)
+  - Healthcare / Finance (compliance, ETL, dashboards)
 
-  * Manufacturing (CAD, ERP)
-  * Engineering (automation, product design)
-  * Energy / Construction (configurators, BOM tools)
-  * Healthcare / Finance (compliance, ETL, dashboards)
-* Structure services around real business outcomes (efficiency, throughput, cost savings)
+- Structure services around real business outcomes (efficiency, throughput, cost savings)
 
 #### 💼 3. **Win 5-Figure Contracts or \$140K+ Remote Roles**
 
-* Make it easy for **recruiters and hiring managers** to justify hiring or contracting you
-* Prove immediate ROI and industry experience through visuals, metrics, and solutions
-* Position yourself as a "force multiplier" who builds **internal tools**, not just writes code
+- Make it easy for **recruiters and hiring managers** to justify hiring or contracting you
+- Prove immediate ROI and industry experience through visuals, metrics, and solutions
+- Position yourself as a "force multiplier" who builds **internal tools**, not just writes code
 
 #### 🧬 4. **Build a Sustainable, Scalable, Personal Brand**
 
-* Capture your full technical portfolio in one evolving site (CPQ demo, carousel, skill maps)
-* Include LinkedIn-style copy, lifestyle-fit philosophy, and compensation terms
-* Establish TSmithCode.ai as a repeatable funnel for consulting, employment, or product sales
+- Capture your full technical portfolio in one evolving site (CPQ demo, carousel, skill maps)
+- Include LinkedIn-style copy, lifestyle-fit philosophy, and compensation terms
+- Establish TSmithCode.ai as a repeatable funnel for consulting, employment, or product sales
 
 ---
-

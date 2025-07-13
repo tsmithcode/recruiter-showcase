@@ -3,10 +3,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
-import {
-  FaTools,
-  FaCubes,
-} from 'react-icons/fa';
+import { FaTools, FaCubes } from 'react-icons/fa';
 
 type BlogItem = {
   Icon: FC<{ className?: string }>;
@@ -81,10 +78,7 @@ export default function RecentBlogsSection() {
             <h3 className="text-xl font-semibold text-white mb-2">{title}</h3>
             <p className="text-sm leading-relaxed mb-4">{description}</p>
             {/* Link no longer needs nested <a> */}
-            <Link
-              href={href}
-              className="inline-block text-[#05c8fb] font-medium hover:underline"
-            >
+            <Link href={href} className="inline-block text-[#05c8fb] font-medium hover:underline">
               Read More →
             </Link>
           </motion.article>

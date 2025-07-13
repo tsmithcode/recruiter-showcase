@@ -1,9 +1,9 @@
-"use client";
+'use client';
 
-import { motion, Variants } from "framer-motion";
-import Logo from "./Logo";
-import Link from "next/link";
-import SocialLinks from "@/components/SocialLinks";
+import { motion, Variants } from 'framer-motion';
+import Logo from './Logo';
+import Link from 'next/link';
+import SocialLinks from '@/components/SocialLinks';
 
 // --- Animation Variants (no changes here) ---
 const sectionVariants: Variants = {
@@ -12,7 +12,7 @@ const sectionVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring",
+      type: 'spring',
       stiffness: 70,
       damping: 10,
       staggerChildren: 0.15,
@@ -27,7 +27,7 @@ const columnVariants: Variants = {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring",
+      type: 'spring',
       stiffness: 70,
       damping: 10,
     },
@@ -41,7 +41,7 @@ const textVariants: Variants = {
     y: 0,
     transition: {
       duration: 0.5,
-      ease: "easeOut",
+      ease: 'easeOut',
     },
   },
 };
@@ -63,7 +63,7 @@ const ctaItemVariants: Variants = {
     opacity: 1,
     x: 0,
     transition: {
-      type: "spring",
+      type: 'spring',
       stiffness: 100,
       damping: 15,
     },
@@ -82,69 +82,73 @@ export default function Hero() {
       whileInView="visible"
       viewport={{ once: false, amount: 0.25 }}
       // ✅ FIX: Prevents animation flash on completion
-      style={{ willChange: "transform,opacity" }}
+      style={{ willChange: 'transform,opacity' }}
     >
       {/* Left column: Logo */}
-<motion.div
-  className="
+      <motion.div
+        className="
     flex justify-center items-center
     w-full sm:w-1/2 md:w-1/3 lg:w-1/4
     aspect-square
     min-w-[150px]
   "
-  variants={columnVariants}
-  style={{ willChange: "transform,opacity" }}
->
-  <Logo />
-</motion.div>
+        variants={columnVariants}
+        style={{ willChange: 'transform,opacity' }}
+      >
+        <Logo />
+      </motion.div>
 
       {/* Right column: Heading, tagline, CTAs */}
       <motion.div
-        className="flex-1 bg-white/5 border border-white/10
-             p-6 mt-6 lg:mt-0 rounded-xl text-white shadow-lg
-             hover:shadow-xl transition
-             flex flex-col items-center lg:items-start gap-4 lg:text-left"
+        className="bg-white/5 border border-white/10
+              mt-6
+              p-6
+              rounded-xl
+              text-white
+              shadow-lg
+              hover:shadow-xl
+              transition flex flex-col items-center md:items-start md:w-1/2 gap-4 md:text-left"
         variants={columnVariants}
         // ✅ FIX: Prevents animation flash on completion
-        style={{ willChange: "transform,opacity" }}
+        style={{ willChange: 'transform,opacity' }}
       >
         <SocialLinks />
         <motion.p
           className="text-[#05c8fb] text-base sm:text-lg leading-relaxed"
           variants={textVariants}
           // ✅ FIX: Prevents animation flash on completion
-          style={{ willChange: "transform,opacity" }}
+          style={{ willChange: 'transform,opacity' }}
         >
-          I’m <span className="font-semibold text-[#c8d6d9]">Thomas Smith</span>, a results-driven software architect who designs user-focused systems that streamline operations and generate ROI in weeks — not months.
+          I’m <span className="font-semibold text-[#c8d6d9]">Thomas Smith</span>, a results-driven
+          software architect who designs user-focused systems that streamline operations and
+          generate ROI in weeks — not months.
         </motion.p>
 
         {/* CTA row */}
         <motion.div
-  className="flex flex-wrap justify-center lg:justify-start gap-4"
-  variants={ctaContainerVariants}
->
-  <motion.div variants={ctaItemVariants} style={{ willChange: "transform,opacity" }}>
-    <Link
-      href="https://calendly.com/tsmithcode"
-      target="_blank"
-      className="inline-flex justify-center items-center w-full sm:w-auto min-w-[160px] bg-[#05c8fb] text-[#0b253f] font-semibold rounded-full px-6 py-3 hover:opacity-90 transition"
-    >
-      Schedule Call
-    </Link>
-  </motion.div>
+          className="flex flex-wrap justify-center lg:justify-start gap-4"
+          variants={ctaContainerVariants}
+        >
+          <motion.div variants={ctaItemVariants} style={{ willChange: 'transform,opacity' }}>
+            <Link
+              href="https://calendly.com/tsmithcode"
+              target="_blank"
+              className="inline-flex justify-center items-center w-full sm:w-auto min-w-[160px] bg-[#05c8fb] text-[#0b253f] font-semibold rounded-full px-6 py-3 hover:opacity-90 transition"
+            >
+              Schedule Call
+            </Link>
+          </motion.div>
 
-  <motion.div variants={ctaItemVariants} style={{ willChange: "transform,opacity" }}>
-    <Link
-      href="https://github.com/tsmithcode/jobs/blob/main/THOMAS%20SMITH%202026%20Resume.pdf"
-      target="_blank"
-      className="inline-flex justify-center items-center w-full sm:w-auto min-w-[160px] border border-[#05c8fb] rounded-full px-6 py-3 hover:bg-[#05c8fb]/10 transition"
-    >
-      Resume
-    </Link>
-  </motion.div>
-</motion.div>
-
-
+          <motion.div variants={ctaItemVariants} style={{ willChange: 'transform,opacity' }}>
+            <Link
+              href="https://github.com/tsmithcode/jobs/blob/main/THOMAS%20SMITH%202026%20Resume.pdf"
+              target="_blank"
+              className="inline-flex justify-center items-center w-full sm:w-auto min-w-[160px] border border-[#05c8fb] rounded-full px-6 py-3 hover:bg-[#05c8fb]/10 transition"
+            >
+              Resume
+            </Link>
+          </motion.div>
+        </motion.div>
       </motion.div>
     </motion.section>
   );

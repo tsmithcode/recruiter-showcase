@@ -36,7 +36,6 @@ const dialogVariants: Variants = {
   },
 };
 
-
 // ────────────────────────────────────────────────────────
 // 3 — MAIN COMPONENT
 // ────────────────────────────────────────────────────────
@@ -71,16 +70,17 @@ export default function CombinedFeature() {
           variants={textItemVariants}
           className="text-3xl md:text-4xl font-bold text-white mb-4 text-center"
         >
-          Door Frame Configurator<br/>
+          Door Frame Configurator
+          <br />
           <span className="text-[#05c8fb]">CAD, BOM & Quote</span>
         </motion.h1>
         <motion.p
           variants={textItemVariants}
           className="text-center text-gray-300 mb-8 leading-relaxed"
         >
-          Watch a WinForms app turn an Excel quote into a fully-parametric 3D model,
-          complete Bill-of-Materials, customer quote and fabrication drawings in under 5 minutes for
-          an architectural-metals manufacturer.
+          Watch a WinForms app turn an Excel quote into a fully-parametric 3D model, complete
+          Bill-of-Materials, customer quote and fabrication drawings in under 5 minutes for an
+          architectural-metals manufacturer.
         </motion.p>
 
         {/* video thumbnail button */}
@@ -96,11 +96,7 @@ export default function CombinedFeature() {
               className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
             />
             <span className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
-              <svg
-                className="h-16 w-16 text-white"
-                viewBox="0 0 24 24"
-                fill="currentColor"
-              >
+              <svg className="h-16 w-16 text-white" viewBox="0 0 24 24" fill="currentColor">
                 <path d="M8 5v14l11-7L8 5z" />
               </svg>
             </span>
@@ -147,7 +143,6 @@ export default function CombinedFeature() {
           </motion.div>
         )}
       </AnimatePresence>
-
     </>
   );
 }

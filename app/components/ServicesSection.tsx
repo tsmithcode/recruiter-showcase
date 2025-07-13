@@ -1,12 +1,7 @@
-"use client";
-import { motion, Variants } from "framer-motion"; // Removed CubicBezier from import
-import { FC } from "react";
-import {
-  FaLaptopCode,
-  FaCogs,
-  FaCloud,
-  FaNetworkWired,
-} from "react-icons/fa";
+'use client';
+import { motion, Variants } from 'framer-motion'; // Removed CubicBezier from import
+import { FC } from 'react';
+import { FaLaptopCode, FaCogs, FaCloud, FaNetworkWired } from 'react-icons/fa';
 
 type Service = {
   Icon: FC<{ className?: string }>;
@@ -17,27 +12,27 @@ type Service = {
 const services: Service[] = [
   {
     Icon: FaLaptopCode,
-    title: "Custom .NET Solutions",
+    title: 'Custom .NET Solutions',
     description:
-      "Building enterprise-grade .NET Core/Blazor applications that scale—reducing time-to-market and maximizing ROI.",
+      'Building enterprise-grade .NET Core/Blazor applications that scale—reducing time-to-market and maximizing ROI.',
   },
   {
     Icon: FaCogs,
-    title: "CAD & Automation Integration",
+    title: 'CAD & Automation Integration',
     description:
-      "Seamlessly integrate Inventor API, iLogic, and AutoCAD workflows to automate repetitive engineering tasks and boost throughput.",
+      'Seamlessly integrate Inventor API, iLogic, and AutoCAD workflows to automate repetitive engineering tasks and boost throughput.',
   },
   {
     Icon: FaCloud,
-    title: "Cloud & DevOps Architecture",
+    title: 'Cloud & DevOps Architecture',
     description:
-      "Designing cloud-native infrastructures (Azure & Vercel) with CI/CD pipelines that cut deployment time by 60%.",
+      'Designing cloud-native infrastructures (Azure & Vercel) with CI/CD pipelines that cut deployment time by 60%.',
   },
   {
     Icon: FaNetworkWired,
-    title: "Data & ERP Integrations",
+    title: 'Data & ERP Integrations',
     description:
-      "Connecting CRM/ERP (Epicor, SugarCRM, Dynamics NAV) and SQL/NoSQL pipelines to automate end-to-end business workflows.",
+      'Connecting CRM/ERP (Epicor, SugarCRM, Dynamics NAV) and SQL/NoSQL pipelines to automate end-to-end business workflows.',
   },
 ];
 
@@ -95,7 +90,7 @@ export default function ServicesSection() {
           <motion.span
             className="h-3 w-3 rounded-full bg-[#05c8fb]"
             animate={{ scale: [1, 1.4, 1], opacity: [1, 0.4, 1] }}
-            transition={{ repeat: Infinity, duration: 1.2, ease: "easeInOut" }}
+            transition={{ repeat: Infinity, duration: 1.2, ease: 'easeInOut' }}
           />
           From $60-$160/hr
         </div>
@@ -115,9 +110,7 @@ export default function ServicesSection() {
             </div>
             <div>
               <h3 className="font-semibold text-lg mb-2">{svc.title}</h3>
-              <p className="text-sm text-gray-300 leading-relaxed">
-                {svc.description}
-              </p>
+              <p className="text-sm text-gray-300 leading-relaxed">{svc.description}</p>
             </div>
           </motion.div>
         ))}

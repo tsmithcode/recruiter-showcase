@@ -45,12 +45,12 @@ Perfect — based on your branding, audience, and video content, here’s a **ba
 
 **Every GitHub repo includes:**
 
-* 🎯 **Project Purpose** (1-line)
-* 🧠 **Demo Video Embed**
-* 🔧 **Tech Stack Used**
-* ⚙️ **Install/Use Instructions**
-* 📝 **Transcript of captions** (sync'd from video)
-* 💼 **CTA section**:
+- 🎯 **Project Purpose** (1-line)
+- 🧠 **Demo Video Embed**
+- 🔧 **Tech Stack Used**
+- ⚙️ **Install/Use Instructions**
+- 📝 **Transcript of captions** (sync'd from video)
+- 💼 **CTA section**:
   “Want this built for your team? [Schedule a 15-min Intro](https://calendly.com/tsmithcode)”
 
 ---
@@ -71,8 +71,8 @@ Perfect — based on your branding, audience, and video content, here’s a **ba
 
 **Use this Trello or Notion board per video:**
 
-| Step                             | Description |
-| -------------------------------- | ----------- |
+| Step                              | Description |
+| --------------------------------- | ----------- |
 | ✅ Extract key frames             |             |
 | ✅ Caption generation via ChatGPT |             |
 | ✅ Canva overlay creation         |             |
@@ -91,10 +91,9 @@ I can generate you:
 2. README.md starter with embed + CTA section
 3. JSON prompt set to auto-generate lower-thirds from screenshots
 4. Overlay graphics for:
-
-   * “Free Tool”
-   * “ROI: 60% Faster”
-   * “Built with .NET + Excel API”
-   * “Try It on GitHub”
+   - “Free Tool”
+   - “ROI: 60% Faster”
+   - “Built with .NET + Excel API”
+   - “Try It on GitHub”
 
 Would you like me to start with the Canva pack or ChatGPT prompt set first?

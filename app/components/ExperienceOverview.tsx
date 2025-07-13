@@ -1,7 +1,7 @@
 // components/ExperienceOverview.tsx
-"use client";
+'use client';
 
-import React from "react";
+import React from 'react';
 
 export default function ExperienceOverview() {
   return (
@@ -13,8 +13,8 @@ export default function ExperienceOverview() {
             Markets & <span className="text-[#05c8fb]">Expertise</span>
           </h2>
           <p className="text-gray-400 text-base mb-6">
-            Leveraging 12+ years of cross-industry experience to deliver
-            high-impact solutions and streamline workflows for diverse markets.
+            Leveraging 12+ years of cross-industry experience to deliver high-impact solutions and
+            streamline workflows for diverse markets.
           </p>
         </div>
       </header>
@@ -34,9 +34,7 @@ export default function ExperienceOverview() {
             transition
           "
         >
-          <h3 className="text-white font-semibold text-lg mb-3">
-            Markets Served
-          </h3>
+          <h3 className="text-white font-semibold text-lg mb-3">Markets Served</h3>
           <ul className="text-sm text-gray-300 space-y-2">
             <li className="flex items-start">
               <span className="inline-block w-2 h-2 bg-[#05c8fb] rounded-full mt-1 mr-2" />
@@ -74,9 +72,7 @@ export default function ExperienceOverview() {
             transition
           "
         >
-          <h3 className="text-white font-semibold text-lg mb-3">
-            Industries & Verticals
-          </h3>
+          <h3 className="text-white font-semibold text-lg mb-3">Industries & Verticals</h3>
           <ul className="text-sm text-gray-300 space-y-2">
             <li className="flex items-start">
               <span className="inline-block w-2 h-2 bg-[#05c8fb] rounded-full mt-1 mr-2" />
@@ -114,38 +110,41 @@ export default function ExperienceOverview() {
             transition
           "
         >
-          <h3 className="text-white font-semibold text-lg mb-3">
-            Soft Skills & Workflows
-          </h3>
+          <h3 className="text-white font-semibold text-lg mb-3">Soft Skills & Workflows</h3>
           <ul className="text-sm text-gray-300 space-y-2">
             <li className="flex items-start">
               <span className="inline-block w-2 h-2 bg-[#05c8fb] rounded-full mt-1 mr-2" />
               <span>
-                Cross-Functional <span className="text-[#05c8fb] font-semibold">Team Collaboration</span>
+                Cross-Functional{' '}
+                <span className="text-[#05c8fb] font-semibold">Team Collaboration</span>
               </span>
             </li>
             <li className="flex items-start">
               <span className="inline-block w-2 h-2 bg-[#05c8fb] rounded-full mt-1 mr-2" />
               <span>
-                Lean & Kaizen-Driven <span className="text-[#05c8fb] font-semibold">Process Improvement</span>
+                Lean & Kaizen-Driven{' '}
+                <span className="text-[#05c8fb] font-semibold">Process Improvement</span>
               </span>
             </li>
             <li className="flex items-start">
               <span className="inline-block w-2 h-2 bg-[#05c8fb] rounded-full mt-1 mr-2" />
               <span>
-                Agile & SDLC-Based <span className="text-[#05c8fb] font-semibold">Project Delivery</span>
+                Agile & SDLC-Based{' '}
+                <span className="text-[#05c8fb] font-semibold">Project Delivery</span>
               </span>
             </li>
             <li className="flex items-start">
               <span className="inline-block w-2 h-2 bg-[#05c8fb] rounded-full mt-1 mr-2" />
               <span>
-                Stakeholder-Focused <span className="text-[#05c8fb] font-semibold">Requirement Gathering</span>
+                Stakeholder-Focused{' '}
+                <span className="text-[#05c8fb] font-semibold">Requirement Gathering</span>
               </span>
             </li>
             <li className="flex items-start">
               <span className="inline-block w-2 h-2 bg-[#05c8fb] rounded-full mt-1 mr-2" />
               <span>
-                Data-Driven <span className="text-[#05c8fb] font-semibold">Decision Making</span> & Reporting
+                Data-Driven <span className="text-[#05c8fb] font-semibold">Decision Making</span> &
+                Reporting
               </span>
             </li>
           </ul>
@@ -164,38 +163,46 @@ export default function ExperienceOverview() {
             transition
           "
         >
-          <h3 className="text-white font-semibold text-lg mb-3">
-            Team Roles & Collaboration
-          </h3>
+          <h3 className="text-white font-semibold text-lg mb-3">Team Roles & Collaboration</h3>
           <ul className="text-sm text-gray-300 space-y-2">
             <li className="flex items-start">
               <span className="inline-block w-2 h-2 bg-[#05c8fb] rounded-full mt-1 mr-2" />
               <span>
-                Coordinated with <span className="text-[#05c8fb] font-semibold">Engineers</span>, <span className="text-[#05c8fb] font-semibold">Designers</span>, & <span className="text-[#05c8fb] font-semibold">Business Analysts</span>
+                Coordinated with <span className="text-[#05c8fb] font-semibold">Engineers</span>,{' '}
+                <span className="text-[#05c8fb] font-semibold">Designers</span>, &{' '}
+                <span className="text-[#05c8fb] font-semibold">Business Analysts</span>
               </span>
             </li>
             <li className="flex items-start">
               <span className="inline-block w-2 h-2 bg-[#05c8fb] rounded-full mt-1 mr-2" />
               <span>
-                Mentored <span className="text-[#05c8fb] font-semibold">Junior CAD Technicians</span> & <span className="text-[#05c8fb] font-semibold">Developers</span>
+                Mentored{' '}
+                <span className="text-[#05c8fb] font-semibold">Junior CAD Technicians</span> &{' '}
+                <span className="text-[#05c8fb] font-semibold">Developers</span>
               </span>
             </li>
             <li className="flex items-start">
               <span className="inline-block w-2 h-2 bg-[#05c8fb] rounded-full mt-1 mr-2" />
               <span>
-                Liaised between <span className="text-[#05c8fb] font-semibold">IT</span> & <span className="text-[#05c8fb] font-semibold">Engineering</span> for seamless deployments
+                Liaised between <span className="text-[#05c8fb] font-semibold">IT</span> &{' '}
+                <span className="text-[#05c8fb] font-semibold">Engineering</span> for seamless
+                deployments
               </span>
             </li>
             <li className="flex items-start">
               <span className="inline-block w-2 h-2 bg-[#05c8fb] rounded-full mt-1 mr-2" />
               <span>
-                Collaborated with <span className="text-[#05c8fb] font-semibold">Project Managers</span>, <span className="text-[#05c8fb] font-semibold">Sales</span>, & <span className="text-[#05c8fb] font-semibold">Operations</span>
+                Collaborated with{' '}
+                <span className="text-[#05c8fb] font-semibold">Project Managers</span>,{' '}
+                <span className="text-[#05c8fb] font-semibold">Sales</span>, &{' '}
+                <span className="text-[#05c8fb] font-semibold">Operations</span>
               </span>
             </li>
             <li className="flex items-start">
               <span className="inline-block w-2 h-2 bg-[#05c8fb] rounded-full mt-1 mr-2" />
               <span>
-                Engaged with <span className="text-[#05c8fb] font-semibold">Quality Assurance</span> & <span className="text-[#05c8fb] font-semibold">Compliance Teams</span>
+                Engaged with <span className="text-[#05c8fb] font-semibold">Quality Assurance</span>{' '}
+                & <span className="text-[#05c8fb] font-semibold">Compliance Teams</span>
               </span>
             </li>
           </ul>

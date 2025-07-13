@@ -1,59 +1,58 @@
-
 // components/ProjectProcess.tsx – Randomize 3-item display + auto-cycle + Show More/Show Less (no animation)
-"use client";
+'use client';
 
-import { useState, useEffect } from "react";
+import { useState, useEffect } from 'react';
 import {
   LightBulbIcon,
   WrenchScrewdriverIcon,
   DocumentCheckIcon,
   ChartPieIcon,
   CpuChipIcon,
-} from "@heroicons/react/24/outline";
+} from '@heroicons/react/24/outline';
 
 const categories = [
   {
     icon: WrenchScrewdriverIcon,
-    title: "CAD & Configurators",
-    pain: "Hours lost to manual model edits & quoting",
-    win: "Parametric generators cut cycle-time 80%",
+    title: 'CAD & Configurators',
+    pain: 'Hours lost to manual model edits & quoting',
+    win: 'Parametric generators cut cycle-time 80%',
     projects: [
-      "Door Frame Configurator",
-      "SLC Airport Column Configurator",
-      "Ceiling Trim Automation",
+      'Door Frame Configurator',
+      'SLC Airport Column Configurator',
+      'Ceiling Trim Automation',
     ],
   },
   {
     icon: LightBulbIcon,
-    title: "LED & Electrical",
-    pain: "Mis-sized BOMs and pricing errors",
-    win: "No-code accelerators output error-free BOMs",
-    projects: ["LED Reveal Accelerator", "LED Automation Tool"],
+    title: 'LED & Electrical',
+    pain: 'Mis-sized BOMs and pricing errors',
+    win: 'No-code accelerators output error-free BOMs',
+    projects: ['LED Reveal Accelerator', 'LED Automation Tool'],
   },
   {
     icon: DocumentCheckIcon,
-    title: "BOM / Quote / Labels",
-    pain: "Spreadsheet chaos & duplicate data",
-    win: "Rule-driven generators ensure single source of truth",
-    projects: ["Fry Tools Automation", "CertainTeed Label Generator"],
+    title: 'BOM / Quote / Labels',
+    pain: 'Spreadsheet chaos & duplicate data',
+    win: 'Rule-driven generators ensure single source of truth',
+    projects: ['Fry Tools Automation', 'CertainTeed Label Generator'],
   },
   {
     icon: ChartPieIcon,
-    title: "Excel Analytics",
-    pain: "Finance stuck in copy-paste loops",
-    win: "Macros compress monthly reporting from days → minutes",
-    projects: ["Hourly Allocation Tool", "LED Quote Macro"],
+    title: 'Excel Analytics',
+    pain: 'Finance stuck in copy-paste loops',
+    win: 'Macros compress monthly reporting from days → minutes',
+    projects: ['Hourly Allocation Tool', 'LED Quote Macro'],
   },
   {
     icon: CpuChipIcon,
-    title: "Web & ERP Apps",
-    pain: "Disconnected tools & siloed data",
-    win: "Full-stack APIs bridge CRM, ERP & CAD in real-time",
-    projects: ["Project Services Web App", "Part Number Generator"],
+    title: 'Web & ERP Apps',
+    pain: 'Disconnected tools & siloed data',
+    win: 'Full-stack APIs bridge CRM, ERP & CAD in real-time',
+    projects: ['Project Services Web App', 'Part Number Generator'],
   },
 ];
 
-const sdlcSteps = ["Discover", "Design", "Develop", "Deploy", "Iterate"];
+const sdlcSteps = ['Discover', 'Design', 'Develop', 'Deploy', 'Iterate'];
 // Helper: return 3 random items
 function sampleThree<T>(arr: T[]): T[] {
   if (arr.length <= 3) return [...arr];
@@ -101,9 +100,7 @@ export default function ProjectProcess() {
         <h2 className="text-3xl sm:text-4xl font-bold text-white">
           Projects <span className="text-[#05c8fb]">Completed</span>
         </h2>
-        <span className="text-base text-gray-400">
-          {categories.length} CATEGORIES
-        </span>
+        <span className="text-base text-gray-400">{categories.length} CATEGORIES</span>
       </header>
 
       {/* SDLC Visual */}
@@ -166,9 +163,7 @@ export default function ProjectProcess() {
             onClick={() => setShowAll((prev) => !prev)}
             className="bg-[#05c8fb] text-[#0b253f] font-semibold rounded-full px-7 py-2 shadow transition hover:bg-[#05c8fb]/90"
           >
-            {showAll
-              ? "Show Less"
-              : `Show More (${categories.length - 3} more)`}
+            {showAll ? 'Show Less' : `Show More (${categories.length - 3} more)`}
           </button>
         </div>
       )}

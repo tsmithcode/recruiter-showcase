@@ -41,7 +41,13 @@ export default function ProductDetail() {
       transition={{ duration: 0.5 }}
       className="max-w-4xl mx-auto p-6"
     >
-      <Image src={product.image} alt={product.title} width={800} height={450} className="rounded-xl" />
+      <Image
+        src={product.image}
+        alt={product.title}
+        width={800}
+        height={450}
+        className="rounded-xl"
+      />
       <h1 className="text-3xl font-bold mt-4 text-gray-800">{product.title}</h1>
       <p className="mt-2 text-gray-600">{product.description}</p>
       <div className="mt-6">

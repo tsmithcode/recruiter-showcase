@@ -1,30 +1,32 @@
 // components/NavigationCards.tsx
-"use client";
+'use client';
 
-import Link from "next/link";
-import { motion, Variants } from "framer-motion"; // <-- Changed 'Variant' to 'Variants'
-import { FaInfoCircle, FaNewspaper,FaIndustry } from "react-icons/fa"; // Chosen icons
+import Link from 'next/link';
+import { motion, Variants } from 'framer-motion'; // <-- Changed 'Variant' to 'Variants'
+import { FaInfoCircle, FaNewspaper, FaIndustry } from 'react-icons/fa'; // Chosen icons
 
 // Variants for the container and individual cards
-const containerVariants: Variants = { // <-- Changed type to Variants
+const containerVariants: Variants = {
+  // <-- Changed type to Variants
   hidden: { opacity: 0, y: 20 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
       staggerChildren: 0.1, // Small stagger between the two cards
-      delayChildren: 0.2,  // Delay before cards start animating
+      delayChildren: 0.2, // Delay before cards start animating
     },
   },
 };
 
-const cardItemVariants: Variants = { // <-- Changed type to Variants
+const cardItemVariants: Variants = {
+  // <-- Changed type to Variants
   hidden: { opacity: 0, y: 50 },
   visible: {
     opacity: 1,
     y: 0,
     transition: {
-      type: "spring",
+      type: 'spring',
       stiffness: 100,
       damping: 15,
     },
@@ -93,7 +95,10 @@ export default function NavigationCards() {
           "
           variants={cardItemVariants} // Apply item animation
         >
-          <Link href="/blog/autodesk-vault-troubleshooting" className="flex flex-col items-center gap-3 w-full h-full">
+          <Link
+            href="/blog/autodesk-vault-troubleshooting"
+            className="flex flex-col items-center gap-3 w-full h-full"
+          >
             <FaNewspaper className="text-[#05c8fb] text-4xl mb-2 group-hover:scale-110 transition-transform" />
             <h3 className="font-semibold text-xl mb-1">Read Blog</h3>
             <p className="text-sm text-gray-300 leading-relaxed flex-grow">

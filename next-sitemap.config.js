@@ -1,9 +1,9 @@
 /** @type {import('next-sitemap').IConfig} */
 module.exports = {
-  siteUrl: process.env.SITE_URL || 'https://www.tsmithcode.ai', // Replace with your actual domain
+  siteUrl: process.env.SITE_URL || "https://www.tsmithcode.ai", // Replace with your actual domain
   generateRobotsTxt: true, // (optional) Creates a robots.txt file as well
   sitemapSize: 7000, // (optional) Max number of URLs per sitemap file (default is 50000)
-  outDir: './public', // Output directory for the sitemap (must be 'public' for Vercel)
+  outDir: "./public", // Output directory for the sitemap (must be 'public' for Vercel)
   // Optional: Define additional dynamic paths or exclude paths
   // transform: async (config, path) => {
   //   return {

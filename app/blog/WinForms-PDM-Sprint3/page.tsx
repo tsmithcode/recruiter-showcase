@@ -5,13 +5,11 @@ import { motion, Variants } from 'framer-motion';
 import { ChevronDownIcon, ChevronUpIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
 
-
 /* ────────────────────────────────────────────────────────────
    1 — POST METADATA
    ──────────────────────────────────────────────────────────── */
 const post = {
-  title:
-    'Building a WinForms PDM',
+  title: 'Building a WinForms PDM',
   date: '2025-07-08',
   description:
     'How Habasit America slashed drawing-search time in half by layering SOLID architecture, dependency-injection, and three rapid WinForms sprints over a massive CAD library.',
@@ -67,9 +65,7 @@ const PSIBlock: React.FC<{
   </motion.div>
 );
 
-const StyledListItem: React.FC<{ children: React.ReactNode }> = ({
-  children,
-}) => (
+const StyledListItem: React.FC<{ children: React.ReactNode }> = ({ children }) => (
   <motion.li
     variants={textItemVariants}
     className="relative p-3 border border-white/10 rounded-xl bg-white/5 text-white/90 backdrop-blur-md shadow-inner group overflow-hidden"
@@ -94,15 +90,8 @@ const ExpandableSection: React.FC<{
         className="flex items-center justify-between w-full p-4 bg-white/10 border border-white/15 rounded-lg text-white font-semibold text-left shadow-md hover:bg-white/20 transition"
       >
         <span>{title}</span>
-        <motion.span
-          animate={{ rotate: isOpen ? 180 : 0 }}
-          transition={{ duration: 0.3 }}
-        >
-          {isOpen ? (
-            <ChevronUpIcon className="h-5 w-5" />
-          ) : (
-            <ChevronDownIcon className="h-5 w-5" />
-          )}
+        <motion.span animate={{ rotate: isOpen ? 180 : 0 }} transition={{ duration: 0.3 }}>
+          {isOpen ? <ChevronUpIcon className="h-5 w-5" /> : <ChevronDownIcon className="h-5 w-5" />}
         </motion.span>
       </button>
 
@@ -152,8 +141,7 @@ export default function WinFormsPdmSprint3Page() {
             {post.title} <span className="text-[#05c8fb]">From Scratch</span>
           </h1>
           <p className="text-sm text-gray-400 mb-2">
-            By{' '}
-            <span className="text-[#05c8fb] font-medium">{post.author}</span> on{' '}
+            By <span className="text-[#05c8fb] font-medium">{post.author}</span> on{' '}
             {new Date(post.date).toLocaleDateString('en-US', {
               year: 'numeric',
               month: 'long',
@@ -189,11 +177,10 @@ export default function WinFormsPdmSprint3Page() {
 
         {/* ── Intro */}
         <motion.p variants={textItemVariants} className="mb-6 leading-relaxed">
-          Special-build belt drawings once hid behind cryptic numbers. By
-          introducing attribute-level parsing, a lightning-fast filter panel,
-          and clean Dependency Injection (DI), our WinForms PDM now surfaces
-          matches in ~2 seconds instead of 5 plus — a 50 % improvement that lets
-          engineers reuse instead of redraw.
+          Special-build belt drawings once hid behind cryptic numbers. By introducing
+          attribute-level parsing, a lightning-fast filter panel, and clean Dependency Injection
+          (DI), our WinForms PDM now surfaces matches in ~2 seconds instead of 5 plus — a 50 %
+          improvement that lets engineers reuse instead of redraw.
         </motion.p>
 
         {/* ── Context card */}
@@ -209,16 +196,15 @@ export default function WinFormsPdmSprint3Page() {
           </motion.h2>
 
           <motion.p variants={textItemVariants}>
-            Habasit America maintains more than 17 000 legacy belt drawings.
-            Searching by number alone forced tribal knowledge and slowed
-            onboarding. Stakeholders set a KPI to double daily reuse hits within
-            one fiscal quarter.
+            Habasit America maintains more than 17 000 legacy belt drawings. Searching by number
+            alone forced tribal knowledge and slowed onboarding. Stakeholders set a KPI to double
+            daily reuse hits within one fiscal quarter.
           </motion.p>
 
           <motion.p variants={textItemVariants}>
-            We opted for a lean WinForms MVP because operators already live in
-            Windows Explorer and SolidWorks; no new runtime permissions were
-            needed. Source code lives in a public GitHub repo{' '}
+            We opted for a lean WinForms MVP because operators already live in Windows Explorer and
+            SolidWorks; no new runtime permissions were needed. Source code lives in a public GitHub
+            repo{' '}
             <a
               href="https://github.com/tsmithcode/Habasit.DrawingNumberGenerator"
               target="_blank"
@@ -250,8 +236,7 @@ export default function WinFormsPdmSprint3Page() {
 
             <ul className="space-y-4">
               <StyledListItem>
-                Stakeholder workshops gathered 12 must-have attributes and 8
-                nice-to-haves.
+                Stakeholder workshops gathered 12 must-have attributes and 8 nice-to-haves.
               </StyledListItem>
               <StyledListItem>
                 Used&nbsp;
@@ -264,19 +249,17 @@ export default function WinFormsPdmSprint3Page() {
           {/* Design */}
           <ExpandableSection title="2 · Architecture & Design Patterns">
             <StyledListItem>
-              <strong>Dependency Injection (DIP)</strong> — 
-              <code>Program.cs</code> boots <code>ServiceCollection</code> then
-              resolves <code>Form1</code>; forms no longer create their own
-              services.
+              <strong>Dependency Injection (DIP)</strong> —<code>Program.cs</code> boots{' '}
+              <code>ServiceCollection</code> then resolves <code>Form1</code>; forms no longer
+              create their own services.
             </StyledListItem>
             <StyledListItem>
-              <strong>Repository / Service pattern</strong> — 
-              <code>DrawingFileService</code> abstracts JSON vs network lookup.
+              <strong>Repository / Service pattern</strong> —<code>DrawingFileService</code>{' '}
+              abstracts JSON vs network lookup.
             </StyledListItem>
             <StyledListItem>
-              <strong>Strategy</strong> — 
-              <code>IDrawingNumberDecipherService</code> is pluggable for future
-              product lines.
+              <strong>Strategy</strong> —<code>IDrawingNumberDecipherService</code> is pluggable for
+              future product lines.
             </StyledListItem>
             <StyledListItem>
               SOLID guidance ensures each class has one reason to change.
@@ -337,8 +320,7 @@ export default function WinFormsPdmSprint3Page() {
           {/* Testing */}
           <ExpandableSection title="4 · Testing & Hardening">
             <StyledListItem>
-              <code>xUnit</code> tests validate 40 + drawing-number
-              permutations.
+              <code>xUnit</code> tests validate 40 + drawing-number permutations.
             </StyledListItem>
             <StyledListItem>
               Smoke-test script ensures DI container builds on startup.
@@ -351,9 +333,7 @@ export default function WinFormsPdmSprint3Page() {
               ClickOnce installer to internal file-share; config JSON points to
               <code> K:\ </code> drive.
             </StyledListItem>
-            <StyledListItem>
-              Serilog sinks to rolling JSON for analytics.
-            </StyledListItem>
+            <StyledListItem>Serilog sinks to rolling JSON for analytics.</StyledListItem>
             <StyledListItem>
               Future: migrate UI to Blazor Hybrid while reusing all services.
             </StyledListItem>
@@ -423,9 +403,9 @@ foreach (var (attr, max, lookup) in metadata)
 
         {/* Closing */}
         <motion.p variants={textItemVariants} className="mb-6">
-          Three sprints, clean architecture, and relentless user feedback turned
-          a shared drive into an insight-driven PDM. Sprint-4 will layer AI
-          suggestions and Blazor-Hybrid UI — stay tuned!
+          Three sprints, clean architecture, and relentless user feedback turned a shared drive into
+          an insight-driven PDM. Sprint-4 will layer AI suggestions and Blazor-Hybrid UI — stay
+          tuned!
         </motion.p>
 
         {/* Share */}
@@ -438,12 +418,7 @@ foreach (var (attr, max, lookup) in metadata)
             className="inline-flex items-center px-6 py-3 bg-[#05c8fb] text-white font-medium rounded-lg shadow-lg hover:bg-opacity-90 transition"
           >
             Copy Link to Share
-            <svg
-              className="ml-2 w-5 h-5"
-              fill="none"
-              stroke="currentColor"
-              viewBox="0 0 24 24"
-            >
+            <svg className="ml-2 w-5 h-5" fill="none" stroke="currentColor" viewBox="0 0 24 24">
               <path
                 strokeLinecap="round"
                 strokeLinejoin="round"

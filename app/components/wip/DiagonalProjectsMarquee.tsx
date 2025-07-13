@@ -1,121 +1,121 @@
 // components/DiagonalProjectsMarquee.tsx
-"use client";
+'use client';
 
-import React, { useEffect, useState } from "react";
-import Image from "next/image";
-import Link from "next/link";
+import React, { useEffect, useState } from 'react';
+import Image from 'next/image';
+import Link from 'next/link';
 
 // Data source: list all your demoProjects here (same as before)
 const demoProjects = [
   {
-    title: "SLC Airport Automation",
-    tags: ["#WinForms", "#InventorAPI", "#ExcelAPI"],
-    videoUrl: "https://www.youtube.com/watch?v=9YA3J85JKRI",
+    title: 'SLC Airport Automation',
+    tags: ['#WinForms', '#InventorAPI', '#ExcelAPI'],
+    videoUrl: 'https://www.youtube.com/watch?v=9YA3J85JKRI',
   },
   {
-    title: "Door Frame Configurator",
-    tags: ["#CAD", "#ExcelAPI", "#Automation"],
-    videoUrl: "https://www.youtube.com/watch?v=EVuWhw88N20",
+    title: 'Door Frame Configurator',
+    tags: ['#CAD', '#ExcelAPI', '#Automation'],
+    videoUrl: 'https://www.youtube.com/watch?v=EVuWhw88N20',
   },
   {
-    title: "LED Reveal Accelerator",
-    tags: ["#InventorMacro", "#NoCode"],
-    videoUrl: "https://www.youtube.com/watch?v=wJehm7rSqC4",
+    title: 'LED Reveal Accelerator',
+    tags: ['#InventorMacro', '#NoCode'],
+    videoUrl: 'https://www.youtube.com/watch?v=wJehm7rSqC4',
   },
   {
-    title: "LED Automation Tool",
-    tags: ["#Macros", "#PDF", "#InventorAPI"],
-    videoUrl: "https://www.youtube.com/watch?v=2ce70aH0PmY",
+    title: 'LED Automation Tool',
+    tags: ['#Macros', '#PDF', '#InventorAPI'],
+    videoUrl: 'https://www.youtube.com/watch?v=2ce70aH0PmY',
   },
   {
-    title: "ERP & CRM Web App",
-    tags: ["#Blazor", "#API", "#NoSQL"],
-    videoUrl: "https://www.youtube.com/watch?v=gWDy964I97Y",
+    title: 'ERP & CRM Web App',
+    tags: ['#Blazor', '#API', '#NoSQL'],
+    videoUrl: 'https://www.youtube.com/watch?v=gWDy964I97Y',
   },
   {
-    title: "Fry Tools Automation",
-    tags: ["#CSharp", "#InventorAPI", "#WinForms"],
-    videoUrl: "https://www.youtube.com/watch?v=TsECnuxQhKw",
+    title: 'Fry Tools Automation',
+    tags: ['#CSharp', '#InventorAPI', '#WinForms'],
+    videoUrl: 'https://www.youtube.com/watch?v=TsECnuxQhKw',
   },
   {
-    title: "LED QT BOM ATO Tool",
-    tags: ["#Excel", "#VBA", "#Sales"],
-    videoUrl: "https://www.youtube.com/watch?v=RKEe9TrNgyE",
+    title: 'LED QT BOM ATO Tool',
+    tags: ['#Excel', '#VBA', '#Sales'],
+    videoUrl: 'https://www.youtube.com/watch?v=RKEe9TrNgyE',
   },
   {
-    title: "BOM Project Info Fill",
-    tags: ["#VB.NET", "#ExcelAPI"],
-    videoUrl: "https://www.youtube.com/watch?v=aHmYna-aanw",
+    title: 'BOM Project Info Fill',
+    tags: ['#VB.NET', '#ExcelAPI'],
+    videoUrl: 'https://www.youtube.com/watch?v=aHmYna-aanw',
   },
   {
-    title: "Label Generator",
-    tags: ["#ExcelVBA", "#PDF", "#Validation"],
-    videoUrl: "https://www.youtube.com/watch?v=ka0wfOce8ps",
+    title: 'Label Generator',
+    tags: ['#ExcelVBA', '#PDF', '#Validation'],
+    videoUrl: 'https://www.youtube.com/watch?v=ka0wfOce8ps',
   },
   {
-    title: "Ceiling Trim Tool",
-    tags: ["#ERP", "#Inventor", "#ExcelAPI"],
-    videoUrl: "https://www.youtube.com/watch?v=gGhLi_qxDZY",
+    title: 'Ceiling Trim Tool',
+    tags: ['#ERP', '#Inventor', '#ExcelAPI'],
+    videoUrl: 'https://www.youtube.com/watch?v=gGhLi_qxDZY',
   },
   {
-    title: "Hourly Allocation Tool",
-    tags: ["#Excel", "#Macro"],
-    videoUrl: "https://www.youtube.com/watch?v=MQNGRKhiU6s",
+    title: 'Hourly Allocation Tool',
+    tags: ['#Excel', '#Macro'],
+    videoUrl: 'https://www.youtube.com/watch?v=MQNGRKhiU6s',
   },
   {
-    title: "Ceiling System Automation",
-    tags: ["#Inventor", "#Excel", "#VBA"],
-    videoUrl: "https://www.youtube.com/watch?v=3i9q_dJqPGk",
+    title: 'Ceiling System Automation',
+    tags: ['#Inventor', '#Excel', '#VBA'],
+    videoUrl: 'https://www.youtube.com/watch?v=3i9q_dJqPGk',
   },
   {
-    title: "Quote Request Web Form",
-    tags: ["#Form", "#Request", "#Blazor"],
-    videoUrl: "https://www.youtube.com/watch?v=Ye8ihfO-FmE",
+    title: 'Quote Request Web Form',
+    tags: ['#Form', '#Request', '#Blazor'],
+    videoUrl: 'https://www.youtube.com/watch?v=Ye8ihfO-FmE',
   },
   {
-    title: "Door Frame Automation",
-    tags: ["#VisualStudio", "#Inventor", "#SQL"],
-    videoUrl: "https://www.youtube.com/watch?v=jXnunvPM9Ec",
+    title: 'Door Frame Automation',
+    tags: ['#VisualStudio', '#Inventor', '#SQL'],
+    videoUrl: 'https://www.youtube.com/watch?v=jXnunvPM9Ec',
   },
   {
-    title: "3D Quote Tool",
-    tags: ["#ERP", "#VB.NET", "#Inventor"],
-    videoUrl: "https://www.youtube.com/watch?v=NtwpK8-7Ef0",
+    title: '3D Quote Tool',
+    tags: ['#ERP', '#VB.NET', '#Inventor'],
+    videoUrl: 'https://www.youtube.com/watch?v=NtwpK8-7Ef0',
   },
   {
-    title: "Employee Allocation Tool",
-    tags: ["#Excel", "#Validation", "#Finance"],
-    videoUrl: "https://www.youtube.com/watch?v=jaab3b_ttIo",
+    title: 'Employee Allocation Tool',
+    tags: ['#Excel', '#Validation', '#Finance'],
+    videoUrl: 'https://www.youtube.com/watch?v=jaab3b_ttIo',
   },
   {
-    title: "LED Quote Tool",
-    tags: ["#ERP", "#VBA", "#Pricing"],
-    videoUrl: "https://www.youtube.com/watch?v=xmLHainqgVU",
+    title: 'LED Quote Tool',
+    tags: ['#ERP', '#VBA', '#Pricing'],
+    videoUrl: 'https://www.youtube.com/watch?v=xmLHainqgVU',
   },
   {
-    title: "SLC Column Configurator",
-    tags: ["#iLogic", "#Inventor", "#VB.NET"],
-    videoUrl: "https://www.youtube.com/watch?v=Kl84rkNXGwc",
+    title: 'SLC Column Configurator',
+    tags: ['#iLogic', '#Inventor', '#VB.NET'],
+    videoUrl: 'https://www.youtube.com/watch?v=Kl84rkNXGwc',
   },
   {
-    title: "Frame Generator Form",
-    tags: ["#iLogic", "#GenerativeDesign"],
-    videoUrl: "https://www.youtube.com/watch?v=hvMBMv1JEgg",
+    title: 'Frame Generator Form',
+    tags: ['#iLogic', '#GenerativeDesign'],
+    videoUrl: 'https://www.youtube.com/watch?v=hvMBMv1JEgg',
   },
   {
-    title: "Part Number Generator",
-    tags: ["#Python", "#CLI", "#Automation"],
-    videoUrl: "https://www.youtube.com/watch?v=NWHDp9UDY_0",
+    title: 'Part Number Generator',
+    tags: ['#Python', '#CLI', '#Automation'],
+    videoUrl: 'https://www.youtube.com/watch?v=NWHDp9UDY_0',
   },
 ];
 
 // Helper: extract YouTube thumbnail from a video URL
 const getThumb = (url: string) => {
   try {
-    const id = new URL(url).searchParams.get("v");
-    return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : "";
+    const id = new URL(url).searchParams.get('v');
+    return id ? `https://img.youtube.com/vi/${id}/hqdefault.jpg` : '';
   } catch {
-    return "";
+    return '';
   }
 };
 
@@ -177,10 +177,7 @@ export default function DiagonalProjectsMarquee() {
               <div className="font-semibold">{proj.title}</div>
               <div className="flex flex-wrap gap-1 mt-1">
                 {proj.tags.map((t) => (
-                  <span
-                    key={t}
-                    className="bg-[#05c8fb]/30 text-[#05c8fb] rounded-full px-1 py-0.5"
-                  >
+                  <span key={t} className="bg-[#05c8fb]/30 text-[#05c8fb] rounded-full px-1 py-0.5">
                     {t}
                   </span>
                 ))}

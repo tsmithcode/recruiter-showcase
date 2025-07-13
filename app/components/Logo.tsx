@@ -1,5 +1,5 @@
-import { motion } from "framer-motion";
-import Image from "next/image";
+import { motion } from 'framer-motion';
+import Image from 'next/image';
 
 export default function LogoWithHoverGlow() {
   return (
@@ -16,10 +16,7 @@ export default function LogoWithHoverGlow() {
         className="object-contain w-full h-auto max-h-[400px] transition-transform duration-300"
         priority
         fill
-        width={120}
-        height={120}
       />
     </motion.div>
   );
 }
-
