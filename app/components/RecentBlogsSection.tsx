@@ -3,7 +3,7 @@
 import { FC } from 'react';
 import Link from 'next/link';
 import { motion, Variants } from 'framer-motion';
-import { FaTools, FaCubes } from 'react-icons/fa';
+import { FaTools, FaCubes, FaCode } from 'react-icons/fa';
 
 type BlogItem = {
   Icon: FC<{ className?: string }>;
@@ -26,6 +26,13 @@ const blogItems: BlogItem[] = [
     description:
       'How we slashed drawing-search time by 50%+ with three rapid sprints, SOLID design, and DI in a WinForms PDM.',
     href: '/blog/WinForms-PDM-Sprint3',
+  },
+  {
+    Icon: FaCode,
+    title: 'CPQ Demo For Programmers?',
+    description:
+      'Learn how this configurator turns your legacy code into a revenue stream—auto‐configuring live quotes, dynamic pricing, and profit analysis.',
+    href: '/cpq-demo',
   },
 ];
 
