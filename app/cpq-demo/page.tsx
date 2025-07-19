@@ -233,8 +233,8 @@ export default function CPQAdvanced() {
   const [receiptText, setReceiptText] = useState<string>('');
 
   // Master‐level margin/markup/discount (manager only)
-  const [marginPercent, setMarginPercent] = useState<number>(20);
-  const [markupPercent, setMarkupPercent] = useState<number>(15);
+  const [marginPercent, setMarginPercent] = useState<number>(80);
+  const [markupPercent, setMarkupPercent] = useState<number>(200);
   const [discountPercent, setDiscountPercent] = useState<number>(5);
 
   // Update any numeric field on a component
@@ -371,7 +371,7 @@ export default function CPQAdvanced() {
             <p className="text-gray-300 text-xs sm:text-sm">
               {isManagerView
                 ? 'Edit component details, costs, and global margin/markup/discount to adjust profitability.'
-                : 'Select components and quantities to see live pricing and generate a personalized quote.'}
+                : 'Select components and quantities to see live pricing and generate a personalized quote. Use this hobby project demo in full screen mode for best UI/UX experience.'}
             </p>
           </div>
         </header>
