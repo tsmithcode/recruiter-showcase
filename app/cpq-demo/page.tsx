@@ -16,7 +16,7 @@ export default function CPQAdvanced() {
 
   return (
     <>
-      <div className="mt-6 bg-white/5 border border-white/10 p-4 sm:p-6 rounded-xl mx-6">
+      <div className="mt-6 bg-white/5 border border-white/10 p-4 sm:p-6 rounded-xl mx-2">
         <CPQHeader
           isManagerView={controller.isManagerView}
           setIsManagerView={controller.setIsManagerView}
