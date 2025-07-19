@@ -9,6 +9,7 @@ import ManagerControls from './ManagerControls';
 import ComponentRow from './ComponentRow';
 import QuoteModal from './QuoteModal';
 import TotalFooter from './TotalFooter';
+import ComponentTableHeader from './ComponentTableHeader';
 
 export default function CPQAdvanced() {
   const controller = useCpqController();
@@ -32,6 +33,9 @@ export default function CPQAdvanced() {
             onAddComponent={controller.addComponent}
           />
         )}
+
+       <ComponentTableHeader isManagerView={controller.isManagerView} />
+
 
         <div className="divide-y divide-white/20">
           {controller.components.map(comp => (
