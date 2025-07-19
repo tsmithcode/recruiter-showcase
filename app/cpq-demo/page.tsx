@@ -370,8 +370,8 @@ export default function CPQAdvanced() {
           <div className="w-full mt-3">
             <p className="text-gray-300 text-xs sm:text-sm">
               {isManagerView
-                ? 'Edit component details, costs, and global margin/markup/discount to adjust profitability.'
-                : 'Select components and quantities to see live pricing and generate a personalized quote. Use this hobby project demo in full screen mode for best UI/UX experience.'}
+                ? 'Edit component details, costs, and global margin/markup/discount to adjust profitability. View on desktop screen for best UI/UX.'
+                : 'Select components and quantities to see live pricing and generate a personalized quote.'}
             </p>
           </div>
         </header>
