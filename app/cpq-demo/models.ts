@@ -1,25 +1,45 @@
-// Step 1: Define shared types, icons, and data
 // File: app/cpq-demo/models.ts
 
+import React from 'react';
 import {
-  FaCode, FaFileAlt, FaFilePdf, FaImage, FaVideo, FaGithub, FaInfoCircle,
-  FaDatabase, FaTools, FaBookOpen, FaQuestionCircle, FaStar,
-  FaLaptopCode, FaCogs, FaCloud, FaNetworkWired,
+  FaCode,
+  FaFileAlt,
+  FaFilePdf,
+  FaImage,
+  FaVideo,
+  FaGithub,
+  FaInfoCircle,
+  FaDatabase,
+  FaTools,
+  FaBookOpen,
+  FaQuestionCircle,
+  FaStar,
+  FaLaptopCode,
+  FaCogs,
+  FaCloud,
+  FaNetworkWired,
 } from 'react-icons/fa';
 
 export type CPQComponent = {
   id: string;
   name: string;
   unit: string;
-  unitLaborCost: number;
-  laborHours: number;
-  unitMaterialCost: number;
-  quantity: number;
+  unitLaborCost: number;       // $ per hr
+  laborHours: number;          // hrs
+  unitMaterialCost: number;    // $ per unit
+  quantity: number;            // number of units
   optional: boolean;
   Icon: React.ComponentType<{ className?: string }>;
+  laborMarginPercent: number;    // % over labor cost
+  materialMarkupPercent: number; // % over material cost
+  discountPercent: number;       // % discount on total
 };
 
-export const iconOptions = [
+export const iconOptions: {
+  id: string;
+  label: string;
+  Icon: React.ComponentType<{ className?: string }>;
+}[] = [
   { id: 'FaCode', label: 'Code Snippet', Icon: FaCode },
   { id: 'FaFileAlt', label: 'README', Icon: FaFileAlt },
   { id: 'FaFilePdf', label: 'PDF Guide', Icon: FaFilePdf },
@@ -39,16 +59,172 @@ export const iconOptions = [
 ];
 
 export const initialCPQComponents: CPQComponent[] = [
-  { id: 'snippet', name: 'Code Snippet', unit: 'per snippet', unitLaborCost: 50, laborHours: 1, unitMaterialCost: 0, quantity: 1, optional: false, Icon: FaCode },
-  { id: 'readme', name: 'Instructions (README)', unit: 'per document', unitLaborCost: 40, laborHours: 1.5, unitMaterialCost: 0, quantity: 1, optional: false, Icon: FaFileAlt },
-  { id: 'guide', name: 'Setup Guide (PDF)', unit: 'per guide', unitLaborCost: 60, laborHours: 2, unitMaterialCost: 5, quantity: 1, optional: false, Icon: FaFilePdf },
-  { id: 'productImage', name: 'Product Image', unit: 'per image', unitLaborCost: 30, laborHours: 0.5, unitMaterialCost: 0, quantity: 1, optional: false, Icon: FaImage },
-  { id: 'previewVideo', name: 'Preview Video', unit: 'per video', unitLaborCost: 80, laborHours: 1, unitMaterialCost: 0, quantity: 1, optional: false, Icon: FaVideo },
-  { id: 'repo', name: 'Temporary Repo Access', unit: '7-day access', unitLaborCost: 0, laborHours: 0, unitMaterialCost: 25, quantity: 1, optional: false, Icon: FaGithub },
-  { id: 'productDesc', name: 'Product Description', unit: 'per product', unitLaborCost: 45, laborHours: 1, unitMaterialCost: 0, quantity: 1, optional: false, Icon: FaInfoCircle },
-  { id: 'sampleData', name: 'Sample Data', unit: 'per dataset', unitLaborCost: 35, laborHours: 1, unitMaterialCost: 5, quantity: 0, optional: true, Icon: FaDatabase },
-  { id: 'troubleshoot', name: 'Troubleshooting Guide', unit: 'per guide', unitLaborCost: 45, laborHours: 1, unitMaterialCost: 0, quantity: 0, optional: true, Icon: FaTools },
-  { id: 'caseStudy', name: 'Case Study', unit: 'per document', unitLaborCost: 60, laborHours: 2, unitMaterialCost: 0, quantity: 0, optional: true, Icon: FaBookOpen },
-  { id: 'faq', name: 'FAQ Document', unit: 'per document', unitLaborCost: 30, laborHours: 1, unitMaterialCost: 0, quantity: 0, optional: true, Icon: FaQuestionCircle },
-  { id: 'testimonial', name: 'Testimonial', unit: 'per testimonial', unitLaborCost: 20, laborHours: 0.5, unitMaterialCost: 0, quantity: 0, optional: true, Icon: FaStar },
+  {
+    id: 'snippet',
+    name: 'Code Snippet',
+    unit: 'per snippet',
+    unitLaborCost: 50,
+    laborHours: 1,
+    unitMaterialCost: 0,
+    quantity: 1,
+    optional: false,
+    Icon: FaCode,
+    laborMarginPercent: 80,
+    materialMarkupPercent: 200,
+    discountPercent: 0,
+  },
+  {
+    id: 'readme',
+    name: 'Instructions (README)',
+    unit: 'per document',
+    unitLaborCost: 40,
+    laborHours: 1.5,
+    unitMaterialCost: 0,
+    quantity: 1,
+    optional: false,
+    Icon: FaFileAlt,
+    laborMarginPercent: 80,
+    materialMarkupPercent: 200,
+    discountPercent: 0,
+  },
+  {
+    id: 'guide',
+    name: 'Setup Guide (PDF)',
+    unit: 'per guide',
+    unitLaborCost: 60,
+    laborHours: 2,
+    unitMaterialCost: 5,
+    quantity: 1,
+    optional: false,
+    Icon: FaFilePdf,
+    laborMarginPercent: 80,
+    materialMarkupPercent: 200,
+    discountPercent: 0,
+  },
+  {
+    id: 'productImage',
+    name: 'Product Image',
+    unit: 'per image',
+    unitLaborCost: 30,
+    laborHours: 0.5,
+    unitMaterialCost: 0,
+    quantity: 1,
+    optional: false,
+    Icon: FaImage,
+    laborMarginPercent: 80,
+    materialMarkupPercent: 200,
+    discountPercent: 0,
+  },
+  {
+    id: 'previewVideo',
+    name: 'Preview Video',
+    unit: 'per video',
+    unitLaborCost: 80,
+    laborHours: 1,
+    unitMaterialCost: 0,
+    quantity: 1,
+    optional: false,
+    Icon: FaVideo,
+    laborMarginPercent: 80,
+    materialMarkupPercent: 200,
+    discountPercent: 0,
+  },
+  {
+    id: 'repo',
+    name: 'Temporary Repo Access',
+    unit: '7-day access',
+    unitLaborCost: 0,
+    laborHours: 0,
+    unitMaterialCost: 25,
+    quantity: 1,
+    optional: false,
+    Icon: FaGithub,
+    laborMarginPercent: 80,
+    materialMarkupPercent: 200,
+    discountPercent: 0,
+  },
+  {
+    id: 'productDesc',
+    name: 'Product Description',
+    unit: 'per product',
+    unitLaborCost: 45,
+    laborHours: 1,
+    unitMaterialCost: 0,
+    quantity: 1,
+    optional: false,
+    Icon: FaInfoCircle,
+    laborMarginPercent: 80,
+    materialMarkupPercent: 200,
+    discountPercent: 0,
+  },
+  {
+    id: 'sampleData',
+    name: 'Sample Data',
+    unit: 'per dataset',
+    unitLaborCost: 35,
+    laborHours: 1,
+    unitMaterialCost: 5,
+    quantity: 0,
+    optional: true,
+    Icon: FaDatabase,
+    laborMarginPercent: 80,
+    materialMarkupPercent: 200,
+    discountPercent: 0,
+  },
+  {
+    id: 'troubleshoot',
+    name: 'Troubleshooting Guide',
+    unit: 'per guide',
+    unitLaborCost: 45,
+    laborHours: 1,
+    unitMaterialCost: 0,
+    quantity: 0,
+    optional: true,
+    Icon: FaTools,
+    laborMarginPercent: 80,
+    materialMarkupPercent: 200,
+    discountPercent: 0,
+  },
+  {
+    id: 'caseStudy',
+    name: 'Case Study',
+    unit: 'per document',
+    unitLaborCost: 60,
+    laborHours: 2,
+    unitMaterialCost: 0,
+    quantity: 0,
+    optional: true,
+    Icon: FaBookOpen,
+    laborMarginPercent: 80,
+    materialMarkupPercent: 200,
+    discountPercent: 0,
+  },
+  {
+    id: 'faq',
+    name: 'FAQ Document',
+    unit: 'per document',
+    unitLaborCost: 30,
+    laborHours: 1,
+    unitMaterialCost: 0,
+    quantity: 0,
+    optional: true,
+    Icon: FaQuestionCircle,
+    laborMarginPercent: 80,
+    materialMarkupPercent: 200,
+    discountPercent: 0,
+  },
+  {
+    id: 'testimonial',
+    name: 'Testimonial',
+    unit: 'per testimonial',
+    unitLaborCost: 20,
+    laborHours: 0.5,
+    unitMaterialCost: 0,
+    quantity: 0,
+    optional: true,
+    Icon: FaStar,
+    laborMarginPercent: 80,
+    materialMarkupPercent: 200,
+    discountPercent: 0,
+  },
 ];

@@ -1,30 +1,43 @@
 // File: app/cpq-demo/pricing.ts
 
-import { CPQComponent } from './models';
+import type { CPQComponent } from './models';
 
-export function computePricing(
-  comp: CPQComponent,
-  master: {
-    marginPercent: number;
-    markupPercent: number;
-    discountPercent: number;
-  }
-) {
+export function computePricing(comp: CPQComponent) {
+  // Base costs
   const laborCost = comp.unitLaborCost * comp.laborHours;
   const materialCost = comp.unitMaterialCost;
 
-  const laborWithMargin = laborCost * (1 + master.marginPercent / 100);
-  const materialWithMarkup = materialCost * (1 + master.markupPercent / 100);
-  const rawTotal = laborWithMargin + materialWithMarkup;
-  const discounted = rawTotal * (1 - master.discountPercent / 100);
+  // Margins & markups (dollars)
+  const laborMarginDollars = laborCost * (comp.laborMarginPercent / 100);
+  const materialMarkupDollars = materialCost * (comp.materialMarkupPercent / 100);
 
-  const costTotal = laborCost + materialCost;
-  const profit = discounted - costTotal;
-  const profitPercent = costTotal > 0 ? (profit / costTotal) * 100 : 0;
+  // Subtotal before discount
+  const subtotal = laborCost + materialCost + laborMarginDollars + materialMarkupDollars;
+
+  // Discount (dollars)
+  const discountDollars = subtotal * (comp.discountPercent / 100);
+
+  // Final unit price
+  const unitPrice = subtotal - discountDollars;
+
+  // Profit = unitPrice – (laborCost + materialCost)
+  const profit = unitPrice - (laborCost + materialCost);
+  const profitPercent = (profit / (laborCost + materialCost)) * 100;
+
+  // Total gross margin dollars & percent
+  const grossMarginDollars = profit;
+  const grossMarginPercent = profitPercent;
 
   return {
-    unitPrice: discounted,
+    laborCost,
+    materialCost,
+    laborMarginDollars,
+    materialMarkupDollars,
+    discountDollars,
+    unitPrice,
     profit,
     profitPercent,
+    grossMarginDollars,
+    grossMarginPercent,
   };
 }
