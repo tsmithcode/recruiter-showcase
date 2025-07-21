@@ -78,7 +78,7 @@ export default function ComponentEditModal({
                 <input
                   type={field === 'name' ? 'text' : 'number'}
                   min="0"
-                  step={label.includes('Hours') ? '0.5' : '1'}
+                  step={(String(label).includes('Hours') ? '0.5' : '1')}
                   value={value as number | string}
                   onChange={e =>
                     onUpdate(id, field as keyof CPQComponent, field === 'name' ? e.target.value : +e.target.value)
@@ -127,7 +127,7 @@ export default function ComponentEditModal({
             ].map(([label, value]) => (
               <div key={label}>
                 <div className="text-gray-400">{label}</div>
-                <div className={`${label.startsWith('Profit') ? colorClass : 'text-white'} font-semibold`}>
+                <div className={`${String(label).startsWith('Profit') ? colorClass : 'text-white'} font-semibold`}>
                   {typeof value === 'number' ? `$${value.toFixed(2)}` : value}
                 </div>
               </div>
