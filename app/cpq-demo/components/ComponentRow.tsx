@@ -8,7 +8,11 @@ type Props = {
   component: CPQComponent;
   openEditModal: (id: string) => void;
   toggleInclude: (id: string) => void;
-  updateComponent: (id: string, field: keyof CPQComponent, value: any) => void;
+  updateComponent: (
+    id: string,
+    field: keyof CPQComponent,
+    value: string | number | React.ComponentType<{ className?: string }>
+  ) => void;
 };
 
 export default function ComponentRow({

@@ -11,11 +11,12 @@ type Props = {
   onClose: () => void;
   onUpdate: (
     id: string,
-    field: keyof Omit<CPQComponent, 'id' | 'optional' | 'Icon' | 'unit'>,
-    value: any
+    field: keyof CPQComponent,
+    value: string | number | React.ComponentType<{ className?: string }>
   ) => void;
   onDelete: (id: string) => void;
 };
+
 
 export default function ComponentEditModal({
   component: comp,

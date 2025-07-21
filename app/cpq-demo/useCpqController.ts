@@ -41,15 +41,15 @@ export function useCpqController() {
   };
 
   // Update any editable field on a component
-  const updateComponent = (
-    id: string,
-    field: keyof Omit<CPQComponent, 'id' | 'optional' | 'Icon' | 'unit'>,
-    value: any
-  ) => {
-    setComponents((prev) =>
-      prev.map((c) => (c.id === id ? { ...c, [field]: value } : c))
-    );
-  };
+const updateComponent = (
+  id: string,
+  field: keyof CPQComponent,
+  value: string | number | React.ComponentType<{ className?: string }>
+) => {
+  setComponents(prev =>
+    prev.map(c => (c.id === id ? { ...c, [field]: value } : c))
+  )
+}
 
   // Toggle include/exclude: quantity=0 <-> 1
   const toggleInclude = (id: string) => {
