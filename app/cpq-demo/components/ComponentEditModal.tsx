@@ -117,7 +117,7 @@ export default function ComponentEditModal({
                   try {
                     Object.entries(seed).forEach(([field, value]) => {
                       if (field === 'id' || field === 'optional') return;
-                      onUpdate(id, field as keyof CPQComponent, value as any);
+                      onUpdate(id, field as keyof CPQComponent, value as string | number);
                     });
                   } catch (err) {
                     console.error('Seed load error:', err);
