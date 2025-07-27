@@ -16,11 +16,11 @@ export function useCpqController() {
   const [isQuoteOpen, setIsQuoteOpen] = useState<boolean>(false);
   const [receiptText, setReceiptText] = useState<string>('');
 
-  // Open/close the per-row edit modal
+  // Open/close the per‑row edit modal
   const openEditModal = (id: string) => setEditingComponentId(id);
   const closeEditModal = () => setEditingComponentId(null);
 
-  // Add a brand-new component (unique id) and open its modal
+  // Add a brand‑new component
   const addComponent = () => {
     const newComp: CPQComponent = {
       id: `new-${Date.now()}`,
@@ -36,25 +36,37 @@ export function useCpqController() {
       materialMarkupPercent: 200,
       discountPercent: 0,
     };
-    setComponents((prev) => [...prev, newComp]);
+    setComponents(prev => [...prev, newComp]);
     openEditModal(newComp.id);
   };
 
-  // Update any editable field on a component
-const updateComponent = (
-  id: string,
-  field: keyof CPQComponent,
-  value: string | number | React.ComponentType<{ className?: string }>
-) => {
-  setComponents(prev =>
-    prev.map(c => (c.id === id ? { ...c, [field]: value } : c))
-  )
-}
+  // Clear all components (collection‑level)
+  const clearAll = () => {
+    setComponents([]);
+    closeEditModal();
+  };
 
-  // Toggle include/exclude: quantity=0 <-> 1
+  // Load seed data (initial collection)
+  const loadSeedData = () => {
+    setComponents(initialCPQComponents);
+    closeEditModal();
+  };
+
+  // Update any editable field on a component
+  const updateComponent = (
+    id: string,
+    field: keyof CPQComponent,
+    value: string | number | React.ComponentType<{ className?: string }>
+  ) => {
+    setComponents(prev =>
+      prev.map(c => (c.id === id ? { ...c, [field]: value } : c))
+    );
+  };
+
+  // Toggle include/exclude: quantity=0 ↔ 1
   const toggleInclude = (id: string) => {
-    setComponents((prev) =>
-      prev.map((c) =>
+    setComponents(prev =>
+      prev.map(c =>
         c.id === id
           ? {
               ...c,
@@ -66,16 +78,16 @@ const updateComponent = (
     );
   };
 
-  // Remove a component completely and close its modal
+  // Remove a component completely
   const removeComponent = (id: string) => {
-    setComponents((prev) => prev.filter((c) => c.id !== id));
+    setComponents(prev => prev.filter(c => c.id !== id));
     closeEditModal();
   };
 
-  // Build and open the quote receipt modal
+  // Build and open the quote receipt
   const openReceiptModal = () => {
     let text = 'CPQ Demo Receipt\n\nConfigured items:\n\n';
-    components.forEach((c) => {
+    components.forEach(c => {
       if (c.quantity > 0) {
         const { unitPrice, profit } = computePricing(c);
         text += `• ${c.name}: ${c.quantity} × $${unitPrice.toFixed(
@@ -84,7 +96,7 @@ const updateComponent = (
       }
     });
     const grand = components
-      .filter((c) => c.quantity > 0)
+      .filter(c => c.quantity > 0)
       .reduce((sum, c) => sum + computePricing(c).unitPrice * c.quantity, 0);
     text += `\nGrand Total: $${grand.toFixed(2)}\n\n— Thank you!`;
     setReceiptText(text);
@@ -100,7 +112,7 @@ const updateComponent = (
 
   // Currently editing component, or null
   const editingComponent =
-    components.find((c) => c.id === editingComponentId) || null;
+    components.find(c => c.id === editingComponentId) || null;
 
   return {
     components,
@@ -108,6 +120,8 @@ const updateComponent = (
     openEditModal,
     closeEditModal,
     addComponent,
+    clearAll,
+    loadSeedData,
     updateComponent,
     toggleInclude,
     removeComponent,

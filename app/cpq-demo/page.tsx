@@ -1,5 +1,3 @@
-// File: app/cpq-demo/page.tsx
-
 'use client';
 
 import React from 'react';
@@ -21,21 +19,26 @@ export default function CPQAdvanced() {
         {/* Header */}
         <CPQHeader />
 
-        {/* Add Component */}
-        <ManagerControls onAddComponent={controller.addComponent} />
+        {/* Manager Controls */}
+        <ManagerControls
+          onAddComponent={controller.addComponent}
+          onClearAll={controller.clearAll}
+          onLoadSeedData={controller.loadSeedData}
+        />
 
         {/* Table Header */}
         <ComponentTableHeader />
 
         {/* Table Rows */}
         <div className="divide-y divide-white/20">
-          {controller.components.map((c) => (
+          {controller.components.map(c => (
             <ComponentRow
               key={c.id}
               component={c}
               openEditModal={controller.openEditModal}
               toggleInclude={controller.toggleInclude}
               updateComponent={controller.updateComponent}
+              removeComponent={controller.removeComponent}
             />
           ))}
         </div>
@@ -51,7 +54,7 @@ export default function CPQAdvanced() {
         />
       </div>
 
-      {/* Per-Row Edit Modal */}
+      {/* Per‑Row Edit Modal */}
       {controller.editingComponent && (
         <ComponentEditModal
           component={controller.editingComponent}

@@ -10,6 +10,7 @@ export default function ComponentTableHeader() {
       <div className="flex-[1] text-center px-1 sm:px-2">Include</div>
       <div className="flex-[1] text-center px-1 sm:px-2">Quantity</div>
       <div className="flex-[1] text-center px-1 sm:px-2">Edit</div>
+      <div className="flex-[1] text-center px-1 sm:px-2">Delete</div>
     </div>
   );
 }
