@@ -8,6 +8,7 @@ import { PricingEquationsTable } from './PricingEquationsTable';
 import { ComponentInputs } from './ComponentInputs';
 import { ComponentActions } from './ComponentActions';
 
+
 type Props = {
   component: CPQComponent;
   onClose: () => void;

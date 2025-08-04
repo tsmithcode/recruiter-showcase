@@ -9,6 +9,7 @@ import ComponentRow from './components/ComponentRow';
 import ComponentEditModal from './components/ComponentEditModal';
 import TotalFooter from './components/TotalFooter';
 import QuoteModal from './components/QuoteModal';
+import CPQUserGuideDialog from '../cpq-demo/components/CPQUserGuideDialog';
 
 // --- Import your dataset arrays ---
 import {
@@ -66,6 +67,8 @@ export default function CPQAdvanced() {
   return (
     <>
       <div className="mx-auto max-w-screen-lg bg-white/5 border border-white/10 p-4 rounded-xl">
+       <CPQUserGuideDialog />
+       
         <CPQHeader onModeChange={setMode} />
 
         <ManagerControls

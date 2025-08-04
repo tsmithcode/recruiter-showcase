@@ -15,7 +15,10 @@ export default function CPQHeader({ onModeChange }: Props) {
 
   return (
     <header className="text-center text-white py-4 border-b border-white/20 relative">
-      <h1 className="text-1xl">Configure Price Quote (CPQ)</h1>
+      <h1 className="text-2xl font-semibold">Configure Price Quote (CPQ)</h1>
+      <p className="mt-1 text-sm text-[#05c8fb]/90 font-medium">
+        The world’s first free digital asset CPQ tool for contractors.
+      </p>
 
       {/* Larger Switch */}
       <div className="mt-3 flex justify-center">
