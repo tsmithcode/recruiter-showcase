@@ -1,8 +1,7 @@
 import React from 'react';
 import { Dialog } from '@headlessui/react';
-import { Listbox } from '@headlessui/react';
 import { motion } from 'framer-motion';
-import { CPQComponent, iconOptions, initialCPQComponents } from '../models';
+import { CPQComponent, initialCPQComponents } from '../models';
 import { computePricing } from '../pricing';
 import { PricingSummary } from './PricingSummary';
 import { PricingEquationsTable } from './PricingEquationsTable';
