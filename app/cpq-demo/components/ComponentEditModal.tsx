@@ -28,14 +28,7 @@ export default function ComponentEditModal({
 }: Props) {
   const {
     id,
-    name,
-    Icon,
-    unitLaborCost,
-    laborHours,
-    unitMaterialCost,
     quantity,
-    laborMarginPercent,
-    materialMarkupPercent,
     discountPercent,
   } = comp;
 
