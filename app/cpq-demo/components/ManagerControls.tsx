@@ -15,18 +15,18 @@ export default function ManagerControls({
 
   const datasets = [
     { id: 'none', name: 'N/A' },
-    { id: 'aerospace', name: 'Aerospace & Defense Components' },
-    { id: 'automotive', name: 'Automotive & EV Components' },
+    { id: 'aerospace', name: 'Aerospace & Defense' },
+    { id: 'automotive', name: 'Automotive & EV' },
     { id: 'banking', name: 'Banking Components' },
-    { id: 'biotech', name: 'Healthcare & Biotech Components' },
-    { id: 'construction', name: 'Construction & Infrastructure Components' },
-    { id: 'energy', name: 'Energy Components' },
-    { id: 'etoCad', name: 'ETO CAD Components' },
-    { id: 'film', name: 'Film Components' },
-    { id: 'medical', name: 'Medical Components' },
-    { id: 'music', name: 'Music Album Components' },
-    { id: 'realEstate', name: 'Real Estate Components' },
-    { id: 'software', name: 'Software Sales Components' },
+    { id: 'biotech', name: 'Healthcare & Biotech' },
+    { id: 'construction', name: 'Construction & Infrastructure' },
+    { id: 'energy', name: 'Energy' },
+    { id: 'etoCad', name: 'ETO CAD' },
+    { id: 'film', name: 'Film' },
+    { id: 'medical', name: 'Medical' },
+    { id: 'music', name: 'Music Album' },
+    { id: 'realEstate', name: 'Real Estate' },
+    { id: 'software', name: 'Software Sales' },
   ];
 
   const handleLoadSeedData = () => {
