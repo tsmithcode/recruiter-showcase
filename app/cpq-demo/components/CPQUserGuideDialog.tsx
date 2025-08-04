@@ -13,7 +13,7 @@ export default function CPQUserGuideDialog() {
       <p className="mt-2 text-gray-300">
         The CPQ Advanced application is a powerful tool for rapidly configuring,
         pricing, and generating quotes for complex digital products and services.
-        This guide outlines the application's core features for both user modes.
+        This guide outlines the application&apos;s core features for both user modes.
       </p>
 
       {/* --- */}
@@ -198,7 +198,7 @@ export default function CPQUserGuideDialog() {
             **Component**: An individual item or service in the quote.
           </li>
           <li>
-            **Optional**: A component that isn't included by default.
+            **Optional**: A component that isn&apos;t included by default.
           </li>
           <li>
             **Cost**: Internal expense (Labor + Material).
