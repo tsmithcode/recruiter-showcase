@@ -1,5 +1,4 @@
 // File: app/cpq-demo/components/CPQUserGuideDialog.tsx
-
 import React, { useState } from 'react';
 import { Dialog } from '@headlessui/react';
 import { motion } from 'framer-motion';
@@ -26,16 +25,16 @@ export default function CPQUserGuideDialog() {
         </h2>
         <ul className="list-disc list-inside space-y-1 ml-4 text-gray-300">
           <li>
-            **CPQ Header**: Toggle between **Customer** and **Manager** modes.
+            <strong className="text-[#05c8fb] font-bold">CPQ Header</strong>: Toggle between <strong className="text-[#05c8fb] font-bold">Customer</strong> and <strong className="text-[#05c8fb] font-bold">Manager</strong> modes.
           </li>
           <li>
-            **Component Table**: The core interface for managing individual quote components.
+            <strong className="text-[#05c8fb] font-bold">Component Table</strong>: The core interface for managing individual quote components.
           </li>
           <li>
-            **Total Footer**: Displays aggregate pricing, cost, and profit.
+            <strong className="text-[#05c8fb] font-bold">Total Footer</strong>: Displays aggregate pricing, cost, and profit.
           </li>
           <li>
-            **Quote Modal**: Generates a printable quote receipt.
+            <strong className="text-[#05c8fb] font-bold">Quote Modal</strong>: Generates a printable quote receipt.
           </li>
         </ul>
       </section>
@@ -55,13 +54,13 @@ export default function CPQUserGuideDialog() {
         </h3>
         <ul className="list-disc list-inside space-y-1 ml-4 text-gray-300">
           <li>
-            **Include/Exclude**: Use checkboxes to add or remove optional components from the quote.
+            <strong className="text-[#05c8fb] font-bold">Include/Exclude</strong>: Use checkboxes to add or remove optional components from the quote.
           </li>
           <li>
-            **Adjust Quantity**: Change the number of units for included items.
+            <strong className="text-[#05c8fb] font-bold">Adjust Quantity</strong>: Change the number of units for included items.
           </li>
           <li>
-            **View Totals**: Monitor real-time price, cost, and profit changes.
+            <strong className="text-[#05c8fb] font-bold">View Totals</strong>: Monitor real-time price, cost, and profit changes.
           </li>
         </ul>
         <p className="mt-4 font-semibold text-red-400">
@@ -84,16 +83,16 @@ export default function CPQUserGuideDialog() {
         </h3>
         <ul className="list-disc list-inside space-y-1 ml-4 text-gray-300">
           <li>
-            **Load Mock Data**: Replace current components with pre-defined industry datasets.
+            <strong className="text-[#05c8fb] font-bold">Load Mock Data</strong>: Replace current components with pre-defined industry datasets.
           </li>
           <li>
-            **+ Add Component**: Insert a new, blank component row.
+            <strong className="text-[#05c8fb] font-bold">+ Add Component</strong>: Insert a new, blank component row.
           </li>
           <li>
-            **Clear All**: Remove all components from the current quote.
+            <strong className="text-[#05c8fb] font-bold">Clear All</strong>: Remove all components from the current quote.
           </li>
           <li>
-            **Edit**: Open a modal to modify a component&apos;s details.
+            <strong className="text-[#05c8fb] font-bold">Edit</strong>: Open a modal to modify a component&apos;s details.
           </li>
         </ul>
       </section>
@@ -114,13 +113,13 @@ export default function CPQUserGuideDialog() {
         </h3>
         <ul className="list-disc list-inside space-y-1 ml-4 text-gray-300">
           <li>
-            **Details**: Name, Icon, Quantity.
+            <strong className="text-[#05c8fb] font-bold">Details</strong>: Name, Icon, Quantity.
           </li>
           <li>
-            **Costs**: Unit Material Cost, Unit Labor Cost, Labor Hours.
+            <strong className="text-[#05c8fb] font-bold">Costs</strong>: Unit Material Cost, Unit Labor Cost, Labor Hours.
           </li>
           <li>
-            **Pricing**: Material Markup, Labor Margin, Discount.
+            <strong className="text-[#05c8fb] font-bold">Pricing</strong>: Material Markup, Labor Margin, Discount.
           </li>
         </ul>
 
@@ -192,22 +191,22 @@ export default function CPQUserGuideDialog() {
         </h2>
         <ul className="list-disc list-inside space-y-1 ml-4 text-gray-300">
           <li>
-            **CPQ**: Configure, Price, Quote.
+            <strong className="text-[#05c8fb] font-bold">CPQ</strong>: Configure, Price, Quote.
           </li>
           <li>
-            **Component**: An individual item or service in the quote.
+            <strong className="text-[#05c8fb] font-bold">Component</strong>: An individual item or service in the quote.
           </li>
           <li>
-            **Optional**: A component that isn&apos;t included by default.
+            <strong className="text-[#05c8fb] font-bold">Optional</strong>: A component that isn&apos;t included by default.
           </li>
           <li>
-            **Cost**: Internal expense (Labor + Material).
+            <strong className="text-[#05c8fb] font-bold">Cost</strong>: Internal expense (Labor + Material).
           </li>
           <li>
-            **Price**: Final selling price to the customer.
+            <strong className="text-[#05c8fb] font-bold">Price</strong>: Final selling price to the customer.
           </li>
           <li>
-            **Profit**: The difference between Price and Cost.
+            <strong className="text-[#05c8fb] font-bold">Profit</strong>: The difference between Price and Cost.
           </li>
         </ul>
       </section>
