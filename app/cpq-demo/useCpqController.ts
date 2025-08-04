@@ -16,11 +16,11 @@ export function useCpqController() {
   const [isQuoteOpen, setIsQuoteOpen] = useState<boolean>(false);
   const [receiptText, setReceiptText] = useState<string>('');
 
-  // Open/close the per‑row edit modal
+  // --- Modal management ---
   const openEditModal = (id: string) => setEditingComponentId(id);
   const closeEditModal = () => setEditingComponentId(null);
 
-  // Add a brand‑new component
+  // --- Add new component ---
   const addComponent = () => {
     const newComp: CPQComponent = {
       id: `new-${Date.now()}`,
@@ -40,19 +40,20 @@ export function useCpqController() {
     openEditModal(newComp.id);
   };
 
-  // Clear all components (collection‑level)
+  // --- Clear all ---
   const clearAll = () => {
     setComponents([]);
     closeEditModal();
   };
 
-  // Load seed data (initial collection)
-  const loadSeedData = () => {
-    setComponents(initialCPQComponents);
+  // --- Load seed data (now supports dataset param) ---
+  const loadSeedData = (newComponents?: CPQComponent[]) => {
+    // If no dataset array is provided, default to the original seed
+    setComponents(newComponents && newComponents.length > 0 ? newComponents : initialCPQComponents);
     closeEditModal();
   };
 
-  // Update any editable field on a component
+  // --- Update individual field ---
   const updateComponent = (
     id: string,
     field: keyof CPQComponent,
@@ -63,7 +64,7 @@ export function useCpqController() {
     );
   };
 
-  // Toggle include/exclude: quantity=0 ↔ 1
+  // --- Toggle include/exclude ---
   const toggleInclude = (id: string) => {
     setComponents(prev =>
       prev.map(c =>
@@ -78,13 +79,13 @@ export function useCpqController() {
     );
   };
 
-  // Remove a component completely
+  // --- Remove component ---
   const removeComponent = (id: string) => {
     setComponents(prev => prev.filter(c => c.id !== id));
     closeEditModal();
   };
 
-  // Build and open the quote receipt
+  // --- Quote modal builder ---
   const openReceiptModal = () => {
     let text = 'CPQ Demo Receipt\n\nConfigured items:\n\n';
     components.forEach(c => {
@@ -104,24 +105,25 @@ export function useCpqController() {
   };
   const closeReceiptModal = () => setIsQuoteOpen(false);
 
-  // Compute grand total for footer
+  // --- Compute grand total ---
   const totalPrice = components.reduce(
     (sum, c) => sum + computePricing(c).unitPrice * c.quantity,
     0
   );
 
-  // Currently editing component, or null
+  // --- Currently editing component ---
   const editingComponent =
     components.find(c => c.id === editingComponentId) || null;
 
   return {
     components,
     editingComponent,
+    setComponents, // <-- Expose setter for dynamic datasets
     openEditModal,
     closeEditModal,
     addComponent,
     clearAll,
-    loadSeedData,
+    loadSeedData, // <-- Now can receive a dataset array
     updateComponent,
     toggleInclude,
     removeComponent,
