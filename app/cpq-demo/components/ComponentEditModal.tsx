@@ -4,7 +4,6 @@ import { motion } from 'framer-motion';
 import { CPQComponent, initialCPQComponents } from '../models';
 import { computePricing } from '../pricing';
 import { PricingSummary } from './PricingSummary';
-import { PricingEquationsTable } from './PricingEquationsTable';
 import { ComponentInputs } from './ComponentInputs';
 import { ComponentActions } from './ComponentActions';
 
@@ -100,7 +99,7 @@ export default function ComponentEditModal({
             colorClass={colorClass}
           />
 
-        <PricingEquationsTable quantity={quantity} />
+       
 
           <ComponentActions
             comp={comp}
