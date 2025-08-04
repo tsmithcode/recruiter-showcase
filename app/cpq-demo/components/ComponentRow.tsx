@@ -13,7 +13,9 @@ type Props = {
     value: string | number | React.ComponentType<{ className?: string }>
   ) => void;
   removeComponent: (id: string) => void;
+  mode?: 'customer' | 'manager'; // <-- optional for backward compatibility
 };
+
 
 export default function ComponentRow({
   component: comp,
@@ -21,11 +23,13 @@ export default function ComponentRow({
   toggleInclude,
   updateComponent,
   removeComponent,
+  mode = 'manager', // <-- default to manager
 }: Props) {
   const { unitPrice } = computePricing(comp);
+  const isCustomer = mode === 'customer';
 
   return (
-    <div className="flex items-center text-white text-[11px] sm:text-sm border-b border-white/10 py-2 max-w-screen-lg mx-auto">
+    <div className="flex items-center text-white py-1 text-[11px] sm:text-xs border-b border-white/10 max-w-screen-lg mx-auto">
       {/* Name + Icon */}
       <div className="flex-[2] flex items-center gap-2 px-1 sm:px-2 truncate">
         <comp.Icon className="text-[#05c8fb] w-4 h-4 flex-shrink-0" />
@@ -70,35 +74,40 @@ export default function ComponentRow({
         )}
       </div>
 
-      {/* Edit */}
-      <div className="flex-[1] flex justify-center px-1 sm:px-2">
-        <button
-          onClick={() => openEditModal(comp.id)}
-          className="text-[#05c8fb] hover:text-white text-xs focus:outline-none"
-          aria-label={`Edit ${comp.name}`}
-        >
-          Edit
-        </button>
-      </div>
+      {/* Edit (hidden for customer) */}
+      {!isCustomer && (
+        <div className="flex-[1] flex justify-center px-1 sm:px-2">
+          <button
+            onClick={() => openEditModal(comp.id)}
+            className="text-[#05c8fb] hover:text-white text-xs focus:outline-none"
+            aria-label={`Edit ${comp.name}`}
+          >
+            Edit
+          </button>
+        </div>
+      )}
 
-      {/* Delete */}
-      <div className="flex-[1] flex justify-center px-1 sm:px-2">
-        <button
-          onClick={() => {
-            if (!confirm(`Are you sure you want to delete "${comp.name}"?`)) return;
-            try {
-              removeComponent(comp.id);
-            } catch (err) {
-              console.error('Delete error:', err);
-              alert('An error occurred while deleting this component.');
-            }
-          }}
-          className="text-red-500 hover:text-red-400 focus:outline-none"
-          aria-label={`Delete ${comp.name}`}
-        >
-          <TrashIcon className="w-4 h-4" />
-        </button>
-      </div>
+      {/* Delete (hidden for customer) */}
+      {!isCustomer && (
+        <div className="flex-[1] flex justify-center px-1 sm:px-2">
+          <button
+            onClick={() => {
+              if (!confirm(`Are you sure you want to delete "${comp.name}"?`)) return;
+              try {
+                removeComponent(comp.id);
+              } catch (err) {
+                console.error('Delete error:', err);
+                alert('An error occurred while deleting this component.');
+              }
+            }}
+            className="text-red-500 hover:text-red-400 focus:outline-none"
+            aria-label={`Delete ${comp.name}`}
+          >
+            <TrashIcon className="w-4 h-4" />
+          </button>
+        </div>
+      )}
     </div>
   );
 }
+

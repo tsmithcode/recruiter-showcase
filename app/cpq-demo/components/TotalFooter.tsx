@@ -22,21 +22,25 @@ export default function TotalFooter({ components }: Props) {
   );
 
   return (
-    <div className="mt-4 border-t border-white/20 pt-2 text-white text-sm flex flex-col sm:flex-row justify-between gap-4">
-      <div>
-        <div className="text-gray-400">Total Revenue</div>
-        <div className="font-semibold">${totals.revenue.toFixed(2)}</div>
-      </div>
-      <div>
-        <div className="text-gray-400">Total Profit</div>
-        <div
-          className={`font-semibold ${
-            totals.profit >= 0 ? 'text-green-400' : 'text-red-400'
-          }`}
-        >
-          ${totals.profit.toFixed(2)}
-        </div>
-      </div>
+   <div
+  className="mt-4 border-t border-white/20 pt-2 text-white text-sm
+             flex justify-between gap-4 flex-row"
+>
+  <div className="flex-1">
+    <div className="text-gray-400">Total Revenue</div>
+    <div className="font-semibold">${totals.revenue.toFixed(2)}</div>
+  </div>
+  <div className="flex-1 text-right">
+    <div className="text-gray-400">Total Profit</div>
+    <div
+      className={`font-semibold ${
+        totals.profit >= 0 ? 'text-green-400' : 'text-red-400'
+      }`}
+    >
+      ${totals.profit.toFixed(2)}
     </div>
+  </div>
+</div>
+
   );
 }
