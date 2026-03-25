@@ -145,6 +145,29 @@ a {
   width: min(1180px, calc(100% - 2rem));
 }
 
+.app-no-page-overflow {
+  max-width: 100%;
+  overflow-x: clip;
+}
+
+.app-contained-surface {
+  min-width: 0;
+  max-width: 100%;
+  overflow-wrap: anywhere;
+}
+
+.app-mobile-stack-rail {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr);
+  gap: 0.75rem;
+  max-width: 100%;
+}
+
+.showcase-shell :is(.grid, .flex) > * {
+  min-width: 0;
+  max-width: 100%;
+}
+
 .app-overlay {
   position: fixed;
   inset: 0;
@@ -211,6 +234,18 @@ a {
 @media (min-width: 768px) {
   .showcase-shell {
     width: min(1180px, calc(100% - 2.5rem));
+  }
+}
+
+@media (min-width: 640px) {
+  .app-mobile-stack-rail[data-rail-layout='wrap'] {
+    display: flex;
+    flex-wrap: wrap;
+    align-items: stretch;
+  }
+
+  .app-mobile-stack-rail[data-rail-layout='grid'] {
+    grid-template-columns: repeat(auto-fit, minmax(10rem, 1fr));
   }
 }
 

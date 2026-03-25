@@ -48,9 +48,12 @@ export default function ContextControlHeader({ context }: ContextControlHeaderPr
 
   return (
     <section className="showcase-shell pt-6">
-      <div className="control-panel space-y-5 rounded-[1.8rem] border border-white/10 bg-[#07101f]/92 p-4 shadow-[0_24px_80px_rgba(5,12,24,0.32)] sm:p-5">
-        <div className="flex flex-wrap items-center justify-between gap-4">
-          <div className="space-y-2">
+      <div
+        data-testid="context-control-panel"
+        className="control-panel app-contained-surface app-no-page-overflow space-y-5 rounded-[1.8rem] border border-white/10 bg-[#07101f]/92 p-4 shadow-[0_24px_80px_rgba(5,12,24,0.32)] sm:p-5"
+      >
+        <div className="flex flex-col gap-4 sm:flex-row sm:flex-wrap sm:items-center sm:justify-between">
+          <div className="app-contained-surface space-y-2">
             <div className="flex flex-wrap items-center gap-2 text-xs uppercase tracking-[0.22em] text-slate-500">
               <span>Context</span>
               <span className="text-slate-700">/</span>
@@ -71,7 +74,7 @@ export default function ContextControlHeader({ context }: ContextControlHeaderPr
           <button
             type="button"
             onClick={() => openSearch({ scope: 'context' })}
-            className="inline-flex items-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-white transition hover:border-cyan-300 hover:text-cyan-100"
+            className="inline-flex min-h-11 w-full items-center justify-center gap-2 rounded-full border border-white/10 bg-white/[0.05] px-4 py-3 text-sm font-semibold text-white transition hover:border-cyan-300 hover:text-cyan-100 sm:w-auto"
           >
             <MagnifyingGlassIcon className="h-4 w-4" />
             Search this context
@@ -79,14 +82,14 @@ export default function ContextControlHeader({ context }: ContextControlHeaderPr
         </div>
 
         <div className="grid gap-4 xl:grid-cols-[0.88fr_1.12fr]">
-          <div className="space-y-3">
+          <div className="app-contained-surface space-y-3">
             <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Role lenses</p>
-            <div className="flex flex-wrap gap-2">
+            <div className="app-mobile-stack-rail" data-rail-layout="wrap">
               {roleLenses.map((entry) => (
                 <Link
                   key={entry.id}
                   href={buildContextHref(context.slug, entry.id, phase)}
-                  className={`rounded-full px-4 py-2 text-sm font-semibold transition ${
+                  className={`app-contained-surface inline-flex min-h-11 items-center justify-center rounded-full px-4 py-2 text-sm font-semibold transition sm:w-auto ${
                     entry.id === lens
                       ? 'bg-white text-slate-950'
                       : 'border border-white/10 bg-white/[0.04] text-slate-300 hover:border-white/20 hover:text-white'
@@ -101,14 +104,14 @@ export default function ContextControlHeader({ context }: ContextControlHeaderPr
             </p>
           </div>
 
-          <div className="space-y-3">
-            <div className="flex items-center justify-between gap-4">
+          <div className="app-contained-surface space-y-3">
+            <div className="flex flex-col gap-3 sm:flex-row sm:items-center sm:justify-between">
               <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Phase rail</p>
-              <div className="flex items-center gap-2">
+              <div className="app-mobile-stack-rail" data-rail-layout="wrap">
                 {previousPhase ? (
                   <Link
                     href={buildContextHref(context.slug, lens, previousPhase.id, undefined, previousPhase.sectionIds[0])}
-                    className="inline-flex items-center gap-1 rounded-full border border-white/10 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-white/20 hover:text-white"
+                    className="inline-flex min-h-11 items-center justify-center gap-1 rounded-full border border-white/10 px-3 py-2 text-xs font-semibold text-slate-300 transition hover:border-white/20 hover:text-white sm:w-auto"
                   >
                     <ArrowLeftIcon className="h-3.5 w-3.5" />
                     Back
@@ -117,7 +120,7 @@ export default function ContextControlHeader({ context }: ContextControlHeaderPr
                 {nextPhase ? (
                   <Link
                     href={buildContextHref(context.slug, lens, nextPhase.id, undefined, nextPhase.sectionIds[0])}
-                    className="inline-flex items-center gap-1 rounded-full border border-white/10 px-3 py-1.5 text-xs font-semibold text-slate-300 transition hover:border-white/20 hover:text-white"
+                    className="inline-flex min-h-11 items-center justify-center gap-1 rounded-full border border-white/10 px-3 py-2 text-xs font-semibold text-slate-300 transition hover:border-white/20 hover:text-white sm:w-auto"
                   >
                     Forward
                     <ArrowRightIcon className="h-3.5 w-3.5" />
@@ -125,12 +128,13 @@ export default function ContextControlHeader({ context }: ContextControlHeaderPr
                 ) : null}
               </div>
             </div>
-            <div className="flex gap-2 overflow-x-auto pb-1">
+            <div className="app-mobile-stack-rail" data-rail-layout="grid">
               {phaseRail.map((step) => (
                 <Link
                   key={step.id}
+                  data-testid="phase-rail-card"
                   href={buildContextHref(context.slug, lens, step.id, undefined, step.sectionIds[0])}
-                  className={`min-w-[11.5rem] flex-1 rounded-[1.2rem] border px-3 py-3 transition sm:min-w-[10rem] ${
+                  className={`app-contained-surface rounded-[1.2rem] border px-3 py-3 transition ${
                     step.id === phase
                       ? 'border-cyan-300/60 bg-cyan-400/8'
                       : 'border-white/10 bg-white/[0.03] hover:border-white/20 hover:bg-white/[0.05]'
@@ -145,7 +149,7 @@ export default function ContextControlHeader({ context }: ContextControlHeaderPr
         </div>
 
         {returnHref ? (
-          <div className="rounded-[1.4rem] border border-white/10 bg-white/[0.03] p-4">
+          <div className="app-contained-surface rounded-[1.4rem] border border-white/10 bg-white/[0.03] p-4">
             <div className="flex flex-wrap items-center justify-between gap-3">
               <div>
                 <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Return trail</p>
