@@ -3,6 +3,7 @@
 import React, { useState, useCallback, useEffect } from 'react';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/20/solid';
+import Image from 'next/image';
 
 // ────────────────────────────────────────────────────────
 // 1 — MOTION VARIANTS
@@ -90,10 +91,13 @@ export default function CombinedFeature() {
             aria-label="Play video"
             className="relative w-full aspect-video overflow-hidden rounded-lg group focus:outline-none"
           >
-            <img
+            <Image
               src={`https://img.youtube.com/vi/${videoId}/maxresdefault.jpg`}
               alt="Door Frame Configurator video thumbnail"
-              className="object-cover w-full h-full transition-transform duration-300 group-hover:scale-105"
+              fill
+              unoptimized
+              sizes="(max-width: 1024px) 100vw, 1024px"
+              className="object-cover transition-transform duration-300 group-hover:scale-105"
             />
             <span className="absolute inset-0 flex items-center justify-center bg-black/40 backdrop-blur-sm opacity-0 group-hover:opacity-100 transition-opacity">
               <svg className="h-16 w-16 text-white" viewBox="0 0 24 24" fill="currentColor">

@@ -141,7 +141,7 @@ export default function Hero() {
 
           <motion.div variants={ctaItemVariants} style={{ willChange: 'transform,opacity' }}>
             <Link
-              href="https://github.com/tsmithcode/jobs/blob/main/THOMAS%20SMITH%202026%20Resume.pdf"
+              href="/documents/thomas-smith-architect-resume-2026.pdf"
               target="_blank"
               className="inline-flex justify-center items-center w-full sm:w-auto min-w-[160px] border border-[#05c8fb] rounded-full px-6 py-3 hover:bg-[#05c8fb]/10 transition"
             >

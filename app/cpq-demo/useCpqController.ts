@@ -10,8 +10,8 @@ import {
 } from './models';
 import { computePricing } from './pricing';
 
-export function useCpqController() {
-  const [components, setComponents] = useState<CPQComponent[]>(initialCPQComponents);
+export function useCpqController(initialComponents: CPQComponent[] = initialCPQComponents) {
+  const [components, setComponents] = useState<CPQComponent[]>(initialComponents);
   const [editingComponentId, setEditingComponentId] = useState<string | null>(null);
   const [isQuoteOpen, setIsQuoteOpen] = useState<boolean>(false);
   const [receiptText, setReceiptText] = useState<string>('');

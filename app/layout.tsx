@@ -1,57 +1,58 @@
-import { Geist, Geist_Mono } from 'next/font/google';
+import type { Metadata } from 'next';
+import Script from 'next/script';
+import { IBM_Plex_Mono, Space_Grotesk } from 'next/font/google';
 import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
 
 import ParticlesBackground from '@/components/ParticlesBackground';
+import SearchUIProvider from '@/components/showcase/SearchUIProvider';
 
-<script type="application/ld+json" suppressHydrationWarning>
-  {JSON.stringify({
-    '@context': 'https://schema.org',
-    '@type': 'Person',
-    name: 'Thomas Smith',
-    url: 'https://tsmithcode.ai',
-    sameAs: ['https://github.com/tsmithcode', 'https://www.youtube.com/@tsmithcad'],
-    jobTitle: 'Full-Stack Engineer & Automation Developer',
-    worksFor: {
-      '@type': 'Organization',
-      name: 'TSmithCode.ai',
-    },
-    description:
-      'Thomas Smith is a .NET developer and automation specialist who delivers full-stack, cloud-native, and CAD-integrated solutions with efficiency.',
-  })}
-</script>;
-
-const geistSans = Geist({
-  variable: '--font-geist-sans',
+const spaceGrotesk = Space_Grotesk({
+  variable: '--font-space-grotesk',
   subsets: ['latin'],
 });
 
-const geistMono = Geist_Mono({
-  variable: '--font-geist-mono',
+const plexMono = IBM_Plex_Mono({
+  variable: '--font-plex-mono',
   subsets: ['latin'],
+  weight: ['400', '500'],
 });
 
-// app/layout.tsx
-export const metadata = {
-  title: 'Thomas Smith | .NET & Automation Engineer',
+export const metadata: Metadata = {
+  metadataBase: new URL('https://tsmithcode.ai'),
+  title: 'Thomas Smith | Principal B2B Engineering Showcase',
   description:
-    'TSmithCode.ai showcases the full-stack engineering, automation, and CAD expertise of Thomas Smith — building scalable solutions for ERP, CAD, and business process automation.',
-  keywords:
-    'Thomas Smith, .NET Developer, Automation Engineer, CAD Automation, ERP, React, Blazor, Inventor API, Next.js, Software Engineer Portfolio',
+    'Principal-level B2B engineering showcase for Thomas Smith, focused on workflow systems, operational tooling, integration-heavy software, and recruiter-ready technical proof.',
+  keywords: [
+    'Thomas Smith',
+    'Principal Software Engineer',
+    'B2B Engineering',
+    'Workflow Systems',
+    'Internal Tools',
+    'CAD Automation',
+    'OpenAI recruiter showcase',
+    'Construction platform engineering',
+  ],
   authors: [{ name: 'Thomas Smith', url: 'https://tsmithcode.ai' }],
   creator: 'Thomas Smith',
-  robots: 'index, follow',
+  alternates: {
+    canonical: '/',
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
   openGraph: {
-    title: 'Thomas Smith | .NET & Automation Engineer',
+    title: 'Thomas Smith | Principal B2B Engineering Showcase',
     description:
-      'Full-stack developer and automation specialist using .NET, CAD, and ERP to deliver scalable solutions fast.',
+      'A recruiter-ready showcase of workflow systems, case studies, and technical proof spanning B2B platforms and construction-adjacent operations.',
     url: 'https://tsmithcode.ai',
     siteName: 'TSmithCode.ai',
     images: [
       {
-        url: '/images/tsmithcode-dark.png', // Ensure it's publicly accessible
+        url: '/images/tsmithcode-dark.png',
         width: 1200,
         height: 630,
         alt: 'TSmithCode.ai',
@@ -62,26 +63,50 @@ export const metadata = {
   },
   twitter: {
     card: 'summary_large_image',
-    title: 'Thomas Smith | .NET & Automation Engineer',
+    title: 'Thomas Smith | Principal B2B Engineering Showcase',
     description:
-      'Streamlining business processes using SDLC, Agile, and clean code principles with .NET, Blazor, CAD, and cloud-native tools.',
-    images: ['/tsmithcode-dark.png'],
+      'Principal-level proof for workflow systems, integration-heavy tooling, and operator software.',
+    images: ['/images/tsmithcode-dark.png'],
     site: '@tsmithcode',
     creator: '@tsmithcode',
   },
 };
 
 export default function RootLayout({ children }: { children: React.ReactNode }) {
+  const personSchema = {
+    '@context': 'https://schema.org',
+    '@type': 'Person',
+    name: 'Thomas Smith',
+    url: 'https://tsmithcode.ai',
+    sameAs: [
+      'https://github.com/tsmithcode',
+      'https://www.youtube.com/@tsmithcad',
+      'https://www.linkedin.com/in/tsmithcad/',
+    ],
+    jobTitle: 'Principal Software Engineer',
+    worksFor: {
+      '@type': 'Organization',
+      name: 'TSmithCode.ai',
+    },
+    description:
+      'Thomas Smith builds B2B workflow systems, operational tooling, and integration-heavy software across engineering and platform contexts.',
+  };
+
   return (
     <html lang="en">
       <body
-        className={`${geistSans.variable} ${geistMono.variable} antialiased  bg-[#0b253f] text-white`}
+        className={`${spaceGrotesk.variable} ${plexMono.variable} antialiased`}
       >
+        <Script id="person-ld-json" type="application/ld+json">
+          {JSON.stringify(personSchema)}
+        </Script>
         <Analytics />
         <SpeedInsights />
-        <ParticlesBackground />
-        <Navbar />
-        {children}
+        <SearchUIProvider>
+          <ParticlesBackground />
+          <Navbar />
+          {children}
+        </SearchUIProvider>
       </body>
     </html>
   );

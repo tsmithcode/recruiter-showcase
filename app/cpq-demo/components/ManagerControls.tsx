@@ -1,40 +1,36 @@
-import React, { useState } from 'react';
+import React from 'react';
 
 type Props = {
   onAddComponent: () => void;
   onClearAll: () => void;
-  onLoadSeedData: (dataset: string) => void; // <-- Accept selected dataset
+  onLoadSeedData: (dataset: string) => void;
+  selectedDataset: string;
+  onSelectDataset: (dataset: string) => void;
 };
 
 export default function ManagerControls({
   onAddComponent,
   onClearAll,
   onLoadSeedData,
+  selectedDataset,
+  onSelectDataset,
 }: Props) {
-  const [selectedDataset, setSelectedDataset] = useState('');
-
   const datasets = [
-    { id: 'none', name: 'N/A' },
-    { id: 'aerospace', name: 'Aerospace & Defense' },
-    { id: 'automotive', name: 'Automotive & EV' },
-    { id: 'banking', name: 'Banking Components' },
-    { id: 'biotech', name: 'Healthcare & Biotech' },
-    { id: 'construction', name: 'Construction & Infrastructure' },
-    { id: 'energy', name: 'Energy' },
-    { id: 'etoCad', name: 'ETO CAD' },
-    { id: 'film', name: 'Film' },
-    { id: 'medical', name: 'Medical' },
-    { id: 'music', name: 'Music Album' },
-    { id: 'realEstate', name: 'Real Estate' },
-    { id: 'software', name: 'Software Sales' },
+    { id: 'software', name: 'Software sales / B2B tools' },
+    { id: 'construction', name: 'Construction and infrastructure' },
+    { id: 'etoCad', name: 'Engineer-to-order CAD' },
+    { id: 'medical', name: 'Medical education assets' },
+    { id: 'aerospace', name: 'Aerospace and defense' },
+    { id: 'automotive', name: 'Automotive and EV' },
+    { id: 'banking', name: 'Banking operations' },
+    { id: 'biotech', name: 'Healthcare and biotech' },
+    { id: 'energy', name: 'Energy and utilities' },
+    { id: 'film', name: 'Film and media' },
+    { id: 'music', name: 'Music and media packaging' },
+    { id: 'realEstate', name: 'Real estate and property marketing' },
   ];
 
   const handleLoadSeedData = () => {
-    if (!selectedDataset || selectedDataset === 'none') {
-      alert('Please select a valid dataset before loading seed data.');
-      return;
-    }
-
     if (
       !confirm(
         `Are you sure you want to load seed data for "${selectedDataset}"? This will replace current components.`
@@ -59,12 +55,9 @@ export default function ManagerControls({
           className="w-72 px-4 py-3 rounded-md bg-gray-800 text-white border border-gray-700 text-sm 
                      focus:outline-none focus:ring-2 focus:ring-[#05c8fb] shadow-sm"
           value={selectedDataset}
-          onChange={(e) => setSelectedDataset(e.target.value)}
+          onChange={(e) => onSelectDataset(e.target.value)}
           aria-label="Select Data Set"
         >
-          <option value="" disabled>
-            Select Data Set...
-          </option>
           {datasets.map((ds) => (
             <option key={ds.id} value={ds.id}>
               {ds.name}

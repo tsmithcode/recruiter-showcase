@@ -15,9 +15,9 @@ export default function CPQHeader({ onModeChange }: Props) {
 
   return (
     <header className="text-center text-white py-4 border-b border-white/20 relative">
-      <h1 className="text-2xl font-semibold">Configure Price Quote (CPQ)</h1>
+      <h1 className="text-2xl font-semibold">CPQ Decision Workbench</h1>
       <p className="mt-1 text-sm text-[#05c8fb]/90 font-medium">
-        The world’s first free digital asset CPQ tool for contractors.
+        A recruiter-facing proof artifact for pricing logic, operator modes, and workflow packaging.
       </p>
 
       {/* Larger Switch */}
