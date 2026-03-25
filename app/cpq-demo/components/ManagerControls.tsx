@@ -48,11 +48,11 @@ export default function ManagerControls({
   };
 
   return (
-    <div className="mb-6 mt-6 flex flex-col space-y-4 md:flex-row md:items-center md:justify-between md:space-y-0">
+    <div className="mb-6 mt-6 flex flex-col gap-4 md:flex-row md:items-center md:justify-between">
       {/* Left Side: Dropdown + Load Button */}
-      <div className="flex flex-col items-center space-y-2 sm:flex-row sm:space-y-0 sm:space-x-2">
+      <div className="flex flex-col gap-2 sm:flex-row">
         <select
-          className="w-72 px-4 py-3 rounded-md bg-gray-800 text-white border border-gray-700 text-sm 
+          className="w-full sm:w-72 px-4 py-3 rounded-md bg-gray-800 text-white border border-gray-700 text-base 
                      focus:outline-none focus:ring-2 focus:ring-[#05c8fb] shadow-sm"
           value={selectedDataset}
           onChange={(e) => onSelectDataset(e.target.value)}
@@ -67,7 +67,7 @@ export default function ManagerControls({
 
         <button
           onClick={handleLoadSeedData}
-          className="px-4 py-3 rounded-md bg-gray-800 text-white border border-gray-700 text-sm
+          className="min-h-11 px-4 py-3 rounded-md bg-gray-800 text-white border border-gray-700 text-sm
                      hover:bg-gray-700 hover:text-green-300 transition-colors shadow-sm"
           aria-label="Load Seed Data"
         >
@@ -76,8 +76,8 @@ export default function ManagerControls({
       </div>
 
       {/* Right Side: Add & Clear Buttons */}
-      <div className="flex justify-end w-full md:w-auto">
-        <div className="flex divide-x divide-gray-600 rounded overflow-hidden border border-gray-700 bg-gray-800/70 shadow-sm">
+      <div className="flex w-full justify-end md:w-auto">
+        <div className="flex w-full divide-x divide-gray-600 overflow-hidden rounded border border-gray-700 bg-gray-800/70 shadow-sm md:w-auto">
           <button
             onClick={() => {
               try {
@@ -87,7 +87,7 @@ export default function ManagerControls({
                 alert('An error occurred while adding a new component.');
               }
             }}
-            className="px-4 py-2 text-xs text-white hover:bg-gray-700 hover:text-[#05c8fb] transition-colors"
+            className="min-h-11 flex-1 px-4 py-2 text-sm text-white transition-colors hover:bg-gray-700 hover:text-[#05c8fb]"
             aria-label="Add Component"
           >
             + Add Component
@@ -103,7 +103,7 @@ export default function ManagerControls({
                 alert('An error occurred while clearing all components.');
               }
             }}
-            className="px-4 py-2 text-xs text-white hover:bg-gray-700 hover:text-yellow-300 transition-colors"
+            className="min-h-11 flex-1 px-4 py-2 text-sm text-white transition-colors hover:bg-gray-700 hover:text-yellow-300"
             aria-label="Clear All Components"
           >
             Clear All

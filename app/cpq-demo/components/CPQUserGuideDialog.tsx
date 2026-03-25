@@ -232,23 +232,23 @@ export default function CPQUserGuideDialog() {
 
         <div className="fixed inset-0 flex items-center justify-center p-4">
           <motion.div
-            className="w-full max-w-3xl max-h-[90vh] bg-gray-900 p-6 rounded-lg border border-gray-700 text-white overflow-y-auto"
+            className="app-dialog-scroll w-full max-w-3xl rounded-[1.5rem] border border-gray-700 bg-gray-900 text-white"
             initial={{ scale: 0.95, opacity: 0 }}
             animate={{ scale: 1, opacity: 1 }}
           >
-            <div className="flex justify-between items-center sticky top-0 bg-gray-900 pb-2 border-b border-gray-700 z-10">
+            <div className="app-dialog-header border-gray-700">
               <Dialog.Title className="text-xl font-semibold">
                 CPQ Advanced User Guide
               </Dialog.Title>
               <button
                 onClick={() => setIsOpen(false)}
-                className="rounded-full p-1 text-gray-400 hover:bg-gray-700 hover:text-white transition-colors"
+                className="app-touch-target inline-flex items-center justify-center rounded-full p-1 text-gray-400 transition-colors hover:bg-gray-700 hover:text-white"
                 aria-label="Close"
               >
                 <XMarkIcon className="w-6 h-6" />
               </button>
             </div>
-            {userGuideContent}
+            <div className="app-dialog-body">{userGuideContent}</div>
           </motion.div>
         </div>
       </Dialog>

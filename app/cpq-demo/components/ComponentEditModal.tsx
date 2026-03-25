@@ -1,6 +1,7 @@
 import React from 'react';
 import { Dialog } from '@headlessui/react';
 import { motion } from 'framer-motion';
+import { XMarkIcon } from '@heroicons/react/24/outline';
 import { CPQComponent, initialCPQComponents } from '../models';
 import { computePricing } from '../pricing';
 import { PricingSummary } from './PricingSummary';
@@ -74,41 +75,49 @@ export default function ComponentEditModal({
       <div className="fixed inset-0 flex items-center justify-center p-4">
         {/* Panel */}
         <motion.div
-          className="w-full max-w-2xl max-h-[90vh] bg-gray-900 p-6 rounded-lg border border-gray-700 text-white overflow-auto"
+          className="app-dialog-scroll w-full max-w-2xl rounded-[1.5rem] border border-gray-700 bg-gray-900 text-white"
           initial={{ scale: 0.95, opacity: 0 }}
           animate={{ scale: 1, opacity: 1 }}
         >
           {/* Header & Bulk Actions */}
-          <Dialog.Title className="flex justify-between items-center text-lg mb-4">
-            <span>Edit Component</span>
-          </Dialog.Title>
+          <div className="app-dialog-header">
+            <Dialog.Title className="text-lg font-semibold">Edit Component</Dialog.Title>
+            <button
+              type="button"
+              onClick={onClose}
+              className="app-touch-target inline-flex items-center justify-center rounded-full border border-white/10 bg-white/[0.04] text-slate-300 transition hover:border-white/20 hover:text-white"
+              aria-label="Close edit component dialog"
+            >
+              <XMarkIcon className="h-5 w-5" />
+            </button>
+          </div>
 
-          <ComponentInputs comp={comp} onUpdate={onUpdate} />
+          <div className="app-dialog-body">
+            <ComponentInputs comp={comp} onUpdate={onUpdate} />
 
-          <PricingSummary
-            laborCost={laborCost}
-            materialCost={materialCost}
-            laborMarginDollars={laborMarginDollars}
-            materialMarkupDollars={materialMarkupDollars}
-            discountPercent={discountPercent}
-            discountDollars={discountDollars}
-            unitPrice={unitPrice}
-            profit={profit}
-            profitPercent={profitPercent}
-            quantity={quantity}
-            colorClass={colorClass}
-          />
+            <PricingSummary
+              laborCost={laborCost}
+              materialCost={materialCost}
+              laborMarginDollars={laborMarginDollars}
+              materialMarkupDollars={materialMarkupDollars}
+              discountPercent={discountPercent}
+              discountDollars={discountDollars}
+              unitPrice={unitPrice}
+              profit={profit}
+              profitPercent={profitPercent}
+              quantity={quantity}
+              colorClass={colorClass}
+            />
 
-       
-
-          <ComponentActions
-            comp={comp}
-            clearFields={clearFields}
-            seed={seed}
-            onUpdate={onUpdate}
-            onDelete={onDelete}
-            onClose={onClose}
-          />
+            <ComponentActions
+              comp={comp}
+              clearFields={clearFields}
+              seed={seed}
+              onUpdate={onUpdate}
+              onDelete={onDelete}
+              onClose={onClose}
+            />
+          </div>
         </motion.div>
       </div>
     </Dialog>

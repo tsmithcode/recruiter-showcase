@@ -4,6 +4,7 @@ import React, { useState, useCallback, useEffect } from 'react';
 import { motion, Variants, AnimatePresence } from 'framer-motion';
 import { XMarkIcon } from '@heroicons/react/20/solid';
 import Image from 'next/image';
+import ModalShell from '@/components/ui/ModalShell';
 
 // ────────────────────────────────────────────────────────
 // 1 — MOTION VARIANTS
@@ -23,10 +24,6 @@ const textItemVariants: Variants = {
     y: 0,
     transition: { duration: 0.8, ease: 'easeOut' },
   },
-};
-const overlayVariants: Variants = {
-  hidden: { opacity: 0 },
-  show: { opacity: 1, transition: { duration: 0.25 } },
 };
 const dialogVariants: Variants = {
   hidden: { scale: 0.9, opacity: 0 },
@@ -111,28 +108,20 @@ export default function CombinedFeature() {
       {/* ───── VIDEO MODAL ───── */}
       <AnimatePresence>
         {open && (
-          <motion.div
-            key="overlay"
-            initial="hidden"
-            animate="show"
-            exit="hidden"
-            variants={overlayVariants}
-            className="fixed inset-0 z-50 bg-black/80 backdrop-blur-sm flex items-center justify-center p-4"
-            onClick={() => setOpen(false)}
-          >
+          <ModalShell open={open} onClose={() => setOpen(false)} panelClassName="w-full max-w-5xl overflow-visible border-0 bg-transparent shadow-none">
             <motion.div
               key="dialog"
               initial="hidden"
               animate="show"
               exit="hidden"
               variants={dialogVariants}
-              className="relative w-full max-w-5xl aspect-video"
+              className="relative w-full aspect-video"
               onClick={(e) => e.stopPropagation()}
             >
               <button
                 onClick={() => setOpen(false)}
                 aria-label="Close video"
-                className="absolute top-3 right-3 text-white/80 hover:text-white"
+                className="app-touch-target absolute right-3 top-3 inline-flex items-center justify-center rounded-full bg-black/45 text-white/80 transition hover:text-white"
               >
                 <XMarkIcon className="h-8 w-8" />
               </button>
@@ -144,7 +133,7 @@ export default function CombinedFeature() {
                 className="w-full h-full rounded-lg"
               />
             </motion.div>
-          </motion.div>
+          </ModalShell>
         )}
       </AnimatePresence>
     </>

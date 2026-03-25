@@ -26,7 +26,7 @@ export const ComponentInputs: React.FC<ComponentInputsProps> = ({ comp, onUpdate
   } = comp;
 
   return (
-    <div className="grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs">
+    <div className="grid grid-cols-1 gap-4 text-sm sm:grid-cols-2 lg:grid-cols-3">
       {/* Name */}
       <label className="flex flex-col">
         Name
@@ -34,27 +34,27 @@ export const ComponentInputs: React.FC<ComponentInputsProps> = ({ comp, onUpdate
           type="text"
           value={name}
           onChange={e => onUpdate(id, 'name', e.target.value)}
-          className="mt-1 bg-gray-800 border border-gray-600 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="mt-1 min-h-11 rounded border border-gray-600 bg-gray-800 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </label>
 
       {/* Icon */}
-      <label className="flex flex-col">
+      <label className="relative flex flex-col">
         Icon
         <Listbox
           value={iconOptions.find(o => o.Icon === Icon)}
           onChange={sel => onUpdate(id, 'Icon', sel.Icon)}
         >
-          <Listbox.Button className="mt-1 bg-gray-800 border border-gray-600 rounded px-2 py-1 flex items-center gap-2 hover:bg-gray-700">
+          <Listbox.Button className="mt-1 flex min-h-11 items-center gap-2 rounded border border-gray-600 bg-gray-800 px-3 py-2 text-left text-base hover:bg-gray-700">
             <Icon className="w-4 h-4 text-[#05c8fb]" />
             {iconOptions.find(o => o.Icon === Icon)?.label}
           </Listbox.Button>
-          <Listbox.Options className="absolute mt-1 bg-gray-800 border border-gray-600 rounded z-10">
+          <Listbox.Options className="absolute left-0 right-0 top-full z-10 mt-1 max-h-64 overflow-y-auto rounded border border-gray-600 bg-gray-800 shadow-xl">
             {iconOptions.map(o => (
               <Listbox.Option
                 key={o.id}
                 value={o}
-                className="cursor-pointer px-2 py-1 hover:bg-gray-700 flex items-center gap-2"
+                className="flex cursor-pointer items-center gap-2 px-3 py-2 text-base hover:bg-gray-700"
               >
                 <o.Icon className="w-4 h-4 text-[#05c8fb]" />
                 {o.label}
@@ -72,7 +72,7 @@ export const ComponentInputs: React.FC<ComponentInputsProps> = ({ comp, onUpdate
           placeholder="0"
           value={quantity === 0 ? '' : quantity}
           onChange={e => onUpdate(id, 'quantity', e.target.value === '' ? 0 : +e.target.value)}
-          className="mt-1 bg-gray-800 border border-gray-600 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="mt-1 min-h-11 rounded border border-gray-600 bg-gray-800 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </label>
 
@@ -86,7 +86,7 @@ export const ComponentInputs: React.FC<ComponentInputsProps> = ({ comp, onUpdate
           onChange={e =>
             onUpdate(id, 'discountPercent', e.target.value === '' ? 0 : +e.target.value)
           }
-          className="mt-1 bg-gray-800 border border-gray-600 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="mt-1 min-h-11 rounded border border-gray-600 bg-gray-800 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </label>
 
@@ -100,7 +100,7 @@ export const ComponentInputs: React.FC<ComponentInputsProps> = ({ comp, onUpdate
           onChange={e =>
             onUpdate(id, 'unitMaterialCost', e.target.value === '' ? 0 : +e.target.value)
           }
-          className="mt-1 bg-gray-800 border border-gray-600 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="mt-1 min-h-11 rounded border border-gray-600 bg-gray-800 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </label>
 
@@ -114,7 +114,7 @@ export const ComponentInputs: React.FC<ComponentInputsProps> = ({ comp, onUpdate
           onChange={e =>
             onUpdate(id, 'unitLaborCost', e.target.value === '' ? 0 : +e.target.value)
           }
-          className="mt-1 bg-gray-800 border border-gray-600 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="mt-1 min-h-11 rounded border border-gray-600 bg-gray-800 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </label>
 
@@ -128,7 +128,7 @@ export const ComponentInputs: React.FC<ComponentInputsProps> = ({ comp, onUpdate
           onChange={e =>
             onUpdate(id, 'materialMarkupPercent', e.target.value === '' ? 0 : +e.target.value)
           }
-          className="mt-1 bg-gray-800 border border-gray-600 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="mt-1 min-h-11 rounded border border-gray-600 bg-gray-800 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </label>
 
@@ -142,7 +142,7 @@ export const ComponentInputs: React.FC<ComponentInputsProps> = ({ comp, onUpdate
           onChange={e =>
             onUpdate(id, 'laborMarginPercent', e.target.value === '' ? 0 : +e.target.value)
           }
-          className="mt-1 bg-gray-800 border border-gray-600 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="mt-1 min-h-11 rounded border border-gray-600 bg-gray-800 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </label>
 
@@ -154,7 +154,7 @@ export const ComponentInputs: React.FC<ComponentInputsProps> = ({ comp, onUpdate
           placeholder="0"
           value={laborHours === 0 ? '' : laborHours}
           onChange={e => onUpdate(id, 'laborHours', e.target.value === '' ? 0 : +e.target.value)}
-          className="mt-1 bg-gray-800 border border-gray-600 rounded px-2 py-1 focus:outline-none focus:ring-2 focus:ring-blue-400"
+          className="mt-1 min-h-11 rounded border border-gray-600 bg-gray-800 px-3 py-2 text-base focus:outline-none focus:ring-2 focus:ring-blue-400"
         />
       </label>
     </div>

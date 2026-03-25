@@ -22,9 +22,9 @@ export default function CPQHeader({ onModeChange }: Props) {
 
       {/* Larger Switch */}
       <div className="mt-3 flex justify-center">
-        <div className="flex items-center bg-gray-800 border border-gray-600 rounded-full text-sm overflow-hidden">
+        <div className="flex items-center overflow-hidden rounded-full border border-gray-600 bg-gray-800 text-sm">
           <button
-            className={`px-4 py-1.5 transition-colors duration-200 ${
+            className={`min-h-11 min-w-28 px-4 py-2 transition-colors duration-200 ${
               viewMode === 'customer'
                 ? 'bg-[#05c8fb] text-black'
                 : 'text-gray-400 hover:text-white'
@@ -34,7 +34,7 @@ export default function CPQHeader({ onModeChange }: Props) {
             Customer
           </button>
           <button
-            className={`px-4 py-1.5 transition-colors duration-200 ${
+            className={`min-h-11 min-w-28 px-4 py-2 transition-colors duration-200 ${
               viewMode === 'manager'
                 ? 'bg-[#05c8fb] text-black'
                 : 'text-gray-400 hover:text-white'

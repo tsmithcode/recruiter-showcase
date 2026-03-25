@@ -24,6 +24,7 @@ import {
 import type { PortfolioContextSlug } from '@/lib/portfolioContent';
 import { recordRecruiterEvent } from '@/lib/telemetry';
 import { getSearchDocuments } from '@/lib/searchIndex';
+import ModalShell from '@/components/ui/ModalShell';
 
 import ArtifactBadge from './ArtifactBadge';
 
@@ -287,8 +288,16 @@ export default function SearchUIProvider({ children }: { children: ReactNode }) 
       {children}
 
       {isOpen ? (
-        <div className="fixed inset-0 z-[120] flex items-start justify-center bg-[#020816]/80 px-4 py-8 backdrop-blur-xl">
-          <div className="control-panel max-h-[88vh] w-full max-w-6xl overflow-hidden rounded-[2rem] border border-white/10 bg-[#06101d]/95 shadow-[0_40px_120px_rgba(2,8,22,0.55)]">
+        <ModalShell
+          open={isOpen}
+          onClose={() => {
+            setIsOpen(false);
+            setSelectedId(null);
+          }}
+          className="items-start py-8"
+          panelClassName="control-panel w-full max-w-6xl rounded-[2rem]"
+        >
+          <div className="max-h-[88vh] overflow-hidden">
             <div className="border-b border-white/10 px-5 py-4 sm:px-6">
               <div className="flex flex-wrap items-center justify-between gap-3">
                 <div>
@@ -359,7 +368,7 @@ export default function SearchUIProvider({ children }: { children: ReactNode }) 
             </div>
 
             <div className="grid max-h-[calc(88vh-9rem)] gap-0 xl:grid-cols-[0.92fr_1.08fr]">
-              <div className="overflow-y-auto border-b border-white/10 xl:border-b-0 xl:border-r">
+              <div className="overflow-y-auto overscroll-contain border-b border-white/10 xl:border-b-0 xl:border-r">
                 <ResultGroup
                   title={currentContext ? `Inside ${getContextLabel(currentContext)}` : 'Results'}
                   docs={groupedResults.inContext}
@@ -378,7 +387,7 @@ export default function SearchUIProvider({ children }: { children: ReactNode }) 
                 ) : null}
               </div>
 
-              <div className="overflow-y-auto p-5 sm:p-6">
+              <div className="overflow-y-auto overscroll-contain p-5 sm:p-6">
                 {selected ? (
                   <div className="space-y-5">
                     <div className="flex flex-wrap gap-2">
@@ -484,7 +493,7 @@ export default function SearchUIProvider({ children }: { children: ReactNode }) 
               </div>
             </div>
           </div>
-        </div>
+        </ModalShell>
       ) : null}
     </SearchUIContext.Provider>
   );

@@ -3,6 +3,7 @@
 import { useEffect, useState } from 'react';
 import Image from 'next/image';
 import { ArrowsPointingOutIcon, XMarkIcon } from '@heroicons/react/24/outline';
+import ModalShell from '@/components/ui/ModalShell';
 
 type ZoomableImageProps = {
   src: string;
@@ -32,18 +33,15 @@ export default function ZoomableImage({
       return;
     }
 
-    const previousOverflow = document.body.style.overflow;
     const onKeyDown = (event: KeyboardEvent) => {
       if (event.key === 'Escape') {
         setIsOpen(false);
       }
     };
 
-    document.body.style.overflow = 'hidden';
     window.addEventListener('keydown', onKeyDown);
 
     return () => {
-      document.body.style.overflow = previousOverflow;
       window.removeEventListener('keydown', onKeyDown);
     };
   }, [isOpen]);
@@ -66,13 +64,7 @@ export default function ZoomableImage({
       </button>
 
       {isOpen ? (
-        <div className="fixed inset-0 z-[150] flex items-center justify-center bg-[#020816]/92 p-4 backdrop-blur-xl sm:p-6">
-          <button
-            type="button"
-            onClick={() => setIsOpen(false)}
-            className="absolute inset-0 cursor-zoom-out"
-            aria-label="Close image viewer"
-          />
+        <ModalShell open={isOpen} onClose={() => setIsOpen(false)} panelClassName="w-full max-w-7xl rounded-[1.8rem]">
           <div className="relative z-10 flex max-h-[92vh] w-full max-w-7xl flex-col overflow-hidden rounded-[1.8rem] border border-white/10 bg-[#06101d]/96 shadow-[0_40px_140px_rgba(2,8,22,0.65)]">
             <div className="flex items-center justify-between gap-4 border-b border-white/10 px-4 py-3 sm:px-5">
               <div className="min-w-0">
@@ -99,7 +91,7 @@ export default function ZoomableImage({
               />
             </div>
           </div>
-        </div>
+        </ModalShell>
       ) : null}
     </>
   );

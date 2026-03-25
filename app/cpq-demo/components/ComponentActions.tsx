@@ -25,7 +25,7 @@ export const ComponentActions: React.FC<ComponentActionsProps> = ({
   const { id, name } = comp;
 
   return (
-    <div className="mt-6 flex flex-col sm:flex-row justify-between sm:items-center gap-4">
+    <div className="mt-6 flex flex-col gap-4 sm:flex-row sm:items-center sm:justify-between">
       <div className="flex flex-wrap gap-4">
         {/* Clear Data */}
         <button
@@ -41,7 +41,7 @@ export const ComponentActions: React.FC<ComponentActionsProps> = ({
               alert('An error occurred while clearing data.');
             }
           }}
-          className="px-4 py-2 bg-gray-700 rounded hover:bg-gray-600 hover:text-yellow-300 text-xs"
+          className="min-h-11 rounded bg-gray-700 px-4 py-2 text-sm hover:bg-gray-600 hover:text-yellow-300"
         >
           Clear Data
         </button>
@@ -64,7 +64,7 @@ export const ComponentActions: React.FC<ComponentActionsProps> = ({
               alert('An error occurred while loading seed data.');
             }
           }}
-          className="px-4 py-2 bg-gray-700 rounded hover:bg-gray-600 text-xs"
+          className="min-h-11 rounded bg-gray-700 px-4 py-2 text-sm hover:bg-gray-600"
         >
           Load Seed Data
         </button>
@@ -81,7 +81,7 @@ export const ComponentActions: React.FC<ComponentActionsProps> = ({
               alert('An error occurred while deleting this component.');
             }
           }}
-          className="px-4 py-2 bg-gray-700 rounded hover:bg-gray-600 text-xs text-red-300"
+          className="min-h-11 rounded bg-gray-700 px-4 py-2 text-sm text-red-300 hover:bg-gray-600"
         >
           Delete
         </button>
@@ -90,7 +90,7 @@ export const ComponentActions: React.FC<ComponentActionsProps> = ({
       <div className="flex-shrink-0">
         <button
           onClick={onClose}
-          className="px-4 py-2 bg-gray-700 rounded hover:bg-gray-600 text-xs"
+          className="min-h-11 rounded bg-gray-700 px-4 py-2 text-sm hover:bg-gray-600"
         >
           Close
         </button>

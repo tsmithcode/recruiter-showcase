@@ -32,7 +32,7 @@ export const PricingSummary: React.FC<PricingSummaryProps> = ({
     <>
       <h3 className="mb-2 text-lg text-[#05c8fb] mt-6">Pricing Summary</h3>
       <motion.div
-        className="mt-2 grid grid-cols-2 sm:grid-cols-3 gap-4 text-xs"
+        className="mt-2 grid grid-cols-1 gap-4 text-sm sm:grid-cols-2 lg:grid-cols-3"
         initial={{ opacity: 0 }}
         animate={{ opacity: 1 }}
       >
