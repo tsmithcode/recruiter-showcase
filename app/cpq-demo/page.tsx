@@ -28,7 +28,7 @@ import {
   musicAlbumComponents,
   realEstateComponents,
   softwareSalesComponents,
-  CPQComponent
+  CPQComponent,
 } from '../cpq-demo/models'; // adjust to your actual path
 
 const datasetsMap: Record<CpqScenarioId, CPQComponent[]> = {
@@ -70,8 +70,8 @@ export default function CPQAdvanced() {
             CPQ decision workbench
           </h1>
           <p className="max-w-2xl text-lg leading-8 text-slate-300">
-            This is not presented as a fake enterprise app. It is a transparent systems artifact:
-            a visible pricing engine, role-aware interface, dataset-driven scenarios, and a small
+            This is not presented as a fake enterprise app. It is a transparent systems artifact: a
+            visible pricing engine, role-aware interface, dataset-driven scenarios, and a small
             proof surface for how commercial logic becomes operator software.
           </p>
           <div className="flex flex-wrap gap-4">
@@ -90,7 +90,7 @@ export default function CPQAdvanced() {
           </div>
         </div>
 
-        <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8">
+        <div className="showcase-panel-strong">
           <p className="showcase-eyebrow">What this demo proves</p>
           <ul className="mt-5 space-y-4 text-sm leading-7 text-slate-300">
             <li className="flex gap-3">
@@ -99,7 +99,9 @@ export default function CPQAdvanced() {
             </li>
             <li className="flex gap-3">
               <span className="mt-2 h-1.5 w-1.5 rounded-full bg-cyan-300" />
-              <span>Scenario data is portable across industries without changing the core engine.</span>
+              <span>
+                Scenario data is portable across industries without changing the core engine.
+              </span>
             </li>
             <li className="flex gap-3">
               <span className="mt-2 h-1.5 w-1.5 rounded-full bg-cyan-300" />
@@ -107,14 +109,16 @@ export default function CPQAdvanced() {
             </li>
             <li className="flex gap-3">
               <span className="mt-2 h-1.5 w-1.5 rounded-full bg-cyan-300" />
-              <span>Production evolution is visible: approvals, persistence, and downstream sync.</span>
+              <span>
+                Production evolution is visible: approvals, persistence, and downstream sync.
+              </span>
             </li>
           </ul>
         </div>
       </section>
 
       <section className="grid gap-6 lg:grid-cols-[1.05fr_0.95fr]">
-        <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-8">
+        <div className="showcase-panel">
           <p className="showcase-eyebrow">Scenario brief</p>
           <h2 className="mt-4 text-2xl font-semibold text-white">{scenario.headline}</h2>
           <p className="mt-3 text-sm leading-7 text-slate-300">{scenario.summary}</p>
@@ -130,14 +134,14 @@ export default function CPQAdvanced() {
             </div>
           </div>
 
-          <div className="mt-6 rounded-[1.5rem] border border-white/10 bg-[#091120] p-5">
+          <div className="mt-6 rounded-[1.5rem] border border-white/10 bg-[#091120]/90 p-5">
             <p className="text-xs uppercase tracking-[0.28em] text-slate-500">Pricing logic</p>
             <p className="mt-3 text-sm leading-7 text-slate-300">{scenario.pricingLogic}</p>
           </div>
         </div>
 
         <div className="grid gap-4">
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6">
+          <div className="showcase-panel">
             <p className="showcase-eyebrow">Workflow states</p>
             <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
               {scenario.workflowStates.map((state) => (
@@ -149,7 +153,7 @@ export default function CPQAdvanced() {
             </ul>
           </div>
 
-          <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-6">
+          <div className="showcase-panel">
             <p className="showcase-eyebrow">Production extension points</p>
             <ul className="mt-4 space-y-3 text-sm leading-7 text-slate-300">
               {scenario.extensionPoints.map((item) => (
@@ -163,7 +167,7 @@ export default function CPQAdvanced() {
         </div>
       </section>
 
-      <div className="rounded-[2rem] border border-white/10 bg-white/[0.04] p-4 sm:p-6">
+      <div className="showcase-panel space-y-5 p-4 sm:p-6">
         <CPQUserGuideDialog />
 
         <CPQHeader onModeChange={setMode} />
@@ -180,9 +184,7 @@ export default function CPQAdvanced() {
           <div>
             <p className="text-xs uppercase tracking-[0.28em] text-slate-500">Current scenario</p>
             <p className="mt-2 text-lg font-semibold text-white">{scenario.name}</p>
-            <p className="mt-2 text-sm leading-7 text-slate-300">
-              {scenario.summary}
-            </p>
+            <p className="mt-2 text-sm leading-7 text-slate-300">{scenario.summary}</p>
           </div>
           <div>
             <p className="text-xs uppercase tracking-[0.28em] text-slate-500">Production notes</p>

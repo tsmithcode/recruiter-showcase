@@ -1,7 +1,4 @@
-import {
-  portfolioContexts,
-  getFeaturedAutodeskVideos,
-} from '@/lib/portfolioContent';
+import { portfolioContexts, getFeaturedAutodeskVideos } from '@/lib/portfolioContent';
 import { cadGuardianBranch } from '@/lib/controlCenter';
 import {
   caseStudies,
@@ -26,12 +23,13 @@ export default function HomePage() {
   return (
     <main className="pb-20">
       <section className="showcase-hero">
-        <div className="showcase-shell relative z-10 grid gap-10 py-14 lg:grid-cols-[1.08fr_0.92fr] lg:items-end lg:py-20">
-          <div className="space-y-8">
+        <div className="showcase-shell relative z-10 grid gap-10 py-14 lg:grid-cols-[1.12fr_0.88fr] lg:items-end lg:py-24">
+          <div className="space-y-9">
             <p className="showcase-eyebrow">Multi-context recruiter showcase</p>
-            <div className="space-y-5">
-              <h1 className="max-w-5xl text-5xl font-semibold tracking-[-0.06em] text-white sm:text-7xl">
-                Principal software and Autodesk systems proof, routed by context instead of buried in one story.
+            <div className="space-y-6">
+              <h1 className="max-w-5xl text-5xl font-semibold tracking-[-0.065em] text-white sm:text-7xl">
+                Principal software and Autodesk systems proof, routed by context instead of buried
+                in one story.
               </h1>
               <p className="max-w-2xl text-lg leading-8 text-slate-300">
                 Thomas Smith builds workflow systems, operator tooling, Autodesk-centered
@@ -57,33 +55,53 @@ export default function HomePage() {
               >
                 Review the OpenAI path
               </RecruiterLink>
-              <SearchTriggerButton className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:border-cyan-300 hover:text-cyan-100" label="Search the portfolio" />
+              <SearchTriggerButton
+                className="inline-flex items-center gap-2 rounded-full border border-white/15 px-6 py-3 text-sm font-semibold text-white transition hover:border-cyan-300 hover:text-cyan-100"
+                label="Search the portfolio"
+              />
+            </div>
+
+            <div className="grid gap-4 border-t border-white/10 pt-6 sm:grid-cols-3">
+              {principalMetrics.slice(0, 3).map((metric) => (
+                <div key={metric.label}>
+                  <p className="text-3xl font-semibold tracking-[-0.05em] text-white">
+                    {metric.value}
+                  </p>
+                  <p className="mt-2 text-sm font-medium leading-6 text-slate-100">
+                    {metric.label}
+                  </p>
+                </div>
+              ))}
             </div>
           </div>
 
           <div className="showcase-panel-strong backdrop-blur">
             <p className="showcase-eyebrow">Start here</p>
-            <div className="mt-5 space-y-3">
-              <div className="showcase-panel-subtle">
-                <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Who I am</p>
-                <p className="mt-2 text-base text-slate-200">
-                  A systems builder with depth in Autodesk/CAD environments, operator software,
-                  workflow tooling, and integration-heavy business applications.
+            <h2 className="mt-4 max-w-xl text-3xl font-semibold tracking-[-0.05em] text-white">
+              One narrative system, intentionally routed for different enterprise reads.
+            </h2>
+            <div className="mt-6 showcase-rail-list">
+              <div className="showcase-rail-item">
+                <p className="text-xs uppercase tracking-[0.24em] text-slate-500">
+                  Who this is for
+                </p>
+                <p className="text-base leading-7 text-slate-200">
+                  Recruiters, hiring managers, and technical leaders who need proof fast without
+                  losing architectural depth.
                 </p>
               </div>
-              <div className="showcase-panel-subtle">
-                <p className="text-xs uppercase tracking-[0.24em] text-slate-500">What to open first</p>
-                <p className="mt-2 text-base text-slate-200">
-                  QTS if you care about ACC, governance, lifecycle, and enterprise integration.
-                  OpenAI if you care about B2B workflow systems and internal tools. Autodesk if you
-                  want the full CAD archive.
+              <div className="showcase-rail-item">
+                <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Best route</p>
+                <p className="text-base leading-7 text-slate-200">
+                  QTS for governed construction systems. OpenAI for B2B workflow products. Autodesk
+                  for the full CAD and automation archive.
                 </p>
               </div>
-              <div className="showcase-panel-subtle">
-                <p className="text-xs uppercase tracking-[0.24em] text-slate-500">How the site works</p>
-                <p className="mt-2 text-base text-slate-200">
-                  Onboarding first, focused context second, full proof library third. The depth is
-                  preserved; the routing is cleaner.
+              <div className="showcase-rail-item">
+                <p className="text-xs uppercase tracking-[0.24em] text-slate-500">Reading order</p>
+                <p className="text-base leading-7 text-slate-200">
+                  Orientation first, flagship proof second, supporting library third. The depth is
+                  still there; the entry point is disciplined.
                 </p>
               </div>
             </div>
@@ -91,7 +109,7 @@ export default function HomePage() {
         </div>
       </section>
 
-      <section className="showcase-shell showcase-section grid gap-5 sm:grid-cols-2 xl:grid-cols-4">
+      <section className="showcase-shell showcase-section grid gap-5 border-t border-white/8 sm:grid-cols-2 xl:grid-cols-4">
         {principalMetrics.map((metric) => (
           <div key={metric.label} className="border-t border-white/10 py-5">
             <p className="text-4xl font-semibold tracking-[-0.05em] text-white">{metric.value}</p>
@@ -107,7 +125,7 @@ export default function HomePage() {
           title="Guided entry points for different interview and recruiter reads"
           description="Each context routes to a focused narrative. The content underneath is shared and preserved, but the ordering changes so the right proof appears first."
         />
-        <div className="grid gap-5 xl:grid-cols-3">
+        <div className="grid gap-5 xl:grid-cols-2">
           {featuredContexts.map((context) => (
             <ContextCard key={context.slug} context={context} />
           ))}
@@ -125,7 +143,10 @@ export default function HomePage() {
             <p className="showcase-eyebrow">Where the work lands</p>
             <div className="mt-6 space-y-6">
               {domainSignals.map((signal) => (
-                <div key={signal.title} className="border-t border-white/10 pt-4 first:border-t-0 first:pt-0">
+                <div
+                  key={signal.title}
+                  className="border-t border-white/10 pt-4 first:border-t-0 first:pt-0"
+                >
                   <h3 className="text-xl font-semibold text-white">{signal.title}</h3>
                   <p className="mt-2 text-sm leading-7 text-slate-300">{signal.description}</p>
                 </div>
@@ -142,11 +163,15 @@ export default function HomePage() {
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-cyan-300" />
-                <span>The Autodesk video archive is still accessible, now through a focused page.</span>
+                <span>
+                  The Autodesk video archive is still accessible, now through a focused page.
+                </span>
               </li>
               <li className="flex gap-3">
                 <span className="mt-2 h-1.5 w-1.5 rounded-full bg-cyan-300" />
-                <span>The older long-form material and skills depth remain in the full proof library.</span>
+                <span>
+                  The older long-form material and skills depth remain in the full proof library.
+                </span>
               </li>
             </ul>
           </div>
@@ -174,10 +199,7 @@ export default function HomePage() {
         />
         <div className="grid gap-4 lg:grid-cols-3">
           {featuredVideos.map((video) => (
-            <article
-              key={video.id}
-              className="showcase-panel-subtle"
-            >
+            <article key={video.id} className="showcase-panel-subtle">
               <div className="flex flex-wrap gap-2">
                 {video.stackTags.slice(0, 3).map((tag) => (
                   <span key={tag} className="showcase-chip">
