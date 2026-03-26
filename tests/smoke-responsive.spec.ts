@@ -1,13 +1,19 @@
-import { expect, test, type Locator, type Page } from '@playwright/test';
+import { expect, test, type Locator, type Page } from "@playwright/test";
 
 const viewports = [
-  { name: 'small-phone', width: 375, height: 667 },
-  { name: 'phone', width: 390, height: 844 },
-  { name: 'tablet', width: 768, height: 1024 },
-  { name: 'desktop', width: 1280, height: 800 },
+  { name: "small-phone", width: 375, height: 667 },
+  { name: "phone", width: 390, height: 844 },
+  { name: "tablet", width: 768, height: 1024 },
+  { name: "desktop", width: 1280, height: 800 },
 ];
 
-const stableRoutes = ['/', '/contexts/qts-suwanee', '/contexts/autodesk-cad', '/contexts/openai', '/cpq-demo'];
+const stableRoutes = [
+  "/",
+  "/contexts/qts-suwanee",
+  "/contexts/autodesk-cad",
+  "/contexts/openai",
+  "/cpq-demo",
+];
 
 async function expectNoHorizontalOverflow(page: Page) {
   const overflow = await page.evaluate(() => {
@@ -31,61 +37,128 @@ async function expectChildrenWithinParent(parent: Locator, children: Locator) {
     }
 
     expect(childBox.x).toBeGreaterThanOrEqual(parentBox.x - 1);
-    expect(childBox.x + childBox.width).toBeLessThanOrEqual(parentBox.x + parentBox.width + 1);
+    expect(childBox.x + childBox.width).toBeLessThanOrEqual(
+      parentBox.x + parentBox.width + 1,
+    );
   }
 }
 
 for (const viewport of viewports) {
   for (const route of stableRoutes) {
-    test(`critical route ${route} is stable on ${viewport.name}`, async ({ page }) => {
-      await page.setViewportSize({ width: viewport.width, height: viewport.height });
+    test(`critical route ${route} is stable on ${viewport.name}`, async ({
+      page,
+    }) => {
+      await page.setViewportSize({
+        width: viewport.width,
+        height: viewport.height,
+      });
       await page.goto(route);
-      await expect(page.getByRole('navigation')).toBeVisible();
+      await expect(page.getByRole("navigation")).toBeVisible();
       await expectNoHorizontalOverflow(page);
     });
   }
 }
 
-test('search overlay locks body scroll and stays within viewport on mobile', async ({ page }) => {
+test("homepage guided wizard presents high-trust story flow on mobile", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/');
+  await page.goto("/");
 
-  await page.getByRole('button', { name: /^search$/i }).click();
-  await expect(page.getByRole('textbox')).toBeVisible();
-
-  const bodyOverflow = await page.evaluate(() => getComputedStyle(document.body).overflow);
-  expect(bodyOverflow).toBe('hidden');
-
-  await expectNoHorizontalOverflow(page);
-
-  await page.getByRole('button', { name: /close search/i }).click();
-
-  const restoredOverflow = await page.evaluate(() => getComputedStyle(document.body).overflow);
-  expect(restoredOverflow).not.toBe('hidden');
-});
-
-test('cpq mobile manager flow keeps controls visible', async ({ page }) => {
-  await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/cpq-demo');
-
-  await page.getByRole('button', { name: /manager/i }).click();
-  await expect(page.getByRole('button', { name: /add component/i })).toBeVisible();
-  await expect(page.getByRole('button', { name: /edit /i }).first()).toBeVisible();
-
-  await page.getByRole('button', { name: /edit /i }).first().click();
-  await expect(page.getByText('Edit Component')).toBeVisible();
-  await expect(page.getByRole('button', { name: /close edit component dialog/i })).toBeVisible();
-  await expect(page.getByLabel('Name')).toBeVisible();
+  await expect(
+    page.getByRole("heading", {
+      name: /a story framework wizard for zero-knowledge reviewers/i,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("heading", {
+      name: /review this like a high-trust civic workflow/i,
+    }),
+  ).toBeVisible();
+  await expect(page.getByTestId("wizard-audience-panel")).toBeVisible();
+  await expect(page.getByTestId("wizard-selected-question")).toContainText(
+    /can this person lead governed rollout/i,
+  );
+  await page.getByRole("button", { name: /autodesk \/ cad systems/i }).click();
+  await expect(page.getByTestId("wizard-selected-question")).toContainText(
+    /modernize legacy engineering operations/i,
+  );
+  await expect(
+    page.getByRole("link", { name: /open autodesk proof/i }).first(),
+  ).toBeVisible();
+  await expect(page.getByRole("table")).toBeVisible();
 
   await expectNoHorizontalOverflow(page);
 });
 
-test('context control header keeps phase cards inside the parent panel on mobile', async ({ page }) => {
+test("search overlay locks body scroll and stays within viewport on mobile", async ({
+  page,
+}) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto('/contexts/qts-suwanee');
+  await page.goto("/");
 
-  const controlPanel = page.getByTestId('context-control-panel');
-  const phaseCards = page.getByTestId('phase-rail-card');
+  await page.getByRole("button", { name: /^search$/i }).click();
+  await expect(page.getByRole("textbox")).toBeVisible();
+
+  const bodyOverflow = await page.evaluate(
+    () => getComputedStyle(document.body).overflow,
+  );
+  expect(bodyOverflow).toBe("hidden");
+
+  await expectNoHorizontalOverflow(page);
+
+  await page.getByRole("button", { name: /close search/i }).click();
+
+  const restoredOverflow = await page.evaluate(
+    () => getComputedStyle(document.body).overflow,
+  );
+  expect(restoredOverflow).not.toBe("hidden");
+});
+
+test("cpq mobile manager flow keeps controls visible", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/cpq-demo");
+
+  await page.getByRole("button", { name: /manager/i }).click();
+  await expect(
+    page.getByRole("button", { name: /add component/i }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: /edit /i }).first(),
+  ).toBeVisible();
+
+  await page.getByRole("button", { name: /edit /i }).first().click();
+  await expect(page.getByText("Edit Component")).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: /close edit component dialog/i }),
+  ).toBeVisible();
+  await expect(page.getByLabel("Name")).toBeVisible();
+
+  await expectNoHorizontalOverflow(page);
+});
+
+test("skip link becomes visible and targets the main content landmark", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 1280, height: 800 });
+  await page.goto("/");
+
+  await page.keyboard.press("Tab");
+  const skipLink = page.getByRole("link", { name: /skip to main content/i });
+  await expect(skipLink).toBeVisible();
+
+  await skipLink.click();
+  await expect(page.locator("#main-content")).toBeInViewport();
+});
+
+test("context control header keeps phase cards inside the parent panel on mobile", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/contexts/qts-suwanee");
+
+  const controlPanel = page.getByTestId("context-control-panel");
+  const phaseCards = page.getByTestId("phase-rail-card");
 
   await expect(controlPanel).toBeVisible();
   await expect(phaseCards.first()).toBeVisible();

@@ -38,7 +38,7 @@ export default function Navbar() {
               Thomas Smith
             </span>
             <span className="block truncate text-sm text-slate-400">
-              Principal B2B Engineering Showcase
+              Guided Enterprise Story Framework
             </span>
           </div>
         </Link>

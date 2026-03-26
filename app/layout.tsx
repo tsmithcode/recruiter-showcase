@@ -94,15 +94,16 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
 
   return (
     <html lang="en">
-      <body
-        className={`${spaceGrotesk.variable} ${plexMono.variable} antialiased`}
-      >
+      <body className={`${spaceGrotesk.variable} ${plexMono.variable} antialiased`}>
         <Script id="person-ld-json" type="application/ld+json">
           {JSON.stringify(personSchema)}
         </Script>
         <Analytics />
         <SpeedInsights />
         <SearchUIProvider>
+          <a href="#main-content" className="app-skip-link">
+            Skip to main content
+          </a>
           <ParticlesBackground />
           <Navbar />
           {children}
