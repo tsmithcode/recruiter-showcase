@@ -5,8 +5,6 @@ import './globals.css';
 import Navbar from '@/components/Navbar';
 import { Analytics } from '@vercel/analytics/next';
 import { SpeedInsights } from '@vercel/speed-insights/next';
-
-import ParticlesBackground from '@/components/ParticlesBackground';
 import SearchUIProvider from '@/components/showcase/SearchUIProvider';
 
 const spaceGrotesk = Space_Grotesk({
@@ -104,7 +102,13 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
           <a href="#main-content" className="app-skip-link">
             Skip to main content
           </a>
-          <ParticlesBackground />
+          <div className="app-maintenance-banner" role="status" aria-live="polite">
+            <p className="app-maintenance-banner__eyebrow">Maintenance notice</p>
+            <p className="app-maintenance-banner__body">
+              This site is currently in maintenance. Some features may feel slower, change
+              unexpectedly, or be temporarily unavailable.
+            </p>
+          </div>
           <Navbar />
           {children}
         </SearchUIProvider>

@@ -3,6 +3,7 @@
 import Link from 'next/link';
 import Image from 'next/image';
 import { useState } from 'react';
+import { usePathname } from 'next/navigation';
 import { Bars3Icon, XMarkIcon } from '@heroicons/react/24/outline';
 
 import RecruiterLink from '@/components/showcase/RecruiterLink';
@@ -10,6 +11,7 @@ import SearchTriggerButton from '@/components/showcase/SearchTriggerButton';
 
 export default function Navbar() {
   const [mobileMenuOpen, setMobileMenuOpen] = useState(false);
+  const pathname = usePathname();
   const navLinks = [
     { href: '/contexts/qts-suwanee', label: 'QTS' },
     { href: '/contexts/autodesk-cad', label: 'Autodesk' },
@@ -17,6 +19,29 @@ export default function Navbar() {
     { href: '/cpq-demo', label: 'CPQ Proof' },
     { href: '/contexts/full-proof-library', label: 'Library' },
   ];
+
+  if (pathname === '/') {
+    return (
+      <nav className="border-b border-slate-300 bg-white/96">
+        <div className="mx-auto flex w-full max-w-[860px] items-center justify-between gap-4 px-4 py-4 sm:px-6">
+          <div>
+            <span className="block text-xs font-semibold uppercase tracking-[0.24em] text-slate-500">
+              Guided proof review
+            </span>
+            <span className="block text-lg font-semibold tracking-[-0.03em] text-slate-950">
+              Thomas Smith
+            </span>
+          </div>
+          <Link
+            href="/contexts/full-proof-library"
+            className="inline-flex min-h-12 items-center rounded-full border border-slate-300 bg-white px-4 py-2 text-sm font-semibold text-slate-950 transition hover:border-slate-500"
+          >
+            Open archive
+          </Link>
+        </div>
+      </nav>
+    );
+  }
 
   return (
     <nav className="sticky top-0 z-40 border-b border-white/10 bg-[#06101d]/78 backdrop-blur-2xl">

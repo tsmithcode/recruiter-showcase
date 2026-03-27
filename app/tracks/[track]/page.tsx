@@ -1,13 +1,12 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import TrackPageTemplate from '@/components/showcase/TrackPageTemplate';
+import SimpleTrackStoryPage from '@/components/SimpleTrackStoryPage';
 import {
   audienceTracks,
   getCaseStudiesForTrack,
   getProofForTrack,
   isAudienceTrack,
-  systemMap,
 } from '@/lib/showcaseContent';
 
 type TrackPageProps = {
@@ -51,12 +50,10 @@ export default async function TrackPage({ params }: TrackPageProps) {
   }
 
   return (
-    <TrackPageTemplate
-      track={track}
+    <SimpleTrackStoryPage
       content={audienceTracks[track]}
       caseStudies={getCaseStudiesForTrack(track)}
       proofArtifacts={getProofForTrack(track)}
-      systemsMap={systemMap}
     />
   );
 }

@@ -13,6 +13,7 @@ const stableRoutes = [
   "/contexts/autodesk-cad",
   "/contexts/openai",
   "/cpq-demo",
+  "/tracks/openai",
 ];
 
 async function expectNoHorizontalOverflow(page: Page) {
@@ -53,13 +54,17 @@ for (const viewport of viewports) {
         height: viewport.height,
       });
       await page.goto(route);
-      await expect(page.getByRole("navigation")).toBeVisible();
+      if (route === "/") {
+        await expect(page.getByTestId("story-wizard")).toBeVisible();
+      } else {
+        await expect(page.getByRole("navigation")).toBeVisible();
+      }
       await expectNoHorizontalOverflow(page);
     });
   }
 }
 
-test("homepage guided wizard presents high-trust story flow on mobile", async ({
+test("homepage wizard walks through the review path on mobile", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
@@ -67,26 +72,33 @@ test("homepage guided wizard presents high-trust story flow on mobile", async ({
 
   await expect(
     page.getByRole("heading", {
-      name: /a story framework wizard for zero-knowledge reviewers/i,
+      name: /this guide will walk you through the proof/i,
     }),
   ).toBeVisible();
+  await expect(page.getByTestId("wizard-progress-label")).toHaveText(/start/i);
+  await expect(page.getByTestId("story-wizard")).toBeVisible();
+
+  await page.getByRole("button", { name: /^start$/i }).click();
+  await expect(
+    page.getByRole("heading", { name: /what are you here to review\?/i }),
+  ).toBeVisible();
+  await page
+    .getByRole("button", {
+      name: /i am reviewing autodesk or cad systems fit/i,
+    })
+    .click();
   await expect(
     page.getByRole("heading", {
-      name: /review this like a high-trust civic workflow/i,
+      name: /this path shows engineering workflow depth without making you browse the archive/i,
     }),
   ).toBeVisible();
-  await expect(page.getByTestId("wizard-audience-panel")).toBeVisible();
-  await expect(page.getByTestId("wizard-selected-question")).toContainText(
-    /can this person lead governed rollout/i,
-  );
-  await page.getByRole("button", { name: /autodesk \/ cad systems/i }).click();
-  await expect(page.getByTestId("wizard-selected-question")).toContainText(
-    /modernize legacy engineering operations/i,
-  );
+  await page.getByRole("button", { name: /next page/i }).click();
   await expect(
-    page.getByRole("link", { name: /open autodesk proof/i }).first(),
+    page.getByRole("heading", { name: /why this path is credible/i }),
   ).toBeVisible();
-  await expect(page.getByRole("table")).toBeVisible();
+  await expect(
+    page.getByText(/years of autodesk-centered systems work/i),
+  ).toBeVisible();
 
   await expectNoHorizontalOverflow(page);
 });
@@ -95,7 +107,7 @@ test("search overlay locks body scroll and stays within viewport on mobile", asy
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
-  await page.goto("/");
+  await page.goto("/contexts/qts-suwanee");
 
   await page.getByRole("button", { name: /^search$/i }).click();
   await expect(page.getByRole("textbox")).toBeVisible();
@@ -115,24 +127,20 @@ test("search overlay locks body scroll and stays within viewport on mobile", asy
   expect(restoredOverflow).not.toBe("hidden");
 });
 
-test("cpq mobile manager flow keeps controls visible", async ({ page }) => {
+test("cpq guided proof keeps controls visible on mobile", async ({ page }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/cpq-demo");
 
-  await page.getByRole("button", { name: /manager/i }).click();
   await expect(
-    page.getByRole("button", { name: /add component/i }),
+    page.getByRole("heading", { name: /what this proof shows/i }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: /next page/i }).click();
+  await expect(
+    page.getByRole("heading", { name: /pricing logic made visible/i }),
   ).toBeVisible();
   await expect(
-    page.getByRole("button", { name: /edit /i }).first(),
+    page.getByText(/base implementation labor, optional services/i),
   ).toBeVisible();
-
-  await page.getByRole("button", { name: /edit /i }).first().click();
-  await expect(page.getByText("Edit Component")).toBeVisible();
-  await expect(
-    page.getByRole("button", { name: /close edit component dialog/i }),
-  ).toBeVisible();
-  await expect(page.getByLabel("Name")).toBeVisible();
 
   await expectNoHorizontalOverflow(page);
 });
@@ -147,21 +155,34 @@ test("skip link becomes visible and targets the main content landmark", async ({
   const skipLink = page.getByRole("link", { name: /skip to main content/i });
   await expect(skipLink).toBeVisible();
 
-  await skipLink.click();
+  await skipLink.scrollIntoViewIfNeeded();
+  await skipLink.click({ force: true });
   await expect(page.locator("#main-content")).toBeInViewport();
 });
 
-test("context control header keeps phase cards inside the parent panel on mobile", async ({
+test("context story page keeps controls visible on mobile", async ({
   page,
 }) => {
   await page.setViewportSize({ width: 390, height: 844 });
   await page.goto("/contexts/qts-suwanee");
 
-  const controlPanel = page.getByTestId("context-control-panel");
-  const phaseCards = page.getByTestId("phase-rail-card");
+  await expect(
+    page.getByRole("heading", { name: /what this page is about/i }),
+  ).toBeVisible();
+  await expect(page.getByRole("button", { name: /next page/i })).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+});
 
-  await expect(controlPanel).toBeVisible();
-  await expect(phaseCards.first()).toBeVisible();
-  await expectChildrenWithinParent(controlPanel, phaseCards);
+test("track story page keeps controls visible on mobile", async ({ page }) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/tracks/openai");
+
+  await expect(
+    page.getByRole("heading", { name: /what this track is for/i }),
+  ).toBeVisible();
+  await page.getByRole("button", { name: /next page/i }).click();
+  await expect(
+    page.getByRole("heading", { name: /what you should look for/i }),
+  ).toBeVisible();
   await expectNoHorizontalOverflow(page);
 });

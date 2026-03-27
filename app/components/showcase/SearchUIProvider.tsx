@@ -120,6 +120,10 @@ export default function SearchUIProvider({ children }: { children: ReactNode }) 
   const [selectedId, setSelectedId] = useState<string | null>(null);
 
   useEffect(() => {
+    if (pathname === '/') {
+      return;
+    }
+
     const onKeyDown = (event: KeyboardEvent) => {
       if ((event.metaKey || event.ctrlKey) && event.key.toLowerCase() === 'k') {
         event.preventDefault();
@@ -130,7 +134,7 @@ export default function SearchUIProvider({ children }: { children: ReactNode }) 
 
     window.addEventListener('keydown', onKeyDown);
     return () => window.removeEventListener('keydown', onKeyDown);
-  }, [currentContext]);
+  }, [currentContext, pathname]);
 
   useEffect(() => {
     const shouldOpen = searchParams.get('openSearch') === '1';
@@ -506,12 +510,12 @@ function SearchLocationSync({
   setPathname: (pathname: string) => void;
   setSearchParamsString: (searchParamsString: string) => void;
 }) {
-  const pathname = usePathname();
+  const pathname = usePathname() ?? '/';
   const searchParams = useSearchParams();
 
   useEffect(() => {
     setPathname(pathname);
-    setSearchParamsString(searchParams.toString());
+    setSearchParamsString(searchParams?.toString() ?? '');
   }, [pathname, searchParams, setPathname, setSearchParamsString]);
 
   return null;

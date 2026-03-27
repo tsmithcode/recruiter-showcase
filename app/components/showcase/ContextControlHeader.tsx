@@ -22,19 +22,20 @@ type ContextControlHeaderProps = {
 
 export default function ContextControlHeader({ context }: ContextControlHeaderProps) {
   const searchParams = useSearchParams();
+  const safeSearchParams = searchParams ?? new URLSearchParams();
   const { openSearch } = useSearchUI();
-  const rawLens = searchParams.get('lens');
-  const rawPhase = searchParams.get('phase');
+  const rawLens = safeSearchParams.get('lens');
+  const rawPhase = safeSearchParams.get('phase');
   const lens = isRoleLens(rawLens) ? rawLens : 'business';
   const phase = isPhaseId(rawPhase) ? rawPhase : 'overview';
   const phaseRail = getContextPhaseRail(context.slug);
   const phaseIndex = phaseRail.findIndex((step) => step.id === phase);
   const previousPhase = phaseIndex > 0 ? phaseRail[phaseIndex - 1] : null;
   const nextPhase = phaseIndex < phaseRail.length - 1 ? phaseRail[phaseIndex + 1] : null;
-  const fromContext = searchParams.get('fromContext');
-  const fromQuery = searchParams.get('fromQuery');
-  const rawFromLens = searchParams.get('fromLens');
-  const rawFromPhase = searchParams.get('fromPhase');
+  const fromContext = safeSearchParams.get('fromContext');
+  const fromQuery = safeSearchParams.get('fromQuery');
+  const rawFromLens = safeSearchParams.get('fromLens');
+  const rawFromPhase = safeSearchParams.get('fromPhase');
   const fromLens = isRoleLens(rawFromLens) ? rawFromLens : 'business';
   const fromPhase = isPhaseId(rawFromPhase) ? rawFromPhase : 'overview';
   const returnHref =
@@ -42,7 +43,7 @@ export default function ContextControlHeader({ context }: ContextControlHeaderPr
       ? buildContextHref(fromContext as PortfolioContextSlug, fromLens, fromPhase, {
           openSearch: '1',
           searchQuery: fromQuery,
-          searchScope: searchParams.get('fromScope') ?? 'context',
+          searchScope: safeSearchParams.get('fromScope') ?? 'context',
         })
       : null;
 

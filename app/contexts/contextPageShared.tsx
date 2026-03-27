@@ -1,16 +1,14 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import Footer from '@/components/Footer';
-import PortfolioContextPage, {
-  getContextMetadata,
-} from '@/components/showcase/PortfolioContextPage';
-import {
-  getPortfolioContext,
-  PortfolioContextSlug,
-} from '@/lib/portfolioContent';
+import SimpleContextStoryPage from '@/components/SimpleContextStoryPage';
+import { getContextMetadata } from '@/components/showcase/PortfolioContextPage';
+import { getPortfolioContext, PortfolioContextSlug } from '@/lib/portfolioContent';
 
-type SearchParamsInput = Promise<Record<string, string | string[] | undefined>> | Record<string, string | string[] | undefined> | undefined;
+type SearchParamsInput =
+  | Promise<Record<string, string | string[] | undefined>>
+  | Record<string, string | string[] | undefined>
+  | undefined;
 
 export function buildContextMetadata(slug: PortfolioContextSlug): Metadata {
   const contextMetadata = getContextMetadata(slug);
@@ -50,12 +48,9 @@ export async function renderContextPage(
   }
 
   const resolvedSearchParams =
-    searchParams && 'then' in searchParams ? await searchParams : searchParams ?? {};
+    searchParams && 'then' in searchParams ? await searchParams : (searchParams ?? {});
 
-  return (
-    <>
-      <PortfolioContextPage context={context} searchParams={resolvedSearchParams} />
-      <Footer />
-    </>
-  );
+  void resolvedSearchParams;
+
+  return <SimpleContextStoryPage context={context} />;
 }

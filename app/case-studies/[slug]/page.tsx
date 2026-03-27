@@ -1,7 +1,7 @@
 import type { Metadata } from 'next';
 import { notFound } from 'next/navigation';
 
-import CaseStudyPageTemplate from '@/components/showcase/CaseStudyPageTemplate';
+import SimpleCaseStudyPage from '@/components/SimpleCaseStudyPage';
 import { caseStudies, getCaseStudy } from '@/lib/showcaseContent';
 
 type CaseStudyPageProps = {
@@ -50,5 +50,5 @@ export default async function CaseStudyPage({ params }: CaseStudyPageProps) {
     notFound();
   }
 
-  return <CaseStudyPageTemplate caseStudy={caseStudy} />;
+  return <SimpleCaseStudyPage caseStudy={caseStudy} />;
 }
