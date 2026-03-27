@@ -97,11 +97,29 @@ body {
 }
 
 .app-maintenance-banner__eyebrow {
+  display: flex;
+  align-items: center;
+  gap: 0.5rem;
   color: #fde68a;
   font-size: 0.82rem;
   font-weight: 700;
   letter-spacing: 0.22em;
   text-transform: uppercase;
+}
+
+.app-maintenance-banner__pulse {
+  display: inline-block;
+  width: 0.55rem;
+  height: 0.55rem;
+  border-radius: 9999px;
+  background: #4ade80;
+  flex-shrink: 0;
+  animation: banner-pulse 1.8s ease-in-out infinite;
+}
+
+@keyframes banner-pulse {
+  0%, 100% { opacity: 1; transform: scale(1); }
+  50% { opacity: 0.35; transform: scale(1.5); }
 }
 
 .app-maintenance-banner__body {
@@ -428,6 +446,127 @@ a {
   box-shadow: var(--surface-shadow-strong);
 }
 
+.demo-card {
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  min-height: 100%;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.demo-viewer-shell {
+  display: grid;
+  gap: 1.25rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.demo-viewer-toolbar {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: end;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.demo-viewer-mode {
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  border-radius: 999px;
+  background: rgba(255, 255, 255, 0.04);
+  color: #dbe7f5;
+  font-size: 0.78rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  padding: 0.75rem 1rem;
+  text-transform: uppercase;
+  transition:
+    border-color 180ms ease,
+    color 180ms ease,
+    background 180ms ease;
+}
+
+.demo-viewer-mode:hover {
+  border-color: rgba(94, 234, 212, 0.45);
+  color: white;
+}
+
+.demo-viewer-mode-active {
+  border-color: rgba(94, 234, 212, 0.58);
+  background: rgba(45, 212, 191, 0.14);
+  color: #ecfeff;
+}
+
+.demo-viewer-stage-shell {
+  display: grid;
+  gap: 0.9rem;
+  min-width: 0;
+  max-width: 100%;
+}
+
+.demo-viewer-stage-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.75rem;
+}
+
+.demo-viewer-stage {
+  width: 100%;
+  min-width: 0;
+  max-width: 100%;
+  margin-inline: auto;
+  overflow: hidden;
+  border-radius: 1.6rem;
+  border: 1px solid rgba(255, 255, 255, 0.12);
+  background:
+    radial-gradient(circle at top right, rgba(45, 212, 191, 0.12), transparent 28%),
+    linear-gradient(180deg, rgba(4, 10, 20, 0.92), rgba(8, 18, 35, 0.96));
+  box-shadow: var(--surface-shadow-strong);
+}
+
+.demo-viewer-iframe {
+  display: block;
+  width: 100%;
+  height: 100%;
+  border: 0;
+  background: #091120;
+}
+
+.demo-viewer-fallback {
+  display: grid;
+  gap: 1rem;
+  min-height: 100%;
+  padding: clamp(1rem, 2vw, 1.6rem);
+  min-width: 0;
+  max-width: 100%;
+}
+
+.demo-viewer-fallback-image,
+.demo-poster-stage {
+  position: relative;
+  overflow: hidden;
+  min-width: 0;
+  max-width: 100%;
+  border-radius: 1.4rem;
+  border: 1px solid rgba(255, 255, 255, 0.1);
+  background: #081223;
+}
+
+.demo-viewer-fallback-image {
+  min-height: 13rem;
+}
+
+.demo-poster-stage {
+  aspect-ratio: 16 / 10;
+  min-height: 14rem;
+}
+
+.demo-chip-wide {
+  white-space: normal;
+  overflow-wrap: anywhere;
+  text-align: center;
+}
+
 .showcase-inline-metadata {
   display: grid;
   gap: 1rem;
@@ -654,6 +793,15 @@ a {
     padding: 0.28rem 0.62rem;
     font-size: 0.68rem;
     letter-spacing: 0.14em;
+  }
+
+  .demo-viewer-toolbar {
+    align-items: stretch;
+  }
+
+  .demo-viewer-mode {
+    width: 100%;
+    justify-content: center;
   }
 
   .cad-ambient {

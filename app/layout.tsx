@@ -103,10 +103,12 @@ export default function RootLayout({ children }: { children: React.ReactNode }) 
             Skip to main content
           </a>
           <div className="app-maintenance-banner" role="status" aria-live="polite">
-            <p className="app-maintenance-banner__eyebrow">Maintenance notice</p>
+            <p className="app-maintenance-banner__eyebrow">
+              <span className="app-maintenance-banner__pulse" aria-hidden="true" />
+              Live build — 7-day sprint in progress
+            </p>
             <p className="app-maintenance-banner__body">
-              This site is currently in maintenance. Some features may feel slower, change
-              unexpectedly, or be temporarily unavailable.
+              This site is being built live. Thomas is running a self-imposed 7-day sprint to prove he can onboard, ship, and scale across 6 client workstreams simultaneously — the same pressure a principal engineer faces on day one. Rough edges are intentional evidence, not bugs.
             </p>
           </div>
           <Navbar />

@@ -9,6 +9,9 @@ const viewports = [
 
 const stableRoutes = [
   "/",
+  "/demos",
+  "/demos/ajam",
+  "/demos/monyawn",
   "/contexts/qts-suwanee",
   "/contexts/autodesk-cad",
   "/contexts/openai",
@@ -185,6 +188,58 @@ test("track story page keeps controls visible on mobile", async ({ page }) => {
   await page.getByRole("button", { name: /next page/i }).click();
   await expect(
     page.getByRole("heading", { name: /what you should look for/i }),
+  ).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+});
+
+test("demo index communicates the seven-product thesis on mobile", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/demos");
+
+  await expect(
+    page.getByRole("heading", {
+      name: /six external products, one showcase, all created from scratch and maintained as one principal-run system/i,
+    }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /open demo proof page/i }).first(),
+  ).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+});
+
+test("frameable demo page keeps the inline viewer stable on mobile", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/demos/ajam");
+
+  await expect(
+    page.locator("h1").filter({ hasText: /ajam/i }),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("button", { name: /mobile portrait/i }),
+  ).toBeVisible();
+
+  await page.getByRole("button", { name: /mobile landscape/i }).click();
+  await expect(
+    page.locator('iframe[title="aJam live product"]'),
+  ).toBeVisible();
+  await expectNoHorizontalOverflow(page);
+});
+
+test("protected demo page renders the fallback shell on mobile", async ({
+  page,
+}) => {
+  await page.setViewportSize({ width: 390, height: 844 });
+  await page.goto("/demos/monyawn");
+
+  await expect(
+    page.getByText(/why inline view is unavailable/i),
+  ).toBeVisible();
+  await expect(
+    page.getByRole("link", { name: /open monyawn/i }).first(),
   ).toBeVisible();
   await expectNoHorizontalOverflow(page);
 });
