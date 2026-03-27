@@ -1,0 +1,38 @@
+{
+  "name": "cta_block",
+  "display_name": "CTA Block",
+  "schema": {
+    "label": {
+      "type": "text",
+      "display_name": "Label"
+    },
+    "href": {
+      "type": "text",
+      "display_name": "Href"
+    },
+    "nextStepId": {
+      "type": "option",
+      "display_name": "Next Step Id",
+      "options": [
+        "cover",
+        "role",
+        "system",
+        "proof",
+        "outcomes",
+        "method",
+        "trust",
+        "next"
+      ]
+    },
+    "style": {
+      "type": "option",
+      "display_name": "Style",
+      "options": [
+        "primary",
+        "secondary"
+      ]
+    }
+  },
+  "is_root": false,
+  "is_nestable": true
+}

@@ -8,6 +8,7 @@
     "postbuild": "next-sitemap",
     "start": "next start",
     "lint": "next lint",
+    "storyblok:sync": "node scripts/storyblok_sync.mjs",
     "test:e2e": "start-server-and-test \"npx next dev --turbopack --hostname 127.0.0.1 --port 3100\" http://127.0.0.1:3100 \"playwright test\"",
     "format": "prettier --write \"**/*.{js,ts,tsx,json,css,md}\""
   },

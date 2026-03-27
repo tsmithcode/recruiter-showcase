@@ -72,7 +72,7 @@ test("homepage wizard walks through the review path on mobile", async ({
 
   await expect(
     page.getByRole("heading", {
-      name: /this guide will walk you through the proof/i,
+      name: /complex operational work is only valuable if other people can trust it quickly/i,
     }),
   ).toBeVisible();
   await expect(page.getByTestId("wizard-progress-label")).toHaveText(/start/i);
@@ -80,24 +80,26 @@ test("homepage wizard walks through the review path on mobile", async ({
 
   await page.getByRole("button", { name: /^start$/i }).click();
   await expect(
-    page.getByRole("heading", { name: /what are you here to review\?/i }),
+    page.getByRole("heading", {
+      name: /thomas smith is a principal-level workflow and systems builder, not a loose collection of tools/i,
+    }),
   ).toBeVisible();
   await page
     .getByRole("button", {
-      name: /i am reviewing autodesk or cad systems fit/i,
+      name: /see the system/i,
     })
     .click();
   await expect(
     page.getByRole("heading", {
-      name: /this path shows engineering workflow depth without making you browse the archive/i,
+      name: /the work spans interface, business rules, retrieval, integration, and proof packaging/i,
     }),
   ).toBeVisible();
-  await page.getByRole("button", { name: /next page/i }).click();
+  await page.getByRole("button", { name: /see the proof/i }).click();
   await expect(
-    page.getByRole("heading", { name: /why this path is credible/i }),
+    page.getByTestId("wizard-step-title"),
   ).toBeVisible();
   await expect(
-    page.getByText(/years of autodesk-centered systems work/i),
+    page.getByText(/the work combines systems thinking, product judgment, and operator empathy/i),
   ).toBeVisible();
 
   await expectNoHorizontalOverflow(page);

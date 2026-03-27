@@ -1,0 +1,37 @@
+{
+  "name": "media_asset",
+  "display_name": "Media Asset",
+  "schema": {
+    "assetLabel": {
+      "type": "text",
+      "display_name": "Asset Label"
+    },
+    "assetType": {
+      "type": "option",
+      "display_name": "Asset Type",
+      "options": [
+        "image",
+        "video",
+        "poster-frame"
+      ]
+    },
+    "asset": {
+      "type": "asset",
+      "display_name": "Asset"
+    },
+    "altText": {
+      "type": "textarea",
+      "display_name": "Alt Text"
+    },
+    "emotionalTarget": {
+      "type": "text",
+      "display_name": "Emotional Target"
+    },
+    "posterFrameRef": {
+      "type": "text",
+      "display_name": "Poster Frame Ref"
+    }
+  },
+  "is_root": false,
+  "is_nestable": true
+}

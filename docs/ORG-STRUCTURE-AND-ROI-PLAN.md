@@ -2,26 +2,27 @@
 
 ## Purpose
 
-This document defines the company structure, delivery model, and highest-ROI implementation plan for the product shift from a browse-first portfolio website to a one-screen-at-a-time guided proof wizard.
+This document defines the company structure, delivery model, and highest-ROI implementation plan for shifting the product from a browse-first portfolio into a single-path editorial proof platform.
 
 The target experience is:
 
 - simple enough for a first-time user with low technical confidence
-- calm enough for older adults and cognitively overloaded users
-- accessible enough for users with disabilities and assistive technology needs
+- emotionally strong without becoming noisy
+- accessible enough for disabled users and assistive technology
 - trustworthy enough for enterprise reviewers, recruiters, and decision-makers
-- structured enough to reduce a very large proof archive into one guided story path
+- structured enough to compress a large archive into one guided story
+- editable through a CMS rather than trapped in code-only workflows
 
 This is not a normal website redesign.
-This is a product and operating-model redesign.
+This is a product, publishing, and operating-model redesign.
 
 ## Mission
 
-Build a premium enterprise proof platform that feels as clear, safe, and understandable as a public-service review system.
+Build a premium enterprise proof platform that feels as intentional as a top-tier editorial issue and as trustworthy as a guided review system.
 
 ## Business Goal
 
-Use a guided proof wizard to:
+Use a single-path editorial proof platform to:
 
 - increase reviewer completion rate
 - reduce abandonment caused by overload
@@ -31,7 +32,7 @@ Use a guided proof wizard to:
 
 ## Product Goal
 
-Replace the current homepage and browse-first experience with a guided wizard that:
+Replace the current homepage and browse-first experience with a CMS-backed guided experience that:
 
 - shows one primary task per screen
 - uses plain language
@@ -39,14 +40,18 @@ Replace the current homepage and browse-first experience with a guided wizard th
 - allows back, pause, resume, and recovery
 - routes users to the strongest proof automatically
 - keeps the appendix and archive secondary
+- presents one fixed editorial story path on `/`
+- treats images and video as proof surfaces, not decoration
 
 ## Operating Principles
 
 - One primary task per screen
+- One primary action per screen
 - Plain language over clever language
 - Trust over decoration
+- Proof over brand poetry
 - Accessibility is core product quality
-- Evidence comes before aesthetics
+- Emotional impact is allowed only when it strengthens comprehension
 - Archive depth is secondary, not primary
 - Completion matters more than pageviews
 - Real user validation matters more than internal taste
@@ -90,7 +95,40 @@ Success looks like:
 - product decisions are made quickly
 - teams are not blocked by ambiguous requirements
 
-### Experience Design
+### Editorial And Experience
+
+#### Editorial Director / Narrative Lead
+
+Owns:
+
+- the single-path story arc
+- issue structure
+- spread sequencing
+- emotional pacing
+- the 100% signal standard
+
+Success looks like:
+
+- the homepage reads like one coherent issue
+- every spread has one clear claim
+- emotional tone strengthens understanding instead of competing with it
+
+#### Art Director / Brand Experience Designer
+
+Owns:
+
+- magazine-like composition
+- image selection
+- cover-spread hierarchy
+- type scale
+- caption systems
+- visual restraint
+
+Success looks like:
+
+- the experience feels premium without becoming decorative clutter
+- visuals strengthen proof and stakes quickly
+- the visual system supports trust, clarity, and emotional impact
 
 #### Service Designer
 
@@ -98,13 +136,13 @@ Owns:
 
 - end-to-end wizard journey
 - step logic
-- flow state design
+- flow-state design
 - interruption and recovery paths
 - progression and completion model
 
 Success looks like:
 
-- the product feels like a guided service, not a website
+- the product feels like a guided service, not a loose website
 - every screen has one job
 - users always know where they are and what happens next
 
@@ -113,7 +151,7 @@ Success looks like:
 Owns:
 
 - cognitive accessibility standards
-- keyboard and screen reader behavior
+- keyboard and screen-reader behavior
 - touch-target and contrast rules
 - motion rules
 - error prevention patterns
@@ -133,7 +171,7 @@ Owns:
 - helper text
 - button text
 - system messages
-- error text
+- caption and deck writing
 - content simplification
 
 Success looks like:
@@ -141,6 +179,72 @@ Success looks like:
 - every screen is understandable in seconds
 - language is respectful, simple, and procedural
 - jargon is removed or defined immediately
+
+#### Proof Archivist / Evidence Editor
+
+Owns:
+
+- proof selection
+- source verification
+- metadata quality
+- proof-strength scoring
+- appendix cleanliness
+
+Success looks like:
+
+- each featured artifact is the strongest proof for its claim
+- source quality is consistent and auditable
+- deep archive material stays available without overwhelming the main path
+
+#### Content Operations / CMS Manager
+
+Owns:
+
+- CMS structure
+- publishing workflow
+- placeholder governance
+- asset naming
+- entry hygiene
+- release readiness
+
+Success looks like:
+
+- editors can update story and media without engineering bottlenecks
+- placeholders are structured instead of ad hoc
+- homepage spreads, media, and trust blocks are consistently publishable
+
+#### Video Producer / Motion Editor
+
+Owns:
+
+- hero clips
+- short-loop edits
+- thumbnails
+- poster frames
+- caption files
+- restrained motion direction
+
+Success looks like:
+
+- motion adds energy without distracting from proof
+- each video clearly states what it proves
+- clips and poster frames are reusable across spreads and supporting pages
+
+#### Photography / Image Research Lead
+
+Owns:
+
+- still-image sourcing
+- crop guidance
+- alt-ready descriptions
+- placeholder replacement cadence
+- visual consistency across spreads
+
+Success looks like:
+
+- images feel intentional and evidentiary
+- stills support the story instead of acting like filler
+- placeholder swaps happen in an organized cadence
 
 ### Research And Validation
 
@@ -174,17 +278,17 @@ Owns:
 
 Success looks like:
 
-- the wizard is stable
+- the guided experience is stable
 - accessibility failures are caught before release
-- the guided path remains reliable over time
+- the story path remains reliable over time
 
-### Engineering
+### Engineering And Platform
 
 #### Frontend Lead
 
 Owns:
 
-- wizard architecture
+- homepage wizard architecture
 - interaction model
 - state management
 - performance
@@ -204,6 +308,7 @@ Owns:
 - persistence
 - save/resume storage
 - analytics events
+- CMS integration
 - evidence packaging
 - review summaries
 - backend support services
@@ -211,8 +316,9 @@ Owns:
 Success looks like:
 
 - user progress is safely preserved
-- evidence can be packaged and surfaced cleanly
+- editorial content reaches production reliably
 - analytics support real product decisions
+- evidence can be packaged and surfaced cleanly
 
 #### DevOps / Platform Reliability
 
@@ -246,36 +352,64 @@ Success looks like:
 - the product presents itself as safe and credible
 - enterprise reviewers see security and trust signals where needed
 
+#### SEO / Metadata Strategist
+
+Owns:
+
+- structured metadata
+- social cards
+- page titles and descriptions
+- search-friendly proof packaging
+- discoverability without story dilution
+
+Success looks like:
+
+- key pages share well on social and messaging surfaces
+- search metadata supports recruiter and buyer discovery
+- metadata quality improves trust without turning pages into SEO sludge
+
 ## Recommended Reporting Structure
 
 - Founder / CEO
   - Product Owner / Head of Product
+  - Editorial Director / Narrative Lead
   - Engineering Lead or Frontend Lead
 
+- Editorial Director / Narrative Lead
+  - UX Content Strategist / Plain-Language Writer
+  - Art Director / Brand Experience Designer
+  - Proof Archivist / Evidence Editor
+  - Video Producer / Motion Editor
+  - Photography / Image Research Lead
+  - Content Operations / CMS Manager
+
 - Product Owner / Head of Product
-  - Service Designer
   - Accessibility Lead
-  - UX Content Strategist
   - User Research Lead
+  - SEO / Metadata Strategist
+  - Security / Compliance Lead
 
 - Engineering Lead or Frontend Lead
   - Frontend Lead or Senior Frontend Engineers
   - Full-Stack / Platform Engineer
   - QA And Accessibility Test Engineer
   - DevOps / Platform Reliability
-  - Security / Compliance Lead
 
 ## Required Staffing
 
-The following roles are required to deliver the guided proof system successfully.
+The following roles are required to deliver the editorial proof platform successfully.
 
 ### Required Immediately
 
 - Founder / CEO / Product Vision
 - Product Owner / Head of Product
+- Editorial Director / Narrative Lead
 - Frontend Lead
 - Accessibility Lead
 - UX Content Strategist / Plain-Language Writer
+- Art Director / Brand Experience Designer
+- Content Operations / CMS Manager
+- Proof Archivist / Evidence Editor
 - QA And Accessibility Test Engineer
 
 ### Required During The First Delivery Cycle
@@ -283,6 +417,9 @@ The following roles are required to deliver the guided proof system successfully
 - Service Designer
 - User Research Lead
 - Full-Stack / Platform Engineer
+- Video Producer / Motion Editor
+- Photography / Image Research Lead
+- SEO / Metadata Strategist
 
 ### Required For Stable Enterprise Operation
 
@@ -295,17 +432,20 @@ If the company must start lean, the minimum viable team is:
 
 - Founder / CEO / Product Vision
 - Product Owner / Head of Product
+- Editorial Director / Narrative Lead
 - Frontend Lead
 - Accessibility Lead
 - UX Content Strategist / Plain-Language Writer
+- Content Operations / CMS Manager
 - QA And Accessibility Test Engineer
 
 This is the smallest team that can:
 
-- define the wizard clearly
+- define the editorial issue clearly
 - implement the one-screen-at-a-time experience
 - keep accessibility central
 - simplify the content properly
+- manage homepage content outside code-only workflows
 - validate that the experience is safe to release
 
 ### Recommended Full Staffing Model
@@ -314,12 +454,19 @@ The recommended full staffing model for the overhaul and enterprise-grade operat
 
 - Founder / CEO / Product Vision
 - Product Owner / Head of Product
+- Editorial Director / Narrative Lead
+- Art Director / Brand Experience Designer
 - Service Designer
 - Accessibility Lead
 - UX Content Strategist / Plain-Language Writer
+- Proof Archivist / Evidence Editor
+- Content Operations / CMS Manager
 - User Research Lead
 - Frontend Lead
 - Full-Stack / Platform Engineer
+- Video Producer / Motion Editor
+- Photography / Image Research Lead
+- SEO / Metadata Strategist
 - QA And Accessibility Test Engineer
 - DevOps / Platform Reliability
 - Security / Compliance Lead
@@ -331,23 +478,31 @@ These roles can be fractional early if budget or timing requires it:
 - Accessibility Lead
 - Service Designer
 - User Research Lead
+- Video Producer / Motion Editor
+- Photography / Image Research Lead
+- SEO / Metadata Strategist
 - DevOps / Platform Reliability
 - Security / Compliance Lead
 
 These roles should not be omitted entirely:
 
 - Product Owner / Head of Product
+- Editorial Director / Narrative Lead
 - Frontend Lead
 - UX Content Strategist / Plain-Language Writer
+- Content Operations / CMS Manager
+- Proof Archivist / Evidence Editor
 - QA And Accessibility Test Engineer
 
 ## Core Delivery Pods
 
-### Pod 1: Guided Experience
+### Pod 1: Editorial Experience
 
 Members:
 
 - Product Owner
+- Editorial Director
+- Art Director
 - Service Designer
 - Accessibility Lead
 - UX Content Strategist
@@ -355,20 +510,23 @@ Members:
 
 Mission:
 
-- define and ship the wizard experience
+- define and ship the editorial wizard experience
 
 ### Pod 2: Proof Platform
 
 Members:
 
 - Frontend Lead
-- Platform Engineer
-- Security Lead
-- DevOps Lead
+- Full-Stack / Platform Engineer
+- Content Operations / CMS Manager
+- Proof Archivist / Evidence Editor
+- Video Producer / Motion Editor
+- Security / Compliance Lead
+- DevOps / Platform Reliability
 
 Mission:
 
-- support save/resume, evidence packaging, trust signals, and platform reliability
+- support CMS publishing, save/resume, evidence packaging, trust signals, and platform reliability
 
 ### Pod 3: Validation
 
@@ -377,26 +535,53 @@ Members:
 - User Research Lead
 - QA / Accessibility Test Engineer
 - Product Owner
+- Accessibility Lead
+- Content Operations / CMS Manager
 
 Mission:
 
 - validate comprehension, completion, and accessibility with real users
+
+### Pod 4: Expert Panel
+
+Members:
+
+- Product Owner
+- Editorial Director
+- Art Director
+- UX Content Strategist
+- Accessibility Lead
+- Frontend Lead
+- Proof Archivist / Evidence Editor
+- User Research Lead
+- Content Operations / CMS Manager
+
+Mission:
+
+- review homepage spreads and proof-story changes before publication
 
 ## Role Priority
 
 ### Critical Immediately
 
 - Product Owner
+- Editorial Director
 - Frontend Lead
 - Accessibility Lead
 - UX Content Strategist
+- Art Director
+- Content Operations / CMS Manager
+- Proof Archivist / Evidence Editor
 - QA / Accessibility Test Engineer
 
 ### High Priority Next
 
 - Service Designer
 - User Research Lead
-- Platform Engineer
+- Full-Stack / Platform Engineer
+- Video Producer / Motion Editor
+- Photography / Image Research Lead
+- SEO / Metadata Strategist
 
 ### Important But Can Be Fractional Early
 
@@ -408,8 +593,10 @@ Mission:
 ### Full-Time First
 
 - Product Owner
+- Editorial Director
 - Frontend Lead
 - UX Content Strategist
+- Content Operations / CMS Manager
 - QA / Accessibility Test Engineer
 
 ### Fractional Early
@@ -417,12 +604,45 @@ Mission:
 - Accessibility Lead
 - Service Designer
 - User Research Lead
+- Video Producer / Motion Editor
+- Photography / Image Research Lead
+- SEO / Metadata Strategist
 - Security / Compliance Lead
 - DevOps / Platform Reliability
+
+## CMS Recommendation
+
+Recommended free CMS: **Storyblok Starter** for v1.
+
+Why:
+
+- it provides a free entry path for a personal or testing-stage project
+- it includes a visual editor suited to editorial sequencing and non-technical review
+- it includes asset management suited to image-heavy and video-supported storytelling
+- it is a stronger fit for emotionally tuned editorial pacing than a code-only CMS workflow
+
+Comparison basis:
+
+- Storyblok pricing: https://www.storyblok.com/pricing
+- Storyblok assets docs: https://www.storyblok.com/docs/concepts/assets
+- Sanity pricing: https://www.sanity.io/pricing
+- Sanity media library docs: https://www.sanity.io/docs/media-library
+- Sanity video docs: https://www.sanity.io/docs/media-library/working-with-video
+- Strapi pricing: https://strapi.io/pricing-cloud
+- Strapi media library docs: https://docs.strapi.io/cms/features/media-library
+
+Default recommendation logic:
+
+- choose Storyblok when visual editing, asset workflow, and editorial collaboration matter most
+- use Strapi as the fallback if self-hosting and deeper platform control become more important than editor experience
+- do not use a developer-only workflow for homepage story and media operations
 
 ## Content Operating Model
 
 The company needs a proof-reduction model, not just a page model.
+
+The homepage should operate as a CMS-backed editorial issue.
+The CMS is the source of truth for homepage spreads, media placeholders, CTA blocks, and trust metadata.
 
 Every proof item should be normalized into a structured evidence record:
 
@@ -435,76 +655,148 @@ Every proof item should be normalized into a structured evidence record:
 - format
 - appendix status
 
-### Main Path Content
+The CMS should define these content types:
 
-Allowed in the wizard:
+- `issue_page`
+- `proof_artifact`
+- `media_asset`
+- `cta_block`
+- `trust_block`
 
-- one intent choice
-- one fit explanation
-- three credibility signals
-- three outcomes
-- one strongest proof artifact
-- one process summary
-- one reference block
-- one next-step decision
+### Required Fields On `issue_page`
 
-### Appendix Content
+- `slug`
+- `sequence`
+- `kicker`
+- `headline`
+- `deck`
+- `primary_claim`
+- `emotional_target`
+- `proof_artifact_ref`
+- `hero_media_ref`
+- `caption`
+- `primary_cta`
+- `secondary_cta`
+- `placeholder_status`
+- `publish_readiness`
 
-Allowed only behind the main path:
+### Required Fields On `proof_artifact`
 
-- full proof library
-- alternate case studies
-- archives
-- long-form blogs
-- secondary videos
-- detailed diagrams
-- edge-case notes
-- advanced recruiter materials
+- `title`
+- `artifact_type`
+- `summary`
+- `what_it_proves`
+- `business_outcome`
+- `source_type`
+- `source_url_or_path`
+- `evidence_strength`
+- `date`
+- `audience_tags`
+- `thumbnail_media_ref`
 
-## RACI Matrix
+### Media Handling Defaults
 
-| Workstream | Founder | Product Owner | Service Designer | Accessibility Lead | UX Content | Research | Frontend Lead | Platform Eng | QA | DevOps | Security |
-|---|---|---|---|---|---|---|---|---|---|---|---|
-| Product vision | A | R | C | C | C | C | C | I | I | I | I |
-| Wizard IA | C | A | R | C | C | C | C | I | I | I | I |
-| Screen copy | I | A | C | C | R | C | I | I | I | I | I |
-| Accessibility standard | I | C | C | A/R | C | C | C | I | C | I | I |
-| Frontend implementation | I | C | C | C | C | I | A/R | C | C | I | I |
-| Save/resume and analytics | I | C | I | C | I | I | C | A/R | C | C | I |
-| User testing | I | C | C | C | C | A/R | I | I | C | I | I |
-| Release validation | I | I | I | C | I | I | C | C | A/R | C | I |
-| Deployment reliability | I | I | I | I | I | I | C | C | I | A/R | I |
-| Security and trust posture | I | C | C | C | C | I | I | C | I | I | A/R |
+- images use CMS-managed assets with crop and focal control
+- videos default to external embeds or linked hosted assets in v1
+- every video needs a poster frame, short caption, transcript status, and a "what this proves" label
+- every missing asset must use a structured placeholder
 
-Legend:
+### Placeholder System
 
-- R = Responsible
-- A = Accountable
-- C = Consulted
-- I = Informed
+- `hero_image_placeholder`: editorial portrait, systems artifact, or environment image needed
+- `proof_screenshot_placeholder`: product screenshot needed that visibly supports the headline claim
+- `diagram_placeholder`: architecture or system map needed
+- `video_placeholder`: 20 to 45 second proof clip or poster frame needed
+- `quote_placeholder`: recruiter, client, or operator quote needed with attribution status
+- `trust_badge_placeholder`: reviewed date, source count, or resume-link confirmation needed
+
+## Expert Panel And Decision Model
+
+The company should run a standing expert panel for homepage and proof-story decisions.
+This is an internal cross-functional review panel, not an external advisory board.
+
+### Panel Composition
+
+- Product Owner
+- Editorial Director
+- Art Director
+- UX Content Strategist
+- Accessibility Lead
+- Frontend Lead
+- Proof Archivist / Evidence Editor
+- User Research Lead
+- Content Operations / CMS Manager
+
+### Decision Rules
+
+- emotional impact is allowed only when it strengthens comprehension and trust
+- every spread must defend one claim only
+- every media choice must answer: what does this prove
+- if an asset is beautiful but not evidentiary, it stays secondary
+- if copy is clever but slower to understand, rewrite it
+- if a page needs more than one dominant visual idea, split it
+- if proof and story conflict, proof wins
+
+### Required Output For Each Page
+
+- primary claim
+- emotional tone
+- evidence asset
+- caption or deck
+- CTA
+- placeholder status
+- confidence score for publication
+
+## Emotional-Impact Story Rules
+
+To maximize emotional impact while keeping 100% signal:
+
+- the opening spread creates stakes, not biography
+- the second spread defines role identity in one hard sentence
+- the flagship proof spread carries the strongest visual contrast and clearest business consequence
+- outcome spreads use concrete before-and-after framing, not generic success language
+- trust spreads cool the visual temperature and increase factual density
+- the final handoff feels decisive, not salesy
+
+Default pacing:
+
+1. Cover spread: why this matters
+2. Role spread: who this builder is
+3. System spread: scope and complexity
+4. Flagship proof spread: show the evidence
+5. Outcomes spread: what changed
+6. Method spread: how the work is done
+7. Trust spread: why this is credible
+8. Decision spread: what to do next
 
 ## Highest ROI Plan
 
 The highest ROI move is not expanding general engineering first.
-The highest ROI move is building a focused guided-experience team that can compress complexity into one path.
+The highest ROI move is building a focused editorial proof team that can compress complexity into one story and manage it through a CMS.
 
 ### Highest ROI Team To Stand Up Now
 
 - Founder
 - Product Owner
+- Editorial Director
 - Frontend Lead
 - Accessibility Lead
 - UX Content Strategist
+- Art Director
+- Content Operations / CMS Manager
+- Proof Archivist / Evidence Editor
 - QA / Accessibility Test Engineer
-
-This is the smallest team that can define, build, and validate the real product shift.
 
 ### Why This Is Highest ROI
 
 - Product Owner prevents drift
-- Frontend Lead makes the wizard real
+- Editorial Director keeps the story emotionally strong and structurally coherent
+- Frontend Lead makes the guided experience real
 - Accessibility Lead prevents expensive rework
 - UX Content Strategist removes confusion at the source
+- Art Director gives the experience premium but disciplined shape
+- Content Operations / CMS Manager keeps the content system usable and publishable
+- Proof Archivist protects evidence quality
 - QA protects reliability before trust is damaged
 
 ## Immediate Execution Plan
@@ -513,11 +805,12 @@ This is the smallest team that can define, build, and validate the real product 
 
 Deliverables:
 
-- final wizard screen map
-- user intents
+- final homepage spread map
+- page-level editorial pacing
 - main-path rules
 - appendix rules
 - product success metrics
+- expert-panel review rules
 
 Owner:
 
@@ -525,6 +818,7 @@ Owner:
 
 Support:
 
+- Editorial Director
 - Service Designer
 - Accessibility Lead
 - UX Content Strategist
@@ -535,27 +829,34 @@ Deliverables:
 
 - evidence taxonomy
 - proof packet structure
-- one strongest artifact per intent
+- one flagship artifact and support stack
 - screen-level content map
+- placeholder inventory
+- CMS field map
 
 Owner:
 
-- UX Content Strategist
+- Proof Archivist / Evidence Editor
 
 Support:
 
+- Editorial Director
+- UX Content Strategist
+- Content Operations / CMS Manager
 - Product Owner
-- Research Lead
+- User Research Lead
 
-### Phase 3: Wizard Foundation
+### Phase 3: Platform Foundation
 
 Deliverables:
 
 - one-screen-at-a-time wizard engine
+- CMS content ingestion
 - step progress
 - back behavior
 - save/resume
 - review and completion screens
+- media placeholder rendering
 
 Owner:
 
@@ -563,10 +864,11 @@ Owner:
 
 Support:
 
-- Platform Engineer
+- Full-Stack / Platform Engineer
 - Accessibility Lead
+- Content Operations / CMS Manager
 
-### Phase 4: Trust And Evidence Layer
+### Phase 4: Trust And Metadata Layer
 
 Deliverables:
 
@@ -575,6 +877,8 @@ Deliverables:
 - source attribution
 - trust metadata
 - next-step handoff screens
+- SEO and social metadata
+- reviewed-by and last-updated trust blocks
 
 Owner:
 
@@ -582,9 +886,11 @@ Owner:
 
 Support:
 
+- Editorial Director
 - Frontend Lead
 - UX Content Strategist
-- Security Lead
+- SEO / Metadata Strategist
+- Security / Compliance Lead
 
 ### Phase 5: Validation
 
@@ -595,16 +901,19 @@ Deliverables:
 - regression coverage
 - drop-off analysis
 - revision backlog
+- editorial comprehension review
 
 Owner:
 
-- Research Lead
+- User Research Lead
 
 Support:
 
-- QA
+- QA / Accessibility Test Engineer
 - Accessibility Lead
 - Product Owner
+- Editorial Director
+- Content Operations / CMS Manager
 
 ## 30 / 60 / 90 Day Plan
 
@@ -613,23 +922,27 @@ Support:
 Goals:
 
 - stop homepage-as-website thinking
-- define final wizard
-- choose strongest proof for each path
+- define the final editorial issue
+- choose the flagship proof and support stack
 - write plain-language copy
+- choose and model the CMS
 
 Deliver:
 
-- screen map
+- spread map
 - content deck
 - proof taxonomy
 - success metrics
 - prototype skeleton
+- CMS schema draft
+- placeholder inventory
 
 ### Day 31 To 60
 
 Goals:
 
 - implement the real wizard shell
+- connect the CMS
 - build save/resume
 - reduce the main path to one task per screen
 - move deep content behind appendix paths
@@ -637,6 +950,7 @@ Goals:
 Deliver:
 
 - wizard shell
+- CMS-backed homepage issue
 - step engine
 - progress and recovery
 - appendix access model
@@ -657,6 +971,7 @@ Deliver:
 - accessibility audit fixes
 - full release checklist
 - production launch package
+- expert-panel content approval checklist
 
 ## Success Metrics
 
@@ -668,6 +983,8 @@ Deliver:
 - recruiter follow-up rate
 - archive-entry rate from the main path
 - accessibility defects per release
+- placeholder burn-down rate
+- content publish-readiness score
 
 ## Acceptance Criteria
 
@@ -679,24 +996,30 @@ The rewrite is successful only if:
 - the user can complete the core flow on a phone
 - the user can recover from interruption
 - the archive is no longer the first interaction model
+- the homepage story is editable through the CMS
+- each spread has a defined claim, evidence asset, and placeholder status
 
 ## Recommended Immediate Decision
 
-Stand up a guided-experience strike team immediately:
+Stand up an editorial proof strike team immediately:
 
 - Product Owner
+- Editorial Director
 - Frontend Lead
 - Accessibility Lead
 - UX Content Strategist
+- Art Director
+- Content Operations / CMS Manager
+- Proof Archivist / Evidence Editor
 - QA / Accessibility Test Engineer
 
 This team should be treated as the core business-critical product team for the rewrite.
 
 ## Recommended Immediate Work Sequence
 
-1. Lock the wizard IA.
-2. Write the full screen copy deck.
-3. Normalize the archive into proof packets.
-4. Build the wizard engine.
-5. Test with real target users.
-6. Ship only after comprehension and accessibility pass.
+1. Lock the single-path editorial IA.
+2. Choose Storyblok Starter as the v1 CMS and define the content model.
+3. Write the full screen, caption, and CTA deck.
+4. Normalize the archive into proof packets and structured placeholders.
+5. Build the CMS-backed wizard engine.
+6. Test with real target users and expert-panel review before launch.

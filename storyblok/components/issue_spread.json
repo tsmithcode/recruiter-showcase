@@ -1,0 +1,93 @@
+{
+  "name": "issue_spread",
+  "display_name": "Issue Spread",
+  "schema": {
+    "id": {
+      "type": "option",
+      "display_name": "Spread Id",
+      "options": [
+        "cover",
+        "role",
+        "system",
+        "proof",
+        "outcomes",
+        "method",
+        "trust",
+        "next"
+      ]
+    },
+    "sequence": {
+      "type": "number",
+      "display_name": "Sequence"
+    },
+    "kicker": {
+      "type": "text",
+      "display_name": "Kicker"
+    },
+    "headline": {
+      "type": "textarea",
+      "display_name": "Headline"
+    },
+    "deck": {
+      "type": "textarea",
+      "display_name": "Deck"
+    },
+    "primary_claim": {
+      "type": "textarea",
+      "display_name": "Primary Claim"
+    },
+    "emotional_target": {
+      "type": "text",
+      "display_name": "Emotional Target"
+    },
+    "caption": {
+      "type": "textarea",
+      "display_name": "Caption"
+    },
+    "placeholder_status": {
+      "type": "option",
+      "display_name": "Placeholder Status",
+      "options": [
+        "complete",
+        "hero_image_placeholder",
+        "proof_screenshot_placeholder",
+        "diagram_placeholder",
+        "video_placeholder",
+        "quote_placeholder",
+        "trust_badge_placeholder"
+      ]
+    },
+    "publish_readiness": {
+      "type": "option",
+      "display_name": "Publish Readiness",
+      "options": [
+        "draft",
+        "ready"
+      ]
+    },
+    "highlights": {
+      "type": "text",
+      "display_name": "Highlights (multi-line)"
+    },
+    "actions": {
+      "type": "bloks",
+      "display_name": "Actions",
+      "restrict_components": true,
+      "component_whitelist": ["cta_block"]
+    },
+    "references": {
+      "type": "bloks",
+      "display_name": "References",
+      "restrict_components": true,
+      "component_whitelist": ["reference_link"]
+    },
+    "trustItems": {
+      "type": "bloks",
+      "display_name": "Trust Items",
+      "restrict_components": true,
+      "component_whitelist": ["trust_item"]
+    }
+  },
+  "is_root": false,
+  "is_nestable": true
+}

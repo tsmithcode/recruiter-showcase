@@ -1,0 +1,68 @@
+{
+  "name": "proof_artifact",
+  "display_name": "Proof Artifact",
+  "schema": {
+    "title": {
+      "type": "text",
+      "display_name": "Title"
+    },
+    "artifactType": {
+      "type": "option",
+      "display_name": "Artifact Type",
+      "options": [
+        "case-study",
+        "context-page",
+        "video",
+        "diagram",
+        "pdf"
+      ]
+    },
+    "summary": {
+      "type": "textarea",
+      "display_name": "Summary"
+    },
+    "whatItProves": {
+      "type": "textarea",
+      "display_name": "What It Proves"
+    },
+    "businessOutcome": {
+      "type": "textarea",
+      "display_name": "Business Outcome"
+    },
+    "sourceType": {
+      "type": "option",
+      "display_name": "Source Type",
+      "options": [
+        "internal-route",
+        "external-url",
+        "document"
+      ]
+    },
+    "sourceUrlOrPath": {
+      "type": "text",
+      "display_name": "Source URL Or Path"
+    },
+    "evidenceStrength": {
+      "type": "option",
+      "display_name": "Evidence Strength",
+      "options": [
+        "flagship",
+        "supporting"
+      ]
+    },
+    "date": {
+      "type": "text",
+      "display_name": "Date"
+    },
+    "audienceTags": {
+      "type": "text",
+      "display_name": "Audience Tags (comma separated)"
+    },
+    "thumbnailMediaRef": {
+      "type": "text",
+      "display_name": "Thumbnail Media Ref"
+    }
+  },
+  "is_root": false,
+  "is_nestable": true
+}

@@ -20,6 +20,7 @@ import {
   qtsLifecycleMappings,
   qtsResponsibilities,
 } from '@/lib/portfolioContent';
+import { getEditorialSlot } from '@/lib/editorialSlots';
 import {
   audienceTracks,
   caseStudies,
@@ -34,6 +35,7 @@ import CadAmbientBackdrop from './CadAmbientBackdrop';
 import CadGuardianBranch from './CadGuardianBranch';
 import CaseStudyCard from './CaseStudyCard';
 import ContextControlHeader from './ContextControlHeader';
+import EditorialSlotPlate from './EditorialSlotPlate';
 import ProofLibrary from './ProofLibrary';
 import {
   FirstThirtyDaysDiagram,
@@ -118,6 +120,25 @@ const archiveLinks = [
   },
 ];
 
+function getContextStoryId(slug: PortfolioContextSlug) {
+  switch (slug) {
+    case 'openai':
+      return 'context-openai';
+    case 'qts-suwanee':
+      return 'context-qts-suwanee';
+    case 'autodesk-cad':
+      return 'context-autodesk-cad';
+    case 'product-systems':
+      return 'context-product-systems';
+    case 'creative-ai':
+      return 'context-creative-ai';
+    case 'full-proof-library':
+      return 'context-full-proof-library';
+    default:
+      return 'context-openai';
+  }
+}
+
 export default function PortfolioContextPage({
   context,
   searchParams = {},
@@ -158,6 +179,7 @@ function QtsContextPage({
     )
   );
   const lensSummary = getQtsLensSummary(lens);
+  const contextSlot = getEditorialSlot(getContextStoryId(context.slug), 'hero-diagram');
 
   return (
     <main className="pb-20">
@@ -239,6 +261,11 @@ function QtsContextPage({
                     </div>
                   ))}
                 </div>
+                {contextSlot ? (
+                  <div className="pt-1">
+                    <EditorialSlotPlate slot={contextSlot} compact />
+                  </div>
+                ) : null}
               </div>
             </div>
           </div>
@@ -440,6 +467,7 @@ function AutodeskCadContextPage({
       caseStudy.slug
     )
   );
+  const contextSlot = getEditorialSlot(getContextStoryId(context.slug), 'hero-diagram');
 
   const chronologySummary = chronologyGroups.map((group) => {
     const items = autodeskVideoArtifacts.filter(
@@ -506,6 +534,11 @@ function AutodeskCadContextPage({
                 </p>
               </div>
             </div>
+            {contextSlot ? (
+              <div className="mt-4">
+                <EditorialSlotPlate slot={contextSlot} compact />
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
@@ -619,6 +652,7 @@ function OpenAiContextPage({
     artifact.relevanceTags.includes('openai')
   );
   const openAiSummary = getOpenAiLensSummary(lens);
+  const contextSlot = getEditorialSlot(getContextStoryId(context.slug), 'hero-diagram');
 
   return (
     <main className="pb-20">
@@ -670,6 +704,11 @@ function OpenAiContextPage({
                 </li>
               ))}
             </ul>
+            {contextSlot ? (
+              <div className="mt-4">
+                <EditorialSlotPlate slot={contextSlot} compact />
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
@@ -754,6 +793,7 @@ function ProductSystemsContextPage({
   phase: PhaseId;
 }) {
   const featuredProof = getAllProofArtifacts();
+  const contextSlot = getEditorialSlot(getContextStoryId(context.slug), 'hero-diagram');
 
   return (
     <main className="pb-20">
@@ -787,6 +827,11 @@ function ProductSystemsContextPage({
                 </li>
               ))}
             </ul>
+            {contextSlot ? (
+              <div className="mt-4">
+                <EditorialSlotPlate slot={contextSlot} compact />
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
@@ -845,6 +890,7 @@ function CreativeAiContextPage({
     proofArtifacts.find((artifact) => artifact.id === 'demo-cpq'),
     proofArtifacts.find((artifact) => artifact.id === 'video-erp-crm'),
   ].filter(Boolean) as ProofArtifact[];
+  const contextSlot = getEditorialSlot(getContextStoryId(context.slug), 'hero-diagram');
 
   return (
     <main className="pb-20">
@@ -879,6 +925,11 @@ function CreativeAiContextPage({
                 </li>
               ))}
             </ul>
+            {contextSlot ? (
+              <div className="mt-4">
+                <EditorialSlotPlate slot={contextSlot} compact />
+              </div>
+            ) : null}
           </div>
         </div>
       </section>
@@ -907,6 +958,8 @@ function FullProofLibraryContextPage({
   lens: RoleLens;
   phase: PhaseId;
 }) {
+  const contextSlot = getEditorialSlot(getContextStoryId(context.slug), 'hero-diagram');
+
   return (
     <main className="pb-20">
       <section id="overview" className="showcase-hero context-hero">
@@ -939,6 +992,11 @@ function FullProofLibraryContextPage({
                 </li>
               ))}
             </ul>
+            {contextSlot ? (
+              <div className="mt-4">
+                <EditorialSlotPlate slot={contextSlot} compact />
+              </div>
+            ) : null}
           </div>
         </div>
       </section>

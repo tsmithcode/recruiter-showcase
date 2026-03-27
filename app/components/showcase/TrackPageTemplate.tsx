@@ -1,6 +1,8 @@
 import { AudienceTrack, AudienceTrackContent, CaseStudy, ProofArtifact } from '@/lib/showcaseContent';
+import { getEditorialSlot } from '@/lib/editorialSlots';
 
 import CaseStudyCard from './CaseStudyCard';
+import EditorialSlotPlate from './EditorialSlotPlate';
 import ProofLibrary from './ProofLibrary';
 import RecruiterLink from './RecruiterLink';
 import SectionHeading from './SectionHeading';
@@ -29,6 +31,9 @@ export default function TrackPageTemplate({
   proofArtifacts,
   systemsMap,
 }: TrackPageTemplateProps) {
+  const trackStoryId = track === 'openai' ? 'track-openai' : 'track-construction';
+  const trackSlot = getEditorialSlot(trackStoryId, 'hero-diagram');
+
   return (
     <main className="pb-20">
       <section className="relative overflow-hidden border-b border-white/10">
@@ -75,6 +80,11 @@ export default function TrackPageTemplate({
                 </li>
               ))}
             </ul>
+            {trackSlot ? (
+              <div className="pt-2">
+                <EditorialSlotPlate slot={trackSlot} compact />
+              </div>
+            ) : null}
           </div>
         </div>
       </section>

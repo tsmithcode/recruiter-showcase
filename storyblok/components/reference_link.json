@@ -1,0 +1,20 @@
+{
+  "name": "reference_link",
+  "display_name": "Reference Link",
+  "schema": {
+    "label": {
+      "type": "text",
+      "display_name": "Label"
+    },
+    "href": {
+      "type": "text",
+      "display_name": "Href"
+    },
+    "note": {
+      "type": "textarea",
+      "display_name": "Note"
+    }
+  },
+  "is_root": false,
+  "is_nestable": true
+}

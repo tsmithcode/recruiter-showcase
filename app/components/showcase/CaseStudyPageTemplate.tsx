@@ -1,6 +1,8 @@
 import { CaseStudy } from '@/lib/showcaseContent';
+import { getEditorialSlot } from '@/lib/editorialSlots';
 
 import ArchitectureDiagram from './ArchitectureDiagram';
+import EditorialSlotPlate from './EditorialSlotPlate';
 import RecruiterLink from './RecruiterLink';
 import ZoomableImage from './ZoomableImage';
 
@@ -9,6 +11,8 @@ type CaseStudyPageTemplateProps = {
 };
 
 export default function CaseStudyPageTemplate({ caseStudy }: CaseStudyPageTemplateProps) {
+  const slot = getEditorialSlot(`case-${caseStudy.slug}`, 'hero-diagram');
+
   return (
     <main className="showcase-shell pb-16 pt-12 sm:pt-14">
       <article className="showcase-stack">
@@ -100,6 +104,13 @@ export default function CaseStudyPageTemplate({ caseStudy }: CaseStudyPageTempla
             layers={caseStudy.architectureLayers}
           />
         </section>
+
+        {slot ? (
+          <section className="space-y-4">
+            <p className="showcase-eyebrow">Editorial diagram</p>
+            <EditorialSlotPlate slot={slot} />
+          </section>
+        ) : null}
 
         {caseStudy.visualEvidence?.length ? (
           <section className="space-y-6">

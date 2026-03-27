@@ -1,16 +1,19 @@
 import type { Metadata } from 'next';
 
 import HomeWizard from '@/components/HomeWizard';
+import { getHomepageIssue } from '@/lib/homepageIssue';
 
 export const metadata: Metadata = {
-  title: 'Thomas Smith | Guided proof wizard',
+  title: 'Thomas Smith | Editorial proof issue',
   description:
-    'A single-path recruiter proof experience that keeps one task on screen at a time and routes visitors to the right proof page with minimal cognitive load.',
+    'A single-path editorial proof experience that walks recruiters and buyers through role, systems scope, flagship evidence, trust notes, and the cleanest next step.',
   alternates: {
     canonical: '/',
   },
 };
 
-export default function Home() {
-  return <HomeWizard />;
+export default async function Home() {
+  const issue = await getHomepageIssue();
+
+  return <HomeWizard issue={issue} />;
 }

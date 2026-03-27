@@ -1,0 +1,282 @@
+{
+  "name": "Homepage Issue",
+  "slug": "homepage-issue",
+  "content": {
+    "component": "issue_page",
+    "title": "Thomas Smith | Guided editorial proof review",
+    "issueLabel": "Issue 01",
+    "ctaBlockTitle": "Choose the cleanest next step",
+    "proofArtifact": {
+      "component": "proof_artifact",
+      "title": "Operator Search Platform",
+      "artifactType": "case-study",
+      "summary": "A CAD archive was turned into a faster retrieval surface so operators could find the right drawing context without relying on tribal memory.",
+      "whatItProves": "The work combines systems thinking, product judgment, and operator empathy under real workflow pressure.",
+      "businessOutcome": "Reduced lookup friction, made encoded information scannable, and turned buried knowledge into repeatable operator flow.",
+      "sourceType": "internal-route",
+      "sourceUrlOrPath": "/case-studies/operator-search-platform",
+      "evidenceStrength": "flagship",
+      "date": "2026-03-26",
+      "audienceTags": "recruiters, enterprise buyers, workflow leaders",
+      "thumbnailMediaRef": "proof_screenshot_placeholder"
+    },
+    "trustBlock": {
+      "component": "trust_block",
+      "reviewedBy": "Founder and internal expert panel",
+      "lastUpdated": "March 26, 2026",
+      "scopeNote": "This homepage is the guided first pass. Case studies, context pages, videos, and documents remain available as secondary verification.",
+      "sourceCount": "5 linked proof surfaces"
+    },
+    "spreads": [
+      {
+        "component": "issue_spread",
+        "id": "cover",
+        "sequence": 1,
+        "kicker": "Principal systems proof",
+        "headline": "Complex operational work is only valuable if other people can trust it quickly.",
+        "deck": "This issue walks through one story path: the stakes, the builder, the systems scope, the strongest proof, and the cleanest next step.",
+        "primary_claim": "The value here is not just code output. It is the ability to turn fragmented workflows into operator-ready systems people can trust.",
+        "emotional_target": "Urgent, controlled, and high-confidence",
+        "caption": "The homepage is treated like an editorial cover: one claim, one direction, one path forward.",
+        "placeholder_status": "hero_image_placeholder",
+        "publish_readiness": "draft",
+        "highlights": [],
+        "actions": [
+          {
+            "component": "cta_block",
+            "label": "Start",
+            "nextStepId": "role",
+            "style": "primary"
+          }
+        ]
+      },
+      {
+        "component": "issue_spread",
+        "id": "role",
+        "sequence": 2,
+        "kicker": "Role definition",
+        "headline": "Thomas Smith is a principal-level workflow and systems builder, not a loose collection of tools.",
+        "deck": "The strongest signal is role clarity: product thinking, systems ownership, and operator-facing execution under real business constraints.",
+        "primary_claim": "This is principal-level scope expressed through workflow systems, internal tools, and evidence packaging.",
+        "emotional_target": "Clarity and authority",
+        "caption": "One hard sentence is stronger than a long biography when the viewer needs to orient quickly.",
+        "placeholder_status": "complete",
+        "publish_readiness": "ready",
+        "highlights": [
+          "Builds workflow software that reduces operational drag.",
+          "Turns encoded domain knowledge into usable operator tooling.",
+          "Frames technical work in terms recruiters and buyers can verify."
+        ],
+        "actions": [
+          {
+            "component": "cta_block",
+            "label": "See the system",
+            "nextStepId": "system",
+            "style": "primary"
+          }
+        ]
+      },
+      {
+        "component": "issue_spread",
+        "id": "system",
+        "sequence": 3,
+        "kicker": "System scope",
+        "headline": "The work spans interface, business rules, retrieval, integration, and proof packaging.",
+        "deck": "The important signal is not one domain. It is repeatable ownership across workflow boundaries where speed, trust, and decision quality matter.",
+        "primary_claim": "The system boundary includes operator UX, decision logic, information retrieval, and the trust surfaces needed for adoption.",
+        "emotional_target": "Scale without chaos",
+        "caption": "This spread should eventually carry a system map or environment image, but the story already states the boundary clearly.",
+        "placeholder_status": "diagram_placeholder",
+        "publish_readiness": "draft",
+        "highlights": [
+          "Operator-facing tools that simplify high-friction workflows.",
+          "Architecture choices that make business logic inspectable.",
+          "Proof surfaces that help non-technical reviewers understand risk and value."
+        ],
+        "actions": [
+          {
+            "component": "cta_block",
+            "label": "See the proof",
+            "nextStepId": "proof",
+            "style": "primary"
+          }
+        ]
+      },
+      {
+        "component": "issue_spread",
+        "id": "proof",
+        "sequence": 4,
+        "kicker": "Flagship proof",
+        "headline": "Operator Search Platform",
+        "deck": "A dense CAD archive became a faster search surface so people could find what mattered without relying on tribal memory.",
+        "primary_claim": "The flagship proof shows retrieval, product judgment, and operator trust working together inside one system.",
+        "emotional_target": "Proof before persuasion",
+        "caption": "Placeholder status remains visible here on purpose so the team can replace it with a real screenshot, diagram, or short clip instead of forgetting it.",
+        "placeholder_status": "proof_screenshot_placeholder",
+        "publish_readiness": "draft",
+        "highlights": [
+          "What it proves: systems thinking translated into operator speed.",
+          "Business outcome: less search friction and faster access to encoded information.",
+          "Why it matters: the work makes hidden complexity usable."
+        ],
+        "actions": [
+          {
+            "component": "cta_block",
+            "label": "Open flagship proof",
+            "href": "/case-studies/operator-search-platform",
+            "style": "secondary"
+          },
+          {
+            "component": "cta_block",
+            "label": "See outcomes",
+            "nextStepId": "outcomes",
+            "style": "primary"
+          }
+        ]
+      },
+      {
+        "component": "issue_spread",
+        "id": "outcomes",
+        "sequence": 5,
+        "kicker": "Outcomes",
+        "headline": "The result is not more content. It is less confusion, faster retrieval, and clearer trust.",
+        "deck": "Outcome framing stays concrete: what changed for operators, how the system became easier to trust, and why the proof is worth a recruiter’s time.",
+        "primary_claim": "The strongest outcome is reduced operational friction combined with higher reviewer confidence.",
+        "emotional_target": "Relief and confidence",
+        "caption": "The language stays intentionally direct so the impact reads like a business result, not a portfolio boast.",
+        "placeholder_status": "complete",
+        "publish_readiness": "ready",
+        "highlights": [
+          "Reduced lookup friction in a dense technical archive.",
+          "Made hidden business logic and encoded information easier to inspect.",
+          "Improved first-pass trust for recruiters, buyers, and operators."
+        ],
+        "actions": [
+          {
+            "component": "cta_block",
+            "label": "See the method",
+            "nextStepId": "method",
+            "style": "primary"
+          }
+        ]
+      },
+      {
+        "component": "issue_spread",
+        "id": "method",
+        "sequence": 6,
+        "kicker": "Method",
+        "headline": "The method is consistent: understand the real user problem, expose the logic, and ship the clearest useful surface first.",
+        "deck": "This is where the team shows how complexity gets reduced without pretending the underlying systems are simple.",
+        "primary_claim": "The work is shaped by product judgment and sequencing discipline, not just implementation speed.",
+        "emotional_target": "Control under pressure",
+        "caption": "Method should read like an operating discipline, not a generic process diagram.",
+        "placeholder_status": "complete",
+        "publish_readiness": "ready",
+        "highlights": [
+          "Start with the real operator pain.",
+          "Make decision logic visible and reviewable.",
+          "Ship the clearest trustworthy tool first.",
+          "Keep deep evidence available but secondary."
+        ],
+        "actions": [
+          {
+            "component": "cta_block",
+            "label": "See trust",
+            "nextStepId": "trust",
+            "style": "primary"
+          }
+        ]
+      },
+      {
+        "component": "issue_spread",
+        "id": "trust",
+        "sequence": 7,
+        "kicker": "Trust and references",
+        "headline": "The homepage is the first pass. Verification stays one click away.",
+        "deck": "Trust increases when the story stays focused and the evidence stays accessible. This spread cools the visual temperature and raises factual density.",
+        "primary_claim": "Credibility comes from clear sourcing, current references, and secondary proof routes that do not interrupt the main path.",
+        "emotional_target": "Calm credibility",
+        "caption": "Trust blocks should always include freshness, scope, and where to verify the strongest claims.",
+        "placeholder_status": "trust_badge_placeholder",
+        "publish_readiness": "draft",
+        "highlights": [],
+        "actions": [
+          {
+            "component": "cta_block",
+            "label": "Choose next step",
+            "nextStepId": "next",
+            "style": "primary"
+          }
+        ],
+        "references": [
+          {
+            "component": "reference_link",
+            "label": "Resume PDF",
+            "href": "/documents/thomas-smith-architect-resume-2026.pdf"
+          },
+          {
+            "component": "reference_link",
+            "label": "OpenAI context page",
+            "href": "/contexts/openai"
+          },
+          {
+            "component": "reference_link",
+            "label": "Full proof library",
+            "href": "/contexts/full-proof-library"
+          }
+        ],
+        "trustItems": [
+          {
+            "component": "trust_item",
+            "label": "Reviewed by",
+            "value": "Founder and internal expert panel"
+          },
+          {
+            "component": "trust_item",
+            "label": "Last updated",
+            "value": "March 26, 2026"
+          },
+          {
+            "component": "trust_item",
+            "label": "Source count",
+            "value": "5 linked proof surfaces"
+          }
+        ]
+      },
+      {
+        "component": "issue_spread",
+        "id": "next",
+        "sequence": 8,
+        "kicker": "Decision spread",
+        "headline": "If the proof is strong enough, the cleanest next move should be obvious.",
+        "deck": "The handoff stays decisive and low-friction: contact, resume, or deeper proof. No sales noise, no new branching, no last-minute clutter.",
+        "primary_claim": "A strong closing spread makes the next action easier than wandering through the archive.",
+        "emotional_target": "Decisive handoff",
+        "caption": "This is the final spread in the issue. The next step should feel earned, not pushed.",
+        "placeholder_status": "complete",
+        "publish_readiness": "ready",
+        "highlights": [],
+        "actions": [
+          {
+            "component": "cta_block",
+            "label": "Contact Thomas Smith",
+            "href": "mailto:job@tsmithcode.ai?subject=Editorial%20Proof%20Follow%20Up",
+            "style": "primary"
+          },
+          {
+            "component": "cta_block",
+            "label": "Open resume",
+            "href": "/documents/thomas-smith-architect-resume-2026.pdf",
+            "style": "secondary"
+          },
+          {
+            "component": "cta_block",
+            "label": "Open full proof library",
+            "href": "/contexts/full-proof-library",
+            "style": "secondary"
+          }
+        ]
+      }
+    ]
+  }
+}

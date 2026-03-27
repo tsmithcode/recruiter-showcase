@@ -1,0 +1,40 @@
+{
+  "name": "issue_page",
+  "display_name": "Issue Page",
+  "schema": {
+    "title": {
+      "type": "text",
+      "display_name": "Title"
+    },
+    "issueLabel": {
+      "type": "text",
+      "display_name": "Issue Label"
+    },
+    "ctaBlockTitle": {
+      "type": "text",
+      "display_name": "CTA Block Title"
+    },
+    "proofArtifact": {
+      "type": "bloks",
+      "display_name": "Proof Artifact",
+      "restrict_components": true,
+      "component_whitelist": ["proof_artifact"],
+      "maximum": 1
+    },
+    "trustBlock": {
+      "type": "bloks",
+      "display_name": "Trust Block",
+      "restrict_components": true,
+      "component_whitelist": ["trust_block"],
+      "maximum": 1
+    },
+    "spreads": {
+      "type": "bloks",
+      "display_name": "Spreads",
+      "restrict_components": true,
+      "component_whitelist": ["issue_spread"]
+    }
+  },
+  "is_root": true,
+  "is_nestable": false
+}

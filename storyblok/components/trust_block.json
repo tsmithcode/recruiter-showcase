@@ -1,0 +1,24 @@
+{
+  "name": "trust_block",
+  "display_name": "Trust Block",
+  "schema": {
+    "reviewedBy": {
+      "type": "text",
+      "display_name": "Reviewed By"
+    },
+    "lastUpdated": {
+      "type": "text",
+      "display_name": "Last Updated"
+    },
+    "scopeNote": {
+      "type": "textarea",
+      "display_name": "Scope Note"
+    },
+    "sourceCount": {
+      "type": "text",
+      "display_name": "Source Count"
+    }
+  },
+  "is_root": false,
+  "is_nestable": true
+}

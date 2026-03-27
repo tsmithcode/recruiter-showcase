@@ -45,6 +45,23 @@ You can start editing the page by modifying `app/page.tsx`. The page auto-update
 
 This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
 
+## Editorial Homepage CMS
+
+The homepage now supports a CMS-backed single-path editorial issue.
+
+- local fallback content lives in [`app/lib/homepageIssue.ts`](/Users/cadguardianllc/Documents/GitHub/recruiter-showcase/app/lib/homepageIssue.ts)
+- Storyblok setup instructions live in [`docs/STORYBLOK-SETUP.md`](/Users/cadguardianllc/Documents/GitHub/recruiter-showcase/docs/STORYBLOK-SETUP.md)
+- Storyblok schema blueprints live in [`storyblok/components`](/Users/cadguardianllc/Documents/GitHub/recruiter-showcase/storyblok/components)
+- the initial seed payload lives in [`storyblok/seed/homepage-issue.json`](/Users/cadguardianllc/Documents/GitHub/recruiter-showcase/storyblok/seed/homepage-issue.json)
+
+To connect a real Storyblok space:
+
+```bash
+cp .env.example .env.local
+```
+
+Then set `STORYBLOK_PREVIEW_TOKEN` and `STORYBLOK_HOMEPAGE_ISSUE_SLUG`.
+
 ## Learn More
 
 To learn more about Next.js, take a look at the following resources:

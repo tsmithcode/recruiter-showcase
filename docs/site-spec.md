@@ -12,7 +12,7 @@ Thomas Smith is positioned as a principal-level B2B systems builder who turns fr
 
 ## Route Map
 
-- `/`: shared principal-engineer core story
+- `/`: single-path editorial issue for the shared principal-engineer core story
 - `/tracks/openai`: recruiter path for principal B2B engineering at OpenAI
 - `/tracks/construction`: recruiter path for construction, Autodesk, and data center platform roles
 - `/case-studies/[slug]`: structured proof pages
@@ -23,9 +23,9 @@ Thomas Smith is positioned as a principal-level B2B systems builder who turns fr
 ### Shared homepage
 
 - Establish role level, systems scope, and business orientation in the first viewport
-- Show two tailored recruiter paths without fragmenting the core identity
-- Prove breadth across workflow engines, integrations, operator UX, and technical leadership
-- Surface three flagship case studies and ranked supporting proof
+- Present one curated editorial arc instead of asking the visitor to choose a path
+- Use magazine-style pacing, media, and captions while keeping one clear claim per spread
+- Surface one flagship proof first, with supporting proof and appendix routes kept secondary
 
 ### Track pages
 
@@ -48,6 +48,14 @@ Thomas Smith is positioned as a principal-level B2B systems builder who turns fr
 - Every flagship proof item must include business context, system boundary, leadership scope, and concrete outcomes
 - Every page must show at least one operator-facing artifact and one systems-level artifact
 - Supporting proof can be narrower, but must be tagged to at least one recruiter track
+- Every homepage spread must declare its primary claim, evidence asset, and placeholder status
+
+## CMS And Editorial Operations
+
+- The homepage editorial issue should be CMS-backed rather than hard-coded as a one-off sequence
+- Storyblok Starter is the recommended v1 CMS because it supports visual editing, asset management, and non-technical publishing on a free entry path
+- Homepage spreads should be modeled as structured content with linked proof artifacts, media assets, CTA blocks, and trust blocks
+- Videos and images must always be treated as evidence surfaces, not decoration
 
 ## Acceptance Criteria
 
@@ -56,3 +64,5 @@ Thomas Smith is positioned as a principal-level B2B systems builder who turns fr
 - The proof library is ranked by relevance rather than a loose chronological blog roll
 - The CPQ experience explains what the demo proves architecturally before exposing controls
 - Metadata, structured data, and recruiter-facing CTAs align with a principal engineering profile
+- The homepage no longer asks the visitor to choose an intent before the story starts
+- The homepage content can be managed through the CMS with structured media placeholders and trust metadata
