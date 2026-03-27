@@ -36,7 +36,7 @@ export default function EditorialSlotPlate({ slot, compact = false }: EditorialS
 
   return (
     <article
-      className={`rounded-[1.6rem] border p-5 ${compact ? 'p-4' : 'p-5 sm:p-6'} ${surfaceClass}`}
+      className={`overflow-hidden rounded-[1.6rem] border ${compact ? 'p-4' : 'p-5 sm:p-6'} ${surfaceClass}`}
       style={{ aspectRatio: slot.aspectRatio }}
     >
       <div className="flex items-start justify-between gap-4">
