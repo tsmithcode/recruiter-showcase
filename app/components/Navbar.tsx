@@ -63,7 +63,7 @@ export default function Navbar() {
               Thomas Smith
             </span>
             <span className="block truncate text-sm text-slate-400">
-              Guided Enterprise Story Framework
+              7-day live build · 7 products · 1 principal engineer
             </span>
           </div>
         </Link>

@@ -1,184 +1,102 @@
-# Recruiter Showcase – TSmithCode.ai
+# TSmithCode.ai — Recruiter Showcase
 
-This is the official portfolio site for Thomas Smith, a .NET & Automation Engineer, built to streamline the hiring process by giving recruiters everything they need on one high-performance page.
-
-⚙️ Built with:
-
-- **Next.js 15 (App Router)**
-- **Tailwind CSS**
-- **Framer Motion**
-- **Vercel for hosting**
-- **Live YouTube Demo Integration**
-
-💼 What you'll find:
-
-- ⚡ Real-world CAD & ERP automation projects
-- 🎯 Problem–Solution breakdowns by domain
-- 🧠 Agile + SDLC approach with a developer mindset
-- ✨ Elegant UI with animations and responsive layout
-
-🔗 Live site: [https://tsmithcode.ai](https://tsmithcode.ai)
-
-📫 Contact: [job@tsmithcode.ai](mailto:job@tsmithcode.ai)
+**Live site:** [https://tsmithcode.ai](https://tsmithcode.ai) · **Contact:** [job@tsmithcode.ai](mailto:job@tsmithcode.ai)
 
 ---
 
-This is a [Next.js](https://nextjs.org) project bootstrapped with [`create-next-app`](https://nextjs.org/docs/app/api-reference/cli/create-next-app).
+## What This Is
 
-## Getting Started
+A principal-level engineering showcase built to give recruiters and hiring managers everything they need in one guided proof experience — no portfolio hunting, no ambiguity.
 
-First, run the development server:
+The site is built and maintained live by Thomas Smith as a single-operator production system. What you see being built is the proof.
 
-```bash
-npm run dev
-# or
-yarn dev
-# or
-pnpm dev
-# or
-bun dev
+---
+
+## 7-Day Live Build Sprint
+
+Thomas is currently running a self-imposed 7-day sprint to prove he can onboard, ship, and operate across **6 client-scale workstreams simultaneously** — the same pressure a principal engineer faces on day one at a fast-moving company.
+
+This is not a toy exercise. Each product is a real deployed application with distinct audiences, personas, and technical requirements.
+
+**The 7 live products being maintained at once:**
+
+| # | Product | URL | What It Proves |
+|---|---------|-----|----------------|
+| 1 | **TSmithCode.ai** (this site) | [tsmithcode.ai](https://tsmithcode.ai) | Editorial proof flow, CMS architecture, guided UX |
+| 2 | **aJam** | [4chord.vercel.app](https://4chord.vercel.app) | Product restraint, guided onboarding, calm first-run UX |
+| 3 | **Monyawn** | [monyawn.vercel.app](https://monyawn.vercel.app) | Governed lifecycle workflow, enterprise ops, human review gates |
+| 4 | **Million Dollar .NET Snippets** | [mds-mu-six.vercel.app/about](https://mds-mu-six.vercel.app/about) | Framework positioning, Autodesk/ERP credibility, founder-level depth |
+| 5 | **GVO SMiTH** | [gvo-smith.vercel.app](https://gvo-smith.vercel.app) | Creator commerce, owned audience, unified brand + payment systems |
+| 6 | **Cadence Ops** | [efficiency-dashboard.onrender.com](https://efficiency-dashboard.onrender.com) | Role-aware operations intelligence, supervisor/exec visibility |
+| 7 | **Special Build Studio** | [special-build-plastic-belts.onrender.com](https://special-build-plastic-belts.onrender.com) | Focused manufacturing support, operator workflow clarity |
+
+Rough edges during this sprint are intentional evidence of real-world operating pressure — not broken product. The goal is controlled delivery under chaos, not polished demos in a vacuum.
+
+---
+
+## Stack
+
+- **Next.js 15** (App Router, SSG + ISR)
+- **Tailwind CSS**
+- **Vercel** (auto-deploy from `main`)
+- **Storyblok** (CMS adapter, fallback-safe)
+- **Vercel Analytics + Speed Insights**
+
+---
+
+## Architecture
+
+```
+app/
+  lib/
+    homepageIssue.ts     # CMS adapter — Storyblok with local fallback
+    editorialSlots.ts    # Diagram/proof/trust plate registry
+    demoStories.ts       # 6 demo product data
+  components/
+    HomeWizard.tsx       # 8-spread guided homepage proof flow
+    showcase/
+      EditorialSlotPlate.tsx   # Reusable editorial diagram plate
+      DemoStoryPage.tsx        # Demo product story wrapper
+storyblok/
+  components/            # Storyblok schema blueprints
+  seed/                  # Homepage issue seed payload
+docs/
+  FRONTEND-OVERHAUL-BLUEPRINT.md
+  STORYBLOK-SETUP.md
+  site-spec.md
 ```
 
-Open [http://localhost:3000](http://localhost:3000) with your browser to see the result.
+---
 
-You can start editing the page by modifying `app/page.tsx`. The page auto-updates as you edit the file.
+## CMS Setup
 
-This project uses [`next/font`](https://nextjs.org/docs/app/building-your-application/optimizing/fonts) to automatically optimize and load [Geist](https://vercel.com/font), a new font family for Vercel.
+The homepage is CMS-backed with a Storyblok fallback. It runs without a CMS token — local data takes over gracefully.
 
-## Editorial Homepage CMS
-
-The homepage now supports a CMS-backed single-path editorial issue.
-
-- local fallback content lives in [`app/lib/homepageIssue.ts`](/Users/cadguardianllc/Documents/GitHub/recruiter-showcase/app/lib/homepageIssue.ts)
-- Storyblok setup instructions live in [`docs/STORYBLOK-SETUP.md`](/Users/cadguardianllc/Documents/GitHub/recruiter-showcase/docs/STORYBLOK-SETUP.md)
-- Storyblok schema blueprints live in [`storyblok/components`](/Users/cadguardianllc/Documents/GitHub/recruiter-showcase/storyblok/components)
-- the initial seed payload lives in [`storyblok/seed/homepage-issue.json`](/Users/cadguardianllc/Documents/GitHub/recruiter-showcase/storyblok/seed/homepage-issue.json)
-
-To connect a real Storyblok space:
+To connect Storyblok:
 
 ```bash
 cp .env.example .env.local
+# then set:
+STORYBLOK_PREVIEW_TOKEN=your_token
+STORYBLOK_HOMEPAGE_ISSUE_SLUG=homepage-issue
 ```
 
-Then set `STORYBLOK_PREVIEW_TOKEN` and `STORYBLOK_HOMEPAGE_ISSUE_SLUG`.
-
-## Learn More
-
-To learn more about Next.js, take a look at the following resources:
-
-- [Next.js Documentation](https://nextjs.org/docs) - learn about Next.js features and API.
-- [Learn Next.js](https://nextjs.org/learn) - an interactive Next.js tutorial.
-
-You can check out [the Next.js GitHub repository](https://github.com/vercel/next.js) - your feedback and contributions are welcome!
-
-## Deploy on Vercel
-
-The easiest way to deploy your Next.js app is to use the [Vercel Platform](https://vercel.com/new?utm_medium=default-template&filter=next.js&utm_source=create-next-app&utm_campaign=create-next-app-readme) from the creators of Next.js.
-
-Check out our [Next.js deployment documentation](https://nextjs.org/docs/app/building-your-application/deploying) for more details.
+Full setup: [`docs/STORYBLOK-SETUP.md`](docs/STORYBLOK-SETUP.md)
 
 ---
 
-## 🔧 Pareto Developer Command Guide (NPM, Git, Vercel)
-
-### 🌀 Git – 20% of commands for 80% of workflows
+## Local Dev
 
 ```bash
-git init
-git remote add origin https://github.com/tsmithcode/recruiter-showcase.git
-git add .
-git commit -m "Initial commit"
-git pull origin main --allow-unrelated-histories
-git push -u origin main
-git push -u origin main --force           # use carefully if pushing over existing branch
-```
-
-### 🔹 Config & Remotes
-
-```bash
-git config pull.rebase false              # merge strategy
-git branch -M main                        # rename current branch to main
-git remote -v                             # verify remotes
-git remote remove origin                  # remove if incorrectly added
+npm install
+npm run dev        # http://localhost:3000
+npm run build      # production build + sitemap
 ```
 
 ---
 
-### 📦 NPM – Essential commands only
+## Positioning
 
-```bash
-npm install                               # install all dependencies
-npm install <pkg>                         # add new dependency
-npm install <pkg> -D                      # add dev dependency
-npm uninstall <pkg>                       # remove a dependency
-npm outdated                              # list outdated packages
-npm update                                # update to latest compatible versions
+Thomas Smith is a principal-level B2B systems builder. The goal of this site is not to show breadth — it is to show the same operating discipline appearing repeatedly across different domains: workflow systems, operator tooling, integration-heavy software, and evidence packaging that non-technical reviewers can trust quickly.
 
-npm run dev                               # start dev server
-npm run build                             # build production bundle
-npm run start                             # start production server
-```
-
----
-
-### 🚀 Vercel – Core CLI deployment workflow
-
-```bash
-vercel                                     # initial deploy (follow prompts)
-vercel --prod                              # production deploy
-vercel link                                # link local project to vercel
-vercel env pull .env.local                 # pull remote environment variables
-vercel logs <deployment-url>               # inspect server logs
-vercel inspect <deployment-url>            # debug build issues
-```
-
----
-
-### ✅ .gitignore Essentials
-
-```bash
-node_modules/
-.env
-.next/
-dist/
-```
-
----
-
-Your overall goal with this project is to:
-
----
-
-### 🎯 **Position Yourself as a High-Value, Boutique Software Engineer and Automation Consultant**
-
-**TSmithCode.ai** is not just a personal portfolio — it’s a strategically designed, branded **platform** to:
-
-#### 🧠 1. **Monetize Your Historical Code and Skillset**
-
-- Convert previous projects into productized, paid demos (CPQ tools, configurators, macros, etc.)
-- Offer scoped deliverables (code, PDFs, images, repos, courses) in modular packages
-- Automate quoting, delivery, and payment using a CPQ front-end and Stripe/Calendly backend
-
-#### 🏢 2. **Attract Enterprise Clients from High-GDP Industries**
-
-- Showcase reusable demos aligned to pain points in:
-  - Manufacturing (CAD, ERP)
-  - Engineering (automation, product design)
-  - Energy / Construction (configurators, BOM tools)
-  - Healthcare / Finance (compliance, ETL, dashboards)
-
-- Structure services around real business outcomes (efficiency, throughput, cost savings)
-
-#### 💼 3. **Win 5-Figure Contracts or \$140K+ Remote Roles**
-
-- Make it easy for **recruiters and hiring managers** to justify hiring or contracting you
-- Prove immediate ROI and industry experience through visuals, metrics, and solutions
-- Position yourself as a "force multiplier" who builds **internal tools**, not just writes code
-
-#### 🧬 4. **Build a Sustainable, Scalable, Personal Brand**
-
-- Capture your full technical portfolio in one evolving site (CPQ demo, carousel, skill maps)
-- Include LinkedIn-style copy, lifestyle-fit philosophy, and compensation terms
-- Establish TSmithCode.ai as a repeatable funnel for consulting, employment, or product sales
-
----
+**Target roles:** Principal Engineer, Staff Engineer, Platform Lead, Founding Engineer at product-led companies working in B2B, enterprise, or workflow-adjacent problems.
