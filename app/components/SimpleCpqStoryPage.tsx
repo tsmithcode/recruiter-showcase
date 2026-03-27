@@ -17,7 +17,6 @@ export default function SimpleCpqStoryPage() {
   const [step, setStep] = useState<CpqStoryStep>('summary');
   const [selectedScenario, setSelectedScenario] = useState<CpqScenarioId>('software');
   const scenario = cpqScenarios[selectedScenario];
-  const scenarioOptions = Object.values(cpqScenarios);
   const progress = stepNumber(step);
 
   function goBack() {
